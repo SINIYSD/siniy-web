@@ -45,7 +45,7 @@
       background-color: var(--gris-claro);
       text-align: center;
     }
-    .hero h1 {
+    .hero h1, .hero h2 {
       font-size: 2.5rem;
       margin-bottom: 1rem;
     }
@@ -53,6 +53,34 @@
       font-size: 1.1rem;
       max-width: 800px;
       margin: 0 auto;
+    }
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-top: 2.5rem;
+      padding: 0 1rem;
+    }
+    .benefit {
+      background-color: #ffffff;
+      border: 1px solid #e0e0e0;
+      border-left: 5px solid var(--azul);
+      border-radius: 10px;
+      padding: 1.5rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      transition: transform 0.2s;
+    }
+    .benefit:hover {
+      transform: translateY(-5px);
+    }
+    .benefit h3 {
+      margin-bottom: 0.5rem;
+      font-size: 1.2rem;
+      color: var(--azul);
+    }
+    .benefit p {
+      font-size: 1rem;
+      color: #333;
     }
     .banks-grid {
       display: grid;
@@ -149,14 +177,39 @@
   </header>
 
   <section class="hero">
-    <h1>Pagos seguros con SINIY</h1>
-    <p>
-      Realiza tus pagos directamente desde tu celular sin ingresar datos bancarios en nuestra web. <br>
-      <strong>Solicita tu pedido con un abono mínimo del 50% del valor total.</strong><br><br>
-      🔒 Así garantizamos tu seguridad y privacidad.<br>
-      📦 <strong>Tiempo de entrega estimado</strong>: entre <strong>4 y 8 días hábiles</strong>, según el tipo de trabajo.<br>
-      📝 La información detallada será brindada por tu asesor una vez el pedido sea cargado al sistema tras verificar el pago.
-    </p>
+    <h1>Haz tu pedido con nosotros</h1>
+    <p>Ofrecemos un proceso de compra seguro, ágil y con total acompañamiento. ¡Con SINIY estás en buenas manos!</p>
+    <div class="benefits-grid">
+      <div class="benefit">
+        <h3>🔒 Seguridad garantizada</h3>
+        <p>Realiza pagos desde tu celular sin ingresar datos bancarios en esta web.</p>
+      </div>
+      <div class="benefit">
+        <h3>💰 Abono del 50%</h3>
+        <p>Solicita tu pedido con solo el 50% del valor total. ¡Flexibilidad financiera!</p>
+      </div>
+      <div class="benefit">
+        <h3>📦 Entrega ágil</h3>
+        <p>Tu pedido llegará en 4 a 8 días hábiles, según el tipo de trabajo.</p>
+      </div>
+      <div class="benefit">
+        <h3>👨‍💼 Acompañamiento personalizado</h3>
+        <p>Un asesor te informará todos los detalles y avances de tu pedido.</p>
+      </div>
+      <div class="benefit">
+        <h3>📝 Información clara</h3>
+        <p>Detalles, referencias y diseños serán cargados al sistema para asegurar precisión.</p>
+      </div>
+      <div class="benefit">
+        <h3>🏢 Opciones empresariales</h3>
+        <p>Puedes incluir NIT, razón social y datos para facturación si lo necesitas.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="hero" style="padding-top: 2rem;">
+    <h2 style="font-size: 2rem;">Haz tu pago por uno de nuestros bancos aliados</h2>
+    <p>Selecciona tu banco de preferencia y adjunta el comprobante en el formulario.</p>
   </section>
 
   <section class="banks-grid">
@@ -290,5 +343,6 @@
       document.getElementById("abono").value = `$${Math.round(total / 2).toLocaleString("es-CO")}`;
     }
   </script>
+
 </body>
 </html>
