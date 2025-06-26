@@ -137,46 +137,56 @@
   </header>
 
   <section class="hero">
-    <h1>Pagos seguros con SINIY</h1>
-    <p>Realiza tus pagos directamente desde tu celular. No debes ingresar datos bancarios en nuestra web, garantizando así tu seguridad y privacidad.</p>
-  </section>
+  <h1>Pagos seguros con SINIY</h1>
+  <p>
+    Realiza tus pagos directamente desde tu celular sin ingresar datos bancarios en nuestra web. <br>
+    <strong>Solicita tu pedido con un abono mínimo del 50% del valor total.</strong><br><br>
+    🔒 Así garantizamos tu seguridad y privacidad.<br>
+    📦 <strong>Tiempo de entrega estimado</strong>: entre <strong>4 y 8 días hábiles</strong>, según el tipo de trabajo.<br>
+    📝 La información detallada será brindada por tu asesor una vez el pedido sea cargado al sistema tras verificar el pago.
+  </p>
+</section>
 
   <section class="banks-grid">
-    <div class="bank" onclick="openModal('Bancolombia')">
+    <!-- Bancos -->
+    <div class="bank" onclick="openModal('Bancolombia', '07005650245')">
       <img src="bancolombia.png" alt="Bancolombia">
       <p>Bancolombia</p>
     </div>
-    <div class="bank" onclick="openModal('Banco Falabella')">
+    <div class="bank" onclick="openModal('Banco Falabella', '111830282541')">
       <img src="falabella.png" alt="Banco Falabella">
       <p>Banco Falabella</p>
     </div>
-    <div class="bank" onclick="openModal('Davivienda')">
+    <div class="bank" onclick="openModal('Davivienda', '488443264657')">
       <img src="davivienda.png" alt="Davivienda">
       <p>Davivienda</p>
     </div>
-    <div class="bank" onclick="openModal('Lulo Bank')">
+    <div class="bank" onclick="openModal('Lulo Bank', '128640924072')">
       <img src="lulo.png" alt="Lulo Bank">
       <p>Lulo Bank</p>
     </div>
-    <div class="bank" onclick="openModal('Nubank')">
+    <div class="bank" onclick="openModal('Nubank', '70153843')">
       <img src="nubank.png" alt="Nubank">
       <p>Nubank</p>
     </div>
-    <div class="bank" onclick="openModal('Banco Agrario')">
+    <div class="bank" onclick="openModal('Banco Agrario', '418030210497')">
       <img src="agrario.png" alt="Banco Agrario">
       <p>Banco Agrario</p>
     </div>
-    <div class="bank" onclick="openModal('BBVA')">
+    <div class="bank" onclick="openModal('BBVA', '640008880')">
       <img src="bbva.png" alt="BBVA">
       <p>BBVA</p>
     </div>
   </section>
 
-  <!-- Modal con formulario de comprobante -->
+  <!-- Modal único -->
   <div id="pagoModal" class="modal">
     <div class="modal-content">
       <span class="close" onclick="document.getElementById('pagoModal').style.display='none'">&times;</span>
       <h2>Solicitud de Pedido</h2>
+      <p><strong>Banco:</strong> <span id="nombreBanco"></span></p>
+      <p><strong>Cuenta de Ahorros:</strong> <span id="cuentaBanco"></span><br>A nombre de JOSE DAVID ALZATE AYALA</p>
+      <p><em>Por favor, realiza un pago mínimo del 50% del valor de tu compra para procesar tu pedido.</em></p>
       <form action="https://formsubmit.co/financiera@siniy.pro" method="POST" enctype="multipart/form-data">
         <input type="text" name="nombre" placeholder="Nombre completo" required>
         <input type="email" name="correo" placeholder="Correo electrónico" required>
@@ -197,8 +207,10 @@
   </footer>
 
   <script>
-    function openModal(banco) {
+    function openModal(nombre, cuenta) {
       document.getElementById('pagoModal').style.display = 'block';
+      document.getElementById('nombreBanco').innerText = nombre;
+      document.getElementById('cuentaBanco').innerText = cuenta;
     }
 
     window.onclick = function(event) {
