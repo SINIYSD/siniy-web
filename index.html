@@ -1,19 +1,14 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SINIY Soluciones Digitales</title>
-  <link rel="icon" href="siniyfavicon.png" type="image/png">
+  <link rel="icon" href="siniyfavicon.png" type="image/png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
 
-  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-  
-  <a href="https://wa.me/573237028814" target="_blank" class="whatsapp-btn" aria-label="Chatea por WhatsApp">
-  <img src="whatsappboton.png" alt="WhatsApp" />
-</a>
-  
   <style>
     :root {
       --azul-claro: #5ab0e6;
@@ -45,7 +40,6 @@
       justify-content: space-between;
       align-items: center;
       box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-      position: relative;
     }
 
     .logo img {
@@ -102,13 +96,6 @@
       margin: 0 auto;
     }
 
-    .mascota {
-      width: 100%;
-      max-width: 140px;
-      height: auto;
-      margin-top: 2rem;
-    }
-
     section {
       padding: 4rem 2rem;
     }
@@ -155,7 +142,6 @@
     .card span {
       font-weight: 600;
       font-size: 1rem;
-      color: var(--gris-oscuro);
     }
 
     .emprendedores {
@@ -175,6 +161,7 @@
       margin: 0 0.5rem;
     }
 
+    /* Responsive */
     @media (max-width: 768px) {
       .nav-links {
         display: none;
@@ -217,44 +204,41 @@
         font-size: 0.95rem;
       }
     }
-<style>
-  /* ... tus estilos anteriores ... */
 
-  .whatsapp-btn {
-    position: fixed;
-    bottom: 20px;
-    left: 20px;
-    z-index: 999;
-    width: 64px;
-    height: 64px;
-    animation: pulse 1.5s infinite;
-    transition: transform 0.3s;
-  }
+    /* Botón flotante de WhatsApp */
+    .whatsapp-btn {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      z-index: 999;
+      width: 64px;
+      height: 64px;
+      animation: pulse 1.5s infinite;
+      transition: transform 0.3s;
+    }
 
-  .whatsapp-btn:hover {
-    transform: scale(1.1);
-  }
+    .whatsapp-btn:hover {
+      transform: scale(1.1);
+    }
 
-  .whatsapp-btn img {
-    width: 100%;
-    height: 100%;
-    display: block;
-  }
+    .whatsapp-btn img {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
 
-  @keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.15); }
-    100% { transform: scale(1); }
-  }
-</style>
-
-    
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.15); }
+      100% { transform: scale(1); }
+    }
   </style>
 </head>
+
 <body>
   <header class="header">
     <div class="logo">
-      <img src="siniylogo.png" alt="Logo SINIY">
+      <img src="siniylogo.png" alt="Logo SINIY" />
     </div>
     <button id="menu-toggle" class="menu-toggle">☰</button>
     <nav>
@@ -274,7 +258,6 @@
 
   <section id="servicios">
     <h2 class="section-title">Nuestros Servicios</h2>
-    
     <div class="categoria">
       <h3>Litografía</h3>
       <div class="grid">
@@ -330,16 +313,7 @@
     </div>
   </section>
 
-  <section class="emprendedores">
-    <h2 class="section-title">Especial para Emprendedores</h2>
-    <div class="grid">
-      <div class="card"><span>Combo tarjeta + pendón + volantes</span></div>
-      <div class="card"><span>Imagen desde cero y logo profesional</span></div>
-      <div class="card"><span>Redes sociales activadas para vender</span></div>
-    </div>
-  </section>
-
-  <section id="portafolio" class="portafolio">
+  <section id="portafolio">
     <h2 class="section-title">Portafolio</h2>
     <div class="grid">
       <div class="card"><span>Proyecto 1</span></div>
@@ -348,13 +322,13 @@
     </div>
   </section>
 
-  <section id="contacto" class="contacto">
+  <section id="contacto">
     <h2 class="section-title">Contáctanos</h2>
     <form action="https://formsubmit.co/hola@siniy.pro" method="POST" style="max-width:600px;margin:auto;display:flex;flex-direction:column;gap:1rem;padding:2rem;background:#ffffff;border-radius:12px;">
-      <input type="hidden" name="_captcha" value="false">
-      <input type="hidden" name="_next" value="https://siniy.pro/gracias.html">
-      <input type="text" name="nombre" placeholder="Tu nombre" required>
-      <input type="email" name="email" placeholder="Tu correo" required>
+      <input type="hidden" name="_captcha" value="false" />
+      <input type="hidden" name="_next" value="https://siniy.pro/gracias.html" />
+      <input type="text" name="nombre" placeholder="Tu nombre" required />
+      <input type="email" name="email" placeholder="Tu correo" required />
       <textarea name="mensaje" placeholder="Tu mensaje" required></textarea>
       <button type="submit" style="padding:0.75rem;background-color:var(--azul-oscuro);color:white;border:none;border-radius:6px;font-weight:bold;cursor:pointer">Enviar</button>
     </form>
@@ -373,5 +347,10 @@
       nav.classList.toggle('active');
     });
   </script>
+
+  <!-- Botón flotante WhatsApp -->
+  <a href="https://wa.me/573237028814" target="_blank" class="whatsapp-btn" aria-label="Chatea por WhatsApp">
+    <img src="whatsappboton.png" alt="WhatsApp" />
+  </a>
 </body>
 </html>
