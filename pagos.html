@@ -38,49 +38,44 @@
       z-index: 1000;
     }
     header h1 img {
-      max-height: 60px;
+      height: 60px;
     }
-    .section {
-      padding: 4rem 2rem;
+    .hero {
+      padding: 3rem 2rem;
+      background-color: var(--gris-claro);
       text-align: center;
     }
-    .section h1 {
+    .hero h1 {
       font-size: 2.5rem;
       margin-bottom: 1rem;
     }
-    .section p {
-      max-width: 700px;
-      margin: 0 auto 2rem auto;
+    .hero p {
       font-size: 1.1rem;
-      color: #444;
+      max-width: 800px;
+      margin: 0 auto;
     }
     .banks-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
       gap: 2rem;
-      margin-top: 2rem;
-      justify-items: center;
+      padding: 3rem 2rem;
+      max-width: 1000px;
+      margin: 0 auto;
     }
-    .bank-card {
-      background-color: var(--gris-claro);
-      border-radius: 12px;
+    .bank {
+      background: var(--gris-claro);
+      border-radius: 10px;
       padding: 1rem;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-      transition: transform 0.3s ease;
-      cursor: pointer;
-    }
-    .bank-card:hover {
-      transform: translateY(-5px);
-    }
-    .bank-card img {
-      max-height: 50px;
-      margin-bottom: 0.5rem;
-    }
-    footer {
-      background-color: var(--negro);
-      color: white;
       text-align: center;
-      padding: 2rem;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+    .bank:hover {
+      transform: scale(1.05);
+    }
+    .bank img {
+      max-width: 100px;
+      margin-bottom: 0.5rem;
     }
     .modal {
       display: none;
@@ -90,14 +85,15 @@
       top: 0;
       width: 100%;
       height: 100%;
+      overflow: auto;
       background-color: rgba(0,0,0,0.6);
     }
     .modal-content {
-      background-color: white;
-      margin: 10% auto;
+      background-color: #fff;
+      margin: 5% auto;
       padding: 2rem;
-      max-width: 500px;
       border-radius: 8px;
+      max-width: 600px;
       position: relative;
     }
     .close {
@@ -107,6 +103,32 @@
       font-size: 24px;
       cursor: pointer;
     }
+    form input, form textarea {
+      width: 100%;
+      padding: 0.75rem;
+      margin-bottom: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+    form input[type="file"] {
+      padding: 0.4rem;
+    }
+    button {
+      background-color: var(--naranja);
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+    footer {
+      background-color: var(--negro);
+      color: white;
+      text-align: center;
+      padding: 2rem;
+      margin-top: 4rem;
+    }
   </style>
 </head>
 <body>
@@ -114,62 +136,74 @@
     <h1><img src="logoazulsiniy.png" alt="Logo SINIY"></h1>
   </header>
 
-  <section class="section">
-    <h1>Pagos Seguros</h1>
-    <p>Realiza tus pagos desde tu celular con total tranquilidad. No ingresas datos bancarios en nuestra web. Transferencias directas a nuestras cuentas.</p>
+  <section class="hero">
+    <h1>Pagos seguros con SINIY</h1>
+    <p>Realiza tus pagos directamente desde tu celular. No debes ingresar datos bancarios en nuestra web, garantizando así tu seguridad y privacidad.</p>
+  </section>
 
-    <div class="banks-grid">
-      <div class="bank-card" onclick="showBank('Bancolombia')">
-        <img src="bancolombia-logo.png" alt="Bancolombia">
-        <strong>Bancolombia</strong>
-      </div>
-      <div class="bank-card" onclick="showBank('Davivienda')">
-        <img src="davivienda-logo.png" alt="Davivienda">
-        <strong>Davivienda</strong>
-      </div>
-      <div class="bank-card" onclick="showBank('Banco Falabella')">
-        <img src="falabella-logo.png" alt="Falabella">
-        <strong>Banco Falabella</strong>
-      </div>
-      <div class="bank-card" onclick="showBank('Lulo Bank')">
-        <img src="lulo-logo.png" alt="Lulo Bank">
-        <strong>Lulo Bank</strong>
-      </div>
-      <div class="bank-card" onclick="showBank('Nubank')">
-        <img src="nubank-logo.png" alt="Nubank">
-        <strong>Nubank</strong>
-      </div>
-      <div class="bank-card" onclick="showBank('Banco Agrario')">
-        <img src="agrario-logo.png" alt="Banco Agrario">
-        <strong>Banco Agrario</strong>
-      </div>
-      <div class="bank-card" onclick="showBank('BBVA')">
-        <img src="bbva-logo.png" alt="BBVA">
-        <strong>BBVA</strong>
-      </div>
+  <section class="banks-grid">
+    <div class="bank" onclick="openModal('Bancolombia')">
+      <img src="bancolombia.png" alt="Bancolombia">
+      <p>Bancolombia</p>
+    </div>
+    <div class="bank" onclick="openModal('Banco Falabella')">
+      <img src="falabella.png" alt="Banco Falabella">
+      <p>Banco Falabella</p>
+    </div>
+    <div class="bank" onclick="openModal('Davivienda')">
+      <img src="davivienda.png" alt="Davivienda">
+      <p>Davivienda</p>
+    </div>
+    <div class="bank" onclick="openModal('Lulo Bank')">
+      <img src="lulo.png" alt="Lulo Bank">
+      <p>Lulo Bank</p>
+    </div>
+    <div class="bank" onclick="openModal('Nubank')">
+      <img src="nubank.png" alt="Nubank">
+      <p>Nubank</p>
+    </div>
+    <div class="bank" onclick="openModal('Banco Agrario')">
+      <img src="agrario.png" alt="Banco Agrario">
+      <p>Banco Agrario</p>
+    </div>
+    <div class="bank" onclick="openModal('BBVA')">
+      <img src="bbva.png" alt="BBVA">
+      <p>BBVA</p>
     </div>
   </section>
 
-  <footer>
-    <p>&copy; 2025 SINIY Soluciones Digitales - Todos los derechos reservados.</p>
-  </footer>
-
-  <div id="bankModal" class="modal">
+  <!-- Modal con formulario de comprobante -->
+  <div id="pagoModal" class="modal">
     <div class="modal-content">
-      <span class="close" onclick="document.getElementById('bankModal').style.display='none'">&times;</span>
-      <h3 id="bankTitle">Detalles de pago</h3>
-      <p>Aquí irán los datos de cuenta bancaria para el banco seleccionado.</p>
+      <span class="close" onclick="document.getElementById('pagoModal').style.display='none'">&times;</span>
+      <h2>Solicitud de Pedido</h2>
+      <form action="https://formsubmit.co/financiera@siniy.pro" method="POST" enctype="multipart/form-data">
+        <input type="text" name="nombre" placeholder="Nombre completo" required>
+        <input type="email" name="correo" placeholder="Correo electrónico" required>
+        <input type="tel" name="telefono" placeholder="Número de contacto" required>
+        <input type="text" name="telefono2" placeholder="Número adicional (opcional)">
+        <input type="text" name="ciudad" placeholder="Ciudad" required>
+        <input type="text" name="direccion" placeholder="Dirección de entrega" required>
+        <textarea name="diseño" rows="3" placeholder="Información del diseño o referencia deseada" required></textarea>
+        <label><strong>Adjunta el comprobante de pago:</strong></label>
+        <input type="file" name="comprobante" accept="image/*,application/pdf" required>
+        <button type="submit">Enviar Solicitud</button>
+      </form>
     </div>
   </div>
 
+  <footer>
+    <p>&copy; 2025 SINIY Soluciones Digitales. Todos los derechos reservados.</p>
+  </footer>
+
   <script>
-    function showBank(bank) {
-      document.getElementById('bankTitle').textContent = 'Pago con ' + bank;
-      document.getElementById('bankModal').style.display = 'block';
+    function openModal(banco) {
+      document.getElementById('pagoModal').style.display = 'block';
     }
+
     window.onclick = function(event) {
-      const modal = document.getElementById('bankModal');
-      if (event.target === modal) {
+      const modal = document.getElementById('pagoModal');
+      if (event.target == modal) {
         modal.style.display = "none";
       }
     }
