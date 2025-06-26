@@ -213,15 +213,22 @@
     </div>
   </section>
 
-  <section id="contacto" class="contacto">
-    <h2 class="section-title">Contáctanos</h2>
-    <form action="https://formsubmit.co/tu-correo@ejemplo.com" method="POST" style="max-width:600px;margin:auto;display:flex;flex-direction:column;gap:1rem;padding:2rem;background:#ffffff;border-radius:12px;">
-      <input type="text" name="nombre" placeholder="Tu nombre" required>
-      <input type="email" name="email" placeholder="Tu correo" required>
-      <textarea name="mensaje" placeholder="Tu mensaje" required></textarea>
-      <button type="submit" style="padding:0.75rem;background-color:var(--azul-oscuro);color:white;border:none;border-radius:6px;font-weight:bold;cursor:pointer">Enviar</button>
-    </form>
-  </section>
+<section id="contacto" class="contacto">
+  <h2 class="section-title">Contáctanos</h2>
+  <form action="https://formsubmit.co/hola@siniy.pro" method="POST" style="max-width:600px;margin:auto;display:flex;flex-direction:column;gap:1rem;padding:2rem;background:#ffffff;border-radius:12px;">
+
+    <!-- Anti-spam -->
+    <input type="hidden" name="_captcha" value="false">
+
+    <!-- Redirección después del envío -->
+    <input type="hidden" name="_next" value="https://siniy.pro/gracias.html">
+
+    <input type="text" name="nombre" placeholder="Tu nombre" required>
+    <input type="email" name="email" placeholder="Tu correo" required>
+    <textarea name="mensaje" placeholder="Tu mensaje" required></textarea>
+    <button type="submit" style="padding:0.75rem;background-color:var(--azul-oscuro);color:white;border:none;border-radius:6px;font-weight:bold;cursor:pointer">Enviar</button>
+  </form>
+</section>
 
   <footer class="footer">
     <p>© 2025 SINIY Soluciones Digitales</p>
