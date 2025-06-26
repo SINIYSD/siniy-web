@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pagos - SINIY</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --azul: #007aff;
+      --naranja: #ff6b00;
+      --gris-claro: #f8f9fa;
+      --negro: #1a1a1a;
+      --blanco: #ffffff;
+      --verde: #28a745;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--blanco);
+      margin: 0;
+      padding: 0;
+      color: var(--negro);
+    }
+
+    header {
+      background-color: var(--azul);
+      color: white;
+      padding: 1rem 2rem;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2rem;
+    }
+
+    .banner {
+      background-color: var(--verde);
+      color: white;
+      padding: 1rem 2rem;
+      text-align: center;
+      font-weight: 600;
+    }
+
+    .intro {
+      text-align: center;
+      padding: 2rem;
+    }
+
+    .intro h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .banks-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 2rem;
+      padding: 2rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .bank-card {
+      background-color: var(--gris-claro);
+      padding: 1rem;
+      border-radius: 12px;
+      text-align: center;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    .bank-card:hover {
+      transform: scale(1.05);
+    }
+
+    .bank-card img {
+      max-width: 100px;
+      height: auto;
+      margin-bottom: 0.5rem;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1001;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.6);
+    }
+
+    .modal-content {
+      background: white;
+      margin: 10% auto;
+      padding: 2rem;
+      max-width: 400px;
+      border-radius: 10px;
+      position: relative;
+    }
+
+    .close {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    footer {
+      background: var(--negro);
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      margin-top: 2rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Pagos SINIY</h1>
+  </header>
+
+  <div class="banner">
+    Pagos seguros: realiza tu transferencia directamente desde tu celular, sin ingresar datos bancarios en nuestra web.
+  </div>
+
+  <section class="intro">
+    <h2>Pagos Seguros</h2>
+    <p>Selecciona tu banco para obtener la información de pago. Realiza tu transferencia directamente desde tu app bancaria.</p>
+  </section>
+
+  <section class="banks-grid">
+    <div class="bank-card" onclick="openModal('Bancolombia', 'Cuenta Ahorros #1234567890<br>Titular: SINIY DIGITAL')">
+      <img src="bancolombia.png" alt="Bancolombia">
+      <strong>Bancolombia</strong>
+    </div>
+
+    <div class="bank-card" onclick="openModal('Banco Falabella', 'Cuenta Ahorros #1122334455<br>Titular: SINIY DIGITAL')">
+      <img src="falabella.png" alt="Banco Falabella">
+      <strong>Banco Falabella</strong>
+    </div>
+
+    <div class="bank-card" onclick="openModal('Davivienda', 'Cuenta Ahorros #9988776655<br>Titular: SINIY DIGITAL')">
+      <img src="davivienda.png" alt="Davivienda">
+      <strong>Davivienda</strong>
+    </div>
+
+    <div class="bank-card" onclick="openModal('Lulo Bank', 'Cuenta Digital #5566778899<br>Titular: SINIY DIGITAL')">
+      <img src="lulo.png" alt="Lulo Bank">
+      <strong>Lulo Bank</strong>
+    </div>
+
+    <div class="bank-card" onclick="openModal('Nubank', 'Cuenta Digital #3344556677<br>Titular: SINIY DIGITAL')">
+      <img src="nubank.png" alt="Nubank">
+      <strong>Nubank</strong>
+    </div>
+
+    <div class="bank-card" onclick="openModal('Banco Agrario', 'Cuenta Corriente #4455667788<br>Titular: SINIY DIGITAL')">
+      <img src="agrario.png" alt="Banco Agrario">
+      <strong>Banco Agrario</strong>
+    </div>
+
+    <div class="bank-card" onclick="openModal('BBVA', 'Cuenta Ahorros #7788990011<br>Titular: SINIY DIGITAL')">
+      <img src="bbva.png" alt="BBVA">
+      <strong>BBVA</strong>
+    </div>
+  </section>
+
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <h3 id="modal-title">Banco</h3>
+      <p id="modal-body">Aquí va la info.</p>
+    </div>
+  </div>
+
+  <footer>
+    &copy; 2025 SINIY Soluciones Digitales - Todos los derechos reservados
+  </footer>
+
+  <script>
+    function openModal(banco, info) {
+      document.getElementById('modal-title').innerText = banco;
+      document.getElementById('modal-body').innerHTML = info;
+      document.getElementById('modal').style.display = 'block';
+    }
+
+    function closeModal() {
+      document.getElementById('modal').style.display = 'none';
+    }
+
+    window.onclick = function(event) {
+      const modal = document.getElementById('modal');
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+  </script>
+
+</body>
+</html>
