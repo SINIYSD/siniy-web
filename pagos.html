@@ -103,7 +103,7 @@
       font-size: 24px;
       cursor: pointer;
     }
-    form input, form textarea {
+    form input, form textarea, form select {
       width: 100%;
       padding: 0.75rem;
       margin-bottom: 1rem;
@@ -122,6 +122,18 @@
       cursor: pointer;
       font-weight: 600;
     }
+    .servicio {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+    .servicio select {
+      flex: 1;
+    }
+    .servicio button {
+      background-color: red;
+      font-size: 1.2rem;
+    }
     footer {
       background-color: var(--negro);
       color: white;
@@ -137,18 +149,17 @@
   </header>
 
   <section class="hero">
-  <h1>Pagos seguros con SINIY</h1>
-  <p>
-    Realiza tus pagos directamente desde tu celular sin ingresar datos bancarios en nuestra web. <br>
-    <strong>Solicita tu pedido con un abono mínimo del 50% del valor total.</strong><br><br>
-    🔒 Así garantizamos tu seguridad y privacidad.<br>
-    📦 <strong>Tiempo de entrega estimado</strong>: entre <strong>4 y 8 días hábiles</strong>, según el tipo de trabajo.<br>
-    📝 La información detallada será brindada por tu asesor una vez el pedido sea cargado al sistema tras verificar el pago.
-  </p>
-</section>
+    <h1>Pagos seguros con SINIY</h1>
+    <p>
+      Realiza tus pagos directamente desde tu celular sin ingresar datos bancarios en nuestra web. <br>
+      <strong>Solicita tu pedido con un abono mínimo del 50% del valor total.</strong><br><br>
+      🔒 Así garantizamos tu seguridad y privacidad.<br>
+      📦 <strong>Tiempo de entrega estimado</strong>: entre <strong>4 y 8 días hábiles</strong>, según el tipo de trabajo.<br>
+      📝 La información detallada será brindada por tu asesor una vez el pedido sea cargado al sistema tras verificar el pago.
+    </p>
+  </section>
 
   <section class="banks-grid">
-    <!-- Bancos -->
     <div class="bank" onclick="openModal('Bancolombia', '07005650245')">
       <img src="bancolombia.png" alt="Bancolombia">
       <p>Bancolombia</p>
@@ -179,7 +190,6 @@
     </div>
   </section>
 
-  <!-- Modal único -->
   <div id="pagoModal" class="modal">
     <div class="modal-content">
       <span class="close" onclick="document.getElementById('pagoModal').style.display='none'">&times;</span>
@@ -194,6 +204,26 @@
         <input type="text" name="telefono2" placeholder="Número adicional (opcional)">
         <input type="text" name="ciudad" placeholder="Ciudad" required>
         <input type="text" name="direccion" placeholder="Dirección de entrega" required>
+
+        <div id="servicios-container">
+          <label><strong>Servicios a comprar:</strong></label>
+          <div class="servicio">
+            <select name="servicio[]" onchange="calcularTotal()" required>
+              <option value="" disabled selected>Selecciona un servicio</option>
+              <option value="Diseño gráfico - 80000">Diseño gráfico - $80.000</option>
+              <option value="Pendón impreso - 50000">Pendón impreso - $50.000</option>
+              <option value="Página web - 600000">Página web - $600.000</option>
+              <option value="Sticker troquelado - 30000">Sticker troquelado - $30.000</option>
+              <option value="Tarjetas de presentación - 40000">Tarjetas presentación - $40.000</option>
+            </select>
+            <button type="button" onclick="this.parentElement.remove();calcularTotal()">✕</button>
+          </div>
+        </div>
+        <button type="button" onclick="agregarServicio()">+ Agregar otro servicio</button>
+
+        <input type="text" name="total" id="total" placeholder="Total a pagar" readonly required>
+        <input type="text" name="abono" id="abono" placeholder="Abono inicial (mínimo 50%)" readonly required>
+
         <textarea name="diseño" rows="3" placeholder="Información del diseño o referencia deseada" required></textarea>
         <label><strong>Adjunta el comprobante de pago:</strong></label>
         <input type="file" name="comprobante" accept="image/*,application/pdf" required>
@@ -218,6 +248,42 @@
       if (event.target == modal) {
         modal.style.display = "none";
       }
+    }
+
+    function agregarServicio() {
+      const container = document.getElementById("servicios-container");
+      const div = document.createElement("div");
+      div.classList.add("servicio");
+
+      div.innerHTML = `
+        <select name="servicio[]" onchange="calcularTotal()" required>
+          <option value="" disabled selected>Selecciona un servicio</option>
+          <option value="Diseño gráfico - 80000">Diseño gráfico - $80.000</option>
+          <option value="Pendón impreso - 50000">Pendón impreso - $50.000</option>
+          <option value="Página web - 600000">Página web - $600.000</option>
+          <option value="Sticker troquelado - 30000">Sticker troquelado - $30.000</option>
+          <option value="Tarjetas de presentación - 40000">Tarjetas presentación - $40.000</option>
+        </select>
+        <button type="button" onclick="this.parentElement.remove();calcularTotal()">✕</button>
+      `;
+      container.appendChild(div);
+    }
+
+    function calcularTotal() {
+      let total = 0;
+      const selects = document.querySelectorAll('select[name="servicio[]"]');
+      selects.forEach(select => {
+        const valor = select.value;
+        if (valor) {
+          const precioTexto = valor.split("-")[1];
+          const precio = parseInt(precioTexto.trim().replace(/\./g, ""));
+          if (!isNaN(precio)) {
+            total += precio;
+          }
+        }
+      });
+      document.getElementById("total").value = `$${total.toLocaleString("es-CO")}`;
+      document.getElementById("abono").value = `$${Math.round(total / 2).toLocaleString("es-CO")}`;
     }
   </script>
 </body>
