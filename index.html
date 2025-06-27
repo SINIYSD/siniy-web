@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SINIY Soluciones Digitales</title>
-  <link rel="icon" href="siniyfavicon.png" type="image/png">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="icon" href="siniyfavicon.png" type="image/png" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
   <style>
     :root {
       --azul: #007aff;
@@ -15,38 +15,44 @@
       --blanco: #ffffff;
       --rosa: #e83e8c;
     }
+
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
       font-family: 'Inter', sans-serif;
     }
+
     body {
       background-color: var(--blanco);
       color: var(--negro);
       line-height: 1.6;
+      overflow-x: hidden;
     }
+
     header {
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 1.5rem 2rem;
       background-color: var(--blanco);
-      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
       position: sticky;
       top: 0;
       z-index: 1000;
     }
+
     header h1 img {
       height: auto;
       max-height: 70px;
+      cursor: pointer;
     }
+
     @media (max-width: 600px) {
       header h1 img {
         max-height: 50px;
       }
     }
-
 
     .btn-primary {
       background: var(--naranja);
@@ -56,88 +62,128 @@
       border-radius: 8px;
       cursor: pointer;
       font-weight: 600;
-      animation: pulse 2s infinite;
+      transition: background 0.3s ease;
+      text-decoration: none;
     }
-    @keyframes pulse {
-      0% { opacity: 1; }
-      50% { opacity: 0.5; }
-      100% { opacity: 1; }
+
+    .btn-primary:hover {
+      background: #e65a00;
     }
+
     .hero, .section {
       padding: 4rem 2rem;
       text-align: center;
     }
+
     .hero {
-      display: flex;
-      flex-wrap: wrap;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
       align-items: center;
       background-color: var(--gris-claro);
     }
-    .hero-text {
-      flex: 1 1 50%;
-      padding: 1rem;
-    }
+
     .hero-text h1 {
-      font-size: 3rem;
+      font-size: 2.5rem;
       font-weight: 800;
       margin-bottom: 1rem;
     }
+
     .hero-text p {
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       margin-bottom: 2rem;
     }
-    .hero-img {
-      flex: 1 1 50%;
-      text-align: center;
-    }
+
     .hero-img img {
-      max-width: 100%;
+      width: 100%;
+      height: auto;
     }
+
     .cards {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      margin-top: 3rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 2rem;
+      justify-items: center;
+      margin-top: 3rem;
     }
+
     .card {
       background-color: var(--gris-claro);
       padding: 2rem;
       border-radius: 12px;
       max-width: 320px;
-      text-align: left;
-    }
-    .combos {
-      background-color: #fff7f9;
-    }
-    .tech-logos, .benefits, .projects {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 1.5rem;
-      margin-top: 2rem;
-    }
-    .tech-logos img, .projects img {
-      max-height: 50px;
-      object-fit: contain;
-    }
-    .double-card {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 2rem;
-      margin-top: 2rem;
-    }
-    .double-card .card {
       text-align: center;
     }
+
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+      text-align: left;
+    }
+
+    .tool-box {
+      background-color: var(--gris-claro);
+      padding: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04);
+      transition: transform 0.3s ease;
+    }
+
+    .tool-box:hover {
+      transform: translateY(-5px);
+    }
+
+    .tool-box h3 {
+      margin-bottom: 1rem;
+      color: var(--azul);
+    }
+
+    .tool-box li {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.5rem;
+      color: #333;
+    }
+
+    .tool-box li::before {
+      content: "✔";
+      color: #28a745;
+      font-size: 1rem;
+    }
+
+    .agency-block {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      align-items: center;
+      gap: 2rem;
+      margin-top: 3rem;
+      text-align: left;
+      padding: 2rem;
+    }
+
+    .agency-img img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 12px;
+    }
+
+    .section-subtitle {
+      margin-top: 4rem;
+      font-size: 1.5rem;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
     footer {
       background-color: var(--negro);
       color: white;
       text-align: center;
       padding: 2rem;
     }
-    /* Modal */
+
     .modal {
       display: none;
       position: fixed;
@@ -147,8 +193,9 @@
       width: 100%;
       height: 100%;
       overflow: auto;
-      background-color: rgba(0,0,0,0.6);
+      background-color: rgba(0, 0, 0, 0.6);
     }
+
     .modal-content {
       background-color: #fff;
       margin: 10% auto;
@@ -157,6 +204,7 @@
       max-width: 500px;
       position: relative;
     }
+
     .close {
       position: absolute;
       top: 10px;
@@ -164,6 +212,7 @@
       font-size: 24px;
       cursor: pointer;
     }
+
     form input, form textarea {
       width: 100%;
       padding: 0.75rem;
@@ -171,128 +220,26 @@
       border: 1px solid #ccc;
       border-radius: 6px;
     }
-    /* Botón flotante WhatsApp */
+
     .whatsapp-btn {
       position: fixed;
       bottom: 20px;
       right: 20px;
       z-index: 9999;
       cursor: pointer;
-      animation: pulse 2s infinite;
     }
+
     .whatsapp-btn img {
       width: 70px;
       height: 70px;
     }
-    .tech-title {
-  font-weight: 600;
-  margin-bottom: 1rem;
-  color: var(--negro);
-}
-
-.agency-block {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  gap: 2rem;
-  margin-top: 3rem;
-  text-align: left;
-}
-
-.agency-text {
-  flex: 1 1 400px;
-  max-width: 600px;
-}
-
-.agency-text h2 {
-  font-size: 2rem;
-  margin-bottom: 1rem;
-}
-
-.agency-text p {
-  margin-bottom: 1rem;
-  font-size: 1rem;
-  color: #333;
-}
-
-.agency-img {
-  flex: 1 1 300px;
-  text-align: center;
-}
-
-.agency-img img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 12px;
-}
-
-.section-subtitle {
-  margin-top: 4rem;
-  font-size: 1.5rem;
-  font-weight: 700;
-  text-transform: uppercase;
-}
-
-    .tools-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2rem;
-  margin-top: 2rem;
-  text-align: left;
-}
-
-.tool-box {
-  background-color: var(--gris-claro);
-  padding: 1.5rem;
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04);
-  transition: transform 0.3s ease;
-}
-
-.tool-box:hover {
-  transform: translateY(-5px);
-}
-
-.tool-box h3 {
-  margin-bottom: 1rem;
-  color: var(--azul);
-}
-
-.tool-box ul {
-  list-style: none;
-  padding-left: 0;
-}
-
-.tool-box li {
-  margin-bottom: 0.5rem;
-  padding-left: 1rem;
-  position: relative;
-}
-
-.tool-box li {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  margin-bottom: 0.5rem;
-  color: #333;
-}
-
-.tool-box li::before {
-  content: "✔";
-  color: #28a745; /* Verde profesional */
-  font-size: 1rem;
-}
-
-
-
   </style>
 </head>
 <body>
   <header>
-    <h1><img src="logoazulsiniy.png" alt="Logo SINIY"></h1>
+    <h1><a href="https://siniy.pro"><img src="logoazulsiniy.png" alt="Logo SINIY" /></a></h1>
     <nav></nav>
-    <button class="btn-primary" onclick="document.getElementById('cotizacionModal').style.display='block'">Solicita tu cotización</button>
+    <a class="btn-primary" href="https://siniy.pro/pagos">Haz tus pedidos aquí</a>
   </header>
 
   <section class="hero">
@@ -302,64 +249,37 @@
       <button class="btn-primary" onclick="document.getElementById('cotizacionModal').style.display='block'">Ver nuestros servicios</button>
     </div>
     <div class="hero-img">
-      <img src="/mnt/data/9105264b-95a0-48e8-9749-f6b78f26ce95.png" alt="Equipo SINIY">
+      <img src="9105264b-95a0-48e8-9749-f6b78f26ce95.png" alt="Equipo SINIY" />
     </div>
   </section>
 
   <section class="section">
-  <h2 class="section-subtitle">Dominamos en tecnologías y herramientas TIC</h2>
-  <p>Conocemos y aplicamos herramientas clave para diseñar, desarrollar y potenciar negocios con tecnología y creatividad.</p>
+    <h2 class="section-subtitle">Dominamos en tecnologías y herramientas TIC</h2>
+    <p>Conocemos y aplicamos herramientas clave para diseñar, desarrollar y potenciar negocios con tecnología y creatividad.</p>
 
-  <div class="tools-grid">
-
-    <div class="tool-box">
-      <h3>🖥️ Desarrollo Web</h3>
-      <ul>
-        <li>HTML</li>
-        <li>CSS</li>
-        <li>JavaScript</li>
-      </ul>
+    <div class="tools-grid">
+      <div class="tool-box">
+        <h3>🖥️ Desarrollo Web</h3>
+        <ul><li>HTML</li><li>CSS</li><li>JavaScript</li></ul>
+      </div>
+      <div class="tool-box">
+        <h3>🧩 CMS y E-commerce</h3>
+        <ul><li>WordPress</li><li>WooCommerce</li><li>Shopify</li></ul>
+      </div>
+      <div class="tool-box">
+        <h3>🎨 Diseño y Edición</h3>
+        <ul><li>Adobe Illustrator</li><li>Premiere Pro</li><li>Canva</li><li>CapCut</li></ul>
+      </div>
+      <div class="tool-box">
+        <h3>🤖 Inteligencia Artificial</h3>
+        <ul><li>Aplicaciones IA para PYMES</li><li>Automatización de procesos</li></ul>
+      </div>
+      <div class="tool-box">
+        <h3>📊 Analítica y Datos</h3>
+        <ul><li>Google Analytics</li><li>Power BI</li><li>Google Looker Studio</li></ul>
+      </div>
     </div>
-
-    <div class="tool-box">
-      <h3>🧩 CMS y E-commerce</h3>
-      <ul>
-        <li>WordPress</li>
-        <li>WooCommerce</li>
-        <li>Shopify</li>
-      </ul>
-    </div>
-
-    <div class="tool-box">
-      <h3>🎨 Diseño y Edición</h3>
-      <ul>
-        <li>Adobe Illustrator</li>
-        <li>Premiere Pro</li>
-        <li>Canva</li>
-        <li>CapCut</li>
-      </ul>
-    </div>
-
-    <div class="tool-box">
-      <h3>🤖 Inteligencia Artificial</h3>
-      <ul>
-        <li>Aplicaciones IA para PYMES</li>
-        <li>Automatización de procesos</li>
-      </ul>
-    </div>
-
-    <div class="tool-box">
-      <h3>📊 Analítica y Datos</h3>
-      <ul>
-        <li>Google Analytics</li>
-        <li>Power BI</li>
-        <li>Google Looker Studio</li>
-      </ul>
-    </div>
-
-  </div>
-</section>
-    
+  </section>
 
   <div class="agency-block">
     <div class="agency-text">
@@ -368,7 +288,7 @@
       <p>Ofrecemos soluciones profesionales en impresión litográfica y digital, diseño web corporativo y comercio electrónico, así como estrategias de marketing digital y automatización.</p>
     </div>
     <div class="agency-img">
-      <img src="equipo-siniy.png" alt="Equipo SINIY trabajando">
+      <img src="equipo-siniy.png" alt="Equipo SINIY trabajando" />
     </div>
   </div>
 
@@ -390,7 +310,6 @@
       <p>Implementamos campañas en redes, Google y automatizaciones para escalar tu presencia y ventas.</p>
     </div>
   </div>
-</section>
 
   <section class="section">
     <h2>¡Hablemos!</h2>
@@ -407,8 +326,8 @@
       <span class="close" onclick="document.getElementById('cotizacionModal').style.display='none'">&times;</span>
       <h3>Solicita tu cotización</h3>
       <form action="https://formsubmit.co/hola@siniy.pro" method="POST">
-        <input type="text" name="name" placeholder="Tu nombre" required>
-        <input type="email" name="email" placeholder="Tu correo" required>
+        <input type="text" name="name" placeholder="Tu nombre" required />
+        <input type="email" name="email" placeholder="Tu correo" required />
         <textarea name="message" rows="5" placeholder="Cuéntanos qué necesitas..." required></textarea>
         <button type="submit" class="btn-primary">Enviar</button>
       </form>
@@ -417,16 +336,16 @@
 
   <!-- Botón flotante WhatsApp -->
   <a href="https://wa.me/573237028814" class="whatsapp-btn" target="_blank">
-    <img src="whatsappboton.png" alt="WhatsApp">
+    <img src="whatsappboton.png" alt="WhatsApp" />
   </a>
 
   <script>
-    window.onclick = function(event) {
+    window.onclick = function (event) {
       const modal = document.getElementById('cotizacionModal');
       if (event.target == modal) {
-        modal.style.display = "none";
+        modal.style.display = 'none';
       }
-    }
+    };
   </script>
 </body>
 </html>
