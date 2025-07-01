@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>E-book IA para Negocios - SINIY</title>
+  <link rel="icon" href="siniyfavicon.png" type="image/png">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --azul: #007aff;
+      --naranja: #ff6b00;
+      --gris-claro: #f8f9fa;
+      --negro: #1a1a1a;
+      --blanco: #ffffff;
+      --verde: #28a745;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', sans-serif;
+    }
+    body {
+      background-color: var(--blanco);
+      color: var(--negro);
+      line-height: 1.6;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background-color: var(--blanco);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    header h1 img {
+      height: 60px;
+    }
+    .hero {
+      padding: 3rem 2rem;
+      background-color: var(--gris-claro);
+      text-align: center;
+    }
+    .ebook-section {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 2rem;
+      padding: 2rem;
+    }
+    .ebook-section img {
+      max-width: 300px;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    }
+    .beneficios {
+      max-width: 500px;
+      text-align: left;
+    }
+    .beneficios h2 {
+      color: var(--azul);
+      margin-bottom: 1rem;
+    }
+    .beneficios ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    .beneficios li {
+      margin-bottom: 0.8rem;
+      font-size: 1.05rem;
+    }
+    .beneficios li::before {
+      content: '✅';
+      color: var(--verde);
+      margin-right: 0.5rem;
+    }
+    .banks-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.5rem;
+      padding: 2rem;
+    }
+    .banks-buttons button {
+      background-color: var(--blanco);
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      padding: 1rem 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .banks-buttons button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    .banks-buttons img {
+      height: 40px;
+    }
+    .formulario {
+      max-width: 600px;
+      margin: 3rem auto;
+      padding: 2rem;
+      background-color: var(--gris-claro);
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+    .formulario h2 {
+      text-align: center;
+      margin-bottom: 1.5rem;
+      color: var(--azul);
+    }
+    .formulario input,
+    .formulario textarea {
+      width: 100%;
+      padding: 0.8rem;
+      margin-bottom: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+    .formulario button {
+      background-color: var(--naranja);
+      color: white;
+      font-weight: 600;
+      padding: 0.8rem 2rem;
+      border: none;
+      border-radius: 8px;
+      width: 100%;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    .formulario button:hover {
+      background-color: #e55d00;
+    }
+    footer {
+      text-align: center;
+      padding: 2rem;
+      background-color: var(--negro);
+      color: white;
+      margin-top: 3rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1><a href="https://siniy.pro"><img src="logoazulsiniy.png" alt="Logo SINIY"></a></h1>
+  </header>
+
+  <section class="hero">
+    <h1>💡 Transforma tu PYME con Inteligencia Artificial</h1>
+    <p>Adquiere el e-book <strong>“Inteligencia Artificial para Negocios”</strong> por solo <strong>$9.900</strong> y recibe GRATIS un pack de conocimientos en finanzas y crecimiento empresarial.</p>
+  </section>
+
+  <section class="ebook-section">
+    <img src="ebook-ai-siniy.png" alt="E-book IA para negocios">
+    <div class="beneficios">
+      <h2>Incluye:</h2>
+      <ul>
+        <li>Cómo automatizar tareas en tu negocio con IA</li>
+        <li>Herramientas prácticas para emprendedores</li>
+        <li>Cómo establecer precios correctamente</li>
+        <li>Cómo invertir en fondos de inversión</li>
+        <li>Estrategias financieras para épocas de crisis</li>
+        <li>Consejos para digitalizar tu empresa</li>
+        <li>Guía para crecer sin endeudarte</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="hero">
+    <h2>Realiza tu pago a cualquiera de nuestras cuentas</h2>
+    <p>Selecciona tu banco para ver los datos y adjuntar el comprobante en el formulario.</p>
+  </section>
+
+  <section class="banks-buttons">
+    <button onclick="alert('Cuenta Ahorros Bancolombia: 07005650245\nA nombre de: JOSE DAVID ALZATE AYALA')">
+      <img src="bancolombia.png" alt="Bancolombia"> Bancolombia
+    </button>
+    <button onclick="alert('Cuenta Ahorros Falabella: 111830282541\nA nombre de: JOSE DAVID ALZATE AYALA')">
+      <img src="falabella.png" alt="Falabella"> Falabella
+    </button>
+    <button onclick="alert('Cuenta Ahorros Davivienda: 488443264657\nA nombre de: JOSE DAVID ALZATE AYALA')">
+      <img src="davivienda.png" alt="Davivienda"> Davivienda
+    </button>
+    <button onclick="alert('Cuenta Ahorros Lulo Bank: 128640924072\nA nombre de: JOSE DAVID ALZATE AYALA')">
+      <img src="lulo.png" alt="Lulo Bank"> Lulo Bank
+    </button>
+    <button onclick="alert('Cuenta Ahorros Nubank: 70153843\nA nombre de: JOSE DAVID ALZATE AYALA')">
+      <img src="nubank.png" alt="Nubank"> Nubank
+    </button>
+    <button onclick="alert('Cuenta Ahorros Banco Agrario: 418030210497\nA nombre de: JOSE DAVID ALZATE AYALA')">
+      <img src="agrario.png" alt="Banco Agrario"> Banco Agrario
+    </button>
+    <button onclick="alert('Cuenta Ahorros BBVA: 640008880\nA nombre de: JOSE DAVID ALZATE AYALA')">
+      <img src="bbva.png" alt="BBVA"> BBVA
+    </button>
+  </section>
+
+  <section class="formulario">
+    <h2>Confirma tu compra del e-book</h2>
+    <form action="https://formsubmit.co/hola@siniy.pro" method="POST" enctype="multipart/form-data">
+      <input type="email" name="correo" placeholder="Correo electrónico" required>
+      <input type="tel" name="telefono" placeholder="Número de teléfono" required>
+      <input type="text" name="ciudad" placeholder="Ciudad" required>
+      <label><strong>Adjunta el comprobante de pago:</strong></label>
+      <input type="file" name="comprobante" accept="image/*,application/pdf" required>
+      <textarea name="comentarios" rows="4" placeholder="¿Tienes algún comentario adicional?"></textarea>
+      <button type="submit">Enviar y reclamar mi e-book</button>
+    </form>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 SINIY Soluciones Digitales. Todos los derechos reservados.</p>
+  </footer>
+</body>
+</html>
