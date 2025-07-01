@@ -147,6 +147,32 @@
       color: white;
       margin-top: 3rem;
     }
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1001;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.6);
+    }
+    .modal-content {
+      background-color: #fff;
+      margin: 5% auto;
+      padding: 2rem;
+      border-radius: 8px;
+      max-width: 500px;
+      position: relative;
+    }
+    .close {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 24px;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
@@ -181,28 +207,37 @@
   </section>
 
   <section class="banks-buttons">
-    <button onclick="alert('Cuenta Ahorros Bancolombia: 07005650245\nA nombre de: JOSE DAVID ALZATE AYALA')">
+    <button onclick="openModal('Bancolombia', '07005650245')">
       <img src="bancolombia.png" alt="Bancolombia"> Bancolombia
     </button>
-    <button onclick="alert('Cuenta Ahorros Falabella: 111830282541\nA nombre de: JOSE DAVID ALZATE AYALA')">
+    <button onclick="openModal('Falabella', '111830282541')">
       <img src="falabella.png" alt="Falabella"> Falabella
     </button>
-    <button onclick="alert('Cuenta Ahorros Davivienda: 488443264657\nA nombre de: JOSE DAVID ALZATE AYALA')">
+    <button onclick="openModal('Davivienda', '488443264657')">
       <img src="davivienda.png" alt="Davivienda"> Davivienda
     </button>
-    <button onclick="alert('Cuenta Ahorros Lulo Bank: 128640924072\nA nombre de: JOSE DAVID ALZATE AYALA')">
+    <button onclick="openModal('Lulo Bank', '128640924072')">
       <img src="lulo.png" alt="Lulo Bank"> Lulo Bank
     </button>
-    <button onclick="alert('Cuenta Ahorros Nubank: 70153843\nA nombre de: JOSE DAVID ALZATE AYALA')">
+    <button onclick="openModal('Nubank', '70153843')">
       <img src="nubank.png" alt="Nubank"> Nubank
     </button>
-    <button onclick="alert('Cuenta Ahorros Banco Agrario: 418030210497\nA nombre de: JOSE DAVID ALZATE AYALA')">
+    <button onclick="openModal('Banco Agrario', '418030210497')">
       <img src="agrario.png" alt="Banco Agrario"> Banco Agrario
     </button>
-    <button onclick="alert('Cuenta Ahorros BBVA: 640008880\nA nombre de: JOSE DAVID ALZATE AYALA')">
+    <button onclick="openModal('BBVA', '640008880')">
       <img src="bbva.png" alt="BBVA"> BBVA
     </button>
   </section>
+
+  <div id="bankModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="document.getElementById('bankModal').style.display='none'">&times;</span>
+      <h2>Datos de Pago</h2>
+      <p><strong>Banco:</strong> <span id="nombreBanco"></span></p>
+      <p><strong>Cuenta de Ahorros:</strong> <span id="cuentaBanco"></span><br>A nombre de JOSE DAVID ALZATE AYALA</p>
+    </div>
+  </div>
 
   <section class="formulario">
     <h2>Confirma tu compra del e-book</h2>
@@ -220,5 +255,19 @@
   <footer>
     <p>&copy; 2025 SINIY Soluciones Digitales. Todos los derechos reservados.</p>
   </footer>
+
+  <script>
+    function openModal(nombre, cuenta) {
+      document.getElementById('bankModal').style.display = 'block';
+      document.getElementById('nombreBanco').innerText = nombre;
+      document.getElementById('cuentaBanco').innerText = cuenta;
+    }
+    window.onclick = function(event) {
+      const modal = document.getElementById('bankModal');
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+  </script>
 </body>
 </html>
