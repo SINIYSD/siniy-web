@@ -29,21 +29,26 @@
 
     .logo {
       margin-top: 40px;
-      margin-bottom: 10px;
+      margin-bottom: 20px;
     }
 
     .logo img {
-      width: 220px;
-      max-width: 90%;
+      width: 260px;
+      max-width: 95%;
     }
 
-    h1 {
-      display: none;
+    .intro h1 {
+      color: var(--negro);
+      font-size: 28px;
+      font-weight: 800;
+      margin: 10px 20px;
     }
 
-    p {
+    .intro p {
       color: var(--negro);
       font-size: 16px;
+      margin: 10px 20px;
+      line-height: 1.5;
     }
 
     .links {
@@ -105,7 +110,7 @@
     }
 
     .social-icons {
-      margin-top: 40px;
+      margin-top: 50px;
       margin-bottom: 40px;
       display: flex;
       justify-content: center;
@@ -125,7 +130,7 @@
 
     footer {
       background: var(--blanco);
-      padding: 15px 10px 25px;
+      padding: 20px 10px 30px;
       color: var(--negro);
       border-top: 1px solid #e0e0e0;
     }
@@ -142,15 +147,9 @@
     }
 
     @media (max-width: 480px) {
-      .social-icons a img {
-        width: 24px;
-        height: 24px;
-      }
-
       .logo img {
-        width: 180px;
+        width: 200px;
       }
-
       .footer-logo img {
         width: 65px;
       }
@@ -161,10 +160,13 @@
 <body>
 
   <div class="logo">
-    <h1><a href="https://siniy.pro"><img src="logoazulsiniy.png" alt="Logo SINIY" /></a></h1>
+    <a href="https://siniy.pro"><img src="logoazulsiniy.png" alt="Logo SINIY"></a>
   </div>
 
-  <p>Tu aliado en diseño gráfico, impresión y soluciones digitales</p>
+  <div class="intro">
+    <h1>Expertos en Publicidad Impresa y Digital</h1>
+    <p>Con más de 4 años de experiencia, ubicados en Manizales, Caldas y trabajando a nivel nacional con soluciones creativas, efectivas y profesionales.</p>
+  </div>
 
   <div class="links">
     <a class="link-button" href="#">Nuestros Servicios</a>
