@@ -3,9 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SINIY | Tarjeta Digital</title>
-  <link rel="icon" href="siniyfavicon.png" type="image/png">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Rubik:wght@400;700&display=swap" rel="stylesheet">
+  <title>SINIY | Tarjeta</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="siniyfavicon.png">
+  <link rel="shortcut icon" href="siniyfavicon.ico">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <style>
     :root {
       --azul: #007aff;
@@ -18,7 +19,7 @@
 
     body {
       margin: 0;
-      font-family: 'Rubik', sans-serif;
+      font-family: 'Inter', sans-serif;
       background: var(--blanco);
       color: var(--negro);
       display: flex;
@@ -29,31 +30,29 @@
 
     .logo {
       margin-top: 40px;
-      margin-bottom: 15px;
+      margin-bottom: 20px;
     }
 
     .logo img {
-      width: 180px;
+      width: 220px;
       max-width: 80%;
     }
 
     h1 {
       color: var(--negro);
       font-size: 32px;
-      margin: 20px 0 10px;
-      font-weight: 700;
-      line-height: 1.2;
+      margin: 15px 0;
+      font-weight: 800;
     }
 
     p {
       color: var(--negro);
-      font-size: 16px;
-      max-width: 90%;
-      margin: 0 auto 30px;
+      font-size: 18px;
+      margin: 0 20px;
     }
 
     .links {
-      margin-top: 20px;
+      margin-top: 30px;
       flex: 1;
     }
 
@@ -88,13 +87,11 @@
     .nfc-card h2 {
       color: var(--negro);
       margin-bottom: 10px;
-      font-size: 20px;
-      font-weight: 700;
     }
 
     .nfc-card p {
       color: #555;
-      font-size: 14px;
+      font-size: 15px;
       margin-bottom: 15px;
     }
 
@@ -113,17 +110,17 @@
     }
 
     .social-icons {
-      margin-top: 40px;
+      margin-top: 50px;
       margin-bottom: 50px;
       display: flex;
       justify-content: center;
-      gap: 15px;
+      gap: 25px;
       flex-wrap: wrap;
     }
 
     .social-icons a img {
-      width: 26px;
-      height: 26px;
+      width: 36px;
+      height: 36px;
       transition: transform 0.3s ease;
     }
 
@@ -133,33 +130,34 @@
 
     footer {
       background: var(--blanco);
-      padding: 20px 10px 25px;
+      padding: 20px 10px 30px;
       color: var(--negro);
       border-top: 1px solid #e0e0e0;
     }
 
     .footer-logo img {
-      width: 70px;
+      width: 80px;
       margin-bottom: 10px;
       cursor: pointer;
     }
 
     footer p {
-      font-size: 12px;
+      font-size: 13px;
       margin: 5px 0 0;
     }
 
     @media (max-width: 480px) {
       .logo img {
-        width: 150px;
+        width: 200px;
       }
 
-      h1 {
-        font-size: 24px;
+      .social-icons a img {
+        width: 28px;
+        height: 28px;
       }
 
-      p {
-        font-size: 14px;
+      .footer-logo img {
+        width: 70px;
       }
     }
 
@@ -168,31 +166,33 @@
 <body>
 
   <div class="logo">
-    <a href="https://siniy.pro"><img src="logoazulsiniy.png" alt="Logo SINIY"></a>
+    <a href="https://www.siniy.pro" target="_blank">
+      <img src="logoazulsiniy.png" alt="Logo SINIY">
+    </a>
   </div>
 
   <h1>Expertos en Publicidad Impresa y Digital</h1>
   <p>Con más de 4 años de experiencia, ubicados en Manizales, Caldas y trabajando a nivel nacional con soluciones creativas, efectivas y profesionales.</p>
 
   <div class="links">
-    <a class="link-button" href="#">Nuestros Servicios</a>
-    <a class="link-button" href="#">Portafolio</a>
-    <a class="link-button" href="#">Cotiza con SINIY</a>
-    <a class="link-button" href="#">Últimas Novedades</a>
+    <a class="link-button" href="#" target="_blank">Nuestros Servicios</a>
+    <a class="link-button" href="#" target="_blank">Portafolio</a>
+    <a class="link-button" href="#" target="_blank">Cotiza con SINIY</a>
+    <a class="link-button" href="#" target="_blank">Últimas Novedades</a>
   </div>
 
   <div class="nfc-card">
     <h2>Tarjeta Digital NFC</h2>
     <p>Comparte tu información profesional de forma innovadora con nuestra tarjeta inteligente NFC.</p>
-    <a href="#">Descúbrela</a>
+    <a href="#" target="_blank">Descúbrela</a>
   </div>
 
   <div class="social-icons">
-    <a href="#"><img src="Iconos-redes-sociales/linkedin.png" alt="LinkedIn"></a>
-    <a href="#"><img src="Iconos-redes-sociales/facebook.png" alt="Facebook"></a>
-    <a href="#"><img src="Iconos-redes-sociales/instagram.png" alt="Instagram"></a>
-    <a href="#"><img src="Iconos-redes-sociales/tiktok.png" alt="TikTok"></a>
-    <a href="#"><img src="Iconos-redes-sociales/whatsapp.png" alt="WhatsApp"></a>
+    <a href="https://www.linkedin.com" target="_blank"><img src="Iconos-redes-sociales/linkedin.png" alt="LinkedIn"></a>
+    <a href="https://www.facebook.com/SINIYSOLUCIONESDIGITALES" target="_blank"><img src="Iconos-redes-sociales/facebook.png" alt="Facebook"></a>
+    <a href="https://www.instagram.com/SINIYSD" target="_blank"><img src="Iconos-redes-sociales/instagram.png" alt="Instagram"></a>
+    <a href="https://www.tiktok.com/@siniysd" target="_blank"><img src="Iconos-redes-sociales/tiktok.png" alt="TikTok"></a>
+    <a href="https://wa.me/573237028814" target="_blank"><img src="Iconos-redes-sociales/whatsapp.png" alt="WhatsApp"></a>
   </div>
 
   <footer>
