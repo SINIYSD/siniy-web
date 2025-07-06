@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SINIY | Enlaces</title>
+  <style>
+    :root {
+      --azul: #007aff;
+      --naranja: #ff6b00;
+      --gris-claro: #f8f9fa;
+      --negro: #1a1a1a;
+      --blanco: #ffffff;
+      --rosa: #e83e8c;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: var(--blanco);
+      color: var(--negro);
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      text-align: center;
+    }
+
+    .logo {
+      margin-top: 30px;
+      margin-bottom: 10px;
+    }
+
+    .logo img {
+      width: 100px;
+    }
+
+    h1 {
+      color: var(--azul);
+      font-size: 28px;
+      margin: 10px 0;
+    }
+
+    p {
+      color: var(--negro);
+      font-size: 16px;
+    }
+
+    .links {
+      margin-top: 30px;
+      flex: 1;
+    }
+
+    .link-button {
+      display: block;
+      background-color: var(--azul);
+      color: var(--blanco);
+      text-decoration: none;
+      padding: 15px;
+      margin: 15px auto;
+      border-radius: 12px;
+      max-width: 320px;
+      font-weight: bold;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .link-button:hover {
+      background-color: var(--naranja);
+      transform: translateY(-3px);
+    }
+
+    .nfc-card {
+      background: var(--gris-claro);
+      border-radius: 20px;
+      margin: 40px auto;
+      padding: 20px;
+      max-width: 320px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    .nfc-card h2 {
+      color: var(--negro);
+      margin-bottom: 10px;
+    }
+
+    .nfc-card p {
+      color: #555;
+      font-size: 14px;
+      margin-bottom: 15px;
+    }
+
+    .nfc-card a {
+      background: var(--naranja);
+      color: var(--blanco);
+      padding: 10px 20px;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+
+    .nfc-card a:hover {
+      background: var(--rosa);
+    }
+
+    .social-icons {
+      margin-top: 40px;
+      margin-bottom: 40px;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .social-icons a img {
+      width: 28px;
+      height: 28px;
+      transition: transform 0.3s ease;
+    }
+
+    .social-icons a img:hover {
+      transform: scale(1.2);
+    }
+
+    footer {
+      background: var(--blanco);
+      padding: 15px 10px 25px;
+      color: var(--negro);
+      border-top: 1px solid #e0e0e0;
+    }
+
+    .footer-logo img {
+      width: 60px;
+      margin-bottom: 15px;
+      cursor: pointer;
+    }
+
+    footer p {
+      font-size: 12px;
+      margin: 5px 0 0;
+    }
+
+    @media (max-width: 480px) {
+      .social-icons a img {
+        width: 24px;
+        height: 24px;
+      }
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="logo">
+    <img src="https://www.siniy.pro/logo.png" alt="SINIY Logo">
+  </div>
+
+  <h1>SINIY Soluciones Digitales</h1>
+  <p>Tu aliado en diseño gráfico, impresión y soluciones digitales</p>
+
+  <div class="links">
+    <a class="link-button" href="#">Nuestros Servicios</a>
+    <a class="link-button" href="#">Portafolio</a>
+    <a class="link-button" href="#">Cotiza con SINIY</a>
+    <a class="link-button" href="#">Últimas Novedades</a>
+  </div>
+
+  <div class="nfc-card">
+    <h2>Tarjeta Digital NFC</h2>
+    <p>Comparte tu información profesional de forma innovadora con nuestra tarjeta inteligente NFC.</p>
+    <a href="#">Descúbrela</a>
+  </div>
+
+  <div class="social-icons">
+    <a href="https://www.linkedin.com" target="_blank"><img src="https://www.siniy.pro/icons/linkedin.png" alt="LinkedIn"></a>
+    <a href="https://www.facebook.com" target="_blank"><img src="https://www.siniy.pro/icons/facebook.png" alt="Facebook"></a>
+    <a href="https://www.instagram.com/SINIYSD" target="_blank"><img src="https://www.siniy.pro/icons/instagram.png" alt="Instagram"></a>
+    <a href="https://www.tiktok.com" target="_blank"><img src="https://www.siniy.pro/icons/tiktok.png" alt="TikTok"></a>
+    <a href="https://wa.me/573237028814" target="_blank"><img src="https://www.siniy.pro/icons/whatsapp.png" alt="WhatsApp"></a>
+  </div>
+
+  <footer>
+    <div class="footer-logo">
+      <a href="https://www.siniy.pro" target="_blank">
+        <img src="https://www.siniy.pro/logo.png" alt="SINIY Logo">
+      </a>
+    </div>
+    <p>© 2025 SINIY Soluciones Digitales. Todos los derechos reservados.</p>
+  </footer>
+
+</body>
+</html>
