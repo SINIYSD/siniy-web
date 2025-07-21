@@ -155,6 +155,34 @@
       height: 60px;
     }
 
+    .section {
+      padding: 4rem 2rem;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .socios-logos {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .socios-logos div {
+      background: #fff;
+      padding: 1rem;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      max-width: 180px;
+    }
+
+    .socios-logos img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
     @media (max-width: 768px) {
       .hero {
         grid-template-columns: 1fr;
@@ -176,7 +204,7 @@
 
   <section class="hero">
     <div>
-      <h1>Alianza Comercial Estratégica</h1>
+      <h1>SINIY PARTNERS</h1>
       <p>Haz parte de nuestra red de socios estratégicos y recibe beneficios exclusivos para ti, tu equipo y tus clientes. ¡Juntos generamos más valor!</p>
     </div>
     <div>
@@ -194,10 +222,23 @@
       <p>Conectamos con el <strong>Consejo Consultivo de Mujeres de Villamaría</strong> para fortalecer liderazgos femeninos.</p>
     </div>
     <div class="card">
-      <h3>🌐 Red de Socios SINIY</h3>
-      <p>Un ecosistema de aliados que acceden a descuentos especiales y soluciones preferenciales para sus clientes.</p>
+      <h3>🌐 SINIY PARTNERS</h3>
+      <p>Un ecosistema de aliados que acceden a descuentos especiales y soluciones preferenciales para sus clientes y colegas.</p>
     </div>
   </div>
+
+  <section class="section">
+    <h2 style="text-align: center; margin-bottom: 2rem;">Nuestros Socios Actuales</h2>
+    <div class="socios-logos">
+      <div>
+        <img src="logo-asociacion-aed.png" alt="Asociación AED" />
+      </div>
+      <div>
+        <img src="logo-consejo-mujeres-villamaria.png" alt="Consejo Mujeres Villamaría" />
+      </div>
+      <!-- Puedes agregar más logos aquí -->
+    </div>
+  </section>
 
   <div class="formulario">
     <h2>¿Te interesa ser socio comercial?</h2>
