@@ -240,13 +240,69 @@
         font-size: 0.9rem;
       }
     }
+    .hamburger {
+      display: none;
+      font-size: 1.8rem;
+      cursor: pointer;
+    }
+    
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+    }
+    
+    .nav-links a {
+      text-decoration: none;
+      color: var(--negro);
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+    
+    .nav-links a:hover {
+      color: var(--azul);
+    }
+    
+    @media (max-width: 768px) {
+      .hamburger {
+        display: block;
+      }
+    
+      .nav-links {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background: var(--blanco);
+        width: 100%;
+        display: none;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 1rem 2rem;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      }
+    
+      .nav-links a {
+        padding: 0.75rem 0;
+        width: 100%;
+      }
+    
+      .nav-links.active {
+        display: flex;
+      }
+    }
+
 
   </style>
 </head>
 <body>
   <header>
     <h1><a href="https://siniy.pro"><img src="logoazulsiniy.png" alt="Logo SINIY" /></a></h1>
-    <nav></nav>
+    <div class="hamburger" onclick="toggleMenu()">☰</div>
+    <nav class="nav-links" id="navMenu">
+      <a href="#servicios">Servicios</a>
+      <a href="#portafolio">Portafolio</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+
     <a class="btn-primary" href="https://siniy.pro/pagos">Haz tus pedidos aquí</a>
   </header>
 
@@ -355,5 +411,13 @@
       }
     };
   </script>
+  
+  <script>
+    function toggleMenu() {
+      const nav = document.getElementById("navMenu");
+      nav.classList.toggle("active");
+    }
+  </script>
+
 </body>
 </html>
