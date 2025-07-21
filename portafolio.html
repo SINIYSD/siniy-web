@@ -1,195 +1,194 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Portafolio | SINIY Soluciones Digitales</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap">
   <style>
     :root {
       --azul: #007aff;
+      --naranja: #ff6b00;
+      --gris-claro: #f8f9fa;
       --negro: #1a1a1a;
-      --gris: #f4f4f4;
       --blanco: #ffffff;
     }
 
-    body {
+    * {
+      box-sizing: border-box;
       margin: 0;
+      padding: 0;
       font-family: 'Inter', sans-serif;
+    }
+
+    body {
       background-color: var(--blanco);
       color: var(--negro);
+      line-height: 1.6;
     }
 
     header {
-      background-color: var(--azul);
-      padding: 1rem 2rem;
-      color: var(--blanco);
+      background-color: var(--blanco);
+      padding: 1.5rem 2rem;
       display: flex;
-      align-items: center;
       justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
     }
 
     header img {
-      height: 40px;
-    }
-
-    nav a {
-      color: var(--blanco);
-      margin-left: 1rem;
-      text-decoration: none;
-      font-weight: 600;
+      max-height: 60px;
     }
 
     .hero {
-      background-color: var(--gris);
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      align-items: center;
+      background-color: var(--gris-claro);
       padding: 4rem 2rem;
-      text-align: center;
+      gap: 2rem;
     }
 
-    .hero h1 {
+    .hero-text {
+      text-align: left;
+    }
+
+    .hero-text h1 {
       font-size: 2.5rem;
+      font-weight: 800;
       margin-bottom: 1rem;
     }
 
-    .hero p {
-      font-size: 1.2rem;
-      color: #444;
+    .hero-text p {
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
     }
 
-    .section {
-      padding: 3rem 2rem;
-      max-width: 1200px;
-      margin: auto;
+    .hero-img img {
+      width: 100%;
+      border-radius: 12px;
     }
 
-    .section h2 {
-      color: var(--azul);
-      margin-bottom: 1rem;
-      font-size: 1.8rem;
-    }
-
-    .grid {
+    .portafolio-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
+      gap: 2rem;
+      padding: 3rem 2rem;
     }
 
     .card {
-      background: var(--gris);
-      padding: 1.5rem;
-      border-radius: 10px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+      background-color: var(--gris-claro);
+      border-radius: 12px;
+      padding: 2rem;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.04);
     }
 
     .card h3 {
-      margin-top: 0;
-      color: var(--azul);
-    }
-
-    .cta {
-      background-color: var(--azul);
-      color: var(--blanco);
-      text-align: center;
-      padding: 3rem 2rem;
-    }
-
-    .cta h2 {
       margin-bottom: 1rem;
     }
 
-    .cta a {
+    .btn-primary {
+      background-color: var(--naranja);
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 8px;
+      text-decoration: none;
       display: inline-block;
       margin-top: 1rem;
-      background: var(--blanco);
-      color: var(--azul);
-      padding: 0.8rem 1.5rem;
-      border-radius: 8px;
       font-weight: 600;
-      text-decoration: none;
     }
 
     footer {
-      background: #111;
-      color: #ccc;
+      background-color: var(--negro);
+      color: white;
       text-align: center;
-      padding: 1rem;
-      font-size: 0.9rem;
+      padding: 2rem;
+      margin-top: 2rem;
+    }
+
+    .whatsapp-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 9999;
+      cursor: pointer;
+    }
+
+    .whatsapp-btn img {
+      width: 70px;
+      height: 70px;
     }
   </style>
 </head>
 <body>
 
-  <header>
-    <img src="logoazulsiniy.png" alt="SINIY Logo" />
-    <nav>
-      <a href="/">Inicio</a>
-      <a href="#grafico">Diseño</a>
-      <a href="#web">Web</a>
-      <a href="#impresion">Impresión</a>
-      <a href="#sublimacion">Sublimación</a>
-      <a href="#marketing">Marketing</a>
-    </nav>
-  </header>
+<header>
+  <a href="https://siniy.pro"><img src="logoazulsiniy.png" alt="Logo SINIY"></a>
+  <nav>
+    <a href="https://siniy.pro/servicios">Servicios</a>
+    <a href="https://siniy.pro/portafolio">Portafolio</a>
+    <a href="https://siniy.pro/contacto">Contacto</a>
+    <a href="https://siniy.pro/pagos">Pagos</a>
+    <a class="btn-primary" href="https://siniy.pro/partners">SINIY Partners</a>
+  </nav>
+</header>
 
-  <section class="hero">
-    <h1>Portafolio SINIY Soluciones Digitales</h1>
-    <p>Creatividad, tecnología y resultados aplicados a tu marca.</p>
-  </section>
+<section class="hero">
+  <div class="hero-text">
+    <h1>Portafolio de Servicios Creativos y Tecnológicos</h1>
+    <p>Descubre las soluciones que SINIY ofrece para transformar tu marca: diseño gráfico profesional, desarrollo web, impresión, publicidad, marketing digital, sublimación personalizada y automatización con inteligencia artificial.</p>
+    <b>Estamos en Manizales, Caldas, pero trabajamos para todo Colombia.</b>
+    <a class="btn-primary" href="https://wa.me/573237028814?text=Hola%2C%20quiero%20una%20cotizaci%C3%B3n%20personalizada%20para%20mi%20negocio">Solicita tu cotización</a>
+  </div>
+  <div class="hero-img">
+    <img src="c0d137bb-c900-415a-bd22-c1ce83421a8b.png" alt="Banner Diseño Gráfico">
+  </div>
+</section>
 
-  <section id="grafico" class="section">
-    <h2>🎨 Diseño Gráfico Profesional</h2>
-    <div class="grid">
-      <div class="card"><h3>Identidad Visual</h3><p>Logos, manuales de marca, paleta de colores, branding completo.</p></div>
-      <div class="card"><h3>Diseño Publicitario</h3><p>Volantes, posters, banners, revistas, catálogos.</p></div>
-      <div class="card"><h3>Diseño para Redes</h3><p>Posts, reels, carruseles y stories con enfoque comercial.</p></div>
+<main>
+  <div class="portafolio-grid">
+    <div class="card">
+      <h3>🎨 Diseño Gráfico</h3>
+      <p>Identidad visual, piezas publicitarias, empaques y editorial.</p>
+      <a class="btn-primary" href="https://wa.me/573237028814?text=Hola%2C%20estoy%20interesado%20en%20el%20servicio%20de%20dise%C3%B1o%20gr%C3%A1fico">Solicitar Diseño</a>
     </div>
-  </section>
-
-  <section id="web" class="section">
-    <h2>💻 Soluciones Web y Digitales</h2>
-    <div class="grid">
-      <div class="card"><h3>Sitios Web</h3><p>Corporativos, landing pages, ecommerce y más, con diseño responsivo.</p></div>
-      <div class="card"><h3>Optimización SEO</h3><p>Velocidad, etiquetas, estructura y contenido enfocado en resultados.</p></div>
-      <div class="card"><h3>Integraciones</h3><p>Conexión con formularios, dominios, hosting gratuito y más.</p></div>
+    <div class="card">
+      <h3>💻 Páginas Web</h3>
+      <p>Sitios web corporativos, landing pages y tiendas online.</p>
+      <a class="btn-primary" href="https://wa.me/573237028814?text=Hola%2C%20quiero%20una%20p%C3%A1gina%20web%20para%20mi%20negocio">Cotizar Web</a>
     </div>
-  </section>
-
-  <section id="impresion" class="section">
-    <h2>🖨️ Impresión y Publicidad</h2>
-    <div class="grid">
-      <div class="card"><h3>Stickers y Etiquetas</h3><p>Troquelados, resistentes al agua, con múltiples acabados.</p></div>
-      <div class="card"><h3>Material POP</h3><p>Pendones, vallas, señalética, tarjetas y carpetas personalizadas.</p></div>
-      <div class="card"><h3>Gran Formato</h3><p>Impresiones para ferias, fachadas y visibilidad estratégica.</p></div>
+    <div class="card">
+      <h3>🖨️ Impresos Publicitarios</h3>
+      <p>Volantes, tarjetas, pendones, stickers, etiquetas y más.</p>
+      <a class="btn-primary" href="https://wa.me/573237028814?text=Hola%2C%20me%20interesa%20material%20impreso%20publicitario">Ver Precios</a>
     </div>
-  </section>
-
-  <section id="sublimacion" class="section">
-    <h2>🔥 Sublimación Personalizada</h2>
-    <div class="grid">
-      <div class="card"><h3>Souvenirs</h3><p>Tazas, termos, cojines, llaveros, gorras con tu marca o mensaje.</p></div>
-      <div class="card"><h3>Ropa Personalizada</h3><p>Camisetas con diseños únicos o branding de empresa.</p></div>
-      <div class="card"><h3>Eventos</h3><p>Regalos empresariales o promocionales para momentos especiales.</p></div>
+    <div class="card">
+      <h3>👕 Sublimación Personalizada</h3>
+      <p>Camisas, tazas, cojines, llaveros y souvenirs para marcas.</p>
+      <a class="btn-primary" href="https://wa.me/573237028814?text=Hola%2C%20quiero%20productos%20personalizados%20con%20sublimaci%C3%B3n">Personalizar Ahora</a>
     </div>
-  </section>
-
-  <section id="marketing" class="section">
-    <h2>📈 Marketing & Automatización</h2>
-    <div class="grid">
-      <div class="card"><h3>Gestión de Redes</h3><p>Contenido, estrategia, calendarios y diseño optimizado.</p></div>
-      <div class="card"><h3>Publicidad Digital</h3><p>Campañas Meta Ads, Google Ads y embudos de conversión.</p></div>
-      <div class="card"><h3>Asesoría Estratégica</h3><p>Consultoría en branding, IA, automatización y posicionamiento.</p></div>
+    <div class="card">
+      <h3>📲 Redes y Marketing</h3>
+      <p>Gestión de redes, automatización, campañas Meta Ads.</p>
+      <a class="btn-primary" href="https://wa.me/573237028814?text=Hola%2C%20quiero%20mejorar%20mis%20redes%20sociales%20y%20campañas">Más info</a>
     </div>
-  </section>
+    <div class="card">
+      <h3>📚 Consultoría y Formación</h3>
+      <p>Mentorías, asesorías y formación en diseño y tecnología.</p>
+      <a class="btn-primary" href="https://wa.me/573237028814?text=Hola%2C%20quiero%20una%20mentor%C3%ADa%20o%20formaci%C3%B3n%20con%20SINIY">Agendar Sesión</a>
+    </div>
+  </div>
+</main>
 
-  <section class="cta">
-    <h2>¿Quieres trabajar con nosotros?</h2>
-    <p>Agenda una asesoría sin costo y descubre cómo SINIY puede potenciar tu negocio.</p>
-    <a href="https://wa.me/573237028814" target="_blank">Hablar por WhatsApp</a>
-  </section>
+<a href="https://wa.me/573237028814" class="whatsapp-btn" target="_blank">
+  <img src="whatsappboton.png" alt="WhatsApp">
+</a>
 
-  <footer>
-    SINIY Soluciones Digitales — Manizales, Caldas | Todos los derechos reservados © 2025
-  </footer>
+<footer>
+  <p>&copy; 2025 SINIY Soluciones Digitales | Manizales, Caldas</p>
+</footer>
 
 </body>
 </html>
