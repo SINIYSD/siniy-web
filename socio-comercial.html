@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Alianzas Comerciales | SINIY</title>
+  <link rel="icon" href="siniyfavicon.png" type="image/png" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --azul: #007aff;
+      --naranja: #ff6b00;
+      --gris-claro: #f8f9fa;
+      --negro: #1a1a1a;
+      --blanco: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background: var(--blanco);
+      color: var(--negro);
+      line-height: 1.6;
+    }
+
+    header, footer {
+      background-color: var(--blanco);
+      padding: 1.5rem 2rem;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+      text-align: center;
+    }
+
+    header img {
+      max-height: 70px;
+    }
+
+    .hero {
+      background-color: var(--gris-claro);
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      font-weight: 800;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .section {
+      padding: 4rem 2rem;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    .section h2 {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 2rem;
+      font-weight: 700;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-bottom: 4rem;
+    }
+
+    .card {
+      background: var(--gris-claro);
+      padding: 2rem;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .formulario {
+      background: var(--gris-claro);
+      padding: 2rem;
+      border-radius: 12px;
+      max-width: 600px;
+      margin: auto;
+    }
+
+    .formulario h3 {
+      text-align: center;
+      margin-bottom: 1.5rem;
+      font-weight: 700;
+    }
+
+    form input, form textarea {
+      width: 100%;
+      padding: 0.8rem;
+      margin-bottom: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+
+    .btn-primary {
+      background: var(--naranja);
+      color: white;
+      border: none;
+      padding: 0.8rem 2rem;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      width: 100%;
+    }
+
+    .btn-primary:hover {
+      background: #e65a00;
+    }
+
+    footer p {
+      margin-top: 1rem;
+      font-size: 0.9rem;
+      color: #555;
+    }
+
+    @media (max-width: 600px) {
+      .hero h1 {
+        font-size: 1.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="https://siniy.pro"><img src="logoazulsiniy.png" alt="Logo SINIY" /></a>
+  </header>
+
+  <section class="hero">
+    <h1>Alianzas Comerciales Estratégicas</h1>
+    <p>Forma parte del ecosistema empresarial de SINIY y obtén beneficios exclusivos para tu negocio, tus colegas y tus clientes.</p>
+  </section>
+
+  <section class="section">
+    <h2>Aliados Actuales</h2>
+    <div class="cards">
+      <div class="card">
+        <h3>🤝 Asociación A.E.D.</h3>
+        <p>Trabajamos junto a la Asociación “A Emprender Se Dijo” potenciando negocios emergentes con diseño, estrategia y automatización.</p>
+      </div>
+      <div class="card">
+        <h3>👩‍💼 Consejo de Mujeres</h3>
+        <p>Con el Consejo Consultivo de Mujeres de Villamaría, impulsamos marcas femeninas con soluciones digitales y gráficas de alto nivel.</p>
+      </div>
+      <div class="card">
+        <h3>🚀 Red de Socios SINIY</h3>
+        <p>Una red exclusiva para aliados estratégicos: acceso preferencial a servicios, descuentos y soluciones para sus clientes.</p>
+      </div>
+    </div>
+
+    <div class="formulario">
+      <h3>¿Te interesa ser socio comercial?</h3>
+      <form action="https://formsubmit.co/hola@siniy.pro" method="POST">
+        <input type="text" name="nombre" placeholder="Nombre completo o empresa" required />
+        <input type="email" name="correo" placeholder="Correo electrónico" required />
+        <input type="tel" name="telefono" placeholder="Teléfono o WhatsApp" required />
+        <textarea name="mensaje" rows="5" placeholder="Cuéntanos tu interés en la alianza..." required></textarea>
+        <button type="submit" class="btn-primary">Quiero Unirme</button>
+        <input type="hidden" name="_next" value="https://siniy.pro/gracias.html">
+        <input type="hidden" name="_captcha" value="false">
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 SINIY Soluciones Digitales · Todos los derechos reservados</p>
+  </footer>
+
+</body>
+</html>
