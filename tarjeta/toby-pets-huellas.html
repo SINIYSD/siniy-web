@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tarjeta Digital - Toby Pets</title>
+  <link rel="icon" href="logoazulsiniy.png">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: sans-serif;
+      background: #ffffff;
+    }
+
+    .img-link {
+      display: block;
+      width: 100%;
+    }
+
+    .img-link img {
+      width: 100%;
+      display: block;
+    }
+
+    .social-buttons {
+      text-align: center;
+      padding: 20px;
+      background-color: #ffb52d;
+    }
+
+    .social-buttons a {
+      display: inline-block;
+      margin: 10px;
+      text-decoration: none;
+      font-size: 24px;
+    }
+
+    .whatsapp-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #25d366;
+      border-radius: 50%;
+      padding: 15px;
+      animation: pulse 1.5s infinite;
+      z-index: 999;
+    }
+
+    .whatsapp-btn img {
+      width: 40px;
+      height: 40px;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px 10px;
+    }
+
+    .siniy-logo {
+      width: 120px;
+      display: block;
+      margin: 10px auto;
+    }
+
+    .creditos {
+      font-size: 12px;
+      color: #999;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ENCABEZADO -->
+  <a class="img-link" href="https://wa.me/573150699299" target="_blank">
+    <img src="encabezado.png" alt="Encabezado Toby Pets">
+  </a>
+
+  <!-- SERVICIOS -->
+  <a class="img-link" href="https://wa.me/573150699299?text=Hola, quiero más info sobre sus servicios" target="_blank">
+    <img src="servicios.png" alt="Servicios">
+  </a>
+
+  <!-- QR o IMAGEN INTERACTIVA -->
+  <a class="img-link" href="https://wa.link/tuqr" target="_blank">
+    <img src="qr.png" alt="Escanea QR o entra aquí">
+  </a>
+
+  <!-- REDES SOCIALES (BOTONES) -->
+  <div class="social-buttons">
+    <a href="https://instagram.com/tobypets" target="_blank">📷</a>
+    <a href="https://facebook.com/tobypets" target="_blank">📘</a>
+    <a href="https://tiktok.com/@tobypets" target="_blank">🎵</a>
+  </div>
+
+  <!-- LOGO SINIY -->
+  <footer>
+    <img src="logoazulsiniy.png" alt="Logo SINIY" class="siniy-logo">
+    <div class="creditos">Diseñado por <strong>SINIY Soluciones Digitales</strong></div>
+  </footer>
+
+  <!-- BOTÓN WHATSAPP FLOTANTE -->
+  <a class="whatsapp-btn" href="https://wa.me/573150699299" target="_blank">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/WhatsApp_icon.png" alt="WhatsApp">
+  </a>
+
+</body>
+</html>
