@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Convocatoria Socio de Mercadeo | SINIY</title>
+  <link rel="icon" href="siniyfavicon.png" type="image/png" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --azul: #0033a0;
+      --naranja: #ff6b00;
+      --gris-claro: #f4f4f4;
+      --negro: #1a1a1a;
+      --blanco: #ffffff;
+      --violeta: #6a1b9a;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background-color: var(--gris-claro);
+      color: var(--negro);
+      line-height: 1.6;
+    }
+
+    header {
+      background-color: var(--blanco);
+      padding: 1.5rem 2rem;
+      text-align: center;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    }
+
+    header img {
+      max-height: 70px;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, var(--azul), var(--violeta));
+      color: var(--blanco);
+      padding: 6rem 2rem 5rem;
+      text-align: center;
+      position: relative;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      bottom: -40px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 5px;
+      background: var(--naranja);
+      border-radius: 10px;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+    }
+
+    .hero p {
+      font-size: 1.3rem;
+      max-width: 850px;
+      margin: auto;
+    }
+
+    .section {
+      padding: 4rem 2rem;
+      max-width: 1000px;
+      margin: auto;
+      background: var(--blanco);
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      margin-bottom: 3rem;
+    }
+
+    .section h2 {
+      color: var(--azul);
+      margin-bottom: 1rem;
+      font-size: 2rem;
+      border-left: 5px solid var(--naranja);
+      padding-left: 0.75rem;
+    }
+
+    ul {
+      padding-left: 0;
+      list-style: none;
+    }
+
+    ul li {
+      margin-bottom: 0.75rem;
+      font-size: 1.1rem;
+      position: relative;
+      padding-left: 2rem;
+    }
+
+    ul li::before {
+      content: "✔";
+      position: absolute;
+      left: 0;
+      color: var(--azul);
+      font-weight: bold;
+    }
+
+    .formulario {
+      margin-top: 2rem;
+    }
+
+    form input, form textarea {
+      width: 100%;
+      padding: 0.75rem;
+      margin-bottom: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 1rem;
+    }
+
+    button.btn-primary {
+      background: var(--naranja);
+      color: white;
+      padding: 0.9rem 1.8rem;
+      border: none;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background 0.3s ease;
+    }
+
+    button.btn-primary:hover {
+      background: #e65a00;
+    }
+
+    .whatsapp-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 9999;
+      cursor: pointer;
+      animation: pulse 2s infinite;
+    }
+
+    .whatsapp-btn img {
+      width: 70px;
+      height: 70px;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+
+    footer {
+      background: var(--negro);
+      color: white;
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.95rem;
+      margin-top: 3rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="logoazulsiniy.png" alt="Logo SINIY Soluciones Digitales">
+  </header>
+
+  <section class="hero">
+    <h1>¿Quieres ser nuestro Socio de Mercadeo en Manizales?</h1>
+    <p>Buscamos una persona con visión comercial, liderazgo y pasión por el marketing para hacer crecer SINIY Soluciones Digitales en la región.</p>
+  </section>
+
+  <section class="section">
+    <h2>Lo que buscamos</h2>
+    <ul>
+      <li>Alianzas estratégicas, comerciales y B2B</li>
+      <li>Planificación y ejecución de campañas digitales</li>
+      <li>Gestión de ventas y seguimiento a clientes</li>
+      <li>Posicionamiento de la marca SINIY a nivel regional</li>
+    </ul>
+  </section>
+
+  <section class="section">
+    <h2>Lo que ofrecemos</h2>
+    <ul>
+      <li>Comisiones por ventas + posibilidad de participación en utilidades</li>
+      <li>Acceso a herramientas, branding, y catálogo de servicios</li>
+      <li>Soporte continuo del equipo de diseño y desarrollo</li>
+      <li>Oportunidad de escalar como director comercial regional</li>
+    </ul>
+  </section>
+
+  <section class="section">
+    <h2>Formulario de Aplicación</h2>
+    <div class="formulario">
+      <form action="https://formsubmit.co/hola@siniy.pro" method="POST">
+        <input type="text" name="nombre" placeholder="Tu nombre completo" required>
+        <input type="email" name="email" placeholder="Tu correo electrónico" required>
+        <input type="tel" name="telefono" placeholder="Número de contacto" required>
+        <textarea name="motivacion" placeholder="Cuéntanos por qué quieres ser socio de mercadeo" rows="5" required></textarea>
+        <button type="submit" class="btn-primary">Enviar aplicación</button>
+      </form>
+    </div>
+  </section>
+
+  <a href="https://wa.me/573237028814" class="whatsapp-btn" target="_blank">
+    <img src="whatsappboton.png" alt="WhatsApp">
+  </a>
+
+  <footer>
+    <p>&copy; 2025 SINIY Soluciones Digitales - www.siniy.pro</p>
+  </footer>
+</body>
+</html>
