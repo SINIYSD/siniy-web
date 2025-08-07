@@ -4,12 +4,22 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Simulador de Stickers</title>
+  <link rel="icon" href="siniyfavicon.png" type="image/png">
+  <script>
+    const password = "1379";
+    const acceso = prompt("Ingrese la contraseña para acceder:");
+    if (acceso !== password) {
+      document.write("<h2 style='color:red;text-align:center;'>Acceso denegado.</h2>");
+      throw new Error("Acceso denegado");
+    }
+  </script>
   <style>
     :root {
-      --azul: #007aff;
+      --azul: #0033a0;
       --gris: #f4f4f4;
       --negro: #1a1a1a;
       --naranja: #ff6b00;
+      --blanco: #ffffff;
     }
 
     body {
@@ -20,9 +30,20 @@
       color: var(--negro);
     }
 
+    header {
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+
+    header img {
+      max-height: 60px;
+      margin-top: 1rem;
+    }
+
     h1 {
       text-align: center;
       color: var(--azul);
+      margin-top: 0.5rem;
       margin-bottom: 2rem;
     }
 
@@ -156,6 +177,13 @@
       font-size: 1.1rem;
       font-weight: bold;
       margin-top: 1.5rem;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 3rem;
+      font-size: 0.9rem;
+      color: #555;
     }
 
     @media (max-width: 480px) {
