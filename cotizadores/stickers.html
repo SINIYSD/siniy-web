@@ -4,14 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Simulador de Stickers</title>
-  <link rel="icon" href="siniyfavicon.png" type="image/png">
   <style>
     :root {
-      --azul: #0033a0;
+      --azul: #007aff;
       --gris: #f4f4f4;
       --negro: #1a1a1a;
       --naranja: #ff6b00;
-      --blanco: #ffffff;
     }
 
     body {
@@ -22,82 +20,201 @@
       color: var(--negro);
     }
 
-    #auth-overlay {
+    h1 {
+      text-align: center;
+      color: var(--azul);
+      margin-bottom: 2rem;
+    }
+
+    .controls {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 3rem;
+    }
+
+    .controls input[type="number"] {
+      width: 80px;
+      padding: 0.4rem;
+      font-size: 1rem;
+    }
+
+    .controls label {
+      font-weight: bold;
+    }
+
+    .controls .qty-controls {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .btn {
+      padding: 0.4rem 0.8rem;
+      font-size: 1rem;
+      background-color: var(--naranja);
+      color: white;
+      border: none;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+
+    .workspace {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .plancha-container {
+      position: relative;
+      margin-top: 3rem;
+    }
+
+    .plancha {
+      width: 90vw;
+      max-width: 500px;
+      aspect-ratio: 1/1;
+      background-color: white;
+      border: 2px solid var(--azul);
+      display: grid;
+      gap: 2px;
+      padding: 4px;
+    }
+
+    .sticker {
+      background-color: var(--azul);
+      border-radius: 4px;
+    }
+
+    .guia-horizontal,
+    .guia-vertical {
+      position: absolute;
+      font-size: 0.75rem;
+      color: var(--negro);
+      font-weight: bold;
+    }
+
+    .guia-horizontal {
+      top: -2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .guia-vertical {
+      left: -3.5rem;
+      top: 50%;
+      transform: rotate(-90deg) translateY(50%);
+      transform-origin: left center;
+    }
+
+    .info {
+      font-size: 1rem;
+      font-weight: bold;
+      margin-top: -1rem;
+      text-align: center;
+    }
+
+    .info-extra {
+      font-size: 0.95rem;
+      margin-top: 1rem;
+      text-align: center;
+      background-color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .extras-panel {
+      max-width: 500px;
+      margin: 2rem auto;
+      background: white;
+      padding: 1rem;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .extras-panel label {
+      display: block;
+      margin-top: 1rem;
+      font-weight: bold;
+    }
+
+    .extras-panel input[type="number"] {
+      width: 100%;
+      padding: 0.4rem;
+      font-size: 1rem;
+      margin-top: 0.25rem;
+    }
+
+    #precio-final {
+      text-align: center;
+      font-size: 1.1rem;
+      font-weight: bold;
+      margin-top: 1.5rem;
+    }
+
+    @media (max-width: 480px) {
+      .controls {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+
+    #access-modal {
       position: fixed;
       top: 0;
       left: 0;
       width: 100vw;
       height: 100vh;
-      background: var(--gris);
+      background: rgba(0,0,0,0.5);
+      backdrop-filter: blur(3px);
       display: flex;
-      justify-content: center;
       align-items: center;
-      flex-direction: column;
-      z-index: 9999;
+      justify-content: center;
+      z-index: 1000;
     }
 
-    #auth-box {
+    #access-modal .modal-content {
       background: white;
       padding: 2rem;
       border-radius: 12px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
       text-align: center;
     }
 
-    #auth-box h2 {
-      color: var(--azul);
-      margin-bottom: 1rem;
-    }
-
-    #auth-box input {
-      padding: 0.6rem;
-      font-size: 1rem;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      margin-bottom: 1rem;
+    #access-modal input {
+      font-size: 1.1rem;
+      padding: 0.5rem;
+      margin-top: 1rem;
       width: 100%;
     }
 
-    #auth-box button {
-      background-color: var(--naranja);
+    #access-modal button {
+      background: var(--naranja);
       color: white;
       border: none;
-      padding: 0.6rem 1.2rem;
+      padding: 0.5rem 1.5rem;
       font-size: 1rem;
+      margin-top: 1rem;
       cursor: pointer;
       border-radius: 6px;
-    }
-
-    #auth-error {
-      color: red;
-      margin-top: 1rem;
-      font-weight: bold;
     }
   </style>
 </head>
 <body>
-
-<div id="auth-overlay">
-  <div id="auth-box">
-    <h2>Acceso restringido</h2>
-    <input type="password" id="clave" placeholder="Ingresa la clave">
-    <br>
-    <button onclick="verificarClave()">Acceder</button>
-    <div id="auth-error"></div>
+  <div id="access-modal">
+    <div class="modal-content">
+      <h2>Acceso restringido</h2>
+      <input type="password" id="clave" placeholder="Ingresa la clave">
+      <button onclick="verificarClave()">Acceder</button>
+    </div>
   </div>
-</div>
 
-<script>
-  function verificarClave() {
-    const input = document.getElementById("clave").value;
-    const error = document.getElementById("auth-error");
-    if (input === "1379") {
-      document.getElementById("auth-overlay").style.display = "none";
-    } else {
-      error.textContent = "Clave incorrecta. Intenta nuevamente.";
-    }
-  }
-</script>
   <h1>Simulador de Stickers</h1>
 
   <div class="controls">
@@ -220,6 +337,17 @@
     }
 
     window.onload = renderStickers;
+  </script>
+
+  <script>
+    function verificarClave() {
+      const inputClave = document.getElementById("clave").value;
+      if (inputClave === "1379") {
+        document.getElementById("access-modal").style.display = "none";
+      } else {
+        alert("Clave incorrecta");
+      }
+    }
   </script>
 </body>
 </html>
