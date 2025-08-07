@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simulador de Stickers</title>
+  <style>
+    :root {
+      --azul: #007aff;
+      --gris: #f4f4f4;
+      --negro: #1a1a1a;
+      --naranja: #ff6b00;
+    }
+
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 1rem;
+      background-color: var(--gris);
+      color: var(--negro);
+    }
+
+    h1 {
+      text-align: center;
+      color: var(--azul);
+      margin-bottom: 2rem;
+    }
+
+    .controls {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 3rem;
+    }
+
+    .controls input[type="number"] {
+      width: 80px;
+      padding: 0.4rem;
+      font-size: 1rem;
+    }
+
+    .controls label {
+      font-weight: bold;
+    }
+
+    .controls .qty-controls {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .btn {
+      padding: 0.4rem 0.8rem;
+      font-size: 1rem;
+      background-color: var(--naranja);
+      color: white;
+      border: none;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+
+    .workspace {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .plancha-container {
+      position: relative;
+      margin-top: 3rem;
+    }
+
+    .plancha {
+      width: 90vw;
+      max-width: 500px;
+      aspect-ratio: 1/1;
+      background-color: white;
+      border: 2px solid var(--azul);
+      display: grid;
+      gap: 2px;
+      padding: 4px;
+    }
+
+    .sticker {
+      background-color: var(--azul);
+      border-radius: 4px;
+    }
+
+    .guia-horizontal,
+    .guia-vertical {
+      position: absolute;
+      font-size: 0.75rem;
+      color: var(--negro);
+      font-weight: bold;
+    }
+
+    .guia-horizontal {
+      top: -2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .guia-vertical {
+      left: -3.5rem;
+      top: 50%;
+      transform: rotate(-90deg) translateY(50%);
+      transform-origin: left center;
+    }
+
+    .info {
+      font-size: 1rem;
+      font-weight: bold;
+      margin-top: -1rem;
+      text-align: center;
+    }
+
+    .info-extra {
+      font-size: 0.95rem;
+      margin-top: 1rem;
+      text-align: center;
+      background-color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .extras-panel {
+      max-width: 500px;
+      margin: 2rem auto;
+      background: white;
+      padding: 1rem;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .extras-panel label {
+      display: block;
+      margin-top: 1rem;
+      font-weight: bold;
+    }
+
+    .extras-panel input[type="number"] {
+      width: 100%;
+      padding: 0.4rem;
+      font-size: 1rem;
+      margin-top: 0.25rem;
+    }
+
+    #precio-final {
+      text-align: center;
+      font-size: 1.1rem;
+      font-weight: bold;
+      margin-top: 1.5rem;
+    }
+
+    @media (max-width: 480px) {
+      .controls {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>Simulador de Stickers</h1>
+
+  <div class="controls">
+    <div>
+      <label for="ancho">Ancho (cm):</label>
+      <input type="number" id="ancho" min="1" value="4" oninput="renderStickers()">
+    </div>
+    <div>
+      <label for="alto">Alto (cm):</label>
+      <input type="number" id="alto" min="1" value="4" oninput="renderStickers()">
+    </div>
+    <div class="qty-controls">
+      <label for="cantidad">Cantidad:</label>
+      <button class="btn" onclick="modificarCantidad(-1)">-</button>
+      <input type="number" id="cantidad" min="1" value="100" oninput="renderStickers()">
+      <button class="btn" onclick="modificarCantidad(1)">+</button>
+    </div>
+  </div>
+
+  <div id="workspace" class="workspace"></div>
+  <div id="info-total" class="info"></div>
+  <div id="info-extra" class="info-extra"></div>
+
+  <div class="extras-panel">
+    <label for="diseno">Costo de diseño ($):</label>
+    <input type="number" id="diseno" value="0" oninput="renderStickers()">
+
+    <label for="envio">Costo de envío ($):</label>
+    <input type="number" id="envio" value="0" oninput="renderStickers()">
+
+    <label for="ganancia">% de ganancia sobre material:</label>
+    <input type="number" id="ganancia" value="0" oninput="renderStickers()">
+
+    <div id="precio-final"></div>
+  </div>
+
+  <script>
+    function modificarCantidad(delta) {
+      const cantidad = document.getElementById("cantidad");
+      let val = parseInt(cantidad.value);
+      val = Math.max(1, val + delta);
+      cantidad.value = val;
+      renderStickers();
+    }
+
+    function renderStickers() {
+      const ancho = parseFloat(document.getElementById("ancho").value);
+      const alto = parseFloat(document.getElementById("alto").value);
+      const cantidad = parseInt(document.getElementById("cantidad").value);
+      const diseno = parseFloat(document.getElementById("diseno").value);
+      const envio = parseFloat(document.getElementById("envio").value);
+      const ganancia = parseFloat(document.getElementById("ganancia").value);
+
+      const workspace = document.getElementById("workspace");
+      const infoTotal = document.getElementById("info-total");
+      const infoExtra = document.getElementById("info-extra");
+      const precioFinal = document.getElementById("precio-final");
+
+      workspace.innerHTML = "";
+      infoTotal.innerHTML = "";
+      infoExtra.innerHTML = "";
+      precioFinal.innerHTML = "";
+
+      const stickersPorFila = Math.floor(100 / ancho);
+      const stickersPorCol = Math.floor(100 / alto);
+      const totalPorPlancha = stickersPorFila * stickersPorCol;
+      const planchasNecesarias = Math.ceil(cantidad / totalPorPlancha);
+
+      let totalAreaUtilizada = 0;
+      let totalAreaStickers = 0;
+
+      for (let i = 0; i < planchasNecesarias; i++) {
+        const planchaContainer = document.createElement("div");
+        planchaContainer.className = "plancha-container";
+
+        const plancha = document.createElement("div");
+        plancha.className = "plancha";
+        plancha.style.gridTemplateColumns = `repeat(${stickersPorFila}, 1fr)`;
+        plancha.style.gridTemplateRows = `repeat(${stickersPorCol}, 1fr)`;
+
+        const stickersEnEsta = i === planchasNecesarias - 1
+          ? cantidad - (totalPorPlancha * i)
+          : totalPorPlancha;
+
+        const filasOcupadas = Math.ceil(stickersEnEsta / stickersPorFila);
+        const altoUtilizado = filasOcupadas * alto;
+        const anchoUtilizado = stickersPorFila * ancho;
+
+        const guiaH = document.createElement("div");
+        guiaH.className = "guia-horizontal";
+        guiaH.textContent = `${anchoUtilizado} cm`;
+
+        const guiaV = document.createElement("div");
+        guiaV.className = "guia-vertical";
+        guiaV.textContent = `${altoUtilizado} cm`;
+
+        planchaContainer.appendChild(guiaH);
+        planchaContainer.appendChild(guiaV);
+        planchaContainer.appendChild(plancha);
+
+        for (let j = 0; j < stickersEnEsta; j++) {
+          const sticker = document.createElement("div");
+          sticker.className = "sticker";
+          plancha.appendChild(sticker);
+        }
+
+        totalAreaUtilizada += (anchoUtilizado * altoUtilizado) / 10000; // m²
+        totalAreaStickers += (stickersEnEsta * ancho * alto) / 10000;   // m²
+        workspace.appendChild(planchaContainer);
+      }
+
+      const costoMaterial = totalAreaUtilizada * 30000;
+      const costoStickers = totalAreaStickers * 30000;
+      const utilidad = (costoMaterial * ganancia) / 100;
+      const totalFinal = costoMaterial + diseno + envio + utilidad;
+
+      infoTotal.innerHTML = `Área utilizada: ${totalAreaUtilizada.toFixed(2)} m² | Costo total: $${costoMaterial.toFixed(0)}`;
+      infoExtra.innerHTML = `Área total de stickers: ${totalAreaStickers.toFixed(2)} m² | Costo neto (solo stickers): $${costoStickers.toFixed(0)}`;
+      precioFinal.innerHTML = `💰 Precio final sugerido: $${totalFinal.toFixed(0)} (incluye ganancia, diseño y envío)`;
+    }
+
+    window.onload = renderStickers;
+  </script>
+</body>
+</html>
