@@ -1,315 +1,236 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es-CO">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Alianzas Comerciales | SINIY</title>
-  <link rel="icon" href="siniyfavicon.png" type="image/png" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SINIY | Alianzas Comerciales & Partners</title>
+  <meta name="description" content="Únete a la red de aliados de SINIY Soluciones Digitales y accede a beneficios: precios especiales, bonos, apoyo entre marcas y mayor visibilidad." />
+  <meta name="robots" content="index,follow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+
   <style>
-    :root {
-      --azul: #007aff;
-      --naranja: #ff6b00;
-      --gris-claro: #f8f9fa;
-      --negro: #1a1a1a;
-      --blanco: #ffffff;
+    :root{
+      --primary:#0c5fff;
+      --accent:#00d4ff;
+      --ink:#e5e7eb;
+      --muted:#9ca3af;
+      --bg:#0b1020;
+      --card:#111632;
+      --ok:#15b66d;
+      --warn:#ffb020;
     }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: 'Inter', sans-serif;
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
+    a{color:var(--accent);text-decoration:none}
+    a:hover{text-decoration:underline}
+    .wrap{max-width:1100px;margin:0 auto;padding:28px 16px 80px}
+    header{
+      background:linear-gradient(180deg, rgba(12,95,255,.12), rgba(12,95,255,0));
+      border-bottom:1px solid rgba(255,255,255,.06);
+      position:sticky;top:0;backdrop-filter:blur(8px);z-index:10;
     }
-
-    body {
-      background: var(--blanco);
-      color: var(--negro);
+    .brand{display:flex;align-items:center;gap:12px}
+    .brand b{font-size:18px;letter-spacing:.4px}
+    .tag{font-size:12px;color:#93c5fd;background:rgba(12,95,255,.15);padding:4px 8px;border:1px solid rgba(12,95,255,.35);border-radius:999px}
+    .stamp{font-size:12px;color:#a5b4fc}
+    h1{font-size:34px;line-height:1.15;margin:24px 0 8px}
+    h2{font-size:22px;margin:24px 0 8px;color:#bfdbfe}
+    h3{font-size:18px;margin:18px 0 6px;color:#c7d2fe}
+    p,li{color:#d1d5db}
+    .muted{color:var(--muted)}
+    .mono{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono","Courier New",monospace}
+    .card{background:var(--card);border:1px solid rgba(255,255,255,.06);border-radius:18px;padding:18px;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+    .grid{display:grid;gap:16px}
+    .two{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .three{grid-template-columns:repeat(3,minmax(0,1fr))}
+    .four{grid-template-columns:repeat(4,minmax(0,1fr))}
+    @media (max-width:960px){.two,.three,.four{grid-template-columns:1fr}}
+    .hero{display:grid;grid-template-columns:1.2fr .8fr;gap:18px;align-items:center}
+    .kpi{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0}
+    .kpi .pill{border:1px dashed rgba(255,255,255,.2);padding:6px 10px;border-radius:12px;font-size:12px}
+    .cta{display:flex;gap:12px;flex-wrap:wrap}
+    .btn{display:inline-flex;align-items:center;gap:10px;padding:12px 14px;border-radius:14px;border:1px solid rgba(255,255,255,.08);font-weight:600}
+    .btn.primary{background:linear-gradient(90deg,var(--primary),#3b82f6);color:white}
+    .btn.ghost{background:transparent;color:#e5e7eb}
+    .logos{display:flex;flex-wrap:wrap;gap:16px;align-items:center}
+    .logo-item{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);border-radius:14px;padding:14px;display:flex;align-items:center;justify-content:center;min-width:160px}
+    .logo-item img{max-width:140px;max-height:48px;filter:drop-shadow(0 6px 18px rgba(0,0,0,.35));display:block}
+    .form label{font-size:14px;color:#cbd5e1;margin-bottom:6px;display:block}
+    .input, textarea{
+      width:100%;padding:12px 14px;border-radius:12px;
+      border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.03);
+      color:#e5e7eb;outline:none
     }
-
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 2rem;
-      background: var(--blanco);
-      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    .input:focus, textarea:focus{border-color:rgba(0,212,255,.55);box-shadow:0 0 0 3px rgba(0,212,255,.15)}
+    textarea{min-height:120px;resize:vertical}
+    .divider{height:1px;background:rgba(255,255,255,.08);margin:18px 0}
+    footer{margin-top:48px;color:#9ca3af;font-size:12px}
+    .hamburger{display:none;font-size:26px;cursor:pointer}
+    nav{display:flex;gap:14px;align-items:center}
+    nav a{color:#e5e7eb;font-weight:600}
+    @media (max-width:860px){
+      .hero{grid-template-columns:1fr}
+      nav{display:none;position:absolute;right:16px;top:64px;background:var(--card);border:1px solid rgba(255,255,255,.06);border-radius:14px;padding:12px}
+      nav.show{display:flex;flex-direction:column;gap:10px}
+      .hamburger{display:block;color:#e5e7eb}
     }
-
-    header img {
-      max-height: 60px;
-    }
-
-    nav {
-      display: flex;
-      gap: 1.5rem;
-    }
-
-    nav a {
-      text-decoration: none;
-      color: var(--negro);
-      font-weight: 600;
-      transition: color 0.3s;
-    }
-
-    nav a:hover {
-      color: var(--azul);
-    }
-
-    .hero {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      align-items: center;
-      gap: 2rem;
-      background: var(--gris-claro);
-      padding: 4rem 2rem;
-    }
-
-    .hero img {
-      width: 100%;
-      border-radius: 12px;
-    }
-
-    .hero h1 {
-      font-size: 2.5rem;
-      font-weight: 800;
-      margin-bottom: 1rem;
-    }
-
-    .hero p {
-      font-size: 1.1rem;
-      margin-bottom: 2rem;
-    }
-
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-      padding: 4rem 2rem;
-      max-width: 1100px;
-      margin: auto;
-    }
-
-    .card {
-      background: var(--gris-claro);
-      padding: 2rem;
-      border-radius: 12px;
-      text-align: center;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-    }
-
-    .formulario {
-      background: var(--gris-claro);
-      padding: 3rem 2rem;
-      border-radius: 12px;
-      max-width: 600px;
-      margin: 4rem auto;
-    }
-
-    .formulario h2 {
-      text-align: center;
-      margin-bottom: 2rem;
-      font-weight: 700;
-    }
-
-    form input, form textarea {
-      width: 100%;
-      padding: 0.8rem;
-      margin-bottom: 1rem;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-    }
-
-    .btn-primary {
-      background: var(--naranja);
-      color: white;
-      border: none;
-      padding: 0.8rem 2rem;
-      border-radius: 8px;
-      cursor: pointer;
-      font-weight: 600;
-      width: 100%;
-    }
-
-    .btn-primary:hover {
-      background: #e65a00;
-    }
-
-    footer {
-      background: var(--negro);
-      color: white;
-      text-align: center;
-      padding: 2rem;
-    }
-
-    .whatsapp-btn {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      z-index: 9999;
-      cursor: pointer;
-    }
-
-    .whatsapp-btn img {
-      width: 60px;
-      height: 60px;
-    }
-
-    .section {
-      padding: 4rem 2rem;
-      max-width: 1200px;
-      margin: auto;
-    }
-
-    .socios-logos {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 2rem;
-      align-items: center;
-    }
-
-    .socios-logos div {
-      background: #fff;
-      padding: 1rem;
-      border-radius: 12px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-      max-width: 180px;
-    }
-
-    .socios-logos img {
-      max-width: 100%;
-      height: auto;
-      display: block;
-    }
-
-    @media (max-width: 768px) {
-      .hero {
-        grid-template-columns: 1fr;
-        text-align: center;
-      }
-    }
-    .hamburger {
-      display: none;
-      font-size: 2rem;
-      cursor: pointer;
-    }
-    
-    @media (max-width: 768px) {
-      nav {
-        display: none;
-        flex-direction: column;
-        position: absolute;
-        top: 80px;
-        right: 20px;
-        background: var(--blanco);
-        border: 1px solid #ddd;
-        border-radius: 8px;
-        box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-        padding: 1rem;
-        z-index: 1000;
-      }
-    
-      nav a {
-        margin: 0.5rem 0;
-      }
-    
-      nav.active {
-        display: flex;
-      }
-    
-      .hamburger {
-        display: block;
-      }
-    }
-
+    .whatsapp-btn{position:fixed;bottom:20px;right:20px;z-index:99}
+    .whatsapp-btn img{width:60px;height:60px}
   </style>
-</head>
-<body>
 
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"WebPage",
+    "name":"Alianzas Comerciales & Partners – SINIY",
+    "description":"Red de aliados estratégicos de SINIY Soluciones Digitales con beneficios para marcas y comunidades.",
+    "isPartOf":{"@type":"WebSite","name":"SINIY Soluciones Digitales","url":"https://siniy.pro"},
+    "about":{"@type":"Organization","name":"SINIY Soluciones Digitales","telephone":"+57 3237028814"}
+  }
+  </script>
+</head>
+
+<body>
   <header>
-    <a href="https://siniy.pro"><img src="logoazulsiniy.png" alt="SINIY Logo"></a>
-    <div class="hamburger" onclick="toggleMenu()">☰</div>
-    <nav>
-      <a href="https://siniy.pro">Inicio</a>
-      <a href="https://siniy.pro/#tic">Nuestras TIC</a>
-      <a href="https://siniy.pro/#nosotros">Sobre Nosotros</a>
-      <a href="https://siniy.pro/#trabajamos">Nuestros Clientes</a>
-      <a href="https://siniy.pro/#portafolio">Portafolio</a>
-      <a href="https://siniy.pro/#contacto">Contáctanos</a>
-    </nav>
+    <div class="wrap" style="display:flex;justify-content:space-between;align-items:center;gap:16px;">
+      <div class="brand">
+        <a href="https://siniy.pro"><img alt="SINIY" src="logoazulsiniy.png" width="28" height="28" style="filter:drop-shadow(0 4px 16px rgba(12,95,255,.4))"/></a>
+        <b>SINIY Soluciones Digitales</b>
+        <span class="tag">Alianzas & Partners</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:14px">
+        <nav id="nav">
+          <a href="https://siniy.pro">Inicio</a>
+          <a href="https://siniy.pro/#tic">Nuestras TIC</a>
+          <a href="https://siniy.pro/#nosotros">Sobre Nosotros</a>
+          <a href="https://siniy.pro/#trabajamos">Nuestros Clientes</a>
+          <a href="https://siniy.pro/#portafolio">Portafolio</a>
+          <a href="https://siniy.pro/#contacto">Contáctanos</a>
+        </nav>
+        <div class="hamburger" onclick="document.getElementById('nav').classList.toggle('show')">☰</div>
+      </div>
+    </div>
   </header>
 
-  <section class="hero">
-    <div>
-      <h1>La Red de Aliados que Impulsa el Futuro</h1>
-      <p>¿Tienes una marca, negocio o comunidad y quieres llevarla al siguiente nivel? Haz parte de nuestra red de socios estratégicos y accede a beneficios exclusivos para ti, tu equipo y tus clientes.</p>
-      <b>¡Alíate con SINIY y crezcamos juntos con inteligencia, diseño y estrategia!</b>
-    </div>
-    <div>
-      <img src="imagenes-siniy/banner-partners.png" alt="Imagen Alianzas SINIY" />
-    </div>
-  </section>
-
-  <div class="cards">
-    <div class="card">
-      <h3>💼 Precios especiales</h3>
-      <p>Accede a tarifas preferenciales en todos nuestros servicios para potenciar tu marca sin romper tu presupuesto.</p>
-    </div>
-    <div class="card">
-      <h3>🎁 Bonos personalizados</h3>
-      <p>Recibe cupones, regalos y diseños exclusivos para premiar a tus clientes o usar en tus propias campañas.</p>
-    </div>
-    <div class="card">
-      <h3>🤝 Apoyo entre marcas</h3>
-      <p>Participa en colaboraciones estratégicas, alianzas comerciales y promociones cruzadas que generen valor mutuo.</p>
-    </div>
-    <div class="card">
-      <h3>🚀 Mayor visibilidad</h3>
-      <p>Tu marca será destacada en nuestro catálogo, redes sociales y campañas, aumentando tu alcance y reputación.</p>
-    </div>
-  </div>
-
-  <section class="section">
-    <h2 style="text-align: center; margin-bottom: 2rem;">Nuestros Socios Actuales</h2>
-    <div class="socios-logos">
+  <main class="wrap">
+    <section class="hero card">
       <div>
-        <img src="imagenes-siniy/logo-aed.png" alt="Asociación AED" />
+        <h1>La Red de Aliados que Impulsa el Futuro</h1>
+        <p class="muted">¿Tienes una marca, negocio o comunidad y quieres llevarla al siguiente nivel? Haz parte de nuestra red de socios estratégicos y accede a beneficios exclusivos para ti, tu equipo y tus clientes.</p>
+        <div class="kpi">
+          <span class="pill">Beneficios exclusivos</span>
+          <span class="pill">Enfoque B2B & Comunidades</span>
+          <span class="pill">Contacto: <a href="https://wa.me/573237028814" target="_blank" rel="noopener">WhatsApp 3237028814</a></span>
+        </div>
+        <div class="cta">
+          <a class="btn primary" href="#form">Quiero ser aliado</a>
+          <a class="btn ghost" href="#beneficios">Ver beneficios</a>
+        </div>
       </div>
-      <div>
-        <img src="imagenes-siniy/logo-ccmv.png" alt="Consejo Consultivo de Mujeres - Villamaría" />
+      <aside class="card">
+        <h3>¿Por qué ser Partner de SINIY?</h3>
+        <ul style="margin:0;padding-left:18px">
+          <li>Marca potenciada con diseño, tecnología y estrategia.</li>
+          <li>Activaciones y colaboraciones que generan valor real.</li>
+          <li>Acompañamiento experto y visibilidad en nuestro ecosistema.</li>
+        </ul>
+      </aside>
+    </section>
+
+    <section id="beneficios" class="card" style="margin-top:16px">
+      <h2>Beneficios de la Alianza</h2>
+      <div class="grid two" style="margin-top:8px">
+        <div class="card">
+          <h3>💼 Precios especiales</h3>
+          <p>Accede a tarifas preferenciales en todos nuestros servicios para potenciar tu marca sin romper tu presupuesto.</p>
+        </div>
+        <div class="card">
+          <h3>🎁 Bonos personalizados</h3>
+          <p>Recibe cupones, regalos y diseños exclusivos para premiar a tus clientes o usar en tus propias campañas.</p>
+        </div>
+        <div class="card">
+          <h3>🤝 Apoyo entre marcas</h3>
+          <p>Participa en colaboraciones estratégicas, alianzas comerciales y promociones cruzadas que generen valor mutuo.</p>
+        </div>
+        <div class="card">
+          <h3>🚀 Mayor visibilidad</h3>
+          <p>Tu marca será destacada en nuestro catálogo, redes sociales y campañas, aumentando tu alcance y reputación.</p>
+        </div>
       </div>
-      <!-- Puedes agregar más logos aquí -->
-    </div>
-  </section>
+    </section>
 
-  <div class="formulario">
-    <h2>¿Te interesa ser socio comercial?</h2>
-    <form action="https://formsubmit.co/hola@siniy.pro" method="POST">
-      <input type="text" name="nombre" placeholder="Nombre o empresa" required>
-      <input type="email" name="correo" placeholder="Correo electrónico" required>
-      <input type="tel" name="telefono" placeholder="WhatsApp o celular" required>
-      <textarea name="mensaje" rows="5" placeholder="¿Cómo deseas colaborar con SINIY?" required></textarea>
-      <button type="submit" class="btn-primary">Unirme como aliado</button>
-      <input type="hidden" name="_next" value="https://siniy.pro/gracias.html">
-      <input type="hidden" name="_captcha" value="false">
-    </form>
-  </div>
+    <section class="card" style="margin-top:16px">
+      <h2>Nuestros Socios Actuales</h2>
+      <div class="logos" style="margin-top:8px">
+        <div class="logo-item"><img src="imagenes-siniy/logo-aed.png" alt="Asociación AED"></div>
+        <div class="logo-item"><img src="imagenes-siniy/logo-ccmv.png" alt="Consejo Consultivo de Mujeres - Villamaría"></div>
+      </div>
+    </section>
 
-  <footer>
-    <p>&copy; 2025 SINIY Soluciones Digitales · Todos los derechos reservados</p>
-  </footer>
+    <section id="form" class="card" style="margin-top:16px">
+      <h2>¿Te interesa ser socio comercial?</h2>
+      <p class="muted">Cuéntanos brevemente tu propuesta y te contactamos.</p>
+      <div class="divider"></div>
+      <form class="form" action="https://formsubmit.co/alianzas@siniy.pro" method="POST">
+        <div style="display:grid;gap:12px;grid-template-columns:1fr 1fr">
+          <div>
+            <label for="nombre">Nombre o empresa</label>
+            <input id="nombre" name="nombre" class="input" type="text" placeholder="Ej. Café Andino S.A.S." required/>
+          </div>
+          <div>
+            <label for="correo">Correo electrónico</label>
+            <input id="correo" name="correo" class="input" type="email" placeholder="ejemplo@correo.com" required/>
+          </div>
+        </div>
+        <div style="display:grid;gap:12px;grid-template-columns:1fr 1fr;margin-top:12px">
+          <div>
+            <label for="telefono">WhatsApp o celular</label>
+            <input id="telefono" name="telefono" class="input" type="tel" placeholder="+57 3xx xxx xxxx" required/>
+          </div>
+          <div>
+            <label for="interes">Tipo de alianza</label>
+            <input id="interes" name="interes" class="input" type="text" placeholder="Cocreación, eventos, cross-selling, etc."/>
+          </div>
+        </div>
+        <div style="margin-top:12px">
+          <label for="mensaje">¿Cómo deseas colaborar con SINIY?</label>
+          <textarea id="mensaje" name="mensaje" placeholder="Cuéntanos tu propuesta..." required></textarea>
+        </div>
 
-  <a href="https://wa.me/573237028814" class="whatsapp-btn" target="_blank">
+        <div style="margin-top:16px;display:flex;gap:12px;flex-wrap:wrap">
+          <button type="submit" class="btn primary">Unirme como aliado</button>
+          <a class="btn ghost" href="https://wa.me/573237028814" target="_blank" rel="noopener">Hablar por WhatsApp</a>
+        </div>
+
+        <input type="hidden" name="_next" value="https://siniy.pro/gracias.html">
+        <input type="hidden" name="_captcha" value="false">
+      </form>
+    </section>
+
+    <section class="card" style="margin-top:16px">
+      <h2>¿Listo para acelerar tu crecimiento?</h2>
+      <p class="muted">Alíate con SINIY y crezcamos juntos con inteligencia, diseño y estrategia.</p>
+      <div class="cta" style="margin-top:10px">
+        <a class="btn primary" href="#form">Aplicar a la red de aliados</a>
+        <a class="btn ghost" href="mailto:hola@siniy.pro">Escríbenos: hola@siniy.pro</a>
+      </div>
+    </section>
+
+    <footer class="wrap">
+      <div class="divider"></div>
+      <p>© <span id="y"></span> SINIY Soluciones Digitales · Manizales, Colombia</p>
+      <p class="muted">Sugerencia: enlaza aquí tus <a href="/terminos.html">Términos & Condiciones</a> y la <a href="/privacidad.html">Política de Privacidad</a>.</p>
+    </footer>
+  </main>
+
+  <a href="https://wa.me/573237028814" class="whatsapp-btn" target="_blank" rel="noopener">
     <img src="whatsappboton.png" alt="WhatsApp">
   </a>
 
   <script>
-    function toggleMenu() {
-      const nav = document.querySelector('nav');
-      nav.classList.toggle('active');
-    }
+    document.getElementById('y').textContent = new Date().getFullYear();
   </script>
-
 </body>
 </html>
