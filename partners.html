@@ -54,9 +54,31 @@
     .btn{display:inline-flex;align-items:center;gap:10px;padding:12px 14px;border-radius:14px;border:1px solid rgba(255,255,255,.08);font-weight:600}
     .btn.primary{background:linear-gradient(90deg,var(--primary),#3b82f6);color:white}
     .btn.ghost{background:transparent;color:#e5e7eb}
-    .logos{display:flex;flex-wrap:wrap;gap:16px;align-items:center}
-    .logo-item{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);border-radius:14px;padding:14px;display:flex;align-items:center;justify-content:center;min-width:160px}
-    .logo-item img{max-width:140px;max-height:48px;filter:drop-shadow(0 6px 18px rgba(0,0,0,.35));display:block}
+
+    /* Logos más grandes */
+    .logos {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      align-items: center;
+    }
+    .logo-item {
+      background: rgba(255, 255, 255, .02);
+      border: 1px solid rgba(255, 255, 255, .06);
+      border-radius: 14px;
+      padding: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 200px;
+    }
+    .logo-item img {
+      max-width: 180px;
+      max-height: 70px;
+      filter: drop-shadow(0 6px 18px rgba(0, 0, 0, .35));
+      display: block;
+    }
+
     .form label{font-size:14px;color:#cbd5e1;margin-bottom:6px;display:block}
     .input, textarea{
       width:100%;padding:12px 14px;border-radius:12px;
@@ -96,16 +118,14 @@
   <header>
     <div class="wrap" style="display:flex;justify-content:space-between;align-items:center;gap:16px;">
       <div class="brand">
-        <a href="https://siniy.pro"><img alt="SINIY" src="logoazulsiniy.png" width="28" height="28" style="filter:drop-shadow(0 4px 16px rgba(12,95,255,.4))"/></a>
-        <b>SINIY Soluciones Digitales</b>
+        <a href="https://siniy.pro"><img alt="SINIY" src="logoblancosiniy.png" width="28" height="28" style="filter:drop-shadow(0 4px 16px rgba(12,95,255,.4))"/></a>
         <span class="tag">Alianzas & Partners</span>
       </div>
       <div style="display:flex;align-items:center;gap:14px">
         <nav id="nav">
           <a href="https://siniy.pro">Inicio</a>
           <a href="https://siniy.pro/#tic">Nuestras TIC</a>
-          <a href="https://siniy.pro/#nosotros">Sobre Nosotros</a>
-          <a href="https://siniy.pro/#trabajamos">Nuestros Clientes</a>
+          <a href="https://siniy.pro/#nosotros">Nosotros</a>
           <a href="https://siniy.pro/#portafolio">Portafolio</a>
           <a href="https://siniy.pro/#contacto">Contáctanos</a>
         </nav>
@@ -221,7 +241,7 @@
     <footer class="wrap">
       <div class="divider"></div>
       <p>© <span id="y"></span> SINIY Soluciones Digitales · Manizales, Colombia</p>
-      <p class="muted">Sugerencia: enlaza aquí tus <a href="/terminos.html">Términos & Condiciones</a> y la <a href="/privacidad.html">Política de Privacidad</a>.</p>
+      <p class="muted">Sugerencias: <a href="/terminos.html">Términos & Condiciones</a> y la <a href="/privacidad.html">Política de Privacidad</a>.</p>
     </footer>
   </main>
 
