@@ -1,11 +1,16 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es-CO">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SINIY Soluciones Digitales</title>
   <link rel="icon" href="siniyfavicon.png" type="image/png" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+  <meta name="description" content="Expertos en Publicidad Impresa y Digital. Con más de 4 años de experiencia, ubicados en Manizales, Caldas." />
+  <meta name="robots" content="index,follow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+
   <style>
     :root{
       --primary:#0c5fff;
@@ -15,132 +20,100 @@
       --bg:#0b1020;
       --card:#111632;
     }
-    *{box-sizing:border-box;margin:0;padding:0;font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
-    html,body{background:var(--bg);color:var(--ink);line-height:1.6}
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;line-height:1.6}
     a{color:var(--accent);text-decoration:none}
     a:hover{text-decoration:underline}
+    .wrap{max-width:1100px;margin:0 auto;padding:28px 16px}
+    
+    /* --- Estilos del Menú (Header) --- */
     header{
       background:linear-gradient(180deg, rgba(12,95,255,.12), rgba(12,95,255,0));
       border-bottom:1px solid rgba(255,255,255,.06);
       position:sticky;top:0;backdrop-filter:blur(8px);z-index:10;
-      display:flex;justify-content:space-between;align-items:center;
-      padding:14px 20px;
     }
-    .brand img{max-height:60px;filter: drop-shadow(0 4px 16px rgba(12,95,255,.4))}
-    nav{display:flex;gap:16px;align-items:center}
-    nav a{color:var(--ink);font-weight:600}
-    nav a:hover{color:var(--accent)}
-    .hamburger{display:none;font-size:26px;cursor:pointer;color:var(--ink)}
+    .brand{display:flex;align-items:center;gap:12px}
+    .brand b{font-size:18px;letter-spacing:.4px}
+    .logo-siniy {
+      max-height: 60px;
+      height: auto;
+      width: auto;
+      filter: drop-shadow(0 4px 16px rgba(12,95,255,.4));
+    }
+    .tag{font-size:12px;color:#93c5fd;background:rgba(12,95,255,.15);padding:4px 8px;border:1px solid rgba(12,95,255,.35);border-radius:999px}
+    nav{display:flex;gap:14px;align-items:center}
+    nav a{color:#e5e7eb;font-weight:600}
+    nav a:hover{color:var(--accent); text-decoration: none;}
+    .hamburger{display:none;font-size:26px;cursor:pointer;color:#e5e7eb}
+    
     @media (max-width:860px){
-      nav{display:none;position:absolute;right:16px;top:70px;background:var(--card);border:1px solid rgba(255,255,255,.06);border-radius:14px;padding:12px;flex-direction:column}
-      nav.show{display:flex}
+      nav{display:none;position:absolute;right:16px;top:70px;background:var(--card);border:1px solid rgba(255,255,255,.06);border-radius:14px;padding:12px}
+      nav.show{display:flex;flex-direction:column;gap:10px;align-items:stretch;}
       .hamburger{display:block}
+      nav .btn.primary {text-align: center; justify-content: center;}
     }
-    .btn{display:inline-flex;align-items:center;gap:10px;padding:12px 18px;border-radius:14px;border:1px solid rgba(255,255,255,.08);font-weight:600}
-    .btn.primary{background:linear-gradient(90deg,var(--primary),#3b82f6);color:white}
-    .btn.primary:hover{opacity:.9}
-    .wrap{max-width:1100px;margin:0 auto;padding:28px 16px}
-    .hero{display:grid;grid-template-columns:1.2fr .8fr;gap:24px;align-items:center;margin-top:30px}
-    .hero h1{font-size:38px;line-height:1.15;color:white}
-    .hero p{color:var(--muted);font-size:1.1rem}
-    .hero img{width:100%;border-radius:14px}
-    @media(max-width:860px){.hero{grid-template-columns:1fr}}
-    h2.section-subtitle{font-size:24px;margin:40px 0 14px;color:#bfdbfe;text-align:center;text-transform:uppercase}
-    p.section-desc{text-align:center;color:var(--muted);margin-bottom:30px}
+
+    /* --- Estilos del Contenido de la Página --- */
+    h1{font-size:38px;line-height:1.15;color:white;margin:0 0 10px}
+    h2{font-size:22px;margin:24px 0 8px;color:#bfdbfe}
+    h3{font-size:18px;margin:18px 0 6px;color:#c7d2fe}
+    p,li{color:#d1d5db}
+    .muted{color:var(--muted)}
+    .card{background:var(--card);border:1px solid rgba(255,255,255,.06);border-radius:18px;padding:20px;text-align:center;}
     .grid{display:grid;gap:18px}
     .three{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
-    .card{background:var(--card);border:1px solid rgba(255,255,255,.06);border-radius:18px;padding:20px;text-align:center}
-    .card h3{margin-top:10px;color:#c7d2fe}
-    .card p{color:#d1d5db}
+    .btn{display:inline-flex;align-items:center;gap:10px;padding:12px 18px;border-radius:14px;border:1px solid rgba(255,255,255,.08);font-weight:600}
+    .btn.primary{background:linear-gradient(90deg,var(--primary),#3b82f6);color:white}
+    .btn.primary:hover{opacity:.9; text-decoration: none;}
+    
+    .hero{display:grid;grid-template-columns:1.2fr .8fr;gap:24px;align-items:center;margin-top:30px}
+    .hero p{font-size:1.1rem; color: var(--muted)}
+    .hero img{width:100%;border-radius:14px}
+    @media(max-width:860px){.hero{grid-template-columns:1fr}}
+    
+    h2.section-subtitle{font-size:24px;margin:40px 0 14px;color:#bfdbfe;text-align:center;text-transform:uppercase}
+    p.section-desc{text-align:center;color:var(--muted);margin-bottom:30px}
+    
+    .card h3{margin-top:10px}
+    
     .tools-grid{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
     .tool-box{background:var(--card);border:1px solid rgba(255,255,255,.06);border-radius:14px;padding:16px;transition:transform .3s ease}
     .tool-box:hover{transform:translateY(-5px)}
-    .tool-box h3{color:var(--accent);margin-bottom:10px}
-    .tool-box li{margin-bottom:6px;color:var(--ink)}
+    .tool-box h3{color:var(--accent);margin:0 0 10px}
+    .tool-box ul {list-style: none; padding: 0; margin: 0;}
+    .tool-box li{margin-bottom:6px}
+    
     .agency-block{display:grid;gap:24px;grid-template-columns:1fr 1fr;align-items:center;margin-top:40px}
     .agency-block img{width:100%;border-radius:14px}
     @media(max-width:860px){.agency-block{grid-template-columns:1fr}}
+    
     footer{text-align:center;color:var(--muted);font-size:12px;padding:20px 0;margin-top:40px;border-top:1px solid rgba(255,255,255,.06)}
-    /* Modal */
     .modal{display:none;position:fixed;z-index:1001;left:0;top:0;width:100%;height:100%;background:rgba(0,0,0,0.6);overflow:auto}
     .modal-content{background:var(--card);margin:10% auto;padding:20px;border-radius:14px;max-width:500px;position:relative;border:1px solid rgba(255,255,255,.06)}
     .close{position:absolute;top:10px;right:15px;font-size:24px;cursor:pointer;color:var(--ink)}
     form input, form textarea{width:100%;padding:12px;border-radius:12px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.03);color:var(--ink);margin-bottom:12px}
     form input:focus, form textarea:focus{border-color:rgba(0,212,255,.55);box-shadow:0 0 0 3px rgba(0,212,255,.15);outline:none}
+    
     .whatsapp-btn{position:fixed;bottom:20px;right:20px;z-index:99}
     .whatsapp-btn img{width:60px;height:60px}
-
-    /* Header */
-    header {
-      background-color: #0a0a0a;
-      padding: 10px 40px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    
-    /* Logo */
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    
-    .logo img {
-      height: 40px;
-      width: auto;
-    }
-    
-    .logo span {
-      font-size: 1.1rem;
-      color: white;
-      font-weight: 600;
-    }
-    
-    /* Navegación */
-    nav {
-      display: flex;
-      align-items: center;
-    }
-    
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 15px;
-      margin: 0;
-      padding: 0;
-    }
-    
-    nav ul li a {
-      color: white;
-      text-decoration: none;
-      padding: 8px 12px;
-      transition: background 0.3s;
-      border-radius: 4px;
-    }
-    
-    nav ul li a:hover {
-      background-color: #1e90ff;
-    }
-    
   </style>
 </head>
 <body>
+
   <header>
-    <div class="wrap" style="display:flex;justify-content:space-between;align-items:center;gap:16px;">
+    <div class="wrap" style="padding-top: 14px; padding-bottom: 14px; display:flex;justify-content:space-between;align-items:center;gap:16px;">
       <div class="brand">
         <a href="https://siniy.pro">
           <img alt="SINIY" src="logoblancosiniy.png" class="logo-siniy" />
         </a>
-
         <span class="tag">Inicio</span>
       </div>
       <div style="display:flex;align-items:center;gap:14px">
         <nav id="nav">
-          <a href="https://siniy.pro/#tic">Nuestras TIC</a>
-          <a href="https://siniy.pro/#nosotros">Nosotros</a>
-          <a href="https://siniy.pro/#portafolio">Portafolio</a>
-          <a href="https://siniy.pro/#contacto">Contáctanos</a>
+          <a href="#tic">Nuestras TIC</a>
+          <a href="#nosotros">Nosotros</a>
+          <a href="#portafolio">Portafolio</a>
+          <a href="#contacto">Contáctanos</a>
           <a class="btn primary" href="https://siniy.pro/partners">SINIY Partners</a>
         </nav>
         <div class="hamburger" onclick="document.getElementById('nav').classList.toggle('show')">☰</div>
@@ -148,7 +121,7 @@
     </div>
   </header>
 
-  <div class="wrap">
+  <main class="wrap" style="padding-top: 0;">
     <section class="hero">
       <div>
         <h1>Expertos en Publicidad Impresa y Digital</h1>
@@ -197,13 +170,12 @@
 
     <h2 id="contacto" class="section-subtitle">¡Hablemos!</h2>
     <p class="section-desc">Contáctanos por WhatsApp al <a href="https://wa.me/573237028814" target="_blank"><strong>+57 323 702 8814</strong></a> o escríbenos a <a href="mailto:hola@siniy.com"><strong>hola@siniy.com</strong></a></p>
-  </div>
+  </main>
 
   <footer>
     &copy; 2025 SINIY Soluciones Digitales. Todos los derechos reservados.
   </footer>
 
-  <!-- Modal -->
   <div id="cotizacionModal" class="modal">
     <div class="modal-content">
       <span class="close" onclick="document.getElementById('cotizacionModal').style.display='none'">&times;</span>
@@ -217,15 +189,11 @@
     </div>
   </div>
 
-  <!-- Botón WhatsApp -->
   <a href="https://wa.me/573237028814" class="whatsapp-btn" target="_blank">
     <img src="whatsappboton.png" alt="WhatsApp" />
   </a>
 
   <script>
-    function toggleMenu(){
-      document.getElementById("navMenu").classList.toggle("show");
-    }
     window.onclick=function(e){
       const modal=document.getElementById('cotizacionModal');
       if(e.target==modal){modal.style.display='none';}
