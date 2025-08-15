@@ -7,446 +7,140 @@
   <link rel="icon" href="siniyfavicon.png" type="image/png" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
   <style>
-    :root {
-      --azul: #007aff;
-      --naranja: #ff6b00;
-      --gris-claro: #f8f9fa;
-      --negro: #1a1a1a;
-      --blanco: #ffffff;
-      --rosa: #e83e8c;
+    :root{
+      --primary:#0c5fff;
+      --accent:#00d4ff;
+      --ink:#e5e7eb;
+      --muted:#9ca3af;
+      --bg:#0b1020;
+      --card:#111632;
     }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: 'Inter', sans-serif;
+    *{box-sizing:border-box;margin:0;padding:0;font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
+    html,body{background:var(--bg);color:var(--ink);line-height:1.6}
+    a{color:var(--accent);text-decoration:none}
+    a:hover{text-decoration:underline}
+    header{
+      background:linear-gradient(180deg, rgba(12,95,255,.12), rgba(12,95,255,0));
+      border-bottom:1px solid rgba(255,255,255,.06);
+      position:sticky;top:0;backdrop-filter:blur(8px);z-index:10;
+      display:flex;justify-content:space-between;align-items:center;
+      padding:14px 20px;
     }
-
-    body {
-      background-color: var(--blanco);
-      color: var(--negro);
-      line-height: 1.6;
-      overflow-x: hidden;
+    .brand img{max-height:60px;filter: drop-shadow(0 4px 16px rgba(12,95,255,.4))}
+    nav{display:flex;gap:16px;align-items:center}
+    nav a{color:var(--ink);font-weight:600}
+    nav a:hover{color:var(--accent)}
+    .hamburger{display:none;font-size:26px;cursor:pointer;color:var(--ink)}
+    @media (max-width:860px){
+      nav{display:none;position:absolute;right:16px;top:70px;background:var(--card);border:1px solid rgba(255,255,255,.06);border-radius:14px;padding:12px;flex-direction:column}
+      nav.show{display:flex}
+      .hamburger{display:block}
     }
-
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1.5rem 2rem;
-      background-color: var(--blanco);
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
-
-    header h1 img {
-      height: auto;
-      max-height: 70px;
-      cursor: pointer;
-    }
-
-    @media (max-width: 600px) {
-      header h1 img {
-        max-height: 50px;
-      }
-    }
-
-    .btn-primary {
-      background: var(--naranja);
-      color: white;
-      padding: 0.75rem 1.5rem;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      font-weight: 600;
-      transition: background 0.3s ease;
-      text-decoration: none;
-    }
-
-    .btn-primary:hover {
-      background: #e65a00;
-    }
-
-    .hero, .section {
-      padding: 4rem 2rem;
-      text-align: center;
-    }
-
-    .hero {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-      align-items: center;
-      background-color: var(--gris-claro);
-    }
-
-    .hero-text h1 {
-      font-size: 2.5rem;
-      font-weight: 800;
-      margin-bottom: 1rem;
-    }
-
-    .hero-text p {
-      font-size: 1.1rem;
-      margin-bottom: 2rem;
-    }
-
-    .hero-img img {
-      width: 100%;
-      height: auto;
-    }
-
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
-      justify-items: center;
-      margin-top: 3rem;
-    }
-
-    .card {
-      background-color: var(--gris-claro);
-      padding: 2rem;
-      border-radius: 12px;
-      max-width: 320px;
-      text-align: center;
-    }
-
-    .tools-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
-      margin-top: 2rem;
-      text-align: left;
-    }
-
-    .tool-box {
-      background-color: var(--gris-claro);
-      padding: 1.5rem;
-      border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04);
-      transition: transform 0.3s ease;
-    }
-
-    .tool-box:hover {
-      transform: translateY(-5px);
-    }
-
-    .tool-box h3 {
-      margin-bottom: 1rem;
-      color: var(--azul);
-    }
-
-    .tool-box li {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      margin-bottom: 0.5rem;
-      color: #333;
-    }
-
-    .tool-box li::before {
-      content: "✔";
-      color: #28a745;
-      font-size: 1rem;
-    }
-
-    .agency-block {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      align-items: center;
-      gap: 2rem;
-      margin-top: 3rem;
-      text-align: left;
-      padding: 2rem;
-    }
-
-    .agency-img img {
-      max-width: 100%;
-      height: auto;
-      border-radius: 12px;
-    }
-
-    .section-subtitle {
-      margin-top: 4rem;
-      font-size: 1.5rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      text-align: center;
-    }
-
-    footer {
-      background-color: var(--negro);
-      color: white;
-      text-align: center;
-      padding: 2rem;
-    }
-
-    .modal {
-      display: none;
-      position: fixed;
-      z-index: 1001;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      overflow: auto;
-      background-color: rgba(0, 0, 0, 0.6);
-    }
-
-    .modal-content {
-      background-color: #fff;
-      margin: 10% auto;
-      padding: 2rem;
-      border-radius: 8px;
-      max-width: 500px;
-      position: relative;
-    }
-
-    .close {
-      position: absolute;
-      top: 10px;
-      right: 15px;
-      font-size: 24px;
-      cursor: pointer;
-    }
-
-    form input, form textarea {
-      width: 100%;
-      padding: 0.75rem;
-      margin-bottom: 1rem;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-    }
-
-    .whatsapp-btn {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      z-index: 9999;
-      cursor: pointer;
-    }
-
-    .whatsapp-btn img {
-      width: 70px;
-      height: 70px;
-    }
-    @media (max-width: 600px) {
-      .btn-primary {
-        padding: 0.5rem 1rem;
-        font-size: 0.9rem;
-      }
-    }
-    .hamburger {
-      display: none;
-      font-size: 1.8rem;
-      cursor: pointer;
-    }
-    
-    .nav-links {
-      display: flex;
-      gap: 1.5rem;
-    }
-    
-    .nav-links a {
-      text-decoration: none;
-      color: var(--negro);
-      font-weight: 600;
-      transition: color 0.3s ease;
-    }
-    
-    .nav-links a:hover {
-      color: var(--azul);
-    }
-    
-    @media (max-width: 768px) {
-      .hamburger {
-        display: block;
-      }
-    
-      .nav-links {
-        position: absolute;
-        top: 100%;
-        left: 0;
-        background: var(--blanco);
-        width: 100%;
-        display: none;
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 1rem 2rem;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-      }
-    
-      .nav-links a {
-        padding: 0.75rem 0;
-        width: 100%;
-      }
-    
-      .nav-links.active {
-        display: flex;
-      }
-    }
-    html {
-      scroll-behavior: smooth;
-    }
-
-    #tic {
-      scroll-margin-top: 180px;
-    }
-
-    #nosotros {
-      scroll-margin-top: 300px;
-    }
-
-    #trabajamos {
-      scroll-margin-top: 180px;
-    }
-
-    #portafolio {
-      scroll-margin-top: 180px;
-    }
-
-    #contacto {
-      scroll-margin-top: 180px;
-    }
-    
-
+    .btn{display:inline-flex;align-items:center;gap:10px;padding:12px 18px;border-radius:14px;border:1px solid rgba(255,255,255,.08);font-weight:600}
+    .btn.primary{background:linear-gradient(90deg,var(--primary),#3b82f6);color:white}
+    .btn.primary:hover{opacity:.9}
+    .wrap{max-width:1100px;margin:0 auto;padding:28px 16px}
+    .hero{display:grid;grid-template-columns:1.2fr .8fr;gap:24px;align-items:center;margin-top:30px}
+    .hero h1{font-size:38px;line-height:1.15;color:white}
+    .hero p{color:var(--muted);font-size:1.1rem}
+    .hero img{width:100%;border-radius:14px}
+    @media(max-width:860px){.hero{grid-template-columns:1fr}}
+    h2.section-subtitle{font-size:24px;margin:40px 0 14px;color:#bfdbfe;text-align:center;text-transform:uppercase}
+    p.section-desc{text-align:center;color:var(--muted);margin-bottom:30px}
+    .grid{display:grid;gap:18px}
+    .three{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+    .card{background:var(--card);border:1px solid rgba(255,255,255,.06);border-radius:18px;padding:20px;text-align:center}
+    .card h3{margin-top:10px;color:#c7d2fe}
+    .card p{color:#d1d5db}
+    .tools-grid{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+    .tool-box{background:var(--card);border:1px solid rgba(255,255,255,.06);border-radius:14px;padding:16px;transition:transform .3s ease}
+    .tool-box:hover{transform:translateY(-5px)}
+    .tool-box h3{color:var(--accent);margin-bottom:10px}
+    .tool-box li{margin-bottom:6px;color:var(--ink)}
+    .agency-block{display:grid;gap:24px;grid-template-columns:1fr 1fr;align-items:center;margin-top:40px}
+    .agency-block img{width:100%;border-radius:14px}
+    @media(max-width:860px){.agency-block{grid-template-columns:1fr}}
+    footer{text-align:center;color:var(--muted);font-size:12px;padding:20px 0;margin-top:40px;border-top:1px solid rgba(255,255,255,.06)}
+    /* Modal */
+    .modal{display:none;position:fixed;z-index:1001;left:0;top:0;width:100%;height:100%;background:rgba(0,0,0,0.6);overflow:auto}
+    .modal-content{background:var(--card);margin:10% auto;padding:20px;border-radius:14px;max-width:500px;position:relative;border:1px solid rgba(255,255,255,.06)}
+    .close{position:absolute;top:10px;right:15px;font-size:24px;cursor:pointer;color:var(--ink)}
+    form input, form textarea{width:100%;padding:12px;border-radius:12px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.03);color:var(--ink);margin-bottom:12px}
+    form input:focus, form textarea:focus{border-color:rgba(0,212,255,.55);box-shadow:0 0 0 3px rgba(0,212,255,.15);outline:none}
+    .whatsapp-btn{position:fixed;bottom:20px;right:20px;z-index:99}
+    .whatsapp-btn img{width:60px;height:60px}
   </style>
 </head>
 <body>
   <header>
-    <h1><a href="https://siniy.pro"><img src="logoazulsiniy.png" alt="Logo SINIY" /></a></h1>
+    <a href="https://siniy.pro" class="brand"><img src="logoazulsiniy.png" alt="Logo SINIY"></a>
     <div class="hamburger" onclick="toggleMenu()">☰</div>
-    <nav class="nav-links" id="navMenu">
+    <nav id="navMenu">
       <a href="#tic">Nuestras TIC</a>
       <a href="#nosotros">Sobre Nosotros</a>
       <a href="#trabajamos">Nuestros Clientes</a>
       <a href="#portafolio">Portafolio</a>
       <a href="#contacto">Contáctanos</a>
-
-    </nav>
-    <a class="btn-primary" href="https://siniy.pro/partners">SINIY Partners</a>
+      <a class="btn primary" href="https://siniy.pro/partners">SINIY Partners</a>
+    </nav>
   </header>
 
-  <section class="hero">
-    <div class="hero-text">
-      <h1>Expertos en Publicidad Impresa y Digital</h1>
-      <p>Con más de 4 años de experiencia, ubicados en Manizales, Caldas y trabajando a nivel nacional con soluciones creativas, efectivas y profesionales.</p>
-      <button class="btn-primary" onclick="document.getElementById('cotizacionModal').style.display='block'">Solicita tu cotización</button>
-    </div>
-    <div class="hero-img">
-      <img src="imagenes-siniy/banner-disenografico-0002.png" alt="Banner diseño grafico impreso y digital">
-    </div>
-  </section>
+  <div class="wrap">
+    <section class="hero">
+      <div>
+        <h1>Expertos en Publicidad Impresa y Digital</h1>
+        <p>Con más de 4 años de experiencia, ubicados en Manizales, Caldas y trabajando a nivel nacional con soluciones creativas, efectivas y profesionales.</p>
+        <br>
+        <button class="btn primary" onclick="document.getElementById('cotizacionModal').style.display='block'">Solicita tu cotización</button>
+      </div>
+      <div><img src="imagenes-siniy/banner-disenografico-0002.png" alt="Banner diseño gráfico"></div>
+    </section>
 
-  <section class="section">
     <h2 id="tic" class="section-subtitle">Nuestras Herramientas & TIC</h2>
-    <p>Conocemos y aplicamos herramientas clave para diseñar, desarrollar y potenciar negocios con tecnología y creatividad.</p>
-
+    <p class="section-desc">Conocemos y aplicamos herramientas clave para diseñar, desarrollar y potenciar negocios con tecnología y creatividad.</p>
     <div class="tools-grid">
-      <div class="tool-box">
-        <h3>🖥️ Desarrollo Web</h3>
-        <ul><li>HTML</li><li>CSS</li><li>JavaScript</li></ul>
-      </div>
-      <div class="tool-box">
-        <h3>🧩 CMS y E-commerce</h3>
-        <ul><li>WordPress</li><li>WooCommerce</li><li>Shopify</li></ul>
-      </div>
-      <div class="tool-box">
-        <h3>🎨 Diseño y Edición</h3>
-        <ul><li>Adobe Illustrator</li><li>Premiere Pro</li><li>Canva</li><li>CapCut</li></ul>
-      </div>
-      <div class="tool-box">
-        <h3>🤖 Inteligencia Artificial</h3>
-        <ul><li>Aplicaciones IA para PYMES</li><li>Automatización de procesos</li></ul>
-      </div>
-      <div class="tool-box">
-        <h3>📊 Analítica y Datos</h3>
-        <ul><li>Google Analytics</li><li>Power BI</li><li>Google Looker Studio</li></ul>
-      </div>
+      <div class="tool-box"><h3>🖥️ Desarrollo Web</h3><ul><li>HTML</li><li>CSS</li><li>JavaScript</li></ul></div>
+      <div class="tool-box"><h3>🧩 CMS y E-commerce</h3><ul><li>WordPress</li><li>WooCommerce</li><li>Shopify</li></ul></div>
+      <div class="tool-box"><h3>🎨 Diseño y Edición</h3><ul><li>Adobe Illustrator</li><li>Premiere Pro</li><li>Canva</li><li>CapCut</li></ul></div>
+      <div class="tool-box"><h3>🤖 Inteligencia Artificial</h3><ul><li>Aplicaciones IA para PYMES</li><li>Automatización de procesos</li></ul></div>
+      <div class="tool-box"><h3>📊 Analítica y Datos</h3><ul><li>Google Analytics</li><li>Power BI</li><li>Google Looker Studio</li></ul></div>
     </div>
-  </section>
 
-  <div class="agency-block">
-    <div class="agency-text">
-      <h2 id="nosotros"><strong>SOMOS UNA AGENCIA<br>DE SOLUCIONES DIGITALES Y GRÁFICAS</strong></h2>
-      <p>En SINIY combinamos diseño, tecnología y estrategia para potenciar marcas con alto impacto visual y comercial.</p>
-      <p>Ofrecemos soluciones profesionales en impresión litográfica y digital, diseño web corporativo y comercio electrónico, así como estrategias de marketing digital y automatización.</p>
+    <div class="agency-block" id="nosotros">
+      <div>
+        <h2><strong>SOMOS UNA AGENCIA<br>DE SOLUCIONES DIGITALES Y GRÁFICAS</strong></h2>
+        <p>En SINIY combinamos diseño, tecnología y estrategia para potenciar marcas con alto impacto visual y comercial.</p>
+        <p>Ofrecemos soluciones profesionales en impresión litográfica y digital, diseño web corporativo y comercio electrónico, así como estrategias de marketing digital y automatización.</p>
+      </div>
+      <div><img src="imagenes-siniy/banner-siniy001.png" alt="Banner empresarial"></div>
     </div>
-    <div class="agency-img">
-      <img src="imagenes-siniy/banner-siniy001.png" alt="Banner promo empresarial 001">
-    </div>
-  </div>
 
-  <h2 id="trabajamos" class="section-subtitle">Nuestros Clientes</h2>
-  <div class="cards">
-    <div class="card">
-      <div style="font-size: 2rem;">🏪</div>
-      <h3>Emprendedores y Tiendas Locales</h3>
-      <p>Diseñamos catálogos, pendones y material impreso para atraer clientes y destacar tu marca.</p>
+    <h2 id="trabajamos" class="section-subtitle">Nuestros Clientes</h2>
+    <div class="grid three">
+      <div class="card"><div style="font-size: 2rem;">🏪</div><h3>Emprendedores y Tiendas Locales</h3><p>Diseñamos catálogos, pendones y material impreso para atraer clientes y destacar tu marca.</p></div>
+      <div class="card"><div style="font-size: 2rem;">💻</div><h3>Negocios Digitales</h3><p>Desarrollamos sitios web profesionales, tiendas online y embudos de venta para captar y convertir.</p></div>
+      <div class="card"><div style="font-size: 2rem;">📢</div><h3>Marcas que buscan crecer</h3><p>Implementamos campañas en redes, Google y automatizaciones para escalar tu presencia y ventas.</p></div>
     </div>
-    <div class="card">
-      <div style="font-size: 2rem;">💻</div>
-      <h3>Negocios Digitales</h3>
-      <p>Desarrollamos sitios web profesionales, tiendas online y embudos de venta para captar y convertir.</p>
-    </div>
-    <div class="card">
-      <div style="font-size: 2rem;">📢</div>
-      <h3>Marcas que buscan crecer</h3>
-      <p>Implementamos campañas en redes, Google y automatizaciones para escalar tu presencia y ventas.</p>
-    </div>
-  </div>
 
-  <section class="section">
     <h2 id="portafolio" class="section-subtitle">Portafolio de Servicios</h2>
-    <div class="cards">
-      <div class="card">
-        <div style="font-size: 2rem;">🎨</div>
-        <h3>Diseño Gráfico</h3>
-        <p>Logos, piezas publicitarias, editoriales, redes sociales, empaques y UX/UI.</p>
-      </div>
-      <div class="card">
-        <div style="font-size: 2rem;">💻</div>
-        <h3>Páginas Web</h3>
-        <p>Landing pages, tiendas online y sitios corporativos optimizados.</p>
-      </div>
-      <div class="card">
-        <div style="font-size: 2rem;">🖨️</div>
-        <h3>Impresión Publicitaria</h3>
-        <p>Volantes, tarjetas, pendones, stickers y material POP para eventos.</p>
-      </div>
-      <div class="card">
-        <div style="font-size: 2rem;">👕</div>
-        <h3>Sublimación Personalizada</h3>
-        <p>Tazas, camisetas, cojines, souvenirs y más con tu marca o diseño.</p>
-      </div>
-      <div class="card">
-        <div style="font-size: 2rem;">📱</div>
-        <h3>Marketing Digital</h3>
-        <p>Redes sociales, Meta Ads, Google Ads y automatización de ventas.</p>
-      </div>
-      <div class="card">
-        <div style="font-size: 2rem;">🎓</div>
-        <h3>Consultoría y Formación</h3>
-        <p>Mentorías, asesorías, cursos en diseño, branding y herramientas digitales.</p>
-      </div>
+    <div class="grid three">
+      <div class="card"><div style="font-size: 2rem;">🎨</div><h3>Diseño Gráfico</h3><p>Logos, piezas publicitarias, editoriales, redes sociales, empaques y UX/UI.</p></div>
+      <div class="card"><div style="font-size: 2rem;">💻</div><h3>Páginas Web</h3><p>Landing pages, tiendas online y sitios corporativos optimizados.</p></div>
+      <div class="card"><div style="font-size: 2rem;">🖨️</div><h3>Impresión Publicitaria</h3><p>Volantes, tarjetas, pendones, stickers y material POP para eventos.</p></div>
+      <div class="card"><div style="font-size: 2rem;">👕</div><h3>Sublimación Personalizada</h3><p>Tazas, camisetas, cojines, souvenirs y más con tu marca o diseño.</p></div>
+      <div class="card"><div style="font-size: 2rem;">📱</div><h3>Marketing Digital</h3><p>Redes sociales, Meta Ads, Google Ads y automatización de ventas.</p></div>
+      <div class="card"><div style="font-size: 2rem;">🎓</div><h3>Consultoría y Formación</h3><p>Mentorías, asesorías, cursos en diseño, branding y herramientas digitales.</p></div>
     </div>
-  </section>
 
-
-  <section class="section">
-    <h2 id="contacto" class="section-subtitle">!Hablemos¡</h2>
-    <p>Contáctanos por WhatsApp al <a href="https://wa.me/573237028814" target="_blank"><strong>+57 323 702 8814</strong></a> o escríbenos a <a href="mailto:hola@siniy.com"><strong>hola@siniy.com</strong></a></p>
-  </section>
+    <h2 id="contacto" class="section-subtitle">¡Hablemos!</h2>
+    <p class="section-desc">Contáctanos por WhatsApp al <a href="https://wa.me/573237028814" target="_blank"><strong>+57 323 702 8814</strong></a> o escríbenos a <a href="mailto:hola@siniy.com"><strong>hola@siniy.com</strong></a></p>
+  </div>
 
   <footer>
-    <p>&copy; 2025 SINIY Soluciones Digitales. Todos los derechos reservados.</p>
+    &copy; 2025 SINIY Soluciones Digitales. Todos los derechos reservados.
   </footer>
 
-  <!-- Modal de cotización -->
+  <!-- Modal -->
   <div id="cotizacionModal" class="modal">
     <div class="modal-content">
       <span class="close" onclick="document.getElementById('cotizacionModal').style.display='none'">&times;</span>
@@ -455,31 +149,24 @@
         <input type="text" name="name" placeholder="Tu nombre" required />
         <input type="email" name="email" placeholder="Tu correo" required />
         <textarea name="message" rows="5" placeholder="Cuéntanos qué necesitas..." required></textarea>
-        <button type="submit" class="btn-primary">Enviar</button>
+        <button type="submit" class="btn primary">Enviar</button>
       </form>
     </div>
   </div>
 
-  <!-- Botón flotante WhatsApp -->
+  <!-- Botón WhatsApp -->
   <a href="https://wa.me/573237028814" class="whatsapp-btn" target="_blank">
     <img src="whatsappboton.png" alt="WhatsApp" />
   </a>
 
   <script>
-    window.onclick = function (event) {
-      const modal = document.getElementById('cotizacionModal');
-      if (event.target == modal) {
-        modal.style.display = 'none';
-      }
-    };
-  </script>
-  
-  <script>
-    function toggleMenu() {
-      const nav = document.getElementById("navMenu");
-      nav.classList.toggle("active");
+    function toggleMenu(){
+      document.getElementById("navMenu").classList.toggle("show");
+    }
+    window.onclick=function(e){
+      const modal=document.getElementById('cotizacionModal');
+      if(e.target==modal){modal.style.display='none';}
     }
   </script>
-
 </body>
 </html>
