@@ -56,29 +56,39 @@
     .btn.primary{background:linear-gradient(90deg,var(--primary),#3b82f6);color:white}
     .btn.ghost{background:transparent;color:#e5e7eb}
 
-    /* Logos más grandes */
     .logos {
       display: flex;
       flex-wrap: wrap;
       gap: 16px;
       align-items: center;
     }
+    
+    /* --- CÓDIGO MODIFICADO PARA LOS LOGOS --- */
     .logo-item {
       background: rgba(255, 255, 255, .02);
       border: 1px solid rgba(255, 255, 255, .06);
       border-radius: 14px;
-      padding: 18px;
+      padding: 24px; /* Aumentamos el espacio interno */
       display: flex;
       align-items: center;
       justify-content: center;
-      min-width: 200px;
+      flex-grow: 1; /* Permite que los logos ocupen el espacio disponible */
+      min-width: 250px; /* Hacemos la base más ancha */
+      transition: transform 0.3s ease, box-shadow 0.3s ease; /* Añadimos la transición suave */
     }
+    
+    .logo-item:hover {
+      transform: scale(1.05); /* Aumenta el tamaño en un 5% */
+      box-shadow: 0 0 20px rgba(12, 95, 255, 0.2); /* Opcional: añade un brillo sutil */
+    }
+
     .logo-item img {
-      max-width: 180px;
-      max-height: 70px;
+      max-width: 220px; /* Aumentamos el tamaño máximo del logo */
+      max-height: 90px; /* Aumentamos la altura máxima */
       filter: drop-shadow(0 6px 18px rgba(0, 0, 0, .35));
       display: block;
     }
+    /* --- FIN DEL CÓDIGO MODIFICADO --- */
 
     .form label{font-size:14px;color:#cbd5e1;margin-bottom:6px;display:block}
     .input, textarea{
@@ -103,17 +113,17 @@
     .whatsapp-btn img{width:60px;height:60px}
 
     .logo-siniy {
-        max-height: 60px; /* puedes subir a 60px si quieres más grande */
+        max-height: 60px;
         height: auto;
         width: auto;
         filter: drop-shadow(0 4px 16px rgba(12,95,255,.4));
-      }
+    }
       
-      @media (max-width: 768px) {
-        .logo-siniy {
-          max-height: 50px; /* un poco más pequeño en móviles */
-        }
+    @media (max-width: 768px) {
+      .logo-siniy {
+        max-height: 50px;
       }
+    }
 
   </style>
 
@@ -136,7 +146,6 @@
         <a href="https://siniy.pro">
           <img alt="SINIY" src="logoblancosiniy.png" class="logo-siniy" />
         </a>
-
         <span class="tag">Alianzas & Partners</span>
       </div>
       <div style="display:flex;align-items:center;gap:14px">
