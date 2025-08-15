@@ -181,6 +181,9 @@
       <span class="close" onclick="document.getElementById('cotizacionModal').style.display='none'">&times;</span>
       <h3>Solicita tu cotización</h3>
       <form action="https://formsubmit.co/hola@siniy.pro" method="POST">
+        
+        <input type="hidden" name="_next" value="https://siniy.pro/gracias">
+        
         <input type="text" name="name" placeholder="Tu nombre" required />
         <input type="email" name="email" placeholder="Tu correo" required />
         <textarea name="message" rows="5" placeholder="Cuéntanos qué necesitas..." required></textarea>
