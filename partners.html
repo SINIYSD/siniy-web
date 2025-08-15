@@ -4,6 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>SINIY | Alianzas Comerciales & Partners</title>
+  <link rel="icon" href="siniyfavicon.png" type="image/png" />
   <meta name="description" content="Únete a la red de aliados de SINIY Soluciones Digitales y accede a beneficios: precios especiales, bonos, apoyo entre marcas y mayor visibilidad." />
   <meta name="robots" content="index,follow" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -100,6 +101,20 @@
     }
     .whatsapp-btn{position:fixed;bottom:20px;right:20px;z-index:99}
     .whatsapp-btn img{width:60px;height:60px}
+
+    .logo-siniy {
+        max-height: 50px; /* puedes subir a 60px si quieres más grande */
+        height: auto;
+        width: auto;
+        filter: drop-shadow(0 4px 16px rgba(12,95,255,.4));
+      }
+      
+      @media (max-width: 768px) {
+        .logo-siniy {
+          max-height: 40px; /* un poco más pequeño en móviles */
+        }
+      }
+
   </style>
 
   <script type="application/ld+json">
@@ -118,7 +133,10 @@
   <header>
     <div class="wrap" style="display:flex;justify-content:space-between;align-items:center;gap:16px;">
       <div class="brand">
-        <a href="https://siniy.pro"><img alt="SINIY" src="logoblancosiniy.png" width="28" height="28" style="filter:drop-shadow(0 4px 16px rgba(12,95,255,.4))"/></a>
+        <a href="https://siniy.pro">
+          <img alt="SINIY" src="logoblancosiniy.png" class="logo-siniy" />
+        </a>
+
         <span class="tag">Alianzas & Partners</span>
       </div>
       <div style="display:flex;align-items:center;gap:14px">
