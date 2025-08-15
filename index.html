@@ -69,20 +69,83 @@
     form input:focus, form textarea:focus{border-color:rgba(0,212,255,.55);box-shadow:0 0 0 3px rgba(0,212,255,.15);outline:none}
     .whatsapp-btn{position:fixed;bottom:20px;right:20px;z-index:99}
     .whatsapp-btn img{width:60px;height:60px}
+
+    /* Header */
+    header {
+      background-color: #0a0a0a;
+      padding: 10px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    
+    /* Logo */
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .logo img {
+      height: 40px;
+      width: auto;
+    }
+    
+    .logo span {
+      font-size: 1.1rem;
+      color: white;
+      font-weight: 600;
+    }
+    
+    /* Navegación */
+    nav {
+      display: flex;
+      align-items: center;
+    }
+    
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 15px;
+      margin: 0;
+      padding: 0;
+    }
+    
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      padding: 8px 12px;
+      transition: background 0.3s;
+      border-radius: 4px;
+    }
+    
+    nav ul li a:hover {
+      background-color: #1e90ff;
+    }
+    
   </style>
 </head>
 <body>
   <header>
-    <a href="https://siniy.pro" class="brand"><img src="logoazulsiniy.png" alt="Logo SINIY"></a>
-    <div class="hamburger" onclick="toggleMenu()">☰</div>
-    <nav id="navMenu">
-      <a href="#tic">Nuestras TIC</a>
-      <a href="#nosotros">Sobre Nosotros</a>
-      <a href="#trabajamos">Nuestros Clientes</a>
-      <a href="#portafolio">Portafolio</a>
-      <a href="#contacto">Contáctanos</a>
-      <a class="btn primary" href="https://siniy.pro/partners">SINIY Partners</a>
-    </nav>
+    <div class="wrap" style="display:flex;justify-content:space-between;align-items:center;gap:16px;">
+      <div class="brand">
+        <a href="https://siniy.pro">
+          <img alt="SINIY" src="logoblancosiniy.png" class="logo-siniy" />
+        </a>
+
+        <span class="tag">Inicio</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:14px">
+        <nav id="nav">
+          <a href="https://siniy.pro/#tic">Nuestras TIC</a>
+          <a href="https://siniy.pro/#nosotros">Nosotros</a>
+          <a href="https://siniy.pro/#portafolio">Portafolio</a>
+          <a href="https://siniy.pro/#contacto">Contáctanos</a>
+          <a class="btn primary" href="https://siniy.pro/partners">SINIY Partners</a>
+        </nav>
+        <div class="hamburger" onclick="document.getElementById('nav').classList.toggle('show')">☰</div>
+      </div>
+    </div>
   </header>
 
   <div class="wrap">
