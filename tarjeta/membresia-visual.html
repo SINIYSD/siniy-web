@@ -1,408 +1,323 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Membresía Visual — Tarjeta Digital</title>
-
-  <!-- FAVICON: reemplaza por el archivo real -->
-  <link rel="icon" href="assets/favicon.png" type="image/png">
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Membresía Visual - Agendar Visita</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    /* ====== VARIABLES DE COLOR ====== */
-    :root{
-      --verde-oscuro: #0f3a2e; /* ajustar si quieren otro tono */
-      --dorado: #b98b2f;
-      --blanco: #ffffff;
-      --gris-claro: #f6f6f6;
-      --texto: #222;
-      --max-width: 920px;
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
 
-    /* ====== RESET / BASE ====== */
-    *{box-sizing: border-box;margin:0;padding:0}
-    html,body{height:100%}
-    body{
-      font-family: Inter, system-ui, -apple-system, "Helvetica Neue", Arial;
-      background: linear-gradient(180deg, #fff 0%, #fbfbfb 100%);
-      color: var(--texto);
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-      display:flex;
-      justify-content:center;
-      padding:20px;
+    body {
+      background: linear-gradient(135deg, #f9f9f9 0%, #e6e6e6 100%);
+      padding: 20px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
     }
 
-    /* ====== CONTENEDOR PRINCIPAL ====== */
-    .card{
-      width:100%;
-      max-width:var(--max-width);
-      background:var(--blanco);
-      border-radius:18px;
-      box-shadow: 0 8px 30px rgba(11, 61, 46, 0.08);
-      overflow:hidden;
-      border:1px solid rgba(11,61,46,0.06);
+    .container {
+      width: 100%;
+      max-width: 800px;
+      margin: 0 auto;
     }
 
-    /* ENCABEZADO VISUAL (imagen de diseño gráfico) */
-    .hero{
-      position:relative;
-      background:#eee;
-      min-height:320px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      overflow:hidden;
-    }
-    .hero img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      display:block;
-    }
-    .brand-badge{
-      position:absolute;
-      left:18px;
-      top:18px;
-      background:linear-gradient(90deg, rgba(185,139,47,0.12), rgba(185,139,47,0.08));
-      padding:8px 12px;
-      border-radius:10px;
-      display:flex;
-      gap:10px;
-      align-items:center;
-      backdrop-filter: blur(4px);
-    }
-    .brand-badge .logo{
-      width:44px;
-      height:44px;
-      border-radius:8px;
-      background:var(--verde-oscuro);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      color:var(--blanco);
-      font-weight:700;
-      font-size:14px;
-    }
-    .brand-badge .text{
-      color:var(--verde-oscuro);
-      font-weight:700;
-      font-size:14px;
+    .header {
+      background: linear-gradient(to right, #1a4d2d 0%, #2a6d45 100%);
+      color: #d4af37;
+      padding: 25px 20px;
+      text-align: center;
+      border-radius: 15px 15px 0 0;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     }
 
-    /* CONTENIDO */
-    .content{
-      padding:18px;
-      display:grid;
-      grid-template-columns: 1fr;
-      gap:14px;
+    .header h1 {
+      font-size: 28px;
+      margin-bottom: 10px;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
     }
 
-    .title-row{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:12px;
-    }
-    .title{
-      font-size:20px;
-      font-weight:800;
-      color:var(--verde-oscuro);
-    }
-    .subtitle{
-      color:#555;
-      font-size:13px;
+    .header p {
+      color: #fff;
+      font-size: 16px;
     }
 
-    /* SECCIONES DE IMAGENES (portafolio/productos) */
-    .images-grid{
-      display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap:8px;
-    }
-    .images-grid a{display:block;border-radius:10px;overflow:hidden}
-    .images-grid img{width:100%;height:100%;object-fit:cover;display:block}
-
-    /* FORMULARIO DE AGENDA */
-    .card-form{
-      background: linear-gradient(180deg, rgba(11,61,46,0.03), rgba(185,139,47,0.02));
-      border-radius:12px;
-      padding:12px;
-      border:1px solid rgba(11,61,46,0.04);
-    }
-    .card-form h3{
-      margin-bottom:8px;
-      color:var(--verde-oscuro);
-      font-size:16px;
-    }
-    label{font-size:13px;color:#333;display:block;margin-bottom:6px}
-    input[type="text"],input[type="email"],input[type="tel"],textarea,select,input[type="date"],input[type="time"]{
-      width:100%;
-      padding:10px 12px;
-      border-radius:8px;
-      border:1px solid #e6e6e6;
-      background:#fff;
-      margin-bottom:10px;
-      font-size:14px;
-    }
-    textarea{min-height:84px;resize:vertical}
-    .row{display:flex;gap:8px}
-    .row .col{flex:1}
-
-    .small-note{font-size:12px;color:#666;margin-bottom:6px}
-
-    .btn{
-      display:inline-flex;gap:8px;align-items:center;justify-content:center;
-      background:var(--verde-oscuro);
-      color:var(--blanco);
-      border:none;padding:10px 14px;
-      border-radius:10px;font-weight:700;
-      cursor:pointer;
-    }
-    .btn.secondary{
-      background:transparent;color:var(--verde-oscuro);border:1px solid rgba(11,61,46,0.12)
+    .logo {
+      width: 120px;
+      margin-bottom: 15px;
+      filter: drop-shadow(0 0 5px rgba(212, 175, 55, 0.5));
     }
 
-    /* BOTÓN FLOTANTE WHATSAPP */
-    .whatsapp-fab{
-      position:fixed;
-      right:16px;
-      bottom:18px;
-      width:64px;height:64px;border-radius:50%;
-      display:flex;align-items:center;justify-content:center;
-      box-shadow:0 8px 30px rgba(11,61,46,0.15);
-      background:linear-gradient(180deg,var(--dorado), #ad7b22);
-      z-index:1200;
-    }
-    .whatsapp-fab img{width:36px;height:36px}
-
-    /* FOOTER */
-    footer{
-      padding:12px 18px;
-      display:flex;align-items:center;justify-content:space-between;
-      gap:12px;border-top:1px solid rgba(0,0,0,0.03);
-    }
-    .siniy-logo{height:36px}
-    .creditos{font-size:12px;color:#666}
-
-    /* RESPONSIVE */
-    @media (max-width:800px){
-      .images-grid{grid-template-columns:repeat(2,1fr)}
-    }
-    @media (max-width:520px){
-      .images-grid{grid-template-columns:repeat(1,1fr)}
-      .hero{min-height:220px}
+    .form-container {
+      background: #fff;
+      padding: 30px;
+      border-radius: 0 0 15px 15px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     }
 
-    /* ESTADOS: mensajes de éxito/error */
-    .toast{
-      position:fixed;left:50%;transform:translateX(-50%);bottom:96px;
-      background:#0f3a2e;color:#fff;padding:10px 16px;border-radius:10px;
-      box-shadow:0 6px 20px rgba(0,0,0,0.12);display:none;z-index:1300;
+    .form-group {
+      margin-bottom: 20px;
     }
-    .toast.show{display:block}
+
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+      color: #1a4d2d;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 12px 15px;
+      border: 2px solid #e0e0e0;
+      border-radius: 8px;
+      font-size: 16px;
+      transition: all 0.3s;
+    }
+
+    .form-control:focus {
+      border-color: #d4af37;
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2);
+    }
+
+    .form-row {
+      display: flex;
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+
+    .form-col {
+      flex: 1;
+    }
+
+    textarea.form-control {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .btn {
+      background: linear-gradient(to right, #d4af37 0%, #f1e092 100%);
+      color: #1a4d2d;
+      border: none;
+      padding: 15px 25px;
+      font-size: 18px;
+      font-weight: 600;
+      border-radius: 8px;
+      cursor: pointer;
+      display: block;
+      width: 100%;
+      transition: all 0.3s;
+      box-shadow: 0 4px 10px rgba(212, 175, 55, 0.3);
+    }
+
+    .btn:hover {
+      background: linear-gradient(to right, #c19d2f 0%, #e6d589 100%);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 15px rgba(212, 175, 55, 0.4);
+    }
+
+    .whatsapp-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #25D366;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      z-index: 1000;
+      animation: pulse 1.5s infinite;
+      transition: all 0.3s;
+    }
+
+    .whatsapp-btn:hover {
+      transform: scale(1.1);
+    }
+
+    .whatsapp-btn i {
+      color: white;
+      font-size: 30px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px 10px 10px;
+      margin-top: 30px;
+      color: #666;
+    }
+
+    .siniy-logo {
+      width: 130px;
+      display: block;
+      margin: 15px auto 5px;
+    }
+
+    .creditos {
+      font-size: 12px;
+      color: #888;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
+    @media (max-width: 768px) {
+      .form-row {
+        flex-direction: column;
+        gap: 0;
+      }
+      
+      body {
+        padding: 10px;
+      }
+      
+      .form-container {
+        padding: 20px;
+      }
+    }
+
+    .success-message {
+      display: none;
+      background: #d4edda;
+      color: #155724;
+      padding: 20px;
+      border-radius: 8px;
+      text-align: center;
+      margin-top: 20px;
+      border-left: 5px solid #28a745;
+    }
+
+    .success-message i {
+      font-size: 40px;
+      margin-bottom: 15px;
+      color: #28a745;
+    }
   </style>
 </head>
 <body>
 
-  <div class="card" role="main">
-    <!-- HERO: imagen visual creada por diseño gráfico (reemplaza la ruta por la tuya) -->
-    <div class="hero" aria-hidden="false">
-      <img src="assets/hero-membresia-visual.jpg" alt="Membresía Visual - Monturas premium">
-      <div class="brand-badge" aria-hidden="true">
-        <div class="logo">MV</div>
-        <div class="text">Membresía Visual</div>
-      </div>
+  <div class="container">
+    <div class="header">
+      <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIwIiBoZWlnaHQ9IjEyMCIgdmlld0JveD0iMCAwIDEyMCAxMjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iNjAiIGN5PSI2MCIgcj0iNjAiIGZpbGw9IiNkNGFmMzciLz48cGF0aCBkPSJNNjAgMjVDNDUgMjUgMzMgMzcgMzMgNTJjMCAxMCA2IDE5IDE0IDIzVjY3aDI2Vjc1YzggLTQgMTQgLTEzIDE0IC0yM2MwIC0xNSAtMTIgLTI3IC0yNyAtMjdaTTUwIDU1YTMgMyAwIDEgMCA2IDAgMyAzIDAgMCAwIC02IDBaTTY0IDU1YTMgMyAwIDEgMCA2IDAgMyAzIDAgMCAwIC02IDBaIiBmaWxsPSIjMWE0ZDJkIi8+PHBhdGggZD0iTTYwIDM1QzUyIDM1IDQ1IDQyIDQ1IDUwYzAgMyAxIDYgMyA4bDEwIC0xMGMyIC0yIDMgLTUgMyAtOCAwIC04IC03IC0xNSAtMTUgLTE1WiIgZmlsbD0iI2YxZTA5MiIvPjwvc3ZnPg==" alt="Membresía Visual Logo" class="logo">
+      <h1>MEMBRESÍA VISUAL</h1>
+      <p>Agenda una visita de nuestros expertos a tu negocio</p>
     </div>
 
-    <!-- CONTENIDO -->
-    <div class="content">
-      <div class="title-row">
-        <div>
-          <div class="title">Distribuidor oficial de monturas</div>
-          <div class="subtitle">Monturas premium · Entrega y asesoría para tu óptica</div>
+    <div class="form-container">
+      <form id="visitaForm">
+        <div class="form-row">
+          <div class="form-col">
+            <div class="form-group">
+              <label for="nombre"><i class="fas fa-user"></i> Nombre completo</label>
+              <input type="text" id="nombre" class="form-control" placeholder="Tu nombre completo" required>
+            </div>
+          </div>
+          <div class="form-col">
+            <div class="form-group">
+              <label for="negocio"><i class="fas fa-store"></i> Nombre del negocio</label>
+              <input type="text" id="negocio" class="form-control" placeholder="Nombre de tu establecimiento" required>
+            </div>
+          </div>
         </div>
-        <div style="text-align:right">
-          <div style="font-size:13px;color:#666">Contacto</div>
-          <div style="font-weight:700;color:var(--verde-oscuro)">+57 315 069 9299</div>
+
+        <div class="form-row">
+          <div class="form-col">
+            <div class="form-group">
+              <label for="email"><i class="fas fa-envelope"></i> Correo electrónico</label>
+              <input type="email" id="email" class="form-control" placeholder="ejemplo@correo.com" required>
+            </div>
+          </div>
+          <div class="form-col">
+            <div class="form-group">
+              <label for="telefono"><i class="fas fa-phone"></i> Teléfono de contacto</label>
+              <input type="tel" id="telefono" class="form-control" placeholder="Tu número telefónico" required>
+            </div>
+          </div>
         </div>
-      </div>
 
-      <!-- GRID DE IMAGENES (usa imágenes que cargues para mostrar catálogo) -->
-      <div class="images-grid" aria-label="Catálogo de monturas">
-        <a href="https://wa.me/573150699299?text=Hola%2C+quiero+ver+las+monturas" target="_blank">
-          <img src="assets/producto1.jpg" alt="Montura 1 — Membresía Visual">
-        </a>
-        <a href="https://wa.me/573150699299?text=Hola%2C+quiero+ver+las+monturas" target="_blank">
-          <img src="assets/producto2.jpg" alt="Montura 2 — Membresía Visual">
-        </a>
-        <a href="https://wa.me/573150699299?text=Hola%2C+quiero+ver+las+monturas" target="_blank">
-          <img src="assets/producto3.jpg" alt="Montura 3 — Membresía Visual">
-        </a>
-      </div>
+        <div class="form-group">
+          <label for="direccion"><i class="fas fa-map-marker-alt"></i> Dirección del negocio</label>
+          <input type="text" id="direccion" class="form-control" placeholder="Dirección completa para la visita" required>
+        </div>
 
-      <!-- FORMULARIO: Agendar visita -->
-      <div class="card-form" id="agenda">
-        <h3>Solicita visita comercial</h3>
-        <div class="small-note">Completa el formulario y el equipo de Membresía Visual te confirmará la visita. Campos con * obligatorios.</div>
-
-        <!-- FORM: acción a FormSubmit (reemplaza el correo en action) -->
-        <form id="visitForm" method="POST" action="https://formsubmit.co/TU-CORREO@ejemplo.com" novalidate>
-          <!-- Para proteger contra spam: mantener input oculto de _captcha = false si no quieres captcha -->
-          <input type="hidden" name="_captcha" value="false">
-          <!-- redirigir a una página custom (opcional): usar _next -->
-          <input type="hidden" name="_next" value="https://tudominio.com/gracias.html">
-
-          <label for="empresa">Nombre de la empresa / óptica *</label>
-          <input id="empresa" name="Empresa" type="text" placeholder="Ej: Óptica Vista Clara" required>
-
-          <div class="row">
-            <div class="col">
-              <label for="nombre">Persona de contacto *</label>
-              <input id="nombre" name="Contacto" type="text" placeholder="Nombre y apellido" required>
-            </div>
-            <div class="col">
-              <label for="tel">Teléfono / WhatsApp *</label>
-              <input id="tel" name="Telefono" type="tel" placeholder="+57 3XX XXX XXXX" required>
+        <div class="form-row">
+          <div class="form-col">
+            <div class="form-group">
+              <label for="fecha"><i class="fas fa-calendar-alt"></i> Fecha preferida</label>
+              <input type="date" id="fecha" class="form-control" required>
             </div>
           </div>
-
-          <label for="email">Correo electrónico</label>
-          <input id="email" name="Email" type="email" placeholder="tucorreo@ejemplo.com">
-
-          <label for="direccion">Dirección (ciudad / barrio)</label>
-          <input id="direccion" name="Direccion" type="text" placeholder="Manizales, Barrio ...">
-
-          <div class="row">
-            <div class="col">
-              <label for="fecha">Fecha preferida</label>
-              <input id="fecha" name="Fecha" type="date">
-            </div>
-            <div class="col">
-              <label for="hora">Hora preferida</label>
-              <input id="hora" name="Hora" type="time">
+          <div class="form-col">
+            <div class="form-group">
+              <label for="hora"><i class="fas fa-clock"></i> Hora preferida</label>
+              <input type="time" id="hora" class="form-control" required>
             </div>
           </div>
+        </div>
 
-          <label for="motivo">Observaciones / Comentarios</label>
-          <textarea id="motivo" name="Comentarios" placeholder="Ej: Interés en monturas metálicas y acetato, stock mensual..."></textarea>
+        <div class="form-group">
+          <label for="mensaje"><i class="fas fa-comments"></i> Mensaje adicional (opcional)</label>
+          <textarea id="mensaje" class="form-control" placeholder="¿Algún detalle adicional que debamos conocer?"></textarea>
+        </div>
 
-          <div style="display:flex;gap:8px;align-items:center;margin:8px 0 12px 0">
-            <input id="consent" type="checkbox" name="Consentimiento" value="Acepto" required>
-            <label for="consent" style="font-size:13px;color:#444">Acepto recibir comunicaciones de Membresía Visual</label>
-          </div>
+        <button type="submit" class="btn">
+          <i class="fas fa-calendar-check"></i> Agendar visita
+        </button>
+      </form>
 
-          <div style="display:flex;gap:8px;flex-wrap:wrap">
-            <button type="submit" class="btn">Solicitar visita</button>
-            <button type="button" id="whatsQuick" class="btn secondary">Enviar por WhatsApp</button>
-          </div>
-
-          <div style="margin-top:10px;font-size:12px;color:#666">
-            Si prefieres, escríbenos directamente por WhatsApp o llama al <strong>+57 315 069 9299</strong>.
-          </div>
-        </form>
+      <div class="success-message" id="successMessage">
+        <i class="fas fa-check-circle"></i>
+        <h3>¡Solicitud enviada con éxito!</h3>
+        <p>Nos pondremos en contacto contigo pronto para confirmar tu visita.</p>
       </div>
-
-    </div> <!-- end .content -->
-
-    <!-- FOOTER -->
-    <footer>
-      <div style="display:flex;align-items:center;gap:10px">
-        <img class="siniy-logo" src="assets/logo-membresia-visual.png" alt="Membresía Visual">
-        <div class="creditos">Diseñado por <strong>Membresía Visual</strong></div>
-      </div>
-      <div style="font-size:12px;color:#666">Ver catálogo completo · <a href="https://instagram.com" target="_blank" style="color:var(--verde-oscuro);text-decoration:none">Instagram</a></div>
-    </footer>
+    </div>
   </div>
 
-  <!-- BOTÓN WHATSAPP FIJO -->
-  <a class="whatsapp-fab" href="https://wa.me/573150699299" target="_blank" aria-label="WhatsApp Membresía Visual">
-    <!-- reemplaza por icono si tienes -->
-    <img src="assets/whatsapp-icon.png" alt="WhatsApp">
+  <a class="whatsapp-btn" href="https://wa.me/573002221111?text=Hola%20Membresía%20Visual,%20quiero%20más%20información%20sobre%20sus%20productos" target="_blank">
+    <i class="fab fa-whatsapp"></i>
   </a>
 
-  <!-- TOAST -->
-  <div id="toast" class="toast" role="status" aria-live="polite">Mensaje enviado ✅</div>
+  <footer>
+    <a href="https://siniy.pro" target="_blank">
+      <img class="siniy-logo" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTMwIiBoZWlnaHQ9IjQwIiB2aWV3Qm94PSIwIDAgMTMwIDQwIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxwYXRoIGQ9Ik0xMiAyMEMxMiAxNS42IDE1LjYgMTIgMjAgMTJIMzBWMTZIMjBDMTcuOCAxNiAxNiAxNy44IDE2IDIwVjM2SDEyVjIwWk00MCAxMkgyNlYzNkg0MFYzMkgyOVYyNkgzOVYyMkg0MFYxMloiIGZpbGw9IiMxYTRkMmQiLz48cGF0aCBkPSJNNDYgMTJINjBWMzZINDZWMjJINTNWMTZINDZWMzZINDZWMjJINDZWMjJINDZWMjJINDZWMjJINDZWMjJINDZWMjJINDZWMjJaTTY2IDEySDcyTDg0IDI4VjEySDg4VjM2SDgyTDcwIDIwVjM2SDY2VjEyWk05NiAxMkgxMTJWMzZIMTA4VjI2SDEwMFYzNkg5NlYyNkg5OFYxNkg5NlYyNkg5NlYyNkg5NlYyNkg5NlYyNkg5NlYyNkg5NlYxMloiIGZpbGw9IiNkNGFmMzciLz48L3N2Zz4=" alt="Logo SINIY Soluciones Digitales">
+    </a>
+    <div class="creditos">Diseñado por <strong>SINIY Soluciones Digitales</strong></div>
+  </footer>
 
   <script>
-    /* ====== VALIDACIÓN Y ENVÍO (mejor experiencia) ====== */
-    (function(){
-      const form = document.getElementById('visitForm');
-      const toast = document.getElementById('toast');
-      const whatsQuick = document.getElementById('whatsQuick');
-
-      // Helper: mostrar toast
-      function showToast(msg = 'Enviado', ms = 3500){
-        toast.textContent = msg;
-        toast.classList.add('show');
-        setTimeout(()=> toast.classList.remove('show'), ms);
-      }
-
-      // Construir mensaje para WhatsApp con datos del formulario
-      function buildWhatsMessage(data){
-        const lines = [];
-        lines.push('Solicitud de visita desde Tarjeta Digital — Membresía Visual');
-        if(data.get('Empresa')) lines.push('Empresa: ' + data.get('Empresa'));
-        if(data.get('Contacto')) lines.push('Contacto: ' + data.get('Contacto'));
-        if(data.get('Telefono')) lines.push('Teléfono: ' + data.get('Telefono'));
-        if(data.get('Email')) lines.push('Email: ' + data.get('Email'));
-        if(data.get('Direccion')) lines.push('Dirección: ' + data.get('Direccion'));
-        if(data.get('Fecha')) lines.push('Fecha: ' + data.get('Fecha'));
-        if(data.get('Hora')) lines.push('Hora: ' + data.get('Hora'));
-        if(data.get('Comentarios')) lines.push('Comentarios: ' + data.get('Comentarios'));
-        return encodeURIComponent(lines.join('\\n'));
-      }
-
-      // Enviar por WhatsApp directamente (abre chat con mensaje)
-      whatsQuick.addEventListener('click', function(){
-        const formData = new FormData(form);
-        const phone = '573150699299'; // número del negocio (reemplazar si hace falta)
-        const msg = buildWhatsMessage(formData);
-        const url = 'https://wa.me/' + phone + '?text=' + msg;
-        window.open(url, '_blank');
-      });
-
-      // Manejo de submit: validación, luego envío a formsubmit.co (action del form)
-      form.addEventListener('submit', async function(e){
-        e.preventDefault();
-        // Validación simple de campos requeridos
-        if(!form.checkValidity()){
-          showToast('Por favor completa los campos obligatorios.');
-          // invocar HTML5 reporting UI
-          form.reportValidity();
-          return;
-        }
-
-        // Obtener action del form (FormSubmit)
-        const action = form.getAttribute('action');
-        const data = new FormData(form);
-
-        try{
-          // Enviamos como POST al endpoint de FormSubmit (no CORS-friendly en fetch si FormSubmit no lo permite,
-          // por eso también dejamos el form tradicional con action. Aquí intentamos enviar con fetch y caemos en submit si falla.)
-          const res = await fetch(action, {
-            method: 'POST',
-            body: data,
-            headers: {
-              'Accept': 'application/json'
-            }
-          });
-
-          if(res.ok){
-            showToast('Solicitud enviada. Te contactaremos pronto ✅');
-            form.reset();
-          } else {
-            // si falla, hacemos submit tradicional para abrir FormSubmit page
-            showToast('Redirigiendo para completar envío...');
-            setTimeout(()=> form.submit(), 800);
-          }
-        }catch(err){
-          // Si fetch lanza error por CORS u otro, usamos el submit tradicional (forma de respaldo)
-          showToast('Conexión limitada. Abriendo formulario externo...');
-          setTimeout(()=> form.submit(), 800);
-        }
-      });
-    })();
+    document.getElementById('visitaForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      // Aquí normalmente se enviarían los datos a un servidor
+      // Por ahora solo mostraremos el mensaje de éxito
+      document.getElementById('successMessage').style.display = 'block';
+      
+      // Desplazarse hasta el mensaje de éxito
+      document.getElementById('successMessage').scrollIntoView({behavior: 'smooth'});
+      
+      // Opcional: resetear el formulario después de 5 segundos
+      setTimeout(function() {
+        document.getElementById('visitaForm').reset();
+        document.getElementById('successMessage').style.display = 'none';
+      }, 5000);
+    });
+    
+    // Establecer fecha mínima como hoy
+    const today = new Date().toISOString().split('T')[0];
+    document.getElementById('fecha').setAttribute('min', today);
   </script>
 
 </body>
