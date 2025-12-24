@@ -7,7 +7,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
   
   <style>
-    /* --- RESE T & BASICS --- */
+    /* --- RESET & BASICS --- */
     * {
       margin: 0;
       padding: 0;
@@ -24,53 +24,58 @@
     a { text-decoration: none; }
     ul { list-style: none; }
 
-    /* --- COLORES --- */
+    /* --- COLORES ACTUALIZADOS PARA MAYOR CONTRASTE --- */
     :root {
-      --primary: #1e2a3a; /* Azul oscuro profesional */
-      --accent: #f39c12;  /* Naranja construcción */
+      --primary: #0d1b2a; /* Azul oscuro intenso y profesional */
+      --accent: #f39c12;  /* Naranja/Dorado vibrante para acentos */
+      --secondary-accent: #e74c3c; /* Rojo para llamadas a la acción menores */
       --white: #ffffff;
-      --grey: #f4f4f4;
+      --grey: #f0f2f5;
+      --text-dark: #1c2833;
     }
 
     /* --- HEADER --- */
     header {
       background: var(--primary);
-      padding: 15px 20px;
+      padding: 10px 20px; /* Reducido el padding vertical para que el logo se vea más grande relativo al header */
       display: flex;
       justify-content: space-between;
       align-items: center;
       position: sticky;
       top: 0;
       z-index: 100;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
     }
 
     .logo img {
-      height: 60px; /* Ajusta según el tamaño de tu imagen */
+      height: 80px; /* Aumentado significativamente el tamaño del logo */
       width: auto;
       display: block;
+      /* Asegura que el logo resalte más sobre el fondo oscuro */
+      filter: drop-shadow(0px 2px 2px rgba(0,0,0,0.3));
     }
 
     nav ul {
       display: flex;
-      gap: 20px;
+      gap: 25px;
     }
 
     nav a {
       color: var(--white);
-      font-weight: bold;
-      font-size: 0.9rem;
+      font-weight: 600;
+      font-size: 1rem;
       text-transform: uppercase;
+      transition: color 0.3s;
     }
 
     nav a:hover { color: var(--accent); }
 
     /* --- HERO SECTION (Portada) --- */
     .hero {
-      background-image: linear-gradient(rgba(30, 42, 58, 0.8), rgba(30, 42, 58, 0.7)), url('https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=1600&auto=format&fit=crop'); /* Imagen genérica de construcción */
+      background-image: linear-gradient(rgba(13, 27, 42, 0.75), rgba(13, 27, 42, 0.85)), url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=1600&auto=format&fit=crop'); /* Imagen de construcción de alta calidad */
       background-size: cover;
       background-position: center;
-      height: 80vh;
+      min-height: 85vh; /* Aumentada la altura */
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -81,137 +86,233 @@
     }
 
     .hero h1 {
-      font-size: 2.5rem;
-      margin-bottom: 20px;
+      font-size: 3.2rem;
+      margin-bottom: 25px;
       text-transform: uppercase;
-      letter-spacing: 2px;
+      letter-spacing: 3px;
+      font-weight: 700;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
     }
 
     .hero p {
-      font-size: 1.2rem;
-      max-width: 600px;
-      margin-bottom: 30px;
+      font-size: 1.4rem;
+      max-width: 700px;
+      margin-bottom: 40px;
+      font-weight: 300;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
     }
 
     .btn-cta {
       background: var(--accent);
       color: var(--white);
-      padding: 15px 30px;
-      border-radius: 5px;
+      padding: 18px 40px;
+      border-radius: 50px;
       font-weight: bold;
-      transition: background 0.3s;
+      font-size: 1.1rem;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 15px rgba(243, 156, 18, 0.4);
     }
 
-    .btn-cta:hover { background: #d35400; }
+    .btn-cta:hover { 
+      background: #d35400; 
+      transform: translateY(-3px);
+      box-shadow: 0 7px 20px rgba(243, 156, 18, 0.6);
+    }
 
-    /* --- SERVICIOS --- */
+    /* --- SERVICIOS NUTRIDOS --- */
     .section {
-      padding: 60px 20px;
+      padding: 80px 20px;
       text-align: center;
     }
 
+    .section-header {
+        margin-bottom: 50px;
+    }
+
     .section h2 {
-      color: var(--primary);
-      margin-bottom: 40px;
-      font-size: 2rem;
+      color: var(--text-dark);
+      font-size: 2.5rem;
       text-transform: uppercase;
+      margin-bottom: 15px;
+      font-weight: 700;
+      position: relative;
+      display: inline-block;
+    }
+    
+    .section h2::after {
+        content: '';
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 4px;
+        background: var(--accent);
+    }
+
+    .section-desc {
+        color: #666;
+        font-size: 1.1rem;
+        max-width: 600px;
+        margin: 0 auto;
     }
 
     .servicios-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 30px;
-      max-width: 1200px;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* Tarjetas más anchas */
+      gap: 35px;
+      max-width: 1300px;
       margin: 0 auto;
     }
 
     .card {
       background: var(--white);
-      padding: 30px;
-      border-radius: 8px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-      border-bottom: 4px solid var(--accent);
-      transition: transform 0.3s;
+      padding: 35px;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      border-top: 5px solid var(--accent); /* Acento en la parte superior */
+      transition: all 0.3s ease;
+      text-align: left; /* Alinear texto a la izquierda para mejor lectura */
+      position: relative;
+      overflow: hidden;
     }
 
-    .card:hover { transform: translateY(-5px); }
+    .card:hover { 
+        transform: translateY(-10px); 
+        box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+    }
     
-    .card h3 { margin-bottom: 15px; color: var(--primary); }
-    
+    .card-icon-wrapper {
+        display: inline-block;
+        padding: 15px;
+        background: rgba(243, 156, 18, 0.1);
+        border-radius: 50%;
+        margin-bottom: 20px;
+    }
+
     .icon-serv {
-      font-size: 40px;
+      font-size: 35px;
       color: var(--accent);
-      margin-bottom: 15px;
       display: block;
+    }
+
+    .card h3 { 
+        margin-bottom: 15px; 
+        color: var(--text-dark);
+        font-size: 1.4rem;
+        font-weight: 700;
+    }
+
+    .card p {
+        color: #555;
+        font-size: 1rem;
+    }
+
+    .card-highlight {
+        border-top-color: var(--primary);
+    }
+    
+    .card-highlight .card-icon-wrapper {
+        background: rgba(13, 27, 42, 0.1);
+    }
+    
+    .card-highlight .icon-serv {
+        color: var(--primary);
     }
 
     /* --- GALERIA / PROCESO --- */
     .bg-grey { background-color: var(--grey); }
 
     .features-list {
-      max-width: 800px;
+      max-width: 850px;
       margin: 0 auto;
       text-align: left;
     }
 
     .features-list li {
-      margin-bottom: 15px;
-      font-size: 1.1rem;
+      margin-bottom: 20px;
+      font-size: 1.2rem;
       display: flex;
-      align-items: center;
+      align-items: flex-start; /* Alinear arriba si el texto es largo */
+      color: var(--text-dark);
     }
     
     .features-list li::before {
-      content: "✔";
+      content: "✓";
       color: var(--accent);
-      margin-right: 10px;
+      margin-right: 15px;
       font-weight: bold;
-      font-size: 1.2rem;
+      font-size: 1.4rem;
+      line-height: 1;
+      margin-top: 4px;
     }
 
-    /* --- FOOTER --- */
+    /* --- FOOTER CON CREDITOS SINIY --- */
     footer {
-      background: var(--primary);
-      color: #bbb;
       text-align: center;
       padding: 40px 20px;
+      background-color: #e9ecef; /* Color de fondo del footer del ejemplo */
+      color: #555;
+    }
+
+    footer h4 {
+        font-size: 1.5rem;
+        color: var(--primary);
+        margin-bottom: 15px;
+    }
+
+    footer p {
+        font-size: 1.1rem;
+        margin-bottom: 25px;
     }
 
     .siniy-logo {
-      width: 100px;
+      width: 130px;
       display: block;
-      margin: 20px auto 10px auto;
-      opacity: 0.8;
+      margin: 30px auto 10px auto;
+      opacity: 0.9;
+      transition: opacity 0.3s;
     }
 
+    .siniy-logo:hover { opacity: 1; }
+
     .creditos {
-      font-size: 13px;
+      font-size: 12px;
+      color: #888;
+    }
+    
+    .creditos strong {
+        color: var(--primary);
     }
 
     /* --- BOTON WHATSAPP (Referencia del usuario) --- */
     .whatsapp-btn {
       position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background-color: transparent;
+      bottom: 30px;
+      right: 30px;
+      background-color: #25d366; /* Color verde oficial de WhatsApp */
       border: none;
       border-radius: 50%;
-      padding: 10px;
-      animation: pulse 1.5s infinite;
+      padding: 12px;
+      animation: pulse 2s infinite;
       z-index: 1000;
       cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
     .whatsapp-btn img {
-      width: 60px; /* Un poco más grande para visibilidad */
-      height: 60px;
-      filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3)); /* Sombra para que resalte */
+      width: 50px;
+      height: 50px;
+      filter: brightness(0) invert(1); /* Vuelve el icono blanco */
     }
 
     @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.1); }
-      100% { transform: scale(1); }
+      0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+      70% { transform: scale(1.1); box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+      100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
     }
 
     /* Responsive Nav Toggle (Simple) */
@@ -219,7 +320,12 @@
       nav ul {
         display: none; /* Ocultar menú en móvil por simplicidad */
       }
-      .hero h1 { font-size: 1.8rem; }
+      .hero h1 { font-size: 2.2rem; }
+      .hero p { font-size: 1.1rem; }
+      .btn-cta { padding: 15px 30px; font-size: 1rem; }
+      .section h2 { font-size: 2rem; }
+      .whatsapp-btn { bottom: 20px; right: 20px; padding: 10px; }
+      .whatsapp-btn img { width: 45px; height: 45px; }
     }
   </style>
 </head>
@@ -239,64 +345,96 @@
   </header>
 
   <section class="hero">
-    <h1>Transformamos tus ideas en realidad</h1>
-    <p>Maestro de obra experto en acabados, remodelaciones y construcción general. Calidad y cumplimiento garantizados.</p>
-    <a href="https://wa.me/573217181858?text=Hola,%20me%20interesa%20cotizar%20un%20trabajo" class="btn-cta" target="_blank">SOLICITAR COTIZACIÓN</a>
+    <h1>Transformamos Espacios, Construimos Sueños</h1>
+    <p>Maestro de obra experto en acabados de lujo, remodelaciones integrales y soluciones constructivas innovadoras. Calidad superior y atención al detalle garantizadas.</p>
+    <a href="https://wa.me/573217181858?text=Hola,%20me%20interesa%20cotizar%20un%20proyecto%20de%20remodelaci%C3%B3n" class="btn-cta" target="_blank">¡COTIZA TU PROYECTO AHORA!</a>
   </section>
 
   <section id="servicios" class="section">
-    <h2>Nuestros Servicios</h2>
+    <div class="section-header">
+        <h2>Nuestros Servicios Especializados</h2>
+        <p class="section-desc">Ofrecemos una amplia gama de soluciones para satisfacer todas tus necesidades de construcción y diseño.</p>
+    </div>
     <div class="servicios-grid">
       
       <div class="card">
-        <span class="icon-serv">🏠</span>
-        <h3>Remodelaciones Integrales</h3>
-        <p>Renovamos cocinas, baños, salas y espacios comerciales. Damos nueva vida a tu propiedad con diseños modernos.</p>
+        <div class="card-icon-wrapper"><span class="icon-serv">🏠</span></div>
+        <h3>Remodelaciones Integrales y de Lujo</h3>
+        <p>Transformamos cocinas, baños, y espacios completos con diseños modernos y funcionales. Desde la demolición hasta el último detalle.</p>
+      </div>
+
+      <div class="card card-highlight">
+        <div class="card-icon-wrapper"><span class="icon-serv">✨</span></div>
+        <h3>Acabados Arquitectónicos de Alta Gama</h3>
+        <p>Aplicación experta de estuco veneciano, pinturas especiales, texturizados y molduras decorativas para un toque de distinción.</p>
       </div>
 
       <div class="card">
-        <span class="icon-serv">✨</span>
-        <h3>Acabados de Calidad</h3>
-        <p>Estuco, pintura, texturizados y detalles finales que marcan la diferencia. Perfección en cada esquina.</p>
+        <div class="card-icon-wrapper"><span class="icon-serv">🧱</span></div>
+        <h3>Instalación de Pisos y Enchapes</h3>
+        <p>Expertos en porcelanato de gran formato, mármol, granito, cerámica y pisos laminados/SPC. Nivelación láser y acabados perfectos.</p>
       </div>
 
+      <div class="card card-highlight">
+        <div class="card-icon-wrapper"><span class="icon-serv">🔨</span></div>
+        <h3>Sistemas Drywall y Superboard</h3>
+        <p>Diseño y construcción de cielos rasos con figuras e iluminación indirecta, muros divisorios acústicos y fachadas ligeras.</p>
+      </div>
+      
       <div class="card">
-        <span class="icon-serv">🧱</span>
-        <h3>Enchapes y Pisos</h3>
-        <p>Instalación experta de cerámica, porcelanato, mármol y pisos laminados. Nivelación y fraguado perfecto.</p>
+        <div class="card-icon-wrapper"><span class="icon-serv">📱</span></div>
+        <h3>Hogar Inteligente (Domótica)</h3>
+        <p>Integramos tecnología para controlar iluminación, cortinas, y seguridad desde tu smartphone. Moderniza tu hogar.</p>
       </div>
 
-      <div class="card">
-        <span class="icon-serv">🔨</span>
-        <h3>Drywall y Estructuras</h3>
-        <p>Cielos rasos, muros divisorios en Drywall y Superboard. Soluciones rápidas y limpias para dividir espacios.</p>
+       <div class="card card-highlight">
+        <div class="card-icon-wrapper"><span class="icon-serv">💧</span></div>
+        <h3>Impermeabilización Avanzada</h3>
+        <p>Soluciones definitivas para humedades en terrazas, cubiertas, sótanos y piscinas con productos de última generación.</p>
+      </div>
+      
+       <div class="card">
+        <div class="card-icon-wrapper"><span class="icon-serv">🪚</span></div>
+        <h3>Carpintería Arquitectónica a Medida</h3>
+        <p>Diseño y fabricación de cocinas integrales, closets, muebles de baño y puertas de madera personalizadas.</p>
+      </div>
+
+       <div class="card card-highlight">
+        <div class="card-icon-wrapper"><span class="icon-serv">📐</span></div>
+        <h3>Asesoría y Diseño de Interiores</h3>
+        <p>Te ayudamos a visualizar tu proyecto con planos y renders 3D antes de iniciar la obra. Optimización de espacios.</p>
       </div>
       
     </div>
   </section>
 
   <section id="experiencia" class="section bg-grey">
-    <h2>¿Por qué elegirnos?</h2>
+    <div class="section-header">
+        <h2>¿Por qué elegirnos?</h2>
+        <p class="section-desc">Comprometidos con la excelencia y la satisfacción total de nuestros clientes.</p>
+    </div>
     <ul class="features-list">
-      <li><strong>Experiencia Comprobada:</strong> Años de trabajo en el sector construcción.</li>
-      <li><strong>Cumplimiento:</strong> Entregamos las obras en los tiempos pactados.</li>
-      <li><strong>Presupuesto Transparente:</strong> Sin costos ocultos ni sorpresas finales.</li>
-      <li><strong>Limpieza y Orden:</strong> Trabajamos manteniendo el cuidado de su hogar.</li>
+      <li><strong>Experiencia Comprobada:</strong> Años de trayectoria liderando proyectos exitosos en el sector.</li>
+      <li><strong>Cumplimiento Garantizado:</strong> Entregamos las obras en los tiempos y presupuestos pactados.</li>
+      <li><strong>Materiales de Primera:</strong> Solo trabajamos con insumos de alta calidad para asegurar durabilidad.</li>
+      <li><strong>Equipo Profesional Calificado:</strong> Personal experto, responsable y asegurado.</li>
+      <li><strong>Limpieza y Orden:</strong> Mantenemos el sitio de trabajo impecable durante y después de la obra.</li>
+      <li><strong>Garantía por Escrito:</strong> Respaldamos la calidad de nuestro trabajo con garantías claras.</li>
     </ul>
   </section>
 
   <footer id="contacto">
-    <p><strong>Contáctanos hoy mismo</strong></p>
-    <p>📞 +57 321 718 1858</p>
+    <h4>¡Hablemos de tu próximo proyecto!</h4>
+    <p>📞 +57 321 718 1858 | ✉️ contacto@mdeobras.com</p>
     <br>
     
-    <div class="creditos">
-      &copy; 2024 Servicios de Construcción y Mantenimiento.<br>
-      Diseñado para MDE.
-    </div>
+    <a href="https://siniy.pro" target="_blank">
+      <img class="siniy-logo" src="https://via.placeholder.com/130x40/0d1b2a/ffffff?text=SINIY+LOGO" alt="Logo SINIY Soluciones Digitales">
+      </a>
+    <div class="creditos">Diseñado por <strong>SINIY Soluciones Digitales</strong></div>
   </footer>
 
-  <a class="whatsapp-btn" href="https://wa.me/573217181858?text=Hola,%20quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20remodelaciones" target="_blank" title="Contactar por WhatsApp">
+  <a class="whatsapp-btn" href="https://wa.me/573217181858?text=Hola,%20quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20sus%20servicios%20de%20remodelaci%C3%B3n" target="_blank" title="Contactar por WhatsApp">
     <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
   </a>
 
