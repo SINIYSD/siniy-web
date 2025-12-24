@@ -212,20 +212,80 @@
     .creditos { font-size: 12px; color: #888; }
     .creditos strong { color: var(--primary); }
 
-    /* --- BOTON WHATSAPP --- */
+    /* --- BOTON WHATSAPP ACTUALIZADO --- */
     .whatsapp-btn {
-      position: fixed; bottom: 25px; right: 25px;
+      position: fixed; 
+      bottom: 25px; 
+      right: 25px;
       background-color: #25d366;
-      border-radius: 50%; padding: 12px;
+      border-radius: 50%; 
+      padding: 12px;
       box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
       z-index: 1000;
-      animation: pulse 2s infinite;
-      display: flex; justify-content: center; align-items: center;
+      /* Eliminamos la animación de pulso continua del botón entero para que el texto sea legible, 
+         o puedes dejarla si prefieres que todo se mueva */
+      display: flex; 
+      justify-content: center; 
+      align-items: center;
+      text-decoration: none; /* Asegura que no haya subrayado */
     }
-    .whatsapp-btn img { width: 45px; height: 45px; display: block; filter: brightness(0) invert(1); }
 
-    @keyframes pulse {
-      0% { transform: scale(1); } 50% { transform: scale(1.1); } 100% { transform: scale(1); }
+    .whatsapp-btn img { 
+      width: 45px; 
+      height: 45px; 
+      display: block; 
+      filter: brightness(0) invert(1); 
+    }
+
+    /* ESTILO PARA EL TEXTO FLOTANTE */
+    .tooltip-text {
+      position: absolute;
+      right: 70px; /* Lo empuja a la izquierda del botón */
+      background-color: white;
+      color: #333;
+      padding: 8px 15px;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      font-weight: bold;
+      white-space: nowrap; /* Evita que el texto se rompa en dos líneas */
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      
+      /* Flechita decorativa apuntando al botón */
+      display: flex;
+      align-items: center;
+      
+      /* Animación de entrada suave */
+      animation: slideIn 0.5s ease-out forwards;
+      opacity: 0; 
+      transform: translateX(20px);
+    }
+    
+    /* Pequeño triangulo para que parezca burbuja de chat */
+    .tooltip-text::after {
+        content: '';
+        position: absolute;
+        right: -6px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 0; 
+        height: 0; 
+        border-top: 6px solid transparent;
+        border-bottom: 6px solid transparent;
+        border-left: 6px solid white;
+    }
+
+    /* Animación para que el texto aparezca deslizándose */
+    @keyframes slideIn {
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+    
+    /* OPCIONAL: Si quieres que el botón siga latiendo suavemente */
+    .whatsapp-btn:hover {
+        transform: scale(1.1);
+        transition: transform 0.3s;
     }
 
     /* --- RESPONSIVE --- */
@@ -384,7 +444,7 @@
 
   <footer id="contacto">
     <h4>¡Hablemos de tu próximo proyecto!</h4>
-    <p>📞 +57 321 718 1858</p>
+    <p> José Marino Alzate 📞 +57 321 718 1858</p>
     <br>
     
     <a href="https://siniy.pro" target="_blank">
@@ -394,8 +454,9 @@
   </footer>
 
   <a class="whatsapp-btn" href="https://wa.me/573217181858?text=Hola,%20quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20sus%20servicios" target="_blank" title="Contactar por WhatsApp">
+    <span class="tooltip-text">Solicitar cotización aquí</span> 
     <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
-  </a>
+</a>
 
   <script>
     const menuToggle = document.querySelector('.menu-toggle');
