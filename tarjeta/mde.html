@@ -43,18 +43,18 @@
       align-items: center;
       position: sticky;
       top: 0;
-      z-index: 1000; /* Z-index alto para estar sobre todo */
+      z-index: 1000;
       box-shadow: 0 2px 8px rgba(0,0,0,0.2);
     }
 
     .logo img {
-      height: 70px; /* Ajuste para móvil y escritorio */
+      height: 70px;
       width: auto;
       display: block;
       filter: drop-shadow(0px 2px 2px rgba(0,0,0,0.3));
     }
 
-    /* --- MENU DE NAVEGACION (Desktop por defecto) --- */
+    /* --- MENU DE NAVEGACION --- */
     nav ul {
       display: flex;
       gap: 25px;
@@ -70,7 +70,7 @@
 
     nav a:hover { color: var(--accent); }
 
-    /* Botón Hamburguesa (Oculto en PC) */
+    /* Botón Hamburguesa */
     .menu-toggle {
       display: none;
       font-size: 2rem;
@@ -214,7 +214,7 @@
     .card-highlight .card-icon-wrapper { background: rgba(13, 27, 42, 0.1); }
     .card-highlight .icon-serv { color: var(--primary); }
 
-    /* --- CARACTERISTICAS --- */
+    /* --- CARACTERISTICAS (Por qué elegirnos) --- */
     .bg-grey { background-color: var(--grey); }
 
     .features-list {
@@ -239,6 +239,8 @@
       font-size: 1.4rem;
       line-height: 1;
       margin-top: 4px;
+      /* CLAVE: Evita que el check se aplaste en móviles */
+      flex-shrink: 0; 
     }
 
     /* --- FOOTER --- */
@@ -302,14 +304,12 @@
       100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
     }
 
-    /* --- RESPONSIVE / MENU HAMBURGUESA --- */
+    /* --- RESPONSIVE / MENU HAMBURGUESA / AJUSTES TEXTO --- */
     @media (max-width: 768px) {
-      .menu-toggle {
-        display: block; /* Muestra el botón hamburguesa */
-      }
+      .menu-toggle { display: block; }
 
       nav ul {
-        display: none; /* Oculta el menú por defecto */
+        display: none;
         flex-direction: column;
         width: 100%;
         position: absolute;
@@ -322,19 +322,21 @@
         border-top: 1px solid rgba(255,255,255,0.1);
       }
 
-      nav ul.active {
-        display: flex; /* Muestra el menú cuando tiene la clase .active */
-      }
+      nav ul.active { display: flex; }
+      nav ul li { margin: 15px 0; }
 
-      nav ul li {
-        margin: 15px 0;
-      }
-
-      /* Ajustes tamaños de texto en móvil */
+      /* Ajustes generales móvil */
       .hero h1 { font-size: 2rem; }
       .hero p { font-size: 1.1rem; }
       .btn-cta { padding: 15px 30px; font-size: 1rem; width: 100%; display: block; }
       .section h2 { font-size: 2rem; }
+      .section { padding: 50px 15px; } /* Menos padding en secciones */
+
+      /* OPTIMIZACIÓN TEXTO "POR QUÉ ELEGIRNOS" EN MÓVIL */
+      .features-list li {
+        font-size: 1rem; /* Texto más pequeño para que quepa bien */
+        margin-bottom: 15px; /* Menos espacio entre items */
+      }
       
       .whatsapp-btn { bottom: 20px; right: 20px; padding: 10px; }
       .whatsapp-btn img { width: 45px; height: 45px; }
