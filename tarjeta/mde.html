@@ -22,9 +22,9 @@
       --text-dark: #1c2833;
     }
 
-    /* --- HEADER BLANCO (Para que el logo JPG se vea bien) --- */
+    /* --- HEADER (AZUL OSCURO) --- */
     header {
-      background: var(--white);
+      background: var(--primary); /* Fondo Azul */
       padding: 10px 20px;
       display: flex;
       justify-content: space-between;
@@ -32,11 +32,13 @@
       position: sticky;
       top: 0;
       z-index: 1000;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
     }
 
+    /* Asegúrate de que el logo sea PNG transparente si es posible, 
+       si es JPG con fondo blanco se verá un recuadro. */
     .logo img {
-      height: 70px; /* Tamaño del logo */
+      height: 70px;
       width: auto;
       display: block;
     }
@@ -44,7 +46,7 @@
     /* --- MENU DE NAVEGACION --- */
     nav ul { display: flex; gap: 25px; }
     nav a {
-      color: var(--primary); /* Texto oscuro para contrastar con blanco */
+      color: var(--white); /* Texto Blanco */
       font-weight: 700;
       font-size: 0.95rem;
       text-transform: uppercase;
@@ -52,11 +54,11 @@
     }
     nav a:hover { color: var(--accent); }
 
-    /* Botón Hamburguesa (Oscuro) */
+    /* Botón Hamburguesa (Blanco) */
     .menu-toggle {
       display: none;
       font-size: 2rem;
-      color: var(--primary);
+      color: var(--white); /* Icono Blanco */
       background: none;
       border: none;
       cursor: pointer;
@@ -164,7 +166,7 @@
     .card-highlight .card-icon-wrapper { background: rgba(13, 27, 42, 0.1); }
     .card-highlight .icon-serv { color: var(--primary); }
 
-    /* --- LISTA "POR QUE ELEGIRNOS" (OPTIMIZADA) --- */
+    /* --- LISTA "POR QUE ELEGIRNOS" (OPTIMIZADA MÓVIL) --- */
     .bg-grey { background-color: var(--grey); }
 
     .features-list {
@@ -198,7 +200,7 @@
       flex-shrink: 0; /* Evita que se aplaste */
     }
 
-    /* Contenedor del texto (CLAVE PARA EL RESPONSIVE) */
+    /* Contenedor del texto (IMPORTANTE PARA CELULAR) */
     .list-text { flex: 1; }
     .list-text strong { display: block; color: var(--primary); font-size: 1.1rem; margin-bottom: 4px; }
     .list-text span { display: block; color: #555; font-size: 0.95rem; }
@@ -232,16 +234,17 @@
       nav ul {
         display: none; flex-direction: column;
         width: 100%; position: absolute; top: 100%; left: 0;
-        background-color: var(--white); /* Fondo blanco en menú móvil */
+        background-color: var(--primary); /* FONDO AZUL EN MENU MOVIL TAMBIÉN */
         text-align: center; padding: 20px 0;
         box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        border-top: 1px solid rgba(255,255,255,0.1);
       }
       nav ul.active { display: flex; }
       nav a { padding: 10px; display: block; }
       
       .hero h1 { font-size: 2.2rem; }
       .section { padding: 50px 15px; }
-      .features-list li { padding: 15px; } /* Ajuste fino móvil */
+      .features-list li { padding: 15px; }
     }
   </style>
 </head>
@@ -249,7 +252,7 @@
 
   <header>
     <div class="logo">
-      <a href="#"><img src="MDE-LOGO.jpg" alt="MDE Remodelaciones"></a>
+      <a href="#"><img src="MDE/MDE-LOGO.png" alt="MDE Remodelaciones"></a>
     </div>
     
     <button class="menu-toggle" aria-label="Abrir menú">☰</button>
