@@ -16,15 +16,15 @@
     /* --- COLORES --- */
     :root {
       --primary: #0d1b2a;  /* Azul Oscuro */
-      --accent: #ffb703;   /* Amarillo/Naranja del Logo (Ajustado al logo) */
+      --accent: #f39c12;   /* Naranja/Amarillo Intenso */
       --white: #ffffff;
       --grey: #f0f2f5;
       --text-dark: #1c2833;
     }
 
-    /* --- HEADER (Ahora BLANCO para que el logo JPG se vea perfecto) --- */
+    /* --- HEADER BLANCO (Para que el logo JPG se vea bien) --- */
     header {
-      background: var(--white); /* Cambio a blanco */
+      background: var(--white);
       padding: 10px 20px;
       display: flex;
       justify-content: space-between;
@@ -32,20 +32,19 @@
       position: sticky;
       top: 0;
       z-index: 1000;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.05); /* Sombra suave */
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
     }
 
     .logo img {
-      height: 65px; /* Tamaño ajustado */
+      height: 70px; /* Tamaño del logo */
       width: auto;
       display: block;
-      /* Como el header es blanco, ya no necesitamos filtros */
     }
 
     /* --- MENU DE NAVEGACION --- */
     nav ul { display: flex; gap: 25px; }
     nav a {
-      color: var(--primary); /* Texto oscuro ahora */
+      color: var(--primary); /* Texto oscuro para contrastar con blanco */
       font-weight: 700;
       font-size: 0.95rem;
       text-transform: uppercase;
@@ -53,11 +52,11 @@
     }
     nav a:hover { color: var(--accent); }
 
-    /* Botón Hamburguesa (Color oscuro) */
+    /* Botón Hamburguesa (Oscuro) */
     .menu-toggle {
       display: none;
       font-size: 2rem;
-      color: var(--primary); /* Icono oscuro */
+      color: var(--primary);
       background: none;
       border: none;
       cursor: pointer;
@@ -65,11 +64,10 @@
 
     /* --- HERO SECTION --- */
     .hero {
-      /* Fondo oscuro con imagen */
       background-image: linear-gradient(rgba(13, 27, 42, 0.8), rgba(13, 27, 42, 0.9)), url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=1600&auto=format&fit=crop');
       background-size: cover;
       background-position: center;
-      min-height: 80vh;
+      min-height: 85vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -97,19 +95,20 @@
 
     .btn-cta {
       background: var(--accent);
-      color: var(--primary); /* Texto oscuro para contraste con amarillo */
+      color: var(--white);
       padding: 18px 40px;
       border-radius: 50px;
       font-weight: 900;
       font-size: 1rem;
       transition: transform 0.2s;
-      box-shadow: 0 5px 15px rgba(255, 183, 3, 0.4);
+      box-shadow: 0 5px 15px rgba(243, 156, 18, 0.4);
     }
-    .btn-cta:hover { transform: scale(1.05); background: #ffc300; }
+    .btn-cta:hover { transform: scale(1.05); background: #d35400; }
 
     /* --- SECCIONES --- */
     .section { padding: 60px 20px; text-align: center; }
-    .section-header { margin-bottom: 40px; }
+    
+    .section-header { margin-bottom: 50px; }
     
     .section h2 {
       color: var(--primary);
@@ -117,16 +116,24 @@
       text-transform: uppercase;
       margin-bottom: 10px;
       font-weight: 900;
+      position: relative;
+      display: inline-block;
     }
     
-    .section-desc { color: #666; max-width: 600px; margin: 0 auto; }
+    .section h2::after {
+        content: '';
+        position: absolute; bottom: -10px; left: 50%; transform: translateX(-50%);
+        width: 80px; height: 4px; background: var(--accent);
+    }
+    
+    .section-desc { color: #666; max-width: 600px; margin: 0 auto; margin-top: 15px; font-size: 1.1rem; }
 
-    /* Grid de Servicios */
+    /* --- GRID DE SERVICIOS (8 ITEMS) --- */
     .servicios-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 30px;
-      max-width: 1200px;
+      max-width: 1300px;
       margin: 0 auto;
     }
 
@@ -135,24 +142,29 @@
       padding: 30px;
       border-radius: 15px;
       box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-      border-bottom: 4px solid var(--accent);
+      border-top: 5px solid var(--accent);
       text-align: left;
       transition: transform 0.3s;
+      position: relative;
+      overflow: hidden;
     }
-    .card:hover { transform: translateY(-5px); }
+    .card:hover { transform: translateY(-5px); box-shadow: 0 15px 40px rgba(0,0,0,0.12); }
 
     .card-icon-wrapper {
-        width: 60px; height: 60px;
-        background: #fff8e1;
-        border-radius: 50%;
-        display: flex; align-items: center; justify-content: center;
-        margin-bottom: 20px;
+        display: inline-block; padding: 15px;
+        background: rgba(243, 156, 18, 0.1);
+        border-radius: 50%; margin-bottom: 20px;
     }
-    .icon-serv { font-size: 30px; }
-    .card h3 { margin-bottom: 10px; color: var(--primary); font-size: 1.3rem; }
-    .card p { color: #555; font-size: 0.95rem; line-height: 1.5; }
+    .icon-serv { font-size: 35px; color: var(--accent); display: block; }
+    .card h3 { margin-bottom: 15px; color: var(--primary); font-size: 1.3rem; font-weight: 700; }
+    .card p { color: #555; font-size: 1rem; line-height: 1.5; }
 
-    /* --- LISTA "POR QUE ELEGIRNOS" (CORREGIDO) --- */
+    /* Estilo Highlight (Alternado) */
+    .card-highlight { border-top-color: var(--primary); }
+    .card-highlight .card-icon-wrapper { background: rgba(13, 27, 42, 0.1); }
+    .card-highlight .icon-serv { color: var(--primary); }
+
+    /* --- LISTA "POR QUE ELEGIRNOS" (OPTIMIZADA) --- */
     .bg-grey { background-color: var(--grey); }
 
     .features-list {
@@ -161,10 +173,9 @@
       text-align: left;
     }
 
-    /* ESTILO DE LISTA OPTIMIZADO PARA MÓVIL */
     .features-list li {
       margin-bottom: 25px;
-      display: flex; /* Mantiene el icono a la izquierda */
+      display: flex; /* Flex para alinear icono y texto */
       align-items: flex-start; 
       background: white;
       padding: 20px;
@@ -172,44 +183,32 @@
       box-shadow: 0 4px 10px rgba(0,0,0,0.03);
     }
     
-    /* El Checkmark */
+    /* El Checkmark (Icono) */
     .features-list li::before {
       content: "✓";
       color: var(--white);
       background: var(--accent);
-      min-width: 30px; /* Tamaño fijo */
-      height: 30px;
+      min-width: 30px; height: 30px;
       border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
       margin-right: 15px;
       font-weight: bold;
       font-size: 1rem;
-      margin-top: 2px; /* Alinear con la primera linea de texto */
+      margin-top: 2px;
+      flex-shrink: 0; /* Evita que se aplaste */
     }
 
-    /* Contenedor del texto dentro de la lista */
-    .list-text {
-      flex: 1; /* Ocupa todo el espacio restante */
-    }
-
-    .list-text strong {
-      display: block; /* Fuerza salto de línea en el título */
-      color: var(--primary);
-      font-size: 1.1rem;
-      margin-bottom: 4px;
-    }
-
-    .list-text span {
-      display: block;
-      color: #555;
-      font-size: 0.95rem;
-    }
+    /* Contenedor del texto (CLAVE PARA EL RESPONSIVE) */
+    .list-text { flex: 1; }
+    .list-text strong { display: block; color: var(--primary); font-size: 1.1rem; margin-bottom: 4px; }
+    .list-text span { display: block; color: #555; font-size: 0.95rem; }
 
     /* --- FOOTER --- */
     footer { text-align: center; padding: 40px 20px; background-color: #e9ecef; }
     footer h4 { font-size: 1.4rem; color: var(--primary); margin-bottom: 10px; }
     .siniy-logo { width: 120px; display: block; margin: 30px auto 10px auto; opacity: 0.8; }
     .creditos { font-size: 12px; color: #888; }
+    .creditos strong { color: var(--primary); }
 
     /* --- BOTON WHATSAPP --- */
     .whatsapp-btn {
@@ -219,13 +218,12 @@
       box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
       z-index: 1000;
       animation: pulse 2s infinite;
+      display: flex; justify-content: center; align-items: center;
     }
-    .whatsapp-btn img { width: 45px; height: 45px; display: block; }
+    .whatsapp-btn img { width: 45px; height: 45px; display: block; filter: brightness(0) invert(1); }
 
     @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.1); }
-      100% { transform: scale(1); }
+      0% { transform: scale(1); } 50% { transform: scale(1.1); } 100% { transform: scale(1); }
     }
 
     /* --- RESPONSIVE --- */
@@ -234,20 +232,16 @@
       nav ul {
         display: none; flex-direction: column;
         width: 100%; position: absolute; top: 100%; left: 0;
-        background-color: var(--white); /* Menú blanco en móvil */
+        background-color: var(--white); /* Fondo blanco en menú móvil */
         text-align: center; padding: 20px 0;
         box-shadow: 0 10px 20px rgba(0,0,0,0.1);
       }
       nav ul.active { display: flex; }
-      nav a { padding: 10px; display: block; } /* Área de toque más grande */
+      nav a { padding: 10px; display: block; }
       
       .hero h1 { font-size: 2.2rem; }
       .section { padding: 50px 15px; }
-      
-      /* Ajuste específico para que la lista no se rompa */
-      .features-list li {
-        padding: 15px; /* Menos padding interno en móvil */
-      }
+      .features-list li { padding: 15px; } /* Ajuste fino móvil */
     }
   </style>
 </head>
@@ -258,98 +252,127 @@
       <a href="#"><img src="MDE-LOGO.jpg" alt="MDE Remodelaciones"></a>
     </div>
     
-    <button class="menu-toggle">☰</button>
+    <button class="menu-toggle" aria-label="Abrir menú">☰</button>
 
     <nav>
       <ul class="nav-menu">
         <li><a href="#servicios">Servicios</a></li>
-        <li><a href="#experiencia">Nosotros</a></li>
+        <li><a href="#experiencia">Por qué nosotros</a></li>
         <li><a href="#contacto">Contacto</a></li>
       </ul>
     </nav>
   </header>
 
   <section class="hero">
-    <h1>Remodelaciones & Acabados</h1>
-    <p>Expertos en transformar espacios. Calidad, cumplimiento y limpieza en cada proyecto.</p>
-    <a href="https://wa.me/573217181858?text=Hola,%20quisiera%20cotizar%20una%20remodelaci%C3%B3n" class="btn-cta" target="_blank">COTIZAR AHORA</a>
+    <h1>Transformamos Espacios, Construimos Sueños</h1>
+    <p>Maestro de obra experto en acabados de lujo, remodelaciones integrales y soluciones constructivas innovadoras. Calidad superior garantizada.</p>
+    <a href="https://wa.me/573217181858?text=Hola,%20quisiera%20cotizar%20una%20remodelaci%C3%B3n" class="btn-cta" target="_blank">¡COTIZA AHORA!</a>
   </section>
 
   <section id="servicios" class="section">
     <div class="section-header">
-        <h2>Nuestros Servicios</h2>
-        <p class="section-desc">Soluciones integrales para tu hogar o negocio.</p>
+        <h2>Nuestros Servicios Especializados</h2>
+        <p class="section-desc">Ofrecemos una amplia gama de soluciones para satisfacer todas tus necesidades de construcción.</p>
     </div>
     <div class="servicios-grid">
+      
       <div class="card">
         <div class="card-icon-wrapper"><span class="icon-serv">🏠</span></div>
-        <h3>Remodelación Total</h3>
-        <p>Renovación completa de espacios: demolición, diseño y ejecución.</p>
+        <h3>Remodelaciones Integrales</h3>
+        <p>Transformamos cocinas, baños y espacios completos. Desde la demolición hasta el último detalle.</p>
       </div>
-      <div class="card">
-        <div class="card-icon-wrapper"><span class="icon-serv">🎨</span></div>
-        <h3>Pintura y Estuco</h3>
-        <p>Acabados perfectos en muros y techos. Estuco veneciano y texturizados.</p>
+
+      <div class="card card-highlight">
+        <div class="card-icon-wrapper"><span class="icon-serv">✨</span></div>
+        <h3>Acabados de Alta Gama</h3>
+        <p>Aplicación experta de estuco veneciano, pinturas especiales y texturizados para un toque de distinción.</p>
       </div>
+
       <div class="card">
         <div class="card-icon-wrapper"><span class="icon-serv">🧱</span></div>
         <h3>Pisos y Enchapes</h3>
-        <p>Instalación experta de porcelanato, cerámica y laminados.</p>
+        <p>Expertos en porcelanato, mármol, granito y pisos laminados. Nivelación láser y acabados perfectos.</p>
       </div>
+
+      <div class="card card-highlight">
+        <div class="card-icon-wrapper"><span class="icon-serv">🔨</span></div>
+        <h3>Drywall y Superboard</h3>
+        <p>Diseño de cielos rasos con figuras, iluminación indirecta, muros divisorios acústicos y fachadas.</p>
+      </div>
+      
       <div class="card">
-        <div class="card-icon-wrapper"><span class="icon-serv">🏗️</span></div>
-        <h3>Drywall y Cielo Raso</h3>
-        <p>Figuras, luces indirectas y divisiones en sistema liviano.</p>
+        <div class="card-icon-wrapper"><span class="icon-serv">📱</span></div>
+        <h3>Hogar Inteligente (Domótica)</h3>
+        <p>Controla iluminación, cortinas y seguridad desde tu smartphone. Moderniza tu hogar.</p>
       </div>
+
+      <div class="card card-highlight">
+        <div class="card-icon-wrapper"><span class="icon-serv">💧</span></div>
+        <h3>Impermeabilización</h3>
+        <p>Soluciones definitivas para humedades en terrazas, cubiertas y piscinas con productos de última generación.</p>
+      </div>
+      
+      <div class="card">
+        <div class="card-icon-wrapper"><span class="icon-serv">🪚</span></div>
+        <h3>Carpintería Arquitectónica</h3>
+        <p>Diseño y fabricación de cocinas integrales, closets, muebles de baño y puertas personalizadas.</p>
+      </div>
+
+      <div class="card card-highlight">
+        <div class="card-icon-wrapper"><span class="icon-serv">📐</span></div>
+        <h3>Diseño de Interiores</h3>
+        <p>Visualiza tu proyecto con planos y renders 3D antes de iniciar la obra. Optimización de espacios.</p>
+      </div>
+      
     </div>
   </section>
 
   <section id="experiencia" class="section bg-grey">
     <div class="section-header">
-        <h2>¿Por qué MDE?</h2>
-        <p class="section-desc">Garantizamos tranquilidad en tu obra.</p>
+        <h2>¿Por qué elegirnos?</h2>
+        <p class="section-desc">Comprometidos con la excelencia y la satisfacción total.</p>
     </div>
     <ul class="features-list">
       
       <li>
         <div class="list-text">
-          <strong>Experiencia Comprobada</strong>
-          <span>Años de trayectoria liderando proyectos exitosos.</span>
+            <strong>Experiencia Comprobada</strong>
+            <span>Años de trayectoria liderando proyectos exitosos en el sector.</span>
         </div>
       </li>
 
       <li>
         <div class="list-text">
-          <strong>Cumplimiento Garantizado</strong>
-          <span>Entregamos las obras en los tiempos pactados.</span>
+            <strong>Cumplimiento Garantizado</strong>
+            <span>Entregamos las obras en los tiempos y presupuestos pactados.</span>
         </div>
       </li>
 
       <li>
         <div class="list-text">
-          <strong>Materiales de Primera</strong>
-          <span>Solo trabajamos con insumos de alta calidad.</span>
+            <strong>Materiales de Primera</strong>
+            <span>Solo trabajamos con insumos de alta calidad para asegurar durabilidad.</span>
         </div>
       </li>
 
       <li>
         <div class="list-text">
-          <strong>Personal Calificado</strong>
-          <span>Equipo experto, responsable y asegurado.</span>
+            <strong>Equipo Profesional</strong>
+            <span>Personal experto, responsable y asegurado.</span>
         </div>
       </li>
 
       <li>
         <div class="list-text">
-          <strong>Limpieza y Orden</strong>
-          <span>Sitio impecable durante y después de la obra.</span>
+            <strong>Limpieza y Orden</strong>
+            <span>Mantenemos el sitio de trabajo impecable durante y después de la obra.</span>
         </div>
       </li>
 
       <li>
         <div class="list-text">
-          <strong>Garantía por Escrito</strong>
-          <span>Respaldamos nuestro trabajo con claridad.</span>
+            <strong>Garantía por Escrito</strong>
+            <span>Respaldamos la calidad de nuestro trabajo con garantías claras.</span>
         </div>
       </li>
 
@@ -357,16 +380,17 @@
   </section>
 
   <footer id="contacto">
-    <h4>¡Inicia tu proyecto hoy!</h4>
-    <p>📞 +57 321 718 1858<br>📍 Medellín y alrededores</p>
+    <h4>¡Hablemos de tu próximo proyecto!</h4>
+    <p>📞 +57 321 718 1858 | ✉️ contacto@mdeobras.com</p>
+    <br>
     
     <a href="https://siniy.pro" target="_blank">
       <img class="siniy-logo" src="logoazulsiniy.png" alt="SINIY Soluciones Digitales">
     </a>
-    <div class="creditos">Diseño Web por <strong>SINIY Soluciones Digitales</strong></div>
+    <div class="creditos">Diseñado por <strong>SINIY Soluciones Digitales</strong></div>
   </footer>
 
-  <a class="whatsapp-btn" href="https://wa.me/573217181858" target="_blank">
+  <a class="whatsapp-btn" href="https://wa.me/573217181858?text=Hola,%20quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20sus%20servicios" target="_blank" title="Contactar por WhatsApp">
     <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
   </a>
 
@@ -375,10 +399,12 @@
     const navMenu = document.querySelector('.nav-menu');
     const navLinks = document.querySelectorAll('.nav-menu a');
 
+    // Al hacer clic en el icono, abre/cierra el menú
     menuToggle.addEventListener('click', () => {
       navMenu.classList.toggle('active');
     });
 
+    // Al hacer clic en un enlace del menú, cierra el menú automáticamente
     navLinks.forEach(link => {
       link.addEventListener('click', () => {
         navMenu.classList.remove('active');
