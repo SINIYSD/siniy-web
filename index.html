@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SINIY | Agencia de Publicidad Impresa y Digital en el Eje Cafetero</title>
+  <title>SINIY | Agencia Creativa & Publicidad - Eje Cafetero</title>
   <link rel="icon" href="siniyfavicon.png" type="image/png" />
   
-  <meta name="description" content="Expertos en Publicidad Impresa, Diseño Web y Marketing Digital. Soluciones creativas en Manizales, Pereira, Armenia, Medellín y todo el Eje Cafetero (Manzanares, Belalcázar)." />
-  <meta name="keywords" content="Publicidad Manizales, Diseño Web Eje Cafetero, Imprenta Digital, Marketing Medellín, SINIY, Belalcázar, Manzanares" />
+  <meta name="description" content="Agencia experta en Publicidad Impresa y Diseño Web. Llevamos tu marca al siguiente nivel en Manizales, Medellín, Belalcázar, Manzanares y todo el Eje Cafetero." />
+  <meta name="keywords" content="Diseño Gráfico Manizales, Publicidad Impresa Eje Cafetero, SINIY, Páginas Web Medellín, Belalcázar, Manzanares" />
   <meta name="robots" content="index,follow" />
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,244 +16,222 @@
 
   <style>
     :root{
-      /* Nueva Paleta SINIY */
-      --primary: #5e17eb;       /* Tu morado */
-      --primary-glow: #7a3bf5;  /* Morado más claro para brillos */
-      --accent: #00f0ff;        /* Cian eléctrico para pequeños detalles futuristas */
-      --ink: #f3f4f6;           /* Blanco humo para texto */
-      --muted: #9ca3af;         /* Gris para textos secundarios */
-      --bg: #050508;            /* Fondo casi negro para elegancia */
-      --glass: rgba(20, 20, 30, 0.6); /* Fondo semitransparente */
-      --border: rgba(255, 255, 255, 0.08);
+      /* Paleta CLEAN TECH */
+      --brand: #5e17eb;       /* Tu Morado Principal */
+      --brand-dark: #450eb5;  /* Morado oscuro para hover */
+      --brand-light: #f0eaff; /* Morado muy claro para fondos suaves */
+      --text-main: #1f2937;   /* Gris muy oscuro (casi negro) para lectura fácil */
+      --text-light: #6b7280;  /* Gris medio para descripciones */
+      --bg-body: #ffffff;     /* Blanco puro */
+      --bg-card: #ffffff;     /* Blanco para tarjetas */
+      --border: #e5e7eb;      /* Bordes muy sutiles */
     }
 
-    /* Reset & Base */
+    /* Reset */
     *{box-sizing:border-box}
     html{scroll-behavior: smooth;}
     body{
       margin:0;padding:0;
-      background: var(--bg);
-      background-image: radial-gradient(circle at 50% 0%, rgba(94, 23, 235, 0.15), transparent 60%);
-      color:var(--ink);
-      font-family:'Inter', sans-serif;
-      line-height:1.6;
+      background: var(--bg-body);
+      color: var(--text-main);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
       overflow-x: hidden;
     }
 
-    a{color:var(--ink);text-decoration:none; transition: color 0.3s ease;}
-    a:hover{color:var(--primary-glow);}
-
-    .wrap{max-width:1100px;margin:0 auto;padding:40px 20px; position: relative;}
-
-    /* --- Header Glassmorphism --- */
+    a{text-decoration:none; transition: all 0.3s ease; color: var(--text-main);}
+    
+    /* --- Estructura --- */
+    .wrap{max-width:1150px; margin:0 auto; padding:0 24px; position: relative;}
+    
+    /* --- Header Minimalista --- */
     header{
-      position:fixed; top:0; left:0; right:0;
-      background: rgba(5, 5, 8, 0.7);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border-bottom:1px solid var(--border);
-      z-index:100;
-      padding: 10px 0;
+      position: sticky; top:0; z-index: 100;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      padding: 16px 0;
     }
-    .brand{display:flex;align-items:center;gap:12px}
-    .logo-siniy {
-      max-height: 50px;
-      width: auto;
-      filter: drop-shadow(0 0 10px rgba(94, 23, 235, 0.5)); /* Glow en el logo */
-    }
+    .nav-container{display:flex; justify-content:space-between; align-items:center;}
     
-    /* Nav */
-    nav{display:flex;gap:20px;align-items:center}
-    nav a{font-size: 0.95rem; font-weight:500; opacity: 0.9;}
-    nav a:hover{opacity: 1; color: var(--primary-glow); text-shadow: 0 0 8px rgba(94,23,235,0.4);}
+    .logo-img {max-height: 45px; width: auto;} 
+    /* Nota: Asegúrate de usar una versión oscura/color de tu logo aquí, 
+       o el logo blanco con un filtro CSS si no tienes otro */
     
-    .hamburger{display:none;font-size:28px;cursor:pointer;color:white}
+    nav{display:flex; gap:30px; align-items:center;}
+    nav a{font-weight: 500; font-size: 0.95rem; color: var(--text-light);}
+    nav a:hover{color: var(--brand);}
+    
+    .hamburger{display:none; font-size:24px; cursor:pointer; color:var(--text-main);}
 
-    /* --- Botones Futuristas --- */
+    /* --- Botones --- */
     .btn{
-      display:inline-flex;align-items:center;justify-content: center; gap:10px;
-      padding:12px 24px; border-radius:50px; /* Bordes redondos modernos */
-      font-weight:600; transition: all 0.3s ease;
-      border: 1px solid transparent;
-      cursor: pointer;
+      padding: 12px 28px; border-radius: 50px; font-weight: 600;
+      display: inline-flex; align-items: center; justify-content: center;
+      transition: all 0.3s ease; cursor: pointer; border: none;
     }
-    .btn.primary{
-      background: linear-gradient(135deg, var(--primary), #3b0a9d);
-      color:white;
-      box-shadow: 0 4px 15px rgba(94, 23, 235, 0.3);
+    .btn-primary{
+      background-color: var(--brand);
+      color: white;
+      box-shadow: 0 4px 14px rgba(94, 23, 235, 0.3); /* Sombra suave morada */
     }
-    .btn.primary:hover{
+    .btn-primary:hover{
+      background-color: var(--brand-dark);
       transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(94, 23, 235, 0.5);
-      filter: brightness(1.1);
+      box-shadow: 0 6px 20px rgba(94, 23, 235, 0.4);
+    }
+    .btn-outline{
+      background: transparent; border: 2px solid var(--brand); color: var(--brand);
+    }
+    .btn-outline:hover{
+      background: var(--brand-light);
     }
 
-    /* --- Textos y Títulos --- */
-    h1{
-      font-size: clamp(2.5rem, 5vw, 4rem); /* Responsivo */
-      line-height:1.1; margin:0 0 20px;
-      background: -webkit-linear-gradient(0deg, #ffffff, #a78bfa);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      font-weight: 800;
-    }
-    h2{font-size:2rem; margin:30px 0 10px; color: white;}
-    h3{font-size:1.25rem; margin:15px 0 8px; color: white; font-weight: 600;}
-    p{color: var(--muted); font-size: 1.05rem;}
-    
-    .section-subtitle{
-      text-align:center; 
-      text-transform:uppercase; 
-      letter-spacing: 2px;
-      font-size: 1rem;
-      color: var(--primary-glow);
-      margin-top: 60px;
-      margin-bottom: 10px;
-    }
-    .section-title-large{
-      text-align: center;
-      font-size: 2.5rem;
-      margin-bottom: 10px;
-    }
-    .section-desc{text-align:center; max-width: 600px; margin: 0 auto 50px auto;}
-
-    /* --- Cards (Glassmorphism) --- */
-    .grid{display:grid;gap:24px}
-    .three{grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
-    
-    .card{
-      background: var(--glass);
-      border:1px solid var(--border);
-      border-radius:20px;
-      padding:30px;
-      transition: all 0.4s ease;
+    /* --- Hero Section (Limpia e Impactante) --- */
+    .hero{
+      padding: 80px 0;
+      display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 60px; align-items: center;
       position: relative;
-      overflow: hidden;
+    }
+    /* Decoración de fondo sutil (mancha morada difuminada) */
+    .hero::before {
+      content: ''; position: absolute; top: -100px; right: -100px;
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(94,23,235,0.08) 0%, rgba(255,255,255,0) 70%);
+      z-index: -1; pointer-events: none;
+    }
+
+    h1{
+      font-size: 3.5rem; line-height: 1.1; font-weight: 800; letter-spacing: -1px; margin-bottom: 24px;
+      color: var(--text-main);
+    }
+    h1 span{ color: var(--brand); } /* Solo palabras clave en morado */
+    
+    .hero p { font-size: 1.25rem; color: var(--text-light); margin-bottom: 32px; max-width: 90%; }
+    
+    .hero-img{
+      width: 100%; border-radius: 24px;
+      box-shadow: 0 20px 40px -10px rgba(0,0,0,0.1); /* Sombra elegante */
+      transition: transform 0.5s ease;
+    }
+    .hero-img:hover{ transform: scale(1.02); }
+
+    /* --- Títulos de Sección --- */
+    .section-header{ text-align: center; margin: 80px 0 50px; }
+    .badge{
+      background: var(--brand-light); color: var(--brand);
+      padding: 6px 16px; border-radius: 20px; font-size: 0.85rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 1px; display: inline-block; margin-bottom: 16px;
+    }
+    h2{ font-size: 2.2rem; margin: 0 0 16px; color: var(--text-main); font-weight: 800; letter-spacing: -0.5px; }
+    .subtitle{ font-size: 1.1rem; color: var(--text-light); max-width: 600px; margin: 0 auto; }
+
+    /* --- Grid Cards (Servicios) --- */
+    .grid{ display: grid; gap: 30px; }
+    .three-col{ grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+
+    .card{
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 20px; padding: 32px;
+      transition: all 0.3s ease;
+      position: relative; overflow: hidden;
     }
     .card:hover{
-      border-color: rgba(94, 23, 235, 0.4);
-      transform: translateY(-5px);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-      background: rgba(25, 25, 40, 0.8);
+      transform: translateY(-8px);
+      border-color: var(--brand); /* Borde morado al pasar el mouse */
+      box-shadow: 0 15px 30px rgba(0,0,0,0.08);
     }
-    /* Icono en cards */
-    .card-icon {
-      font-size: 2.5rem;
-      margin-bottom: 15px;
-      background: linear-gradient(135deg, var(--primary), var(--accent));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+    .icon-box{
+      width: 60px; height: 60px;
+      background: var(--brand-light); color: var(--brand);
+      border-radius: 16px; display: flex; align-items: center; justify-content: center;
+      font-size: 28px; margin-bottom: 24px;
     }
+    .card h3{ margin: 0 0 12px; font-size: 1.3rem; }
+    .card p{ font-size: 0.95rem; color: var(--text-light); margin: 0; }
 
-    /* --- Hero Section --- */
-    .hero{
-      display:grid;grid-template-columns:1fr 1fr; gap:40px; align-items:center; 
-      margin-top:80px; min-height: 80vh;
-    }
-    .hero-img-container{
-      position: relative;
-    }
-    .hero-img-container::before{
-      content: ''; position: absolute; top: 20%; left: 20%; width: 60%; height: 60%;
-      background: var(--primary); filter: blur(80px); opacity: 0.4; z-index: -1;
-      border-radius: 50%;
-    }
-    .hero img{width:100%; border-radius:24px; border: 1px solid var(--border);}
-    
-    /* --- Tools Grid --- */
-    .tools-grid{display:grid; gap:16px; grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
-    .tool-box{
-      background: rgba(255,255,255,0.03);
-      border:1px solid var(--border);
-      border-radius:16px; padding:20px;
+    /* --- Locations Section (Clean List) --- */
+    .locations-bar{
+      background: #f9fafb; border-radius: 16px; padding: 40px; margin-top: 80px;
       text-align: center;
-      transition: 0.3s;
     }
-    .tool-box:hover{background: rgba(94, 23, 235, 0.1); border-color: var(--primary);}
-    .tool-box ul{padding:0; list-style:none; color: var(--muted); font-size: 0.9rem;}
-
-    /* --- Agency Block --- */
-    .agency-block{display:grid;gap:40px;grid-template-columns:1fr 1fr;align-items:center;margin-top:80px}
-    .agency-block img{width:100%; border-radius:24px; box-shadow: 0 20px 40px rgba(0,0,0,0.5);}
-
-    /* --- Testimonials / Reseñas --- */
-    .testimonial-card {
-      background: linear-gradient(180deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%);
-      border: 1px solid var(--border);
-      padding: 25px; border-radius: 18px;
+    .locations-grid{
+      display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; margin-top: 20px;
     }
-    .stars {color: #FFD700; margin-bottom: 10px;}
-    .client-name {font-weight: 700; color: white; margin-top: 15px; display: block;}
-    .client-loc {font-size: 0.8rem; color: var(--muted);}
+    .loc-tag{
+      background: white; border: 1px solid var(--border);
+      padding: 8px 18px; border-radius: 100px; color: var(--text-light); font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    /* --- Testimonials --- */
+    .testimonial{
+      background: white; border: 1px solid var(--border); padding: 30px; border-radius: 16px;
+    }
+    .stars{ color: #fbbf24; font-size: 1.2rem; margin-bottom: 16px; }
+    .quote{ font-style: italic; color: var(--text-main); font-size: 1.05rem; }
+    .client{ margin-top: 20px; font-weight: 700; font-size: 0.9rem; color: var(--brand); }
 
     /* --- Footer --- */
     footer{
-      text-align:center; color:var(--muted); font-size:13px; 
-      padding:40px 0; margin-top:80px; 
-      border-top:1px solid var(--border);
-      background: #020203;
+      background: #111827; /* Footer oscuro para contraste final */
+      color: white; padding: 60px 0 30px; margin-top: 100px;
     }
+    .footer-content{ text-align: center; }
+    .footer-content a{ color: #9ca3af; }
+    .footer-content a:hover{ color: white; }
 
     /* --- Modal --- */
-    .modal{display:none;position:fixed;z-index:1001;left:0;top:0;width:100%;height:100%;background:rgba(0,0,0,0.8);backdrop-filter: blur(5px);}
+    .modal{display:none;position:fixed;z-index:10000;left:0;top:0;width:100%;height:100%;background:rgba(0,0,0,0.5); backdrop-filter: blur(4px);}
     .modal-content{
-      background:#121216; margin:10% auto; padding:30px; 
-      border-radius:24px; max-width:500px; position:relative; 
-      border:1px solid rgba(94, 23, 235, 0.3);
-      box-shadow: 0 0 50px rgba(94, 23, 235, 0.2);
+      background: white; margin: 8% auto; padding: 40px; border-radius: 20px; max-width: 500px; position: relative;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
     }
-    .close{position:absolute;top:15px;right:20px;font-size:28px;cursor:pointer;color:white}
+    .close{position:absolute;top:20px;right:25px;font-size:28px;cursor:pointer;color: var(--text-light);}
     
-    form input, form textarea{
-      width:100%; padding:14px; border-radius:12px; 
-      border:1px solid var(--border); 
-      background:rgba(0,0,0,0.3); color:white; margin-bottom:15px;
-      font-family: inherit; transition: 0.3s;
+    input, textarea{
+      width:100%; padding:14px; border-radius:10px; border:1px solid var(--border);
+      margin-bottom:15px; font-family: inherit; font-size: 1rem;
     }
-    form input:focus, form textarea:focus{
-      border-color: var(--primary); box-shadow:0 0 0 2px rgba(94,23,235,0.2); outline:none
-    }
+    input:focus, textarea:focus{ outline:none; border-color: var(--brand); ring: 2px solid var(--brand-light); }
 
-    /* WhatsApp Button */
-    .whatsapp-btn{position:fixed;bottom:25px;right:25px;z-index:99; transition: transform 0.3s;}
-    .whatsapp-btn:hover{transform: scale(1.1);}
-    .whatsapp-btn img{width:60px;height:60px; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3));}
-
-    /* Responsive */
-    @media (max-width:860px){
-      h1{font-size: 2.2rem;}
-      .hero{grid-template-columns:1fr; text-align: center; margin-top: 40px;}
-      .agency-block{grid-template-columns:1fr;}
-      
-      nav{
-        display:none; position:absolute; right:20px; top:70px; 
-        background: #121216; border:1px solid var(--border); 
-        border-radius:16px; padding:20px; width: 250px;
-        box-shadow: 0 10px 40px rgba(0,0,0,0.5);
-      }
-      nav.show{display:flex;flex-direction:column;align-items:stretch;}
-      .hamburger{display:block}
+    /* --- Mobile --- */
+    @media (max-width: 850px){
+      .hero{ grid-template-columns: 1fr; text-align: center; padding: 40px 0; }
+      .hero h1{ font-size: 2.5rem; }
+      .hero::before{ display: none; }
+      nav{ display: none; position: absolute; top: 70px; left:0; right:0; background: white; flex-direction: column; padding: 20px; border-bottom: 1px solid var(--border); box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); }
+      nav.show{ display: flex; }
+      .hamburger{ display: block; }
     }
+    
+    .whatsapp-float{
+      position: fixed; bottom: 30px; right: 30px; z-index: 999;
+      transition: transform 0.3s ease;
+    }
+    .whatsapp-float:hover{ transform: scale(1.1); }
+    .whatsapp-float img{ width: 60px; height: 60px; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.2)); }
+
   </style>
 </head>
 <body>
 
   <header>
-    <div class="wrap" style="padding-top: 5px; padding-bottom: 5px; display:flex;justify-content:space-between;align-items:center;">
+    <div class="wrap nav-container">
       <div class="brand">
         <a href="https://siniy.pro">
-          <img alt="SINIY" src="logoblancosiniy.png" class="logo-siniy" />
-        </a>
+            <img src="logoblancosiniy.png" alt="SINIY" class="logo-img" style="background: #000; padding: 5px; border-radius: 4px;">
+        </a> 
       </div>
-      <div style="display:flex;align-items:center;gap:14px">
-        <nav id="nav">
+      <div>
+        <nav id="nav-menu">
           <a href="#servicios">Servicios</a>
-          <a href="#cobertura">Cobertura</a>
-          <a href="#portafolio">Portafolio</a>
-          <a href="#resenas">Opiniones</a>
-          <a class="btn primary" href="#contacto" onclick="document.getElementById('cotizacionModal').style.display='block'">Cotizar Ahora</a>
+          <a href="#agencia">Agencia</a>
+          <a href="#cobertura">Zonas</a>
+          <a href="#contacto" class="btn btn-primary" style="padding: 8px 20px; font-size: 0.9rem;" onclick="openModal()">Cotizar Ahora</a>
         </nav>
-        <div class="hamburger" onclick="document.getElementById('nav').classList.toggle('show')">☰</div>
+        <div class="hamburger" onclick="toggleMenu()">☰</div>
       </div>
     </div>
   </header>
@@ -262,155 +240,165 @@
     
     <section class="hero">
       <div>
-        <h1>El Futuro de tu Marca Comienza Aquí.</h1>
-        <p style="font-size: 1.15rem; margin-bottom: 30px;">
-          Somos expertos en <strong style="color:white">Publicidad Impresa y Digital</strong>. Diseño de vanguardia, impresión de alta calidad y estrategias digitales que conectan. 
-          <br><br>
-          Desde <strong>Manizales</strong> para todo Colombia.
-        </p>
-        <div style="display: flex; gap: 15px; flex-wrap: wrap; justify-content: start;">
-            <button class="btn primary" onclick="document.getElementById('cotizacionModal').style.display='block'">Solicitar Cotización</button>
-            <a href="#portafolio" class="btn" style="border: 1px solid var(--border); background: rgba(255,255,255,0.05);">Ver Portafolio</a>
+        <h1>Impulsa tu marca con <br><span style="color: var(--brand);">Publicidad de Impacto</span></h1>
+        <p>Expertos en Publicidad Impresa, Digital y Desarrollo Web. Soluciones sofisticadas para negocios que quieren destacar en el mercado actual.</p>
+        <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+          <button class="btn btn-primary" onclick="openModal()">Solicitar Cotización</button>
+          <a href="#portafolio" class="btn btn-outline">Ver Portafolio</a>
         </div>
       </div>
-      <div class="hero-img-container">
-        <img src="imagenes-siniy/banner-disenografico-0002.png" alt="Diseño Gráfico Publicitario SINIY">
+      <div>
+        <img src="imagenes-siniy/banner-disenografico-0002.png" alt="Diseño Gráfico SINIY" class="hero-img">
       </div>
     </section>
 
-    <h2 class="section-subtitle">Tecnología & Creatividad</h2>
-    <p class="section-desc">Herramientas de última generación para resultados profesionales.</p>
-    <div class="tools-grid">
-      <div class="tool-box"><h3>🖥️ Web</h3><ul><li>HTML5 / CSS3</li><li>JavaScript</li></ul></div>
-      <div class="tool-box"><h3>🛒 E-commerce</h3><ul><li>Shopify</li><li>WooCommerce</li></ul></div>
-      <div class="tool-box"><h3>🎨 Creative Suite</h3><ul><li>Illustrator / Photoshop</li><li>Premiere Pro / CapCut</li></ul></div>
-      <div class="tool-box"><h3>🤖 IA Power</h3><ul><li>Generación de Activos</li><li>Automatización</li></ul></div>
-      <div class="tool-box"><h3>📈 Data</h3><ul><li>Google Analytics 4</li><li>Meta Ads Manager</li></ul></div>
-    </div>
+    <section id="servicios">
+      <div class="section-header">
+        <span class="badge">Nuestros Servicios</span>
+        <h2>Soluciones 360° para tu Negocio</h2>
+        <p class="subtitle">Integramos lo mejor del mundo impreso con la potencia del mundo digital.</p>
+      </div>
 
-    <div class="agency-block" id="cobertura">
-      <div>
-        <h2 style="line-height: 1.2;">AGENCIA DE<br><span style="color:var(--primary)">IMPACTO VISUAL</span></h2>
-        <p>En <strong>SINIY</strong> no solo diseñamos, construimos experiencias. Combinamos la precisión de la impresión litográfica con la velocidad del mundo digital.</p>
-        
-        <h3 style="color:var(--accent); margin-top: 25px;">Cobertura Regional y Nacional</h3>
-        <p>Aunque nuestra base creativa está en <strong>Manizales, Caldas</strong>, nuestra red de servicios cubre todo el <strong>Eje Cafetero</strong> y las principales ciudades:</p>
-        <ul style="color:var(--muted); padding-left: 20px; columns: 2;">
-          <li>Manzanares</li>
-          <li>Belalcázar</li>
-          <li>Pereira</li>
-          <li>Armenia</li>
-          <li>Medellín</li>
-          <li>Villamaría</li>
-        </ul>
-        <p style="font-size: 0.9rem; margin-top: 10px;">Envíos y servicios digitales a todo Colombia.</p>
+      <div class="grid three-col">
+        <div class="card">
+          <div class="icon-box">🎨</div>
+          <h3>Diseño & Branding</h3>
+          <p>Creación de logotipos, identidad corporativa y manuales de marca que transmiten la esencia de tu empresa.</p>
+        </div>
+        <div class="card">
+          <div class="icon-box">🖨️</div>
+          <h3>Publicidad Impresa</h3>
+          <p>Impresión de alta calidad: Pendones, volantes, tarjetas, material POP y stickers con acabados premium.</p>
+        </div>
+        <div class="card">
+          <div class="icon-box">💻</div>
+          <h3>Desarrollo Web</h3>
+          <p>Páginas web modernas, tiendas online (Shopify/Woo) y Landing Pages optimizadas para ventas.</p>
+        </div>
+        <div class="card">
+          <div class="icon-box">🚀</div>
+          <h3>Marketing Digital</h3>
+          <p>Estrategias de Meta Ads (Facebook/Instagram) y Google Ads enfocadas en ROI y captación de clientes.</p>
+        </div>
+        <div class="card">
+          <div class="icon-box">👕</div>
+          <h3>Merchandising</h3>
+          <p>Personalización de productos: camisetas, gorras y mugs para eventos o dotación empresarial.</p>
+        </div>
+        <div class="card">
+          <div class="icon-box">📊</div>
+          <h3>Consultoría</h3>
+          <p>Te acompañamos en la transformación digital de tu negocio con asesorías personalizadas.</p>
+        </div>
       </div>
-      <div><img src="imagenes-siniy/banner-siniy001.png" alt="Agencia de Publicidad SINIY"></div>
-    </div>
+    </section>
 
-    <h2 id="servicios" class="section-subtitle">Nuestras Soluciones</h2>
-    <h3 class="section-title-large">Todo lo que tu marca necesita</h3>
-    
-    <div class="grid three" style="margin-top: 40px;">
-      <div class="card">
-        <div class="card-icon">🎨</div>
-        <h3>Diseño Gráfico & Branding</h3>
-        <p>Identidad visual que perdura. Logos, manuales de marca y piezas publicitarias de alto nivel.</p>
+    <section id="agencia" style="margin-top: 100px;">
+      <div class="hero" style="padding: 0;">
+        <div>
+          <img src="imagenes-siniy/banner-siniy001.png" alt="Equipo SINIY" class="hero-img">
+        </div>
+        <div>
+          <span class="badge">Sobre Nosotros</span>
+          <h2 style="margin-top: 10px;">Más que una agencia,<br>tu aliado estratégico.</h2>
+          <p>En <strong>SINIY Soluciones Digitales</strong> combinamos creatividad y tecnología. No solo hacemos que tu marca se vea bien, hacemos que funcione.</p>
+          <p>Nos especializamos en conectar negocios locales con audiencias globales a través de una imagen impecable.</p>
+        </div>
       </div>
-      <div class="card">
-        <div class="card-icon">💻</div>
-        <h3>Desarrollo Web & Apps</h3>
-        <p>Sitios rápidos, optimizados para SEO y listos para vender. Landing pages y Tiendas Online.</p>
-      </div>
-      <div class="card">
-        <div class="card-icon">🖨️</div>
-        <h3>Impresión Publicitaria</h3>
-        <p>Calidad tangible. Pendones, tarjetas, volantes, stickers y material POP para eventos.</p>
-      </div>
-      <div class="card">
-        <div class="card-icon">👕</div>
-        <h3>Merchandising</h3>
-        <p>Sublimación personalizada en camisetas, tazas y souvenirs corporativos.</p>
-      </div>
-      <div class="card">
-        <div class="card-icon">📱</div>
-        <h3>Marketing Digital</h3>
-        <p>Estrategias en Meta Ads y Google Ads para atraer clientes reales en tu zona.</p>
-      </div>
-      <div class="card">
-        <div class="card-icon">🎓</div>
-        <h3>Consultoría</h3>
-        <p>Te enseñamos a manejar tu marca digitalmente con mentorías personalizadas.</p>
-      </div>
-    </div>
+    </section>
 
-    <h2 id="resenas" class="section-subtitle">Clientes Felices</h2>
-    <h3 class="section-title-large">Lo que dicen de nosotros</h3>
-    <div class="grid three" style="margin-top: 30px;">
-      <div class="testimonial-card">
-        <div class="stars">★★★★★</div>
-        <p>"Excelente servicio, entendieron perfectamente la idea futurista que quería para mi marca. La impresión de los stickers fue impecable."</p>
-        <span class="client-name">Camila R.</span>
-        <span class="client-loc">Emprendedora en Manizales</span>
-      </div>
-      <div class="testimonial-card">
-        <div class="stars">★★★★★</div>
-        <p>"Necesitaba renovar la web de mi negocio en Manzanares y SINIY lo hizo en tiempo récord. Muy rápidos y atentos."</p>
-        <span class="client-name">Jorge M.</span>
-        <span class="client-loc">Comerciante Local</span>
-      </div>
-      <div class="testimonial-card">
-        <div class="stars">★★★★★</div>
-        <p>"Los pendones para nuestro evento en Medellín quedaron geniales. Gran calidad de color y diseño."</p>
-        <span class="client-name">Laura V.</span>
-        <span class="client-loc">Organizadora de Eventos</span>
+    <div id="cobertura" class="locations-bar">
+      <h3 style="margin:0; font-size: 1.5rem;">Cobertura Regional y Nacional</h3>
+      <p style="color:var(--text-light); margin-top:10px;">Nuestra base está en Manizales, pero nuestro impacto llega a todo el Eje Cafetero y Colombia.</p>
+      
+      <div class="locations-grid">
+        <div class="loc-tag">📍 Manizales</div>
+        <div class="loc-tag">📍 Pereira</div>
+        <div class="loc-tag">📍 Armenia</div>
+        <div class="loc-tag">📍 Medellín</div>
+        <div class="loc-tag">📍 Manzanares</div>
+        <div class="loc-tag">📍 Belalcázar</div>
+        <div class="loc-tag">📍 Villamaría</div>
+        <div class="loc-tag">🇨🇴 Envíos a todo el país</div>
       </div>
     </div>
 
-    <h2 id="contacto" class="section-subtitle">¿Listo para empezar?</h2>
-    <div style="text-align: center; margin-top: 20px;">
-      <p style="font-size: 1.2rem; margin-bottom: 20px;">Llevamos tu proyecto al siguiente nivel.</p>
-      <a href="https://wa.me/573237028814" target="_blank" class="btn primary">
-        Chat en WhatsApp
-      </a>
-      <p style="margin-top: 20px; font-size: 0.9rem; color: var(--muted);">
-        O escríbenos a <a href="mailto:hola@siniy.pro" style="color:white; text-decoration: underline;">hola@siniy.pro</a>
-      </p>
-    </div>
+    <section style="margin-top: 80px;">
+      <div class="section-header">
+        <h2>Lo que dicen nuestros clientes</h2>
+      </div>
+      <div class="grid three-col">
+        <div class="testimonial">
+          <div class="stars">★★★★★</div>
+          <p class="quote">"La página web que diseñaron para mi negocio en Manzanares cargó rapidísimo y el diseño es muy elegante."</p>
+          <div class="client">Carlos A. - Comerciante</div>
+        </div>
+        <div class="testimonial">
+          <div class="stars">★★★★★</div>
+          <p class="quote">"Me encantó el rediseño de mi marca. Captaron la idea futurista pero sobria que buscaba."</p>
+          <div class="client">Andrea M. - Emprendedora Digital</div>
+        </div>
+        <div class="testimonial">
+          <div class="stars">★★★★★</div>
+          <p class="quote">"Excelente calidad en la impresión de pendones y cumplimiento en la entrega."</p>
+          <div class="client">Felipe R. - Organizador de Eventos</div>
+        </div>
+      </div>
+    </section>
 
   </main>
 
   <footer>
-    <div class="wrap">
-      &copy; 2025 SINIY Soluciones Digitales. Todos los derechos reservados.<br>
-      <span style="font-size: 0.8rem; color: #555;">Diseñado con ❤️ en Manizales, Colombia.</span>
+    <div class="wrap footer-content">
+      <h3 style="color: white; margin-bottom: 20px;">SINIY Soluciones Digitales</h3>
+      <p>Llevamos tu marca al futuro.</p>
+      <div style="margin-top: 30px; display: flex; justify-content: center; gap: 20px;">
+        <a href="#">Instagram</a>
+        <a href="#">Facebook</a>
+        <a href="mailto:hola@siniy.pro">hola@siniy.pro</a>
+      </div>
+      <p style="margin-top: 40px; font-size: 0.8rem; color: #6b7280;">&copy; 2025 SINIY. Todos los derechos reservados.</p>
     </div>
   </footer>
 
   <div id="cotizacionModal" class="modal">
     <div class="modal-content">
-      <span class="close" onclick="document.getElementById('cotizacionModal').style.display='none'">&times;</span>
-      <h3 style="margin-top:0">Solicita tu cotización</h3>
-      <p style="font-size: 0.9rem; margin-bottom: 20px;">Cuéntanos sobre tu proyecto.</p>
+      <span class="close" onclick="closeModal()">&times;</span>
+      <h3 style="margin-top:0; color: var(--brand);">Solicita tu Cotización</h3>
+      <p style="color: var(--text-light); margin-bottom: 20px;">Cuéntanos sobre tu proyecto y te responderemos pronto.</p>
       <form action="https://formsubmit.co/hola@siniy.pro" method="POST">
         <input type="hidden" name="_next" value="https://siniy.pro/gracias">
-        <input type="text" name="name" placeholder="Tu nombre o empresa" required />
-        <input type="email" name="email" placeholder="Tu correo electrónico" required />
-        <input type="text" name="city" placeholder="Ciudad (ej: Manizales, Medellín...)" />
-        <textarea name="message" rows="4" placeholder="Detalles del servicio (Impresión, Web, Diseño...)" required></textarea>
-        <button type="submit" class="btn primary" style="width:100%">Enviar Solicitud</button>
+        
+        <label style="font-size: 0.9rem; font-weight: 600; margin-bottom: 5px; display: block;">Nombre Completo</label>
+        <input type="text" name="name" required placeholder="Ej: Juan Pérez" />
+        
+        <label style="font-size: 0.9rem; font-weight: 600; margin-bottom: 5px; display: block;">Correo Electrónico</label>
+        <input type="email" name="email" required placeholder="Ej: juan@empresa.com" />
+
+        <label style="font-size: 0.9rem; font-weight: 600; margin-bottom: 5px; display: block;">Ciudad</label>
+        <input type="text" name="city" placeholder="Ej: Manizales, Medellín..." />
+        
+        <label style="font-size: 0.9rem; font-weight: 600; margin-bottom: 5px; display: block;">¿Qué necesitas?</label>
+        <textarea name="message" rows="4" required placeholder="Describe tu proyecto..."></textarea>
+        
+        <button type="submit" class="btn btn-primary" style="width: 100%;">Enviar Solicitud</button>
       </form>
     </div>
   </div>
 
-  <a href="https://wa.me/573237028814" class="whatsapp-btn" target="_blank">
+  <a href="https://wa.me/573237028814" class="whatsapp-float" target="_blank">
     <img src="whatsappboton.png" alt="WhatsApp SINIY" />
   </a>
 
   <script>
-    window.onclick=function(e){
-      const modal=document.getElementById('cotizacionModal');
-      if(e.target==modal){modal.style.display='none';}
+    function openModal() { document.getElementById('cotizacionModal').style.display = 'block'; }
+    function closeModal() { document.getElementById('cotizacionModal').style.display = 'none'; }
+    function toggleMenu() { document.getElementById('nav-menu').classList.toggle('show'); }
+    
+    // Cerrar modal al hacer clic fuera
+    window.onclick = function(e) {
+      const modal = document.getElementById('cotizacionModal');
+      if (e.target == modal) { closeModal(); }
     }
   </script>
 </body>
