@@ -1,104 +1,268 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es-CO">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Políticas SINIY Soluciones Digitales</title>
+  <title>Políticas y Términos | SINIY</title>
   <link rel="icon" href="siniyfavicon.png" type="image/png" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+  
+  <meta name="description" content="Términos, condiciones y políticas de servicio de SINIY Agencia Creativa." />
+  <meta name="robots" content="noindex, follow" />
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+
   <style>
-    body {
+    :root{
+      /* Paleta SINIY */
+      --brand: #5e17eb;       
+      --brand-dark: #450eb5;  
+      --brand-light: #f0eaff; 
+      --text-main: #1f2937;   
+      --text-light: #6b7280;  
+      --bg-body: #ffffff;     
+      --bg-card: #ffffff;     
+      --border: #e5e7eb;      
+    }
+
+    /* Reset & Base */
+    *{box-sizing:border-box}
+    html{scroll-behavior: smooth;}
+    body{
+      margin:0;padding:0;
+      background: var(--bg-body);
+      color: var(--text-main);
       font-family: 'Inter', sans-serif;
-      background-color: #ffffff;
-      color: #1a1a1a;
-      line-height: 1.6;
-      margin: 0;
-      padding: 0;
+      line-height: 1.7;
+      overflow-x: hidden;
     }
-    header, footer {
-      background-color: #1a1a1a;
+
+    a{text-decoration:none; transition: all 0.3s ease; color: var(--brand);}
+    a:hover{color: var(--brand-dark); text-decoration: underline;}
+    
+    /* --- Estructura --- */
+    .wrap{max-width:1150px; margin:0 auto; padding:0 24px; position: relative;}
+    
+    /* --- Header --- */
+    header{
+      position: sticky; top:0; z-index: 100;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      padding: 16px 0;
+    }
+    .nav-container{display:flex; justify-content:space-between; align-items:center;}
+    
+    .logo-img {max-height: 75px; width: auto;} 
+    
+    nav{display:flex; gap:30px; align-items:center;}
+    nav a{font-weight: 500; font-size: 0.95rem; color: var(--text-light); text-decoration: none;}
+    nav a:hover{color: var(--brand); text-decoration: none;}
+    
+    .hamburger{display:none; font-size:24px; cursor:pointer; color:var(--text-main);}
+
+    /* --- Botones --- */
+    .btn{
+      padding: 12px 28px; border-radius: 50px; font-weight: 600;
+      display: inline-flex; align-items: center; justify-content: center;
+      transition: all 0.3s ease; cursor: pointer; border: none; text-decoration: none;
+    }
+    .btn-primary{
+      background-color: var(--brand);
       color: white;
+      box-shadow: 0 4px 14px rgba(94, 23, 235, 0.3);
+    }
+    .btn-primary:hover{
+      background-color: var(--brand-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(94, 23, 235, 0.4);
+      color: white; text-decoration: none;
+    }
+
+    /* --- Estilos Contenido Legal --- */
+    .legal-header {
       text-align: center;
-      padding: 1.5rem;
+      padding: 60px 0 40px;
     }
-    header img {
-      max-height: 70px;
+    .badge{
+      background: var(--brand-light); color: var(--brand);
+      padding: 6px 16px; border-radius: 20px; font-size: 0.85rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 1px; display: inline-block; margin-bottom: 16px;
     }
-    main {
-      padding: 2rem;
-      max-width: 1000px;
-      margin: auto;
+    h1 {
+      font-size: 2.5rem; color: var(--text-main); font-weight: 800; margin: 0 0 20px; letter-spacing: -1px;
     }
-    h1, h2 {
-      color: #007aff;
+    
+    .legal-container {
+      max-width: 900px;
+      margin: 0 auto 80px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 50px;
+      box-shadow: 0 10px 40px -10px rgba(0,0,0,0.05);
     }
-    section {
-      margin-bottom: 2rem;
+
+    section.policy-section {
+      margin-bottom: 50px;
+      padding-bottom: 30px;
+      border-bottom: 1px solid var(--border);
     }
+    section.policy-section:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    h2 {
+      font-size: 1.4rem; color: var(--brand); margin-top: 0; margin-bottom: 20px; font-weight: 700;
+      display: flex; align-items: center; gap: 10px;
+    }
+    
     ul {
-      margin-left: 1.5rem;
+      list-style: none; padding-left: 0; margin: 0;
+    }
+    
+    li {
+      position: relative; padding-left: 25px; margin-bottom: 14px; color: var(--text-light);
+    }
+    
+    li::before {
+      content: '•'; 
+      position: absolute; left: 0; top: 0px;
+      color: var(--brand); font-weight: bold; font-size: 1.5rem; line-height: 1;
+    }
+
+    /* --- Footer --- */
+    footer{
+      background: #111827;
+      color: white; padding: 60px 0 30px; margin-top: 60px;
+    }
+    .footer-content{ text-align: center; }
+    .footer-content a{ color: #9ca3af; text-decoration: none;}
+    .footer-content a:hover{ color: white; }
+
+    /* --- WhatsApp --- */
+    .whatsapp-float{
+      position: fixed; bottom: 30px; right: 30px; z-index: 999;
+      transition: transform 0.3s ease;
+    }
+    .whatsapp-float:hover{ transform: scale(1.1); }
+    .whatsapp-float img{ width: 60px; height: 60px; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.2)); }
+
+    /* --- Mobile --- */
+    @media (max-width: 850px){
+      nav{ display: none; position: absolute; top: 70px; left:0; right:0; background: white; flex-direction: column; padding: 20px; border-bottom: 1px solid var(--border); box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); }
+      nav.show{ display: flex; }
+      .hamburger{ display: block; }
+      .legal-container { padding: 30px 20px; border-radius: 0; border-left: none; border-right: none; }
+      h1 { font-size: 2rem; }
     }
   </style>
 </head>
 <body>
+
   <header>
-    <a href="https://siniy.pro"><img src="logoazulsiniy.png" alt="Logo SINIY"></a>
+    <div class="wrap nav-container">
+      <div class="brand">
+        <a href="index.html">
+          <img src="logovioletasiniy.svg" alt="SINIY" class="logo-img">
+        </a> 
+      </div>
+      <div>
+        <nav id="nav-menu">
+          <a href="index.html">Inicio</a>
+          <a href="index.html#servicios">Servicios</a>
+          <a href="index.html#agencia">Agencia</a>
+          <a href="index.html#contacto" class="btn btn-primary" style="padding: 8px 20px; font-size: 0.9rem; color: white;">Cotizar</a>
+        </nav>
+        <div class="hamburger" onclick="toggleMenu()">☰</div>
+      </div>
+    </div>
   </header>
 
-  <main>
-    <h1>Políticas de SINIY Soluciones Digitales</h1>
+  <main class="wrap">
+    
+    <div class="legal-header">
+      <span class="badge">Marco Legal Corporativo</span>
+      <h1>Políticas de SINIY Soluciones Digitales</h1>
+      <p style="color: var(--text-light); margin-top: 10px;">Transparencia y claridad en cada uno de nuestros procesos.</p>
+    </div>
 
-    <section>
-      <h2>Política de Empleados</h2>
-      <ul>
-        <li>Garantizamos la aplicación de la legislación laboral colombiana (Código Sustantivo del Trabajo) y promovemos el respeto a los derechos fundamentales de todos nuestros colaboradores.</li>
-        <li>Fomentamos un entorno de trabajo seguro, inclusivo y libre de cualquier forma de discriminación, acoso o maltrato.</li>
-        <li>Exigimos a nuestros empleados la confidencialidad de la información comercial, financiera y estratégica de la empresa, de conformidad con acuerdos de confidencialidad y la legislación vigente.</li>
-        <li>Contamos con protocolos de seguridad industrial y salud en el trabajo (SG-SST) aplicables a todas las áreas laborales, conforme a la normativa nacional.</li>
-      </ul>
-    </section>
+    <div class="legal-container">
 
-    <section>
-      <h2>Política de Reembolsos, Cambios y Garantías</h2>
-      <ul>
-        <li>De acuerdo con la normatividad comercial y de protección al consumidor en Colombia (Ley 1480 de 2011), SINIY informa que no se realizan devoluciones de dinero, debido a que los servicios prestados incluyen costos administrativos, descuentos gubernamentales (como el impuesto 4x1000) y pagos a proveedores no reversibles.</li>
-        <li>Ofrecemos cambios por el mismo artículo o servicio en caso de errores atribuibles a SINIY, siempre y cuando se conserve la conformidad con el diseño previamente aprobado por el cliente. No se realizan modificaciones de diseño una vez que el cliente ha dado su aprobación final.</li>
-        <li>Las garantías aplican exclusivamente sobre la calidad del producto impreso o digital entregado y no cubren cambios de opinión, errores de información proporcionada por el cliente o mal uso de los productos.</li>
-        <li>Los tiempos de entrega de cualquier nuevo producto en garantía se establecen de acuerdo con la capacidad de producción y logística de la empresa.</li>
-      </ul>
-    </section>
+      <section class="policy-section">
+        <h2>Política de Empleados</h2>
+        <ul>
+          <li>Garantizamos la aplicación de la legislación laboral colombiana (Código Sustantivo del Trabajo) y promovemos el respeto a los derechos fundamentales de todos nuestros colaboradores.</li>
+          <li>Fomentamos un entorno de trabajo seguro, inclusivo y libre de cualquier forma de discriminación, acoso o maltrato.</li>
+          <li>Exigimos a nuestros empleados la confidencialidad de la información comercial, financiera y estratégica de la empresa, de conformidad con acuerdos de confidencialidad y la legislación vigente.</li>
+          <li>Contamos con protocolos de seguridad industrial y salud en el trabajo (SG-SST) aplicables a todas las áreas laborales, conforme a la normativa nacional.</li>
+        </ul>
+      </section>
 
-    <section>
-      <h2>Política de Tratamiento de Datos Personales</h2>
-      <ul>
-        <li>SINIY cumple con la Ley 1581 de 2012 y el Decreto 1377 de 2013 en cuanto a la recolección, almacenamiento, uso, circulación y supresión de datos personales.</li>
-        <li>La información de nuestros usuarios y clientes se utiliza exclusivamente para la ejecución de los servicios contratados, envío de comunicaciones comerciales, y mejora de la experiencia de usuario, sin ser compartida con terceros no autorizados.</li>
-        <li>Los titulares de los datos pueden ejercer sus derechos de acceso, actualización, rectificación o eliminación de la información contactándonos a <a href="mailto:hola@siniy.com">hola@siniy.com</a>.</li>
-        <li>Contamos con medidas de seguridad administrativas, técnicas y físicas para proteger los datos personales de accesos no autorizados, pérdidas o alteraciones.</li>
-      </ul>
-    </section>
+      <section class="policy-section">
+        <h2>Política de Reembolsos, Cambios y Garantías</h2>
+        <ul>
+          <li>De acuerdo con la normatividad comercial y de protección al consumidor en Colombia (Ley 1480 de 2011), <strong>SINIY informa que no se realizan devoluciones de dinero</strong>, debido a que los servicios prestados incluyen costos administrativos, descuentos gubernamentales (como el impuesto 4x1000) y pagos a proveedores no reversibles.</li>
+          <li>Ofrecemos cambios por el mismo artículo o servicio en caso de errores atribuibles a SINIY, siempre y cuando se conserve la conformidad con el diseño previamente aprobado por el cliente. No se realizan modificaciones de diseño una vez que el cliente ha dado su aprobación final.</li>
+          <li>Las garantías aplican exclusivamente sobre la calidad del producto impreso o digital entregado y no cubren cambios de opinión, errores de información proporcionada por el cliente o mal uso de los productos.</li>
+          <li>Los tiempos de entrega de cualquier nuevo producto en garantía se establecen de acuerdo con la capacidad de producción y logística de la empresa.</li>
+        </ul>
+      </section>
 
-    <section>
-      <h2>Política Legal y Responsabilidad</h2>
-      <ul>
-        <li>Los productos y servicios ofrecidos por SINIY están sujetos a disponibilidad y a cambios de precio sin previo aviso. Las promociones y descuentos tienen vigencia limitada.</li>
-        <li>Los contenidos, marcas, diseños y elementos gráficos presentados en nuestra web están protegidos por derechos de autor y propiedad intelectual conforme a la Ley 23 de 1982 y otras normas aplicables en Colombia.</li>
-        <li>El uso indebido de los productos o servicios adquiridos será de exclusiva responsabilidad del cliente, eximiendo a SINIY de cualquier reclamación derivada.</li>
-        <li>Cualquier conflicto legal se resolverá de acuerdo con las leyes colombianas y ante los tribunales competentes en la ciudad de Manizales, Caldas.</li>
-      </ul>
-    </section>
+      <section class="policy-section">
+        <h2>Política de Tratamiento de Datos Personales</h2>
+        <ul>
+          <li>SINIY cumple con la Ley 1581 de 2012 y el Decreto 1377 de 2013 en cuanto a la recolección, almacenamiento, uso, circulación y supresión de datos personales.</li>
+          <li>La información de nuestros usuarios y clientes se utiliza exclusivamente para la ejecución de los servicios contratados, envío de comunicaciones comerciales, y mejora de la experiencia de usuario, sin ser compartida con terceros no autorizados.</li>
+          <li>Los titulares de los datos pueden ejercer sus derechos de acceso, actualización, rectificación o eliminación de la información contactándonos a <a href="mailto:hola@siniy.pro">hola@siniy.pro</a>.</li>
+          <li>Contamos con medidas de seguridad administrativas, técnicas y físicas para proteger los datos personales de accesos no autorizados, pérdidas o alteraciones.</li>
+        </ul>
+      </section>
 
-    <section>
-      <h2>Política de Cookies y Navegación</h2>
-      <ul>
-        <li>Nuestro sitio utiliza cookies propias y de terceros para mejorar la navegación y analizar el comportamiento del usuario.</li>
-        <li>El uso continuado de siniy.pro implica la aceptación de esta política. Los usuarios pueden configurar su navegador para deshabilitar cookies, aunque esto podría afectar la funcionalidad del sitio.</li>
-      </ul>
-    </section>
+      <section class="policy-section">
+        <h2>Política Legal y Responsabilidad</h2>
+        <ul>
+          <li>Los productos y servicios ofrecidos por SINIY están sujetos a disponibilidad y a cambios de precio sin previo aviso. Las promociones y descuentos tienen vigencia limitada.</li>
+          <li>Los contenidos, marcas, diseños y elementos gráficos presentados en nuestra web están protegidos por derechos de autor y propiedad intelectual conforme a la Ley 23 de 1982 y otras normas aplicables en Colombia.</li>
+          <li>El uso indebido de los productos o servicios adquiridos será de exclusiva responsabilidad del cliente, eximiendo a SINIY de cualquier reclamación derivada.</li>
+          <li>Cualquier conflicto legal se resolverá de acuerdo con las leyes colombianas y ante los tribunales competentes en la ciudad de Manizales, Caldas.</li>
+        </ul>
+      </section>
+
+      <section class="policy-section">
+        <h2>Política de Cookies y Navegación</h2>
+        <ul>
+          <li>Nuestro sitio utiliza cookies propias y de terceros para mejorar la navegación y analizar el comportamiento del usuario.</li>
+          <li>El uso continuado de siniy.pro implica la aceptación de esta política. Los usuarios pueden configurar su navegador para deshabilitar cookies, aunque esto podría afectar la funcionalidad del sitio.</li>
+        </ul>
+      </section>
+
+    </div>
+
   </main>
 
   <footer>
-    <p>&copy; 2025 SINIY Soluciones Digitales. Todos los derechos reservados.</p>
+    <div class="wrap footer-content">
+      <h3 style="color: white; margin-bottom: 20px;">SINIY Soluciones Digitales</h3>
+      <p>Llevamos tu marca al futuro.</p>
+      <div style="margin-top: 30px; display: flex; justify-content: center; gap: 20px;">
+        <a href="#">Instagram</a>
+        <a href="#">Facebook</a>
+        <a href="mailto:hola@siniy.pro">hola@siniy.pro</a>
+      </div>
+      <p style="margin-top: 40px; font-size: 0.8rem; color: #6b7280;">&copy; 2025 SINIY. Todos los derechos reservados.</p>
+    </div>
   </footer>
+
+  <a href="https://wa.me/573237028814" class="whatsapp-float" target="_blank">
+    <img src="whatsappboton.png" alt="WhatsApp SINIY" />
+  </a>
+
+  <script>
+    function toggleMenu() { document.getElementById('nav-menu').classList.toggle('show'); }
+  </script>
 </body>
 </html>
