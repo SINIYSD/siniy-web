@@ -397,6 +397,21 @@
         </div>
       </div>
 
+      <div class="flip-card" onclick="this.querySelector('.flip-card-inner').style.transform = this.querySelector('.flip-card-inner').style.transform === 'rotateY(180deg)' ? 'rotateY(0deg)' : 'rotateY(180deg)'">
+        <div class="flip-card-inner">
+          <div class="flip-front">
+            <img src="Bre-B.png" alt="Bre-B">
+            <h3>Bre-B Llave</h3>
+          </div>
+          <div class="flip-back">
+            <h4 style="margin:0;">Llave</h4>
+            <div class="account-box">@BBVA3237028814</div>
+            <p style="font-size: 0.9rem; margin-bottom: 15px;">José David Alzate</p>
+            <button class="copy-btn" onclick="copiar(event, '@BBVA3237028814')">Copiar</button>
+          </div>
+        </div>
+      </div>
+
     </section>
 
   </main>
