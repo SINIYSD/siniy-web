@@ -13,6 +13,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
 
+  <link rel="stylesheet" href="style.css">
+
   <style>
     :root{
       /* Paleta SINIY */
@@ -36,6 +38,9 @@
       font-family: 'Inter', sans-serif;
       line-height: 1.7;
       overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
     }
 
     a{text-decoration:none; transition: all 0.3s ease; color: var(--brand);}
@@ -134,14 +139,7 @@
       color: var(--brand); font-weight: bold; font-size: 1.5rem; line-height: 1;
     }
 
-    /* --- Footer --- */
-    footer{
-      background: #111827;
-      color: white; padding: 60px 0 30px; margin-top: 60px;
-    }
-    .footer-content{ text-align: center; }
-    .footer-content a{ color: #9ca3af; text-decoration: none;}
-    .footer-content a:hover{ color: white; }
+    /* --- Footer Styles eliminados (ahora en style.css) --- */
 
     /* --- WhatsApp --- */
     .whatsapp-float{
@@ -166,16 +164,16 @@
   <header>
     <div class="wrap nav-container">
       <div class="brand">
-        <a href="siniy.pro">
+        <a href="https://siniy.pro">
           <img src="logovioletasiniy.svg" alt="SINIY" class="logo-img">
         </a> 
       </div>
       <div>
         <nav id="nav-menu">
-          <a href="siniy.pro">Inicio</a>
-          <a href="siniy.pro/#servicios">Servicios</a>
-          <a href="siniy.pro/#agencia">Agencia</a>
-          <a href="siniy.pro/#contacto" class="btn btn-primary" style="padding: 8px 20px; font-size: 0.9rem; color: white;">Cotizar</a>
+          <a href="https://siniy.pro">Inicio</a>
+          <a href="https://siniy.pro/servicios">Servicios</a>
+          <a href="https://siniy.pro/#agencia">Agencia</a>
+          <a href="https://siniy.pro/#contacto" class="btn btn-primary" style="padding: 8px 20px; font-size: 0.9rem; color: white;">Cotizar</a>
         </nav>
         <div class="hamburger" onclick="toggleMenu()">☰</div>
       </div>
@@ -244,22 +242,13 @@
 
   </main>
 
-  <footer>
-    <div class="wrap footer-content">
-      <h3 style="color: white; margin-bottom: 20px;">SINIY Soluciones Digitales</h3>
-      <p>Llevamos tu marca al futuro.</p>
-      <div style="margin-top: 30px; display: flex; justify-content: center; gap: 20px;">
-        <a href="#">Instagram</a>
-        <a href="#">Facebook</a>
-        <a href="mailto:hola@siniy.pro">hola@siniy.pro</a>
-      </div>
-      <p style="margin-top: 40px; font-size: 0.8rem; color: #6b7280;">&copy; 2025 SINIY. Todos los derechos reservados.</p>
-    </div>
-  </footer>
+  <siniy-footer></siniy-footer>
 
   <a href="https://wa.me/573237028814" class="whatsapp-float" target="_blank">
     <img src="whatsappboton.png" alt="WhatsApp SINIY" />
   </a>
+
+  <script src="components.js"></script>
 
   <script>
     function toggleMenu() { document.getElementById('nav-menu').classList.toggle('show'); }
