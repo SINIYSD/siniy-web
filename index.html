@@ -150,18 +150,97 @@
     .card h3{ margin: 0 0 12px; font-size: 1.3rem; }
     .card p{ font-size: 0.95rem; color: var(--text-light); margin: 0; }
 
-    /* --- Locations Section --- */
+    /* --- Locations Section (CONTENEDOR) --- */
     .locations-bar{
       background: #f9fafb; border-radius: 16px; padding: 40px; margin-top: 80px;
       text-align: center;
+      position: relative;
     }
-    .locations-grid{
-      display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; margin-top: 20px;
+    
+    /* --- ESTILOS DEL MAPA INTERACTIVO --- */
+    .map-container {
+        position: relative;
+        width: 100%;
+        max-width: 500px; /* Tamaño controlado del mapa */
+        margin: 0 auto;
+        padding: 20px;
     }
-    .loc-tag{
-      background: white; border: 1px solid var(--border);
-      padding: 8px 18px; border-radius: 100px; color: var(--text-light); font-size: 0.9rem;
-      font-weight: 500;
+
+    .colombia-map {
+        width: 100%;
+        height: auto;
+        filter: drop-shadow(0 10px 15px rgba(0,0,0,0.1));
+        overflow: visible;
+    }
+
+    /* Estilos de los departamentos SVG */
+    .dept { 
+        fill: #e5e7eb; 
+        stroke: #ffffff; 
+        stroke-width: 1.5px; 
+        transition: all 0.3s ease; 
+        cursor: pointer; 
+    }
+    .dept:hover { 
+        fill: var(--brand); 
+        transform: scale(1.02); 
+        stroke: var(--brand-dark); 
+        z-index: 10;
+        position: relative;
+    }
+    /* Estilo para el resto del país (fondo) */
+    .dept-bg {
+        fill: #f3f4f6;
+        stroke: none;
+        pointer-events: none; /* No interactivo */
+    }
+
+    /* El mensaje flotante (Tooltip) */
+    .map-tooltip {
+        position: fixed; /* Se fija a la ventana para seguir al mouse sin problemas de overflow */
+        display: none;      
+        background: rgba(31, 41, 55, 0.95); 
+        color: white;
+        padding: 12px 18px;
+        border-radius: 8px;
+        font-size: 0.85rem;
+        pointer-events: none; 
+        white-space: normal;
+        max-width: 220px;
+        z-index: 9999;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        text-align: left;
+        border: 1px solid var(--brand);
+        backdrop-filter: blur(4px);
+    }
+    
+    .map-tooltip strong {
+        display: block;
+        color: var(--brand-light);
+        margin-bottom: 6px;
+        text-transform: uppercase;
+        font-size: 0.75rem;
+        letter-spacing: 1px;
+        border-bottom: 1px solid rgba(255,255,255,0.2);
+        padding-bottom: 4px;
+    }
+
+    /* Lista Móvil (SEO) */
+    .mobile-list { 
+        display: none; 
+        text-align: center; 
+        margin-top: 30px; 
+    }
+    .seo-cities {
+        color: var(--text-light);
+        font-size: 0.9rem;
+        line-height: 1.8;
+    }
+    .seo-cities span {
+        display: inline-block;
+        margin: 0 5px;
+        font-weight: 500;
+        color: var(--text-main);
     }
 
     /* --- Testimonials --- */
@@ -247,6 +326,11 @@
       .footer-grid { grid-template-columns: 1fr; text-align: center; }
       .social-links { justify-content: center; }
       .footer-logo { margin: 0 auto 15px auto; }
+      
+      /* En móviles mostramos la lista SEO en vez del mapa si es muy pequeño */
+      .mobile-list { display: block; }
+      /* El mapa se puede ocultar o dejar pequeño, aquí lo dejamos pequeño */
+      .map-container { transform: scale(0.9); padding: 0; }
     }
     
     .whatsapp-float{
@@ -352,34 +436,47 @@
 
     <div id="cobertura" class="locations-bar">
       <h3 style="margin:0; font-size: 1.5rem;">Cobertura Regional y Nacional</h3>
-      <p style="color:var(--text-light); margin-top:10px;">Nuestra base está en Manizales, pero nuestro impacto llega a todo el Eje Cafetero y Colombia.</p>
+      <p style="color:var(--text-light); margin-top:10px; margin-bottom: 30px;">Explora el mapa para ver dónde llevamos soluciones digitales.</p>
       
-      <div class="locations-grid">
-        <div class="loc-tag">📍 Manizales</div>
-        <div class="loc-tag">📍 Villamaría</div>
-        <div class="loc-tag">📍 Pereira</div>
-        <div class="loc-tag">📍 Dosquebradas</div>
-        <div class="loc-tag">📍 Armenia</div>
-        <div class="loc-tag">📍 Medellín</div>
-        
-        <div class="loc-tag">📍 Chinchiná</div>
-        <div class="loc-tag">📍 La Dorada</div>
-        <div class="loc-tag">📍 Riosucio</div>
-        <div class="loc-tag">📍 Anserma</div>
-        <div class="loc-tag">📍 Salamina</div>
-        <div class="loc-tag">📍 Manzanares</div>
-        <div class="loc-tag">📍 Neira</div>
-        <div class="loc-tag">📍 Belalcázar</div>
-        <div class="loc-tag">📍 Viterbo</div>
+      <div id="map-tooltip" class="map-tooltip"></div>
 
-        <div class="loc-tag">📍 Santa Rosa de Cabal</div>
-        <div class="loc-tag">📍 Calarcá</div>
-        <div class="loc-tag">📍 Montenegro</div>
-        <div class="loc-tag">📍 Quimbaya</div>
-        
-        <div class="loc-tag">📍 Cartago</div>
+      <div class="map-container">
+        <svg viewBox="0 0 600 700" class="colombia-map">
+            <path class="dept" id="antioquia" d="M230,200 L260,190 L280,210 L280,250 L250,280 L210,250 Z" 
+                  data-name="Antioquia" 
+                  data-cities="📍 Medellín, Envigado, Bello, Itagüí, Sabaneta"></path>
 
-        <div class="loc-tag" style="background-color: var(--brand-light); color: var(--brand); border-color: var(--brand);">🇨🇴 Envíos a todo el país</div>
+            <path class="dept" id="caldas" d="M250,280 L270,280 L275,300 L255,310 L245,290 Z" 
+                  data-name="Caldas" 
+                  data-cities="📍 Manizales, Villamaría, La Dorada, Riosucio, Anserma, Salamina, Neira, Belalcázar, Viterbo, Chinchiná, Manzanares"></path>
+
+            <path class="dept" id="risaralda" d="M245,290 L235,300 L240,320 L255,310 Z" 
+                  data-name="Risaralda" 
+                  data-cities="📍 Pereira, Dosquebradas, Santa Rosa de Cabal"></path>
+
+            <path class="dept" id="quindio" d="M240,320 L250,320 L255,335 L245,335 Z" 
+                  data-name="Quindío" 
+                  data-cities="📍 Armenia, Calarcá, Montenegro, Quimbaya"></path>
+
+            <path class="dept" id="valle" d="M220,300 L235,300 L240,320 L245,335 L230,380 L200,350 Z" 
+                  data-name="Valle del Cauca" 
+                  data-cities="📍 Cartago, Cali, Palmira, Buga"></path>
+
+            <path class="dept" id="resto" d="M150,50 L350,50 L400,150 L500,200 L450,400 L300,600 L150,500 L100,250 Z" 
+                  data-name="Colombia" 
+                  data-cities="🇨🇴 Envíos a todo el país"></path>
+        </svg>
+      </div>
+
+      <div class="mobile-list">
+         <h4 style="margin-bottom: 10px; color: var(--brand);">Llegamos a donde estés</h4>
+         <div class="seo-cities">
+            <span>Manizales</span> • <span>Pereira</span> • <span>Armenia</span> • <span>Medellín</span> • 
+            <span>La Dorada</span> • <span>Chinchiná</span> • <span>Dosquebradas</span> • <span>Santa Rosa de Cabal</span> • 
+            <span>Cartago</span> • <span>Riosucio</span> • <span>Anserma</span> • <span>Manzanares</span> • 
+            <span>Belalcázar</span> • <span>Neira</span> • <span>Viterbo</span> • <span>Salamina</span>
+         </div>
+         <p style="margin-top:10px; font-weight: 600;">🇨🇴 Envíos a todo el país</p>
       </div>
     </div>
 
@@ -500,6 +597,36 @@
       const modal = document.getElementById('cotizacionModal');
       if (e.target == modal) { closeModal(); }
     }
+
+    // --- LÓGICA DEL MAPA INTERACTIVO ---
+    document.addEventListener('DOMContentLoaded', () => {
+        const tooltip = document.getElementById('map-tooltip');
+        const departments = document.querySelectorAll('.dept');
+
+        departments.forEach(dept => {
+            // Entrar al departamento
+            dept.addEventListener('mouseenter', (e) => {
+                const name = dept.getAttribute('data-name');
+                const cities = dept.getAttribute('data-cities');
+                
+                // Llenar datos
+                tooltip.innerHTML = `<strong>${name}</strong>${cities}`;
+                tooltip.style.display = 'block';
+            });
+
+            // Moverse dentro (el tooltip sigue al mouse)
+            dept.addEventListener('mousemove', (e) => {
+                const offset = 15; // Separación del cursor
+                tooltip.style.left = (e.clientX + offset) + 'px';
+                tooltip.style.top = (e.clientY + offset) + 'px';
+            });
+
+            // Salir
+            dept.addEventListener('mouseleave', () => {
+                tooltip.style.display = 'none';
+            });
+        });
+    });
   </script>
 </body>
 </html>
