@@ -4,15 +4,26 @@
 footer {
     background: #f9fafb;
     color: #1f2937;
-    padding: 80px 0 30px;
-    margin-top: auto;
+    padding: 80px 0 40px; /* Un poco más de espacio al final */
+    
+    /* CAMBIO 1: Separación grande entre el contenido anterior y el footer */
+    margin-top: 100px; 
+    
     border-top: 1px solid #e5e7eb;
     font-family: 'Inter', sans-serif;
 }
+
 .wrap { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
 .footer-grid {
-    display: grid; grid-template-columns: 1.2fr 1fr 1fr; gap: 40px; margin-bottom: 50px;
+    display: grid; 
+    grid-template-columns: 1.2fr 1fr 1fr; 
+    gap: 40px; 
+    
+    /* CAMBIO 2: Más espacio entre los columnas del footer y la línea de copyright */
+    margin-bottom: 80px; 
 }
+
 .footer-col h4 {
     color: #1f2937; font-size: 1.1rem; margin-bottom: 20px;
     border-bottom: 2px solid #5e17eb; display: inline-block; padding-bottom: 5px;
@@ -34,9 +45,14 @@ footer {
 .footer-links a:hover { color: #5e17eb; padding-left: 5px; }
 
 .payment-zone img { max-width: 100%; border-radius: 8px; margin-top: 10px; }
+
 .copyright {
     border-top: 1px solid #e5e7eb;
-    padding-top: 30px; text-align: center; font-size: 0.85rem; color: #6b7280;
+    
+    /* CAMBIO 3: Más aire entre la línea y el texto de derechos */
+    padding-top: 40px; 
+    
+    text-align: center; font-size: 0.85rem; color: #6b7280;
 }
 
 /* Responsive Footer */
