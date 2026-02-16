@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="es-CO">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Servicios | SINIY Agencia Creativa</title>
+  <link rel="icon" href="siniyfavicon.png" type="image/png" />
+  
+  <meta name="description" content="Conoce nuestros servicios de Diseño Gráfico, Desarrollo Web y Marketing Digital en Manizales y el Eje Cafetero." />
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --brand: #5e17eb;       
+      --brand-dark: #450eb5;  
+      --brand-light: #f0eaff; 
+      --accent: #00d2ff;      /* Nuevo color de acento cyan para degradados modernos */
+      --text-main: #1f2937;   
+      --text-light: #6b7280;  
+      --bg-body: #ffffff;     
+      --bg-glass: rgba(255, 255, 255, 0.7);
+    }
+
+    /* --- BASE & RESET --- */
+    *{box-sizing:border-box}
+    html{scroll-behavior: smooth;}
+    body{
+      margin:0;padding:0;
+      background: var(--bg-body);
+      color: var(--text-main);
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+    }
+
+    a{text-decoration:none; transition: all 0.3s ease; color: var(--text-main);}
+    
+    /* --- FONDO ANIMADO "AURORA" --- */
+    .background-glow {
+      position: fixed; top: 0; left: 0; width: 100%; height: 100vh; z-index: -1;
+      background: radial-gradient(circle at 50% 50%, rgba(94, 23, 235, 0.05), transparent 60%),
+                  radial-gradient(circle at 80% 20%, rgba(0, 210, 255, 0.05), transparent 40%);
+      animation: pulseGlow 10s infinite alternate;
+    }
+    @keyframes pulseGlow {
+      0% { transform: scale(1); opacity: 0.5; }
+      100% { transform: scale(1.1); opacity: 1; }
+    }
+
+    .wrap{max-width:1200px; margin:0 auto; padding:0 24px;}
+
+    /* --- HEADER (Consistente pero mejorado) --- */
+    header{
+      position: sticky; top:0; z-index: 100;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(229, 231, 235, 0.5);
+      padding: 16px 0;
+    }
+    .nav-container{display:flex; justify-content:space-between; align-items:center;}
+    .logo-img {max-height: 50px; width: auto;} 
+    nav{display:flex; gap:30px; align-items:center;}
+    nav a{font-weight: 500; font-size: 0.95rem; color: var(--text-light); position: relative;}
+    nav a:hover{color: var(--brand);}
+    nav a::after{
+      content: ''; position: absolute; bottom: -4px; left: 0; width: 0%; height: 2px;
+      background: var(--brand); transition: width 0.3s ease;
+    }
+    nav a:hover::after{ width: 100%; }
+    
+    .btn{
+      padding: 10px 24px; border-radius: 50px; font-weight: 600; cursor: pointer; border: none;
+      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+    .btn-primary{
+      background: linear-gradient(135deg, var(--brand) 0%, var(--brand-dark) 100%);
+      color: white; box-shadow: 0 4px 15px rgba(94, 23, 235, 0.3);
+    }
+    .btn-primary:hover{ transform: translateY(-3px); box-shadow: 0 8px 25px rgba(94, 23, 235, 0.5); }
+
+    /* --- HERO DE SERVICIOS --- */
+    .services-hero {
+      text-align: center; padding: 120px 0 80px;
+      position: relative; overflow: hidden;
+    }
+    .services-hero h1 {
+      font-size: 4rem; font-weight: 900; letter-spacing: -2px; margin-bottom: 20px;
+      background: linear-gradient(to right, var(--brand), var(--accent));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      opacity: 0; animation: fadeUp 0.8s forwards 0.2s;
+    }
+    .services-hero p {
+      font-size: 1.3rem; max-width: 700px; margin: 0 auto; color: var(--text-light);
+      opacity: 0; animation: fadeUp 0.8s forwards 0.4s;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* --- LAYOUT ZIG-ZAG (Secciones Inmersivas) --- */
+    .service-section {
+      padding: 100px 0;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+      position: relative;
+    }
+    
+    /* Alternar orden para efecto visual dinámico */
+    .service-section.reverse .content-col { order: 2; }
+    .service-section.reverse .image-col { order: 1; }
+
+    /* Columna de Texto */
+    .content-col { z-index: 2; }
+    .num-badge {
+      font-size: 4rem; font-weight: 900; opacity: 0.1; line-height: 1;
+      color: var(--brand); margin-bottom: -20px; display: block;
+      font-family: 'Inter', sans-serif;
+    }
+    .content-col h2 { font-size: 2.5rem; margin-bottom: 20px; font-weight: 800; letter-spacing: -1px; }
+    .content-col p { font-size: 1.1rem; color: var(--text-light); margin-bottom: 30px; line-height: 1.7; }
+    
+    .feature-list { list-style: none; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+    .feature-list li {
+      display: flex; align-items: center; gap: 10px; font-weight: 500; font-size: 0.95rem;
+    }
+    .feature-list li::before {
+      content: '✓'; color: white; background: var(--brand);
+      width: 20px; height: 20px; border-radius: 50%; display: flex; 
+      align-items: center; justify-content: center; font-size: 12px;
+    }
+
+    /* Columna de Imagen (Contenedor 3D) */
+    .image-col { position: relative; perspective: 1000px; }
+    
+    .img-card {
+      width: 100%; border-radius: 24px; overflow: hidden;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+      border: 1px solid rgba(255,255,255,0.5);
+      background: white;
+      transform-style: preserve-3d;
+      transition: transform 0.1s ease-out; /* Suavidad para el efecto tilt JS */
+    }
+    
+    .img-card img {
+      width: 100%; height: auto; display: block;
+      transition: transform 0.6s ease;
+    }
+    .img-card:hover img { transform: scale(1.05); }
+
+    /* Decoraciones flotantes detrás de las imágenes */
+    .blob {
+      position: absolute; width: 300px; height: 300px; border-radius: 50%;
+      background: var(--brand-light); z-index: -1; filter: blur(40px); opacity: 0.6;
+      top: 50%; left: 50%; transform: translate(-50%, -50%);
+    }
+
+    /* --- CTA FINAL --- */
+    .final-cta {
+      margin: 100px 0; padding: 80px 40px; text-align: center;
+      background: linear-gradient(135deg, #111827 0%, #1f2937 100%);
+      border-radius: 30px; color: white; position: relative; overflow: hidden;
+    }
+    .final-cta::before {
+      content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+      background: radial-gradient(circle, rgba(94,23,235,0.3) 0%, transparent 60%);
+      animation: rotate 20s linear infinite;
+    }
+    @keyframes rotate { from{transform:rotate(0deg);} to{transform:rotate(360deg);} }
+    
+    .cta-content { position: relative; z-index: 2; }
+    .cta-content h2 { font-size: 2.8rem; margin-bottom: 20px; }
+    .cta-content p { color: #d1d5db; margin-bottom: 40px; font-size: 1.2rem; }
+
+    /* --- FOOTER (Minimal) --- */
+    footer { background: #f9fafb; padding: 60px 0 30px; border-top: 1px solid var(--border); margin-top: 50px;}
+    .footer-content { text-align: center; color: var(--text-light); font-size: 0.9rem; }
+    .socials { display: flex; justify-content: center; gap: 20px; margin-top: 20px; }
+    .social-icon { 
+        width: 40px; height: 40px; background: white; border-radius: 50%; 
+        display: flex; align-items: center; justify-content: center; 
+        box-shadow: 0 4px 6px rgba(0,0,0,0.05); transition: 0.3s; color: var(--text-main);
+    }
+    .social-icon:hover { background: var(--brand); color: white; transform: translateY(-3px); }
+
+    /* --- ANIMACIÓN SCROLL (Clases utilitarias JS) --- */
+    .reveal { opacity: 0; transform: translateY(50px); transition: all 1s cubic-bezier(0.5, 0, 0, 1); }
+    .reveal.active { opacity: 1; transform: translateY(0); }
+
+    /* --- RESPONSIVE --- */
+    @media (max-width: 900px) {
+      .services-hero h1 { font-size: 2.5rem; }
+      .service-section, .service-section.reverse { grid-template-columns: 1fr; gap: 40px; text-align: center; }
+      .service-section.reverse .content-col { order: 1; } /* Resetear orden en móvil */
+      .service-section.reverse .image-col { order: 2; }
+      .feature-list { text-align: left; max-width: 400px; margin: 0 auto; }
+      .num-badge { display: none; }
+      .blob { width: 200px; height: 200px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="background-glow"></div>
+
+  <header>
+    <div class="wrap nav-container">
+      <div class="brand">
+        <a href="index.html"> <img src="logovioletasiniy.svg" alt="SINIY" class="logo-img">
+        </a> 
+      </div>
+      <nav>
+        <a href="index.html">Inicio</a>
+        <a href="servicios.html" style="color: var(--brand);">Servicios</a>
+        <a href="index.html#portafolio">Portafolio</a>
+        <a href="https://wa.me/573237028814" class="btn btn-primary" target="_blank">Agendar Cita</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    
+    <section class="services-hero">
+      <h1>Creamos el futuro <br>de tu marca</h1>
+      <p>Explora nuestras soluciones especializadas diseñadas para impactar, vender y posicionar.</p>
+    </section>
+
+    <section class="service-section reveal">
+      <div class="content-col">
+        <span class="num-badge">01</span>
+        <h2>Diseño Gráfico & Branding</h2>
+        <p>No es solo un logo, es el alma de tu empresa. Construimos identidades visuales coherentes, memorables y adaptables a cualquier formato. Desde la psicología del color hasta la tipografía perfecta.</p>
+        <ul class="feature-list">
+          <li>Creación de Logotipos</li>
+          <li>Manuales de Marca</li>
+          <li>Diseño Editorial</li>
+          <li>Ilustración Digital</li>
+        </ul>
+      </div>
+      <div class="image-col" onmousemove="tiltEffect(event, this)" onmouseleave="resetTilt(this)">
+        <div class="blob"></div>
+        <div class="img-card">
+          <img src="recursos/servicio-branding.png" alt="Diseño de Marca Siniy" onerror="this.src='https://via.placeholder.com/600x400/f0eaff/5e17eb?text=Imagen+Branding'">
+        </div>
+      </div>
+    </section>
+
+    <section class="service-section reverse reveal">
+      <div class="content-col">
+        <span class="num-badge">02</span>
+        <h2>Desarrollo Web & E-Commerce</h2>
+        <p>Tu oficina abierta 24/7. Desarrollamos sitios web ultrarrápidos, optimizados para Google (SEO) y diseñados para convertir visitantes en clientes. Expertos en Shopify y Wordpress.</p>
+        <ul class="feature-list">
+          <li>Tiendas Online (Shopify)</li>
+          <li>Landing Pages de Venta</li>
+          <li>Sitios Web Corporativos</li>
+          <li>Optimización de Velocidad</li>
+        </ul>
+      </div>
+      <div class="image-col" onmousemove="tiltEffect(event, this)" onmouseleave="resetTilt(this)">
+        <div class="blob"></div>
+        <div class="img-card">
+          <img src="recursos/servicio-web.png" alt="Desarrollo Web Siniy" onerror="this.src='https://via.placeholder.com/600x400/f0eaff/5e17eb?text=Imagen+Web'">
+        </div>
+      </div>
+    </section>
+
+    <section class="service-section reveal">
+      <div class="content-col">
+        <span class="num-badge">03</span>
+        <h2>Publicidad Impresa de Gran Formato</h2>
+        <p>La tangibilidad genera confianza. Ofrecemos impresión de alta resolución en materiales premium. Desde etiquetas para tus productos hasta vallas publicitarias que dominan la ciudad.</p>
+        <ul class="feature-list">
+          <li>Pendones y Vallas</li>
+          <li>Etiquetas y Stickers</li>
+          <li>Material P.O.P.</li>
+          <li>Decoración de Vehículos</li>
+        </ul>
+      </div>
+      <div class="image-col" onmousemove="tiltEffect(event, this)" onmouseleave="resetTilt(this)">
+        <div class="blob"></div>
+        <div class="img-card">
+          <img src="recursos/servicio-impresion.png" alt="Impresión Gran Formato" onerror="this.src='https://via.placeholder.com/600x400/f0eaff/5e17eb?text=Imagen+Impresos'">
+        </div>
+      </div>
+    </section>
+
+    <section class="service-section reverse reveal">
+      <div class="content-col">
+        <span class="num-badge">04</span>
+        <h2>Marketing Digital & ADS</h2>
+        <p>No busques clientes, deja que ellos te encuentren. Creamos campañas de pauta publicitaria en Meta (Facebook/Instagram) y Google con estrategias enfocadas en el Retorno de Inversión (ROI).</p>
+        <ul class="feature-list">
+          <li>Campañas Meta Ads</li>
+          <li>Gestión de Redes Sociales</li>
+          <li>E-mail Marketing</li>
+          <li>Analítica de Datos</li>
+        </ul>
+      </div>
+      <div class="image-col" onmousemove="tiltEffect(event, this)" onmouseleave="resetTilt(this)">
+        <div class="blob"></div>
+        <div class="img-card">
+          <img src="recursos/servicio-marketing.png" alt="Marketing Digital Siniy" onerror="this.src='https://via.placeholder.com/600x400/f0eaff/5e17eb?text=Imagen+Marketing'">
+        </div>
+      </div>
+    </section>
+
+    <section class="final-cta reveal">
+      <div class="cta-content">
+        <h2>¿Listo para diferenciarte?</h2>
+        <p>Cada gran proyecto comienza con una simple conversación.</p>
+        <a href="https://wa.me/573237028814" target="_blank" class="btn btn-primary" style="padding: 15px 40px; font-size: 1.1rem;">Iniciar Proyecto Ahora</a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="wrap footer-content">
+      <div class="socials">
+        <a href="https://instagram.com/siniysd" class="social-icon">IG</a>
+        <a href="https://facebook.com/siniysd" class="social-icon">FB</a>
+        <a href="https://tiktok.com/@siniysd" class="social-icon">TK</a>
+      </div>
+      <p style="margin-top: 20px;">© 2026 SINIY Agencia Creativa. Manizales, Colombia.</p>
+    </div>
+  </footer>
+
+  <script>
+    // --- 1. SCROLL REVEAL (Aparecer elementos al bajar) ---
+    const observerOptions = { threshold: 0.15 }; // Se activa al ver el 15% del elemento
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.reveal').forEach(el => {
+      observer.observe(el);
+    });
+
+    // --- 2. 3D TILT EFFECT (Efecto de inclinación en imágenes) ---
+    // Este script calcula la posición del mouse sobre la tarjeta y la inclina sutilmente
+    function tiltEffect(event, element) {
+      const card = element.querySelector('.img-card');
+      const rect = element.getBoundingClientRect();
+      const x = event.clientX - rect.left; // Posición X del mouse dentro del elemento
+      const y = event.clientY - rect.top;  // Posición Y del mouse dentro del elemento
+      
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+      
+      // Calculamos la rotación (limitada a +/- 10 grados para que sea sutil)
+      const rotateX = ((y - centerY) / centerY) * -5; 
+      const rotateY = ((x - centerX) / centerX) * 5;
+
+      card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+    }
+
+    function resetTilt(element) {
+      const card = element.querySelector('.img-card');
+      card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
+    }
+  </script>
+
+</body>
+</html>
