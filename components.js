@@ -2,19 +2,21 @@
 
 class SiniyHeader extends HTMLElement {
     connectedCallback() {
-        // Detectamos la página actual para marcar el enlace activo
-        const currentPath = window.location.pathname;
-        const isHome = currentPath.includes("index") || currentPath === "/" || currentPath.endsWith("/"); 
-        const isServicios = currentPath.includes("servicios");
-        const isPortafolio = currentPath.includes("portafolio"); 
-        const isPagos = currentPath.includes("pagos");
+        // Detectamos la ruta actual quitando el dominio
+        const path = window.location.pathname;
+        
+        // Lógica de detección mejorada
+        const isHome = path === "/" || path === "/index" || path.endsWith("/index.html");
+        const isServicios = path.includes("servicios");
+        const isPortafolio = path.includes("portafolio");
+        const isPagos = path.includes("pagos");
 
         this.innerHTML = `
         <header style="position: sticky; top:0; z-index: 100; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); border-bottom: 1px solid #e5e7eb; padding: 16px 0;">
             <div class="wrap" style="display:flex; justify-content:space-between; align-items:center; max-width:1150px; margin:0 auto; padding:0 24px;">
                 
                 <div class="brand">
-                    <a href="index.html">
+                    <a href="/">
                         <img src="logovioletasiniy.svg" alt="SINIY" style="max-height: 75px; width: auto;">
                     </a> 
                 </div>
@@ -22,19 +24,19 @@ class SiniyHeader extends HTMLElement {
                 <div>
                     <nav id="nav-menu" style="display:flex; gap:30px; align-items:center;">
                         
-                        <a href="index.html" style="font-weight: 500; font-size: 0.95rem; text-decoration: none; transition: 0.3s; color: ${isHome ? '#5e17eb' : '#6b7280'};">
+                        <a href="/" style="font-weight: 500; font-size: 0.95rem; text-decoration: none; transition: 0.3s; color: ${isHome ? '#5e17eb' : '#6b7280'};">
                             Inicio
                         </a>
 
-                        <a href="servicios.html" style="font-weight: 500; font-size: 0.95rem; text-decoration: none; transition: 0.3s; color: ${isServicios ? '#5e17eb' : '#6b7280'};">
+                        <a href="/servicios" style="font-weight: 500; font-size: 0.95rem; text-decoration: none; transition: 0.3s; color: ${isServicios ? '#5e17eb' : '#6b7280'};">
                             Servicios
                         </a>
 
-                        <a href="portafolio.html" style="font-weight: 500; font-size: 0.95rem; text-decoration: none; transition: 0.3s; color: ${isPortafolio ? '#5e17eb' : '#6b7280'};">
+                        <a href="/portafolio" style="font-weight: 500; font-size: 0.95rem; text-decoration: none; transition: 0.3s; color: ${isPortafolio ? '#5e17eb' : '#6b7280'};">
                             Portafolio
                         </a>
 
-                        <a href="pagos.html" class="btn-pagar" style="
+                        <a href="/pagos" class="btn-pagar" style="
                             padding: 8px 24px; 
                             border-radius: 50px; 
                             font-weight: 600; 
