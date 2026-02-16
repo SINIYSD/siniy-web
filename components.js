@@ -33,8 +33,8 @@ class SiniyFooter extends HTMLElement {
                     <h4>Métodos de Pago</h4>
                     <p style="margin-bottom: 15px;">Pagos 100% Seguros</p>
                     
-                    <div style="margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
-                        <img src="https://logovectorseek.com/wp-content/uploads/2021/08/bold-co-logo-vector.png" alt="Datáfono Bold" style="height: 35px; width: auto;">
+                    <div style="margin-bottom: 15px;">
+                        <script src="https://bold.co/library/ui-kit.js?type=slider"></script>
                     </div>
 
                     <img src="https://epayco.com/wp-content/uploads/2023/01/pagos_procesados_por_epayco_260px_.png" alt="Pagos con ePayco" style="width: 100%; max-width: 260px;">
