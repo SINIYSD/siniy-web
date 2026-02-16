@@ -51,3 +51,74 @@ class SiniyFooter extends HTMLElement {
 }
 
 customElements.define('siniy-footer', SiniyFooter);
+
+
+// --- components.js (PARTE NUEVA: HEADER MAESTRO) ---
+
+class SiniyHeader extends HTMLElement {
+    connectedCallback() {
+        // Detectamos la página actual
+        const currentPath = window.location.pathname;
+        const isHome = currentPath.includes("index") || currentPath === "/";
+        const isServicios = currentPath.includes("servicios");
+        const isPortafolio = currentPath.includes("portafolio"); // Asumo que tendrás una
+        const isPagos = currentPath.includes("pagos"); // Asumo que tu página de pagos se llama pagos.html
+
+        this.innerHTML = `
+        <header style="position: sticky; top:0; z-index: 100; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); border-bottom: 1px solid #e5e7eb; padding: 16px 0;">
+            <div class="wrap" style="display:flex; justify-content:space-between; align-items:center; max-width:1150px; margin:0 auto; padding:0 24px;">
+                
+                <div class="brand">
+                    <a href="index.html">
+                        <img src="logovioletasiniy.svg" alt="SINIY" style="max-height: 75px; width: auto;">
+                    </a> 
+                </div>
+
+                <div>
+                    <nav id="nav-menu" style="display:flex; gap:30px; align-items:center;">
+                        
+                        <a href="index.html" style="font-weight: 500; font-size: 0.95rem; text-decoration: none; transition: 0.3s; color: ${isHome ? '#5e17eb' : '#6b7280'};">
+                            Inicio
+                        </a>
+
+                        <a href="servicios.html" style="font-weight: 500; font-size: 0.95rem; text-decoration: none; transition: 0.3s; color: ${isServicios ? '#5e17eb' : '#6b7280'};">
+                            Servicios
+                        </a>
+
+                        <a href="#portafolio" style="font-weight: 500; font-size: 0.95rem; text-decoration: none; transition: 0.3s; color: ${isPortafolio ? '#5e17eb' : '#6b7280'};">
+                            Portafolio
+                        </a>
+
+                        <a href="pagos.html" class="btn-pagar" style="
+                            padding: 8px 24px; 
+                            border-radius: 50px; 
+                            font-weight: 600; 
+                            font-size: 0.9rem; 
+                            text-decoration: none; 
+                            transition: all 0.3s ease;
+                            background-color: ${isPagos ? '#450eb5' : '#5e17eb'}; 
+                            color: white; 
+                            box-shadow: ${isPagos ? 'inset 0 2px 5px rgba(0,0,0,0.2)' : '0 4px 14px rgba(94, 23, 235, 0.3)'};
+                        ">
+                            ${isPagos ? 'Zona de Pagos' : 'Pagar Aquí'}
+                        </a>
+
+                    </nav>
+                    
+                    <div class="hamburger" onclick="document.getElementById('nav-menu').classList.toggle('show')" style="display:none; font-size:24px; cursor:pointer; color:#1f2937;">☰</div>
+                </div>
+            </div>
+            
+            <style>
+                @media (max-width: 850px) {
+                    nav { display: none !important; position: absolute; top: 90px; left: 0; right: 0; background: white; flex-direction: column; padding: 20px; border-bottom: 1px solid #e5e7eb; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); }
+                    nav.show { display: flex !important; }
+                    .hamburger { display: block !important; }
+                }
+            </style>
+        </header>
+        `;
+    }
+}
+
+customElements.define('siniy-header', SiniyHeader);
