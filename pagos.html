@@ -5,18 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Zona de Pagos | SINIY</title>
   <link rel="icon" href="siniyfavicon.png" type="image/png" />
-  
-  <meta name="description" content="Realiza tus pagos de forma segura. Bancolombia, Nequi, Davivienda, ePayco y más." />
-  <meta name="robots" content="noindex, follow" />
-  
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
-
   <link rel="stylesheet" href="style.css">
 
   <style>
-    /* HEREDAMOS VARIABLES DEL HOME */
+    /* HEREDAMOS VARIABLES */
     :root{
       --brand: #5e17eb;       
       --brand-dark: #450eb5;  
@@ -28,32 +23,21 @@
       --border: #e5e7eb;      
     }
 
-    /* Reset & Base */
     *{box-sizing:border-box}
     html{scroll-behavior: smooth;}
     body{
-      margin:0;padding:0;
-      background: var(--bg-body);
-      color: var(--text-main);
-      font-family: 'Inter', sans-serif;
-      line-height: 1.6;
-      overflow-x: hidden;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
+      margin:0;padding:0; background: var(--bg-body); color: var(--text-main);
+      font-family: 'Inter', sans-serif; line-height: 1.6; overflow-x: hidden;
+      display: flex; flex-direction: column; min-height: 100vh;
     }
-
     a{text-decoration:none; transition: all 0.3s ease; color: var(--text-main);}
-    
     .wrap{max-width:1150px; margin:0 auto; padding:0 24px; position: relative;}
     
-    /* --- Header --- */
+    /* Header */
     header{
       position: sticky; top:0; z-index: 100;
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--border);
-      padding: 16px 0;
+      background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border); padding: 16px 0;
     }
     .nav-container{display:flex; justify-content:space-between; align-items:center;}
     .logo-img {max-height: 75px; width: auto;} 
@@ -62,181 +46,123 @@
     nav a:hover{color: var(--brand);}
     .hamburger{display:none; font-size:24px; cursor:pointer; color:var(--text-main);}
 
-    /* --- Botones --- */
-    .btn{
-      padding: 12px 28px; border-radius: 50px; font-weight: 600;
-      display: inline-flex; align-items: center; justify-content: center;
-      transition: all 0.3s ease; cursor: pointer; border: none;
-    }
-    .btn-primary{
-      background-color: var(--brand);
-      color: white;
-      box-shadow: 0 4px 14px rgba(94, 23, 235, 0.3);
-    }
-    .btn-primary:hover{
-      background-color: var(--brand-dark);
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(94, 23, 235, 0.4);
-    }
-
-    /* --- Hero Adaptado para Pagos --- */
-    .hero{
-      padding: 80px 0;
-      display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 60px; align-items: center;
-      position: relative;
-    }
-    .hero::before {
-      content: ''; position: absolute; top: -100px; right: -100px;
-      width: 600px; height: 600px;
-      background: radial-gradient(circle, rgba(94,23,235,0.08) 0%, rgba(255,255,255,0) 70%);
-      z-index: -1; pointer-events: none;
-    }
-    h1{
-      font-size: 3.5rem; line-height: 1.1; font-weight: 800; letter-spacing: -1px; margin-bottom: 24px;
-      color: var(--text-main);
-    }
-    h1 span{ color: var(--brand); } 
-    .hero p { font-size: 1.25rem; color: var(--text-light); margin-bottom: 32px; max-width: 90%; }
-
-    /* Tarjeta Destacada ePayco (Derecha del Hero) */
-    .epayco-card {
-      background: white;
-      border-radius: 24px;
-      padding: 40px;
+    /* --- NUEVO HERO PREMIUM --- */
+    .hero-premium {
+      background: linear-gradient(135deg, #fdfbfb 0%, #f0eaff 100%);
+      padding: 80px 0 60px;
       text-align: center;
-      border: 1px solid var(--border);
-      box-shadow: 0 20px 40px -10px rgba(0,0,0,0.1); 
-      transition: transform 0.5s ease;
-      position: relative;
-      overflow: hidden;
-    }
-    .epayco-card::before {
-      content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 6px;
-      background: linear-gradient(90deg, #ff6b00, #ff9e00);
-    }
-    .epayco-card:hover { transform: translateY(-5px); }
-    .epayco-btn-img {
-      max-width: 100%;
-      width: 280px;
-      transition: transform 0.3s;
-    }
-    .epayco-btn-img:hover { transform: scale(1.05); }
-
-    /* --- Sección Títulos --- */
-    .section-header{ text-align: center; margin: 80px 0 50px; }
-    .badge{
-      background: var(--brand-light); color: var(--brand);
-      padding: 6px 16px; border-radius: 20px; font-size: 0.85rem; font-weight: 700;
-      text-transform: uppercase; letter-spacing: 1px; display: inline-block; margin-bottom: 16px;
-    }
-    h2{ font-size: 2.2rem; margin: 0 0 16px; color: var(--text-main); font-weight: 800; letter-spacing: -0.5px; }
-
-    /* --- Grid Bancos (Flip Cards) --- */
-    .banks-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 30px;
-      margin-bottom: 80px;
-    }
-
-    /* Estructura 3D */
-    .flip-card {
-      background-color: transparent;
-      height: 240px; /* Altura de la tarjeta */
-      perspective: 1000px;
-      cursor: pointer;
-    }
-    .flip-card-inner {
-      position: relative; width: 100%; height: 100%;
-      text-align: center;
-      transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1);
-      transform-style: preserve-3d;
-      border-radius: 20px;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-    }
-    .flip-card:hover .flip-card-inner { transform: rotateY(180deg); }
-
-    .flip-front, .flip-back {
-      position: absolute; width: 100%; height: 100%;
-      -webkit-backface-visibility: hidden; backface-visibility: hidden;
-      border-radius: 20px;
-      display: flex; flex-direction: column; align-items: center; justify-content: center;
-      background: white; border: 1px solid var(--border);
+      border-bottom: 1px solid white;
     }
     
-    /* Frente */
+    .hero-premium h1 {
+      font-size: 3.5rem; line-height: 1.1; font-weight: 900; letter-spacing: -1.5px; 
+      margin-bottom: 20px; color: var(--text-main);
+    }
+    .hero-premium p {
+      font-size: 1.25rem; color: var(--text-light); max-width: 700px; margin: 0 auto 50px;
+    }
+
+    /* GRID DE OPCIONES PRINCIPALES (Tarjetas Superiores) */
+    .payment-options {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .option-card {
+      background: white;
+      border-radius: 24px;
+      padding: 40px 30px;
+      border: 1px solid var(--border);
+      box-shadow: 0 20px 40px -10px rgba(94, 23, 235, 0.08);
+      transition: transform 0.3s ease, border-color 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Decoración sutil en las tarjetas */
+    .option-card::before {
+      content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 6px;
+    }
+    .card-epayco::before { background: linear-gradient(90deg, #ff6b00, #ff9e00); } /* Naranja ePayco */
+    .card-whatsapp::before { background: linear-gradient(90deg, #25D366, #128C7E); } /* Verde WhatsApp */
+
+    .option-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(94, 23, 235, 0.3);
+      box-shadow: 0 25px 50px -10px rgba(94, 23, 235, 0.15);
+    }
+
+    .option-icon {
+      font-size: 2.5rem; margin-bottom: 15px;
+    }
+
+    .option-card h3 {
+      font-size: 1.4rem; margin: 0 0 10px; color: var(--text-main);
+    }
+    .option-card p {
+      font-size: 0.95rem; color: #6b7280; margin: 0 0 25px; line-height: 1.5;
+    }
+
+    /* Botones dentro de las tarjetas */
+    .btn-epayco-img {
+      max-width: 200px; transition: transform 0.2s;
+    }
+    .btn-epayco-img:hover { transform: scale(1.05); }
+
+    .btn-whatsapp {
+      background: #25D366; color: white; border: none;
+      padding: 12px 25px; border-radius: 50px; font-weight: 700;
+      font-size: 1rem; display: inline-flex; align-items: center; gap: 8px;
+      box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+      transition: 0.3s;
+    }
+    .btn-whatsapp:hover {
+      background: #1faf56; transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4); color: white;
+    }
+
+    /* Resto de estilos (Grid Bancos, etc) se mantienen igual que antes... */
+    .section-header{ text-align: center; margin: 100px 0 50px; }
+    .badge{ background: var(--brand-light); color: var(--brand); padding: 6px 16px; border-radius: 20px; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; display: inline-block; margin-bottom: 16px; }
+    h2{ font-size: 2.2rem; margin: 0 0 16px; color: var(--text-main); font-weight: 800; letter-spacing: -0.5px; }
+    
+    /* Grid Bancos (Flip Cards) */
+    .banks-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin-bottom: 80px; }
+    .flip-card { background-color: transparent; height: 240px; perspective: 1000px; cursor: pointer; }
+    .flip-card-inner { position: relative; width: 100%; height: 100%; text-align: center; transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1); transform-style: preserve-3d; border-radius: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+    .flip-card:hover .flip-card-inner { transform: rotateY(180deg); }
+    .flip-front, .flip-back { position: absolute; width: 100%; height: 100%; -webkit-backface-visibility: hidden; backface-visibility: hidden; border-radius: 20px; display: flex; flex-direction: column; align-items: center; justify-content: center; background: white; border: 1px solid var(--border); }
     .flip-front img { max-width: 140px; max-height: 70px; object-fit: contain; margin-bottom: 15px; }
     .flip-front h3 { font-size: 1.1rem; color: var(--text-light); margin: 0; font-weight: 500; }
-
-    /* Reverso */
-    .flip-back {
-      transform: rotateY(180deg);
-      background: linear-gradient(135deg, var(--brand) 0%, var(--brand-dark) 100%);
-      color: white; border: none; padding: 20px;
-    }
-    .account-box {
-      background: rgba(255,255,255,0.2);
-      padding: 10px 15px; border-radius: 10px;
-      font-family: monospace; font-size: 1.1rem; font-weight: bold;
-      margin: 10px 0; user-select: all;
-    }
-    .copy-btn {
-      background: white; color: var(--brand); border: none;
-      padding: 8px 16px; border-radius: 50px; font-weight: 700; font-size: 0.8rem;
-      cursor: pointer; transition: 0.2s;
-    }
+    .flip-back { transform: rotateY(180deg); background: linear-gradient(135deg, var(--brand) 0%, var(--brand-dark) 100%); color: white; border: none; padding: 20px; }
+    .account-box { background: rgba(255,255,255,0.2); padding: 10px 15px; border-radius: 10px; font-family: monospace; font-size: 1.1rem; font-weight: bold; margin: 10px 0; user-select: all; }
+    .copy-btn { background: white; color: var(--brand); border: none; padding: 8px 16px; border-radius: 50px; font-weight: 700; font-size: 0.8rem; cursor: pointer; transition: 0.2s; }
     .copy-btn:hover { transform: scale(1.05); }
 
-    /* --- Pasos Grid (Estilo Servicios Home) --- */
-    .steps-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;
-    }
-    .step-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 20px; padding: 32px;
-      transition: all 0.3s ease;
-    }
-    .step-card:hover { transform: translateY(-5px); border-color: var(--brand); }
-    .icon-box {
-      width: 50px; height: 50px;
-      background: var(--brand-light); color: var(--brand);
-      border-radius: 12px; display: flex; align-items: center; justify-content: center;
-      font-size: 24px; margin-bottom: 20px;
-    }
-
-    /* --- Modal Cotización --- */
+    /* Modal Styles */
     .modal{display:none;position:fixed;z-index:10000;left:0;top:0;width:100%;height:100%;background:rgba(0,0,0,0.5); backdrop-filter: blur(4px);}
-    .modal-content{
-      background: white; margin: 5% auto; padding: 40px; border-radius: 20px; max-width: 500px; position: relative;
-      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-      max-height: 90vh; overflow-y: auto;
-    }
+    .modal-content{ background: white; margin: 5% auto; padding: 40px; border-radius: 20px; max-width: 500px; position: relative; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); max-height: 90vh; overflow-y: auto; }
     .close{position:absolute;top:20px;right:25px;font-size:28px;cursor:pointer;color: var(--text-light);}
-    input, textarea{
-      width:100%; padding:14px; border-radius:10px; border:1px solid var(--border);
-      margin-bottom:15px; font-family: inherit; font-size: 1rem;
-    }
+    input, textarea{ width:100%; padding:14px; border-radius:10px; border:1px solid var(--border); margin-bottom:15px; font-family: inherit; font-size: 1rem; }
     input:focus, textarea:focus{ outline:none; border-color: var(--brand); }
 
-    /* --- Mobile --- */
+    /* Mobile */
     @media (max-width: 850px){
-      .hero{ grid-template-columns: 1fr; text-align: center; padding: 40px 0; }
-      .hero h1{ font-size: 2.5rem; }
-      .hero::before{ display: none; }
-      .epayco-card { margin-top: 30px; }
+      .hero-premium h1 { font-size: 2.5rem; }
       nav{ display: none; position: absolute; top: 70px; left:0; right:0; background: white; flex-direction: column; padding: 20px; border-bottom: 1px solid var(--border); box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); }
       nav.show{ display: flex; }
       .hamburger{ display: block; }
     }
-
-    .whatsapp-float{
-      position: fixed; bottom: 30px; right: 30px; z-index: 999;
-      transition: transform 0.3s ease;
-    }
+    .whatsapp-float{ position: fixed; bottom: 30px; right: 30px; z-index: 999; transition: transform 0.3s ease; }
     .whatsapp-float:hover{ transform: scale(1.1); }
     .whatsapp-float img{ width: 60px; height: 60px; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.2)); }
-
   </style>
 </head>
 <body>
@@ -252,59 +178,49 @@
         <nav id="nav-menu">
           <a href="https://siniy.pro">Inicio</a>
           <a href="https://siniy.pro/servicios">Servicios</a>
-          <a href="https://siniy.pro/#agencia">Agencia</a>
-          <a href="#contacto" class="btn btn-primary" style="padding: 8px 20px; font-size: 0.9rem;" onclick="openModal()">Cotizar Ahora</a>
+          <a href="#contacto" class="btn btn-primary" style="padding: 8px 20px; font-size: 0.9rem; color: white;" onclick="openModal()">Cotizar Ahora</a>
         </nav>
         <div class="hamburger" onclick="toggleMenu()">☰</div>
       </div>
     </div>
   </header>
 
+  <section class="hero-premium">
+    <div class="wrap">
+      <h1>Zona de Pagos <span style="color: var(--brand);">SINIY</span></h1>
+      <p>Realiza tus transacciones de forma segura. Elige tu método preferido:</p>
+      
+      <div class="payment-options">
+        
+        <div class="option-card card-epayco">
+          <div class="option-icon">💳</div>
+          <h3>Pago Online Inmediato</h3>
+          <p>Usa PSE, Tarjetas de Crédito, Nequi o Daviplata a través de nuestra pasarela segura.</p>
+          <a href="https://epy.la/2hwJ" target="_blank">
+            <img src="https://multimedia.epayco.co/epayco-landing/btns/Boton-epayco-color1.png" alt="Pagar con ePayco" class="btn-epayco-img">
+          </a>
+        </div>
+
+        <div class="option-card card-whatsapp">
+          <div class="option-icon">💬</div>
+          <h3>Reportar Transferencia</h3>
+          <p>¿Hiciste una transferencia directa a nuestros bancos? Envíanos la captura aquí.</p>
+          <a href="https://wa.me/573237028814" target="_blank" class="btn-whatsapp">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" width="24" style="filter: brightness(100);"> 
+            Enviar Comprobante
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
   <main class="wrap">
     
-    <section class="hero">
-      <div>
-        <h1>Zona de Pagos <br><span style="color: var(--brand);">Seguros & Rápidos</span></h1>
-        <p>Realiza tus transacciones con total tranquilidad. Elige entre pago digital instantáneo o transferencia bancaria directa.</p>
-        
-        <a href="https://wa.me/573237028814" target="_blank" class="btn btn-primary" style="background-color: #25D366; border: none; box-shadow: 0 4px 14px rgba(37, 211, 102, 0.4);">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" width="20" style="vertical-align: middle; margin-right: 8px; filter: brightness(100);"> 
-          Enviar Comprobante
-        </a>
-      </div>
-      
-      <div class="epayco-card">
-        <h3 style="margin-top: 0; color: #1f2937;">Pagos Online (PSE / Tarjeta)</h3>
-        <p style="font-size: 0.95rem; margin-bottom: 25px; color: #6b7280;">La forma más rápida y segura de pagar sin salir de casa.</p>
-        <a href="https://epy.la/2hwJ" target="_blank">
-          <img src="https://multimedia.epayco.co/epayco-landing/btns/Boton-epayco-color1.png" alt="Pagar con ePayco" class="epayco-btn-img">
-        </a>
-        <p style="font-size: 0.8rem; margin-top: 20px; color: #9ca3af;">Procesado por ePayco</p>
-      </div>
-    </section>
-
-    <section class="steps-grid" style="margin-bottom: 80px;">
-      <div class="step-card">
-        <div class="icon-box">1</div>
-        <h3>Elige tu Banco</h3>
-        <p>Pasa el cursor sobre la tarjeta de tu banco preferido para ver el número de cuenta y copiarlo.</p>
-      </div>
-      <div class="step-card">
-        <div class="icon-box">2</div>
-        <h3>Realiza el Pago</h3>
-        <p>Ve a tu App bancaria y transfiere el valor acordado (mínimo 50% para iniciar).</p>
-      </div>
-      <div class="step-card">
-        <div class="icon-box">3</div>
-        <h3>Envía Comprobante</h3>
-        <p>Toma una captura y envíala a nuestro WhatsApp para oficializar tu pedido.</p>
-      </div>
-    </section>
-
     <div class="section-header">
       <span class="badge">Transferencias Directas</span>
       <h2>Cuentas Bancarias Disponibles</h2>
-      <p class="subtitle">Desliza o toca la tarjeta para ver los datos.</p>
+      <p class="subtitle">Desliza o toca la tarjeta para ver los datos de la cuenta.</p>
     </div>
 
     <section class="banks-grid">
