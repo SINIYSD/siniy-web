@@ -1,426 +1,408 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es-CO">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pagos Seguros - SINIY</title>
-  <link rel="icon" href="siniyfavicon.png" type="image/png">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Zona de Pagos | SINIY</title>
+  <link rel="icon" href="siniyfavicon.png" type="image/png" />
+  
+  <meta name="description" content="Realiza tus pagos de forma segura con SINIY. Bancolombia, Nequi, Davivienda, ePayco y más." />
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+
   <style>
+    /* --- ESTILOS ESPECÍFICOS DE PAGOS --- */
+    
+    /* Variables locales heredadas pero reforzadas */
     :root {
-      --azul: #007aff;
-      --naranja: #ff6b00;
-      --gris-claro: #f8f9fa;
-      --negro: #1a1a1a;
-      --blanco: #ffffff;
-      --verde: #28a745;
+      --brand: #5e17eb;
+      --brand-dark: #450eb5;
+      --text-main: #1f2937;
+      --bg-card: #ffffff;
     }
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: 'Inter', sans-serif;
+
+    /* Hero Section */
+    .payment-hero {
+      text-align: center; padding: 80px 24px 60px;
+      background: radial-gradient(circle at top center, rgba(94, 23, 235, 0.05), transparent 70%);
     }
-    body {
-      background-color: var(--blanco);
-      color: var(--negro);
-      line-height: 1.6;
+    .payment-hero h1 {
+      font-size: 3rem; font-weight: 900; letter-spacing: -1.5px; margin-bottom: 20px;
+      color: var(--text-main);
     }
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1.5rem 2rem;
-      background-color: var(--blanco);
-      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-      position: sticky;
-      top: 0;
-      z-index: 1000;
+    .payment-hero p {
+      font-size: 1.2rem; color: #6b7280; max-width: 700px; margin: 0 auto 40px;
     }
-    header h1 img {
-      height: 60px;
-    }
-    .hero {
-      padding: 3rem 2rem;
-      background-color: var(--gris-claro);
-      text-align: center;
-    }
-    .hero h1, .hero h2 {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-    }
-    .hero p {
-      font-size: 1.1rem;
+
+    /* --- SECCIÓN EPAYCO DESTACADA --- */
+    .epayco-section {
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      border-radius: 24px;
+      padding: 40px;
       max-width: 800px;
-      margin: 0 auto;
+      margin: 0 auto 60px;
+      text-align: center;
+      box-shadow: 0 20px 40px -10px rgba(0,0,0,0.08);
+      position: relative;
+      overflow: hidden;
     }
-    .benefits-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
-      margin-top: 2.5rem;
-      padding: 0 1rem;
+    .epayco-section::before {
+      content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 6px;
+      background: linear-gradient(90deg, #ff6b00, #ff9e00); /* Colores ePayco */
     }
-    .benefit {
-      background-color: #ffffff;
-      border: 1px solid #e0e0e0;
-      border-left: 5px solid var(--azul);
-      border-radius: 10px;
-      padding: 1.5rem;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-      transition: transform 0.2s;
+    .epayco-logo-btn {
+      transition: transform 0.3s ease;
+      cursor: pointer;
+      max-width: 100%;
+      width: 280px; /* Tamaño controlado */
     }
-    .benefit:hover {
-      transform: translateY(-5px);
+    .epayco-logo-btn:hover {
+      transform: scale(1.05) translateY(-5px);
+      filter: drop-shadow(0 10px 15px rgba(255, 107, 0, 0.3));
     }
-    .benefit h3 {
-      margin-bottom: 0.5rem;
-      font-size: 1.2rem;
-      color: var(--azul);
+    .epayco-text {
+      margin-bottom: 25px;
+      font-size: 1.1rem;
+      color: var(--text-main);
     }
-    .benefit p {
-      font-size: 1rem;
-      color: #333;
-    }
+
+    /* --- GRID DE BANCOS (FLIP CARDS) --- */
     .banks-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-      gap: 2rem;
-      padding: 3rem 2rem;
-      max-width: 1000px;
-      margin: 0 auto;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      margin-bottom: 80px;
     }
-    .bank {
-      background: var(--gris-claro);
-      border-radius: 10px;
-      padding: 1rem;
-      text-align: center;
+
+    /* Estructura 3D de la tarjeta */
+    .bank-card {
+      background-color: transparent;
+      height: 220px; /* Altura fija */
+      perspective: 1000px; /* Efecto 3D */
       cursor: pointer;
-      transition: transform 0.2s;
     }
-    .bank:hover {
-      transform: scale(1.05);
-    }
-    .bank img {
-      max-width: 100px;
-      margin-bottom: 0.5rem;
-    }
-    .modal {
-      display: none;
-      position: fixed;
-      z-index: 1001;
-      left: 0;
-      top: 0;
+
+    .bank-inner {
+      position: relative;
       width: 100%;
       height: 100%;
-      overflow: auto;
-      background-color: rgba(0,0,0,0.6);
-    }
-    .modal-content {
-      background-color: #fff;
-      margin: 5% auto;
-      padding: 2rem;
-      border-radius: 8px;
-      max-width: 600px;
-      position: relative;
-    }
-    .close {
-      position: absolute;
-      top: 10px;
-      right: 15px;
-      font-size: 24px;
-      cursor: pointer;
-    }
-    form input, form textarea, form select {
-      width: 100%;
-      padding: 0.75rem;
-      margin-bottom: 1rem;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-    }
-    form input[type="file"] {
-      padding: 0.4rem;
-    }
-    button {
-      background-color: var(--naranja);
-      color: white;
-      padding: 0.75rem 1.5rem;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      font-weight: 600;
-    }
-    .servicio {
-      display: flex;
-      gap: 0.5rem;
-      margin-bottom: 1rem;
-    }
-    .servicio select {
-      flex: 1;
-    }
-    .servicio button {
-      background-color: red;
-      font-size: 1.2rem;
-    }
-    footer {
-      background-color: var(--negro);
-      color: white;
       text-align: center;
-      padding: 2rem;
-      margin-top: 4rem;
+      transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1);
+      transform-style: preserve-3d;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px -5px rgba(0,0,0,0.05);
+    }
+
+    /* El Hover que activa el giro */
+    .bank-card:hover .bank-inner {
+      transform: rotateY(180deg);
+    }
+
+    /* Cara Frontal y Trasera */
+    .bank-front, .bank-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+      border-radius: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid #e5e7eb;
+      background: white;
+    }
+
+    /* Cara Frontal (Logo) */
+    .bank-front img {
+      max-width: 140px;
+      max-height: 80px;
+      object-fit: contain;
+      margin-bottom: 15px;
+    }
+    .bank-front h3 {
+      font-size: 1.1rem; color: #9ca3af; margin: 0; font-weight: 500;
+    }
+
+    /* Cara Trasera (Datos) - Girada 180deg */
+    .bank-back {
+      transform: rotateY(180deg);
+      background: linear-gradient(135deg, var(--brand) 0%, var(--brand-dark) 100%);
+      color: white;
+      padding: 20px;
+      border: none;
+    }
+    .bank-back h4 { margin: 0 0 5px; font-size: 1.2rem; }
+    .bank-back p { margin: 0 0 15px; font-size: 0.9rem; opacity: 0.9; }
+    
+    .account-number {
+      background: rgba(255, 255, 255, 0.2);
+      padding: 8px 15px;
+      border-radius: 8px;
+      font-family: monospace;
+      font-size: 1.2rem;
+      font-weight: bold;
+      margin-bottom: 15px;
+      user-select: all; /* Facilita selección */
+    }
+
+    .copy-btn {
+      background: white;
+      color: var(--brand);
+      border: none;
+      padding: 8px 16px;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .copy-btn:hover { transform: scale(1.05); box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
+    .copy-btn:active { transform: scale(0.95); }
+
+    /* --- BENEFICIOS (Rediseñados) --- */
+    .benefits-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;
+      margin-bottom: 80px;
+    }
+    .benefit-item {
+      padding: 25px; border-radius: 16px; background: #f9fafb; border: 1px solid #f3f4f6;
+      transition: 0.3s;
+    }
+    .benefit-item:hover { background: white; transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.05); border-color: var(--brand-light); }
+    .benefit-icon { font-size: 2rem; margin-bottom: 15px; display: block; }
+    .benefit-item h3 { font-size: 1.1rem; margin-bottom: 8px; color: var(--text-main); }
+    .benefit-item p { font-size: 0.95rem; color: #6b7280; margin: 0; }
+
+    /* --- CTA Comprobante --- */
+    .proof-cta {
+      text-align: center; margin-top: 60px;
+      background: #f0fdf4; /* Verde muy suave */
+      border: 1px solid #bbf7d0;
+      padding: 40px; border-radius: 20px;
+    }
+    .proof-cta h3 { color: #15803d; margin-top: 0; }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .payment-hero h1 { font-size: 2.2rem; }
+      .epayco-logo-btn { width: 100%; max-width: 250px; }
     }
   </style>
 </head>
 <body>
+
   <header>
-    <h1><a href="https://siniy.pro"><img src="logoazulsiniy.png" alt="Logo SINIY"></a></h1>
+    <div class="wrap nav-container">
+      <div class="brand">
+        <a href="https://siniy.pro">
+          <img src="logoazulsiniy.png" alt="SINIY" class="logo-img">
+        </a> 
+      </div>
+      <div>
+        <nav id="nav-menu">
+          <a href="https://siniy.pro">Inicio</a>
+          <a href="https://siniy.pro/servicios">Servicios</a>
+          <a href="https://siniy.pro/#contacto" class="btn btn-primary" style="padding: 8px 20px; font-size: 0.9rem; color: white;">Contactar</a>
+        </nav>
+        <div class="hamburger" onclick="toggleMenu()">☰</div>
+      </div>
+    </div>
   </header>
 
-  <section class="hero">
-    <h1>Haz tu pedido con nosotros</h1>
-    <p>Ofrecemos un proceso de compra seguro, ágil y con total acompañamiento. ¡Con SINIY estás en buenas manos!</p>
-    <div class="benefits-grid">
-      <div class="benefit">
-        <h3>🔒 Seguridad garantizada</h3>
-        <p>Realiza pagos desde tu celular sin ingresar datos bancarios en esta web.</p>
+  <main class="wrap">
+    
+    <section class="payment-hero">
+      <h1>Zona de Pagos Seguros</h1>
+      <p>Realiza tus transacciones con total tranquilidad. Aceptamos múltiples métodos de pago para agilizar tu pedido.</p>
+    </section>
+
+    <section class="epayco-section">
+      <div class="epayco-text">
+        <strong>¿Prefieres pagar online?</strong> <br> Usa tarjetas de crédito, PSE o Efecty de forma segura.
       </div>
-      <div class="benefit">
-        <h3>💰 Abono del 50%</h3>
-        <p>Solicita tu pedido con solo el 50% del valor total. ¡Flexibilidad financiera!</p>
-      </div>
-      <div class="benefit">
-        <h3>📦 Entrega ágil</h3>
-        <p>Tu pedido llegará en 4 a 8 días hábiles, según el tipo de trabajo.</p>
-      </div>
-      <div class="benefit">
-        <h3>👨‍💼 Acompañamiento personalizado</h3>
-        <p>Un asesor te informará todos los detalles y avances de tu pedido.</p>
-      </div>
-      <div class="benefit">
-        <h3>📝 Información clara</h3>
-        <p>Detalles, referencias y diseños serán cargados al sistema para asegurar precisión.</p>
-      </div>
-      <div class="benefit">
-        <h3>🏢 Opciones empresariales</h3>
-        <p>Puedes incluir NIT, razón social y datos para facturación si lo necesitas.</p>
-      </div>
+      <a href="https://epy.la/2hwJ" target="_blank">
+        <img src="https://multimedia.epayco.co/epayco-landing/btns/Boton-epayco-color1.png" alt="Pagar con ePayco" class="epayco-logo-btn">
+      </a>
+      <p style="font-size: 0.85rem; color: #9ca3af; margin-top: 15px;">Serás redirigido a la pasarela segura de ePayco.</p>
+    </section>
+
+    <div class="section-header" style="text-align: center; margin-bottom: 40px;">
+      <span class="badge">Transferencias Directas</span>
+      <h2>Cuentas Bancarias</h2>
+      <p style="color: #6b7280;">Pasa el cursor (o toca) sobre el banco para ver los datos.</p>
     </div>
-  </section>
 
-  <section class="hero" style="padding-top: 2rem;">
-    <h2 style="font-size: 2rem;">Haz tu pago por uno de nuestros bancos aliados</h2>
-    <p>Selecciona tu banco de preferencia y adjunta el comprobante en el formulario.</p>
-  </section>
-
-  <section class="banks-grid">
-  <div class="bank" onclick="openModal('Bancolombia', '07005650245')">
-    <img src="bancolombia.png" alt="Bancolombia">
-    <p>Bancolombia</p>
-  </div>
-  <div class="bank" onclick="openModal('Banco Falabella', '111830282541')">
-    <img src="falabella.png" alt="Banco Falabella">
-    <p>Banco Falabella</p>
-  </div>
-  <div class="bank" onclick="openModal('Davivienda', '488443264657')">
-    <img src="davivienda.png" alt="Davivienda">
-    <p>Davivienda</p>
-  </div>
-  <div class="bank" onclick="openModal('Lulo Bank', '128640924072')">
-    <img src="lulo.png" alt="Lulo Bank">
-    <p>Lulo Bank</p>
-  </div>
-  <div class="bank" onclick="openModal('Nubank', '70153843')">
-    <img src="nubank.png" alt="Nubank">
-    <p>Nubank</p>
-  </div>
-  <div class="bank" onclick="openModal('Banco Agrario', '418030210497')">
-    <img src="agrario.png" alt="Banco Agrario">
-    <p>Banco Agrario</p>
-  </div>
-  <div class="bank" onclick="openModal('BBVA', '640008880')">
-    <img src="bbva.png" alt="BBVA">
-    <p>BBVA</p>
-  </div>
-</section>
-
-
-  <div id="pagoModal" class="modal">
-    <div class="modal-content">
-      <span class="close" onclick="document.getElementById('pagoModal').style.display='none'">&times;</span>
-      <h2>Solicitud de Pedido</h2>
-      <p><strong>Banco:</strong> <span id="nombreBanco"></span></p>
-      <p><strong>Cuenta de Ahorros:</strong> <span id="cuentaBanco"></span><br>A nombre de JOSE DAVID ALZATE AYALA</p>
-      <p><em>Por favor, realiza un pago mínimo del 50% del valor de tu compra para procesar tu pedido.</em></p>
-      <form action="https://formsubmit.co/hola@siniy.pro" method="POST" enctype="multipart/form-data">
-        <input type="text" name="nombre" placeholder="Nombre completo" required>
-        <input type="email" name="correo" placeholder="Correo electrónico" required>
-        <input type="tel" name="telefono" placeholder="Número de contacto" required>
-        <input type="text" name="telefono2" placeholder="Número adicional (opcional)">
-        <input type="text" name="cedula" placeholder="Número de cédula" required>
-        <input type="text" name="nit" placeholder="NIT con dígito de verificación (opcional)">
-        <input type="text" name="empresa" placeholder="Nombre de la empresa (opcional)">
-        <input type="text" name="ciudad" placeholder="Ciudad" required>
-        <input type="text" name="direccion" placeholder="Dirección de entrega" required>
-
-        <div id="servicios-container">
-          <label><strong>Servicios a comprar:</strong></label>
-          <div class="servicio">
-            <select name="servicio[]" onchange="calcularTotal()" required>
-              <option value="Combo tarjetas, pendón y volantes - 269000">Combo tarjetas, pendón y volantes - $269.000</option>
-              <option value="Diseño de logo + Regalo Tartejas 4x1 - 300000">Combo profesional tarjetas y diseño - $300.000</option>
-              <option value="Tarjetas barnizadas x1.000 - 102000">Tarjetas barnizadas x1.000 - $102.000</option>
-              <option value="Tarjetas barnizadas x2.000 - 184000">Tarjetas barnizadas x2.000 - $184.000</option>
-              <option value="Tarjetas barnizadas x3.000 - 266000">Tarjetas barnizadas x3.000 - $266.000</option>
-              <option value="Tarjetas barnizadas x5.000 - 430000">Tarjetas barnizadas x5.000 - $430.000</option>
-              <option value="Volantes ¼ carta x1.000 - 104000">Volantes ¼ carta x1.000 - $104.000</option>
-              <option value="Volantes ¼ carta x2.000 - 188000">Volantes ¼ carta x2.000 - $188.000</option>
-              <option value="Volantes ¼ carta x3.000 - 272000">Volantes ¼ carta x3.000 - $272.000</option>
-              <option value="Volantes ¼ carta x5.000 - 440000">Volantes ¼ carta x5.000 - $440.000</option>
-              <option value="Volantes ½ carta x1.000 - 176000">Volantes ½ carta x1.000 - $176.000</option>
-              <option value="Volantes ½ carta x2.000 - 332000">Volantes ½ carta x2.000 - $332.000</option>
-              <option value="Volantes ½ carta x3.000 - 488000">Volantes ½ carta x3.000 - $488.000</option>
-              <option value="Volantes ½ carta x5.000 - 800000">Volantes ½ carta x5.000 - $800.000</option>
-              <option value="Volantes ½ carta 150g x1.000 - 316000">Volantes ½ carta 150g x1.000 - $316.000</option>
-              <option value="Volantes ½ carta 150g x2.000 - 612000">Volantes ½ carta 150g x2.000 - $612.000</option>
-              <option value="Volantes ½ carta 150g x3.000 - 908000">Volantes ½ carta 150g x3.000 - $908.000</option>
-              <option value="Volantes ½ carta 150g x5.000 - 1500000">Volantes ½ carta 150g x5.000 - $1.500.000</option>
-              <option value="Stickers 4x4cm x200 - 45000">Stickers 4x4cm x200 - $45.000</option>
-              <option value="Stickers 5x5cm x200 - 52200">Stickers 5x5cm x200 - $52.200</option>
-              <option value="Stickers 5x5cm x500 - 108000">Stickers 5x5cm x500 - $108.000</option>
-              <option value="Stickers 5x5cm x1.000 - 201000">Stickers 5x5cm x1.000 - $201.000</option>
-              <option value="Stickers 5x5cm x5.000 - 945000">Stickers 5x5cm x5.000 - $945.000</option>
-              <option value="Stickers 6x6cm x200 - 68568">Stickers 6x6cm x200 - $68.568</option>
-              <option value="Stickers 6x6cm x500 - 148920">Stickers 6x6cm x500 - $148.920</option>
-              <option value="Stickers 6x6cm x1.000 - 282840">Stickers 6x6cm x1.000 - $282.840</option>
-              <option value="Stickers 6x6cm x5.000 - 1354200">Stickers 6x6cm x5.000 - $1.354.200</option>
-              <option value="Stickers 7x7cm x200 - 87912">Stickers 7x7cm x200 - $87.912</option>
-              <option value="Stickers 7x7cm x500 - 197280">Stickers 7x7cm x500 - $197.280</option>
-              <option value="Stickers 7x7cm x1.000 - 379560">Stickers 7x7cm x1.000 - $379.560</option>
-              <option value="Stickers 7x7cm x5.000 - 1837800">Stickers 7x7cm x5.000 - $1.837.800</option>
-              <option value="Pendón MAX 60x155cm - 671600">Pendón MAX 60x155cm - $671.600</option>
-              <option value="Pendón MAX 60x155cm promoción - 505600">Pendón MAX 60x155cm promoción - $505.600</option>
-              <option value="Pendón NORMAL 60x100cm - 544200">Pendón NORMAL 60x100cm - $544.200</option>
-              <option value="Pendón NORMAL 60x100cm promoción - 397000">Pendón NORMAL 60x100cm promoción - $397.000</option>
-              <option value="Pendón portátil 80x180cm - 259000">Pendón portátil 80x180cm - $259.000</option>
-              <option value="Pendón portátil 80x180cm promoción - 228600">Pendón portátil 80x180cm promoción - $228.600</option>
-              <option value="Pendón básico 90x50cm - 63000">Pendón básico 90x50cm - $63.000</option>
-              <option value="Página web corporativa - 399900">Página web corporativa - $399.900</option>
-              <option value="Tienda virtual e-commerce - 745900">Tienda virtual e-commerce - $745.900</option>
-              <option value="Creación redes sociales - 380000">Creación redes sociales - $380.000</option>
-              <option value="Manejo mensual redes sociales - 480000">Manejo mensual redes sociales - $480.000</option>
-              <option value="Manejo redes 3 meses - 1380000">Manejo redes 3 meses - $1.380.000</option>
-              <option value="Manejo redes 6 meses - 2700000">Manejo redes 6 meses - $2.700.000</option>
-              <option value="Manejo redes 12 meses - 5280000">Manejo redes 12 meses - $5.280.000</option>
-
-            </select>
-            <button type="button" onclick="this.parentElement.remove();calcularTotal()">✕</button>
+    <section class="banks-grid">
+      
+      <div class="bank-card">
+        <div class="bank-inner">
+          <div class="bank-front">
+            <img src="bancolombia.png" alt="Bancolombia">
+            <h3>Bancolombia</h3>
+          </div>
+          <div class="bank-back">
+            <h4>Ahorros</h4>
+            <div class="account-number" id="cta-bancolombia">07005650245</div>
+            <p>José David Alzate</p>
+            <button class="copy-btn" onclick="copiar('07005650245')">Copiar Número</button>
           </div>
         </div>
-        <button type="button" onclick="agregarServicio()">+ Agregar otro servicio</button>
+      </div>
 
-        <input type="text" name="total" id="total" placeholder="Total a pagar" readonly required>
-        <input type="text" name="abono" id="abono" placeholder="Abono inicial (mínimo 50%)" readonly required>
+      <div class="bank-card">
+        <div class="bank-inner">
+          <div class="bank-front">
+            <img src="falabella.png" alt="Falabella">
+            <h3>Banco Falabella</h3>
+          </div>
+          <div class="bank-back">
+            <h4>Ahorros</h4>
+            <div class="account-number">111830282541</div>
+            <p>José David Alzate</p>
+            <button class="copy-btn" onclick="copiar('111830282541')">Copiar Número</button>
+          </div>
+        </div>
+      </div>
 
-        <textarea name="diseño" rows="3" placeholder="Información del diseño o referencia deseada" required></textarea>
-        <label><strong>Adjunta el comprobante de pago:</strong></label>
-        <input type="file" name="comprobante" accept="image/*,application/pdf" required>
-        <button type="submit">Enviar Solicitud</button>
-      </form>
+      <div class="bank-card">
+        <div class="bank-inner">
+          <div class="bank-front">
+            <img src="davivienda.png" alt="Davivienda">
+            <h3>Davivienda</h3>
+          </div>
+          <div class="bank-back">
+            <h4>Ahorros</h4>
+            <div class="account-number">488443264657</div>
+            <p>José David Alzate</p>
+            <button class="copy-btn" onclick="copiar('488443264657')">Copiar Número</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="bank-card">
+        <div class="bank-inner">
+          <div class="bank-front">
+            <img src="lulo.png" alt="Lulo Bank">
+            <h3>Lulo Bank</h3>
+          </div>
+          <div class="bank-back">
+            <h4>Ahorros</h4>
+            <div class="account-number">128640924072</div>
+            <p>José David Alzate</p>
+            <button class="copy-btn" onclick="copiar('128640924072')">Copiar Número</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="bank-card">
+        <div class="bank-inner">
+          <div class="bank-front">
+            <img src="nubank.png" alt="Nubank">
+            <h3>Nubank</h3>
+          </div>
+          <div class="bank-back">
+            <h4>Ahorros</h4>
+            <div class="account-number">70153843</div>
+            <p>José David Alzate</p>
+            <button class="copy-btn" onclick="copiar('70153843')">Copiar Número</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="bank-card">
+        <div class="bank-inner">
+          <div class="bank-front">
+            <img src="agrario.png" alt="Banco Agrario">
+            <h3>Banco Agrario</h3>
+          </div>
+          <div class="bank-back">
+            <h4>Ahorros</h4>
+            <div class="account-number">418030210497</div>
+            <p>José David Alzate</p>
+            <button class="copy-btn" onclick="copiar('418030210497')">Copiar Número</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="bank-card">
+        <div class="bank-inner">
+          <div class="bank-front">
+            <img src="bbva.png" alt="BBVA">
+            <h3>BBVA</h3>
+          </div>
+          <div class="bank-back">
+            <h4>Ahorros</h4>
+            <div class="account-number">640008880</div>
+            <p>José David Alzate</p>
+            <button class="copy-btn" onclick="copiar('640008880')">Copiar Número</button>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <section class="proof-cta">
+      <h3>¿Ya realizaste el pago?</h3>
+      <p style="margin-bottom: 20px;">Por favor envía el comprobante a nuestro WhatsApp para procesar tu pedido de inmediato.</p>
+      <a href="https://wa.me/573237028814" target="_blank" class="btn btn-primary" style="background-color: #25D366; border: none; box-shadow: 0 4px 14px rgba(37, 211, 102, 0.4);">
+        Enviar Comprobante por WhatsApp
+      </a>
+    </section>
+
+    <div class="section-header" style="margin-top: 80px;">
+      <h2>¿Por qué confiar en nosotros?</h2>
     </div>
-  </div>
 
-  <footer>
-    <p>&copy; 2025 SINIY Soluciones Digitales. Todos los derechos reservados.</p>
-  </footer>
+    <section class="benefits-grid">
+      <div class="benefit-item">
+        <span class="benefit-icon">🔒</span>
+        <h3>Seguridad Total</h3>
+        <p>No almacenamos tus datos bancarios. Las transacciones son directas con tu banco.</p>
+      </div>
+      <div class="benefit-item">
+        <span class="benefit-icon">💰</span>
+        <h3>Flexibilidad</h3>
+        <p>Inicia tu proyecto abonando solo el 50% del valor total.</p>
+      </div>
+      <div class="benefit-item">
+        <span class="benefit-icon">🚀</span>
+        <h3>Agilidad</h3>
+        <p>Confirmación inmediata de pago vía WhatsApp para no retrasar tu entrega.</p>
+      </div>
+      <div class="benefit-item">
+        <span class="benefit-icon">📄</span>
+        <h3>Facturación</h3>
+        <p>Emitimos factura electrónica para empresas. Envíanos tu RUT.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <siniy-footer></siniy-footer>
+
+  <a href="https://wa.me/573237028814" class="whatsapp-float" target="_blank">
+    <img src="whatsappboton.png" alt="WhatsApp SINIY" />
+  </a>
+
+  <script src="components.js"></script>
 
   <script>
-    function openModal(nombre, cuenta) {
-      document.getElementById('pagoModal').style.display = 'block';
-      document.getElementById('nombreBanco').innerText = nombre;
-      document.getElementById('cuentaBanco').innerText = cuenta;
-    }
+    function toggleMenu() { document.getElementById('nav-menu').classList.toggle('show'); }
 
-    window.onclick = function(event) {
-      const modal = document.getElementById('pagoModal');
-      if (event.target == modal) {
-        modal.style.display = "none";
-      }
-    }
-
-    function agregarServicio() {
-      const container = document.getElementById("servicios-container");
-      const div = document.createElement("div");
-      div.classList.add("servicio");
-
-      div.innerHTML = `
-        <select name="servicio[]" onchange="calcularTotal()" required>
-          <option value="" disabled selected>Selecciona un servicio</option>
-              <option value="Combo tarjetas, pendón y volantes - 269000">Combo tarjetas, pendón y volantes - $269.000</option>
-              <option value="Diseño de logo + Regalo Tartejas 4x1 - 300000">Combo profesional tarjetas y diseño - $300.000</option>
-              <option value="Tarjetas barnizadas x1.000 - 102000">Tarjetas barnizadas x1.000 - $102.000</option>
-              <option value="Tarjetas barnizadas x2.000 - 184000">Tarjetas barnizadas x2.000 - $184.000</option>
-              <option value="Tarjetas barnizadas x3.000 - 266000">Tarjetas barnizadas x3.000 - $266.000</option>
-              <option value="Tarjetas barnizadas x5.000 - 430000">Tarjetas barnizadas x5.000 - $430.000</option>
-              <option value="Volantes ¼ carta x1.000 - 104000">Volantes ¼ carta x1.000 - $104.000</option>
-              <option value="Volantes ¼ carta x2.000 - 188000">Volantes ¼ carta x2.000 - $188.000</option>
-              <option value="Volantes ¼ carta x3.000 - 272000">Volantes ¼ carta x3.000 - $272.000</option>
-              <option value="Volantes ¼ carta x5.000 - 440000">Volantes ¼ carta x5.000 - $440.000</option>
-              <option value="Volantes ½ carta x1.000 - 176000">Volantes ½ carta x1.000 - $176.000</option>
-              <option value="Volantes ½ carta x2.000 - 332000">Volantes ½ carta x2.000 - $332.000</option>
-              <option value="Volantes ½ carta x3.000 - 488000">Volantes ½ carta x3.000 - $488.000</option>
-              <option value="Volantes ½ carta x5.000 - 800000">Volantes ½ carta x5.000 - $800.000</option>
-              <option value="Volantes ½ carta 150g x1.000 - 316000">Volantes ½ carta 150g x1.000 - $316.000</option>
-              <option value="Volantes ½ carta 150g x2.000 - 612000">Volantes ½ carta 150g x2.000 - $612.000</option>
-              <option value="Volantes ½ carta 150g x3.000 - 908000">Volantes ½ carta 150g x3.000 - $908.000</option>
-              <option value="Volantes ½ carta 150g x5.000 - 1500000">Volantes ½ carta 150g x5.000 - $1.500.000</option>
-              <option value="Stickers 4x4cm x200 - 45000">Stickers 4x4cm x200 - $45.000</option>
-              <option value="Stickers 5x5cm x200 - 52200">Stickers 5x5cm x200 - $52.200</option>
-              <option value="Stickers 5x5cm x500 - 108000">Stickers 5x5cm x500 - $108.000</option>
-              <option value="Stickers 5x5cm x1.000 - 201000">Stickers 5x5cm x1.000 - $201.000</option>
-              <option value="Stickers 5x5cm x5.000 - 945000">Stickers 5x5cm x5.000 - $945.000</option>
-              <option value="Stickers 6x6cm x200 - 68568">Stickers 6x6cm x200 - $68.568</option>
-              <option value="Stickers 6x6cm x500 - 148920">Stickers 6x6cm x500 - $148.920</option>
-              <option value="Stickers 6x6cm x1.000 - 282840">Stickers 6x6cm x1.000 - $282.840</option>
-              <option value="Stickers 6x6cm x5.000 - 1354200">Stickers 6x6cm x5.000 - $1.354.200</option>
-              <option value="Stickers 7x7cm x200 - 87912">Stickers 7x7cm x200 - $87.912</option>
-              <option value="Stickers 7x7cm x500 - 197280">Stickers 7x7cm x500 - $197.280</option>
-              <option value="Stickers 7x7cm x1.000 - 379560">Stickers 7x7cm x1.000 - $379.560</option>
-              <option value="Stickers 7x7cm x5.000 - 1837800">Stickers 7x7cm x5.000 - $1.837.800</option>
-              <option value="Pendón MAX 60x155cm - 671600">Pendón MAX 60x155cm - $671.600</option>
-              <option value="Pendón MAX 60x155cm promoción - 505600">Pendón MAX 60x155cm promoción - $505.600</option>
-              <option value="Pendón NORMAL 60x100cm - 544200">Pendón NORMAL 60x100cm - $544.200</option>
-              <option value="Pendón NORMAL 60x100cm promoción - 397000">Pendón NORMAL 60x100cm promoción - $397.000</option>
-              <option value="Pendón portátil 80x180cm - 259000">Pendón portátil 80x180cm - $259.000</option>
-              <option value="Pendón portátil 80x180cm promoción - 228600">Pendón portátil 80x180cm promoción - $228.600</option>
-              <option value="Pendón básico 90x50cm - 63000">Pendón básico 90x50cm - $63.000</option>
-              <option value="Página web corporativa - 399900">Página web corporativa - $399.900</option>
-              <option value="Tienda virtual e-commerce - 745900">Tienda virtual e-commerce - $745.900</option>
-              <option value="Creación redes sociales - 380000">Creación redes sociales - $380.000</option>
-              <option value="Manejo mensual redes sociales - 480000">Manejo mensual redes sociales - $480.000</option>
-              <option value="Manejo redes 3 meses - 1380000">Manejo redes 3 meses - $1.380.000</option>
-              <option value="Manejo redes 6 meses - 2700000">Manejo redes 6 meses - $2.700.000</option>
-              <option value="Manejo redes 12 meses - 5280000">Manejo redes 12 meses - $5.280.000</option>
-        </select>
-        <button type="button" onclick="this.parentElement.remove();calcularTotal()">✕</button>
-      `;
-      container.appendChild(div);
-    }
-
-    function calcularTotal() {
-      let total = 0;
-      const selects = document.querySelectorAll('select[name="servicio[]"]');
-      selects.forEach(select => {
-        const valor = select.value;
-        if (valor) {
-          const precioTexto = valor.split("-")[1];
-          const precio = parseInt(precioTexto.trim().replace(/\./g, ""));
-          if (!isNaN(precio)) {
-            total += precio;
-          }
-        }
+    // Función simple para copiar al portapapeles
+    function copiar(texto) {
+      navigator.clipboard.writeText(texto).then(() => {
+        alert("¡Cuenta copiada al portapapeles!");
+      }).catch(err => {
+        console.error('Error al copiar: ', err);
       });
-      document.getElementById("total").value = `$${total.toLocaleString("es-CO")}`;
-      document.getElementById("abono").value = `$${Math.round(total / 2).toLocaleString("es-CO")}`;
     }
   </script>
 
