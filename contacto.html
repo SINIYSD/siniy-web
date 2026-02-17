@@ -1,228 +1,323 @@
 <!DOCTYPE html>
 <html lang="es-CO">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Contacto | SINIY - Agencia Creativa & Publicidad</title>
-    <link rel="icon" href="siniyfavicon.png" type="image/png" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contacto | SINIY Agencia Creativa</title>
+  <link rel="icon" href="siniyfavicon.png" type="image/png" />
+  
+  <meta name="description" content="Ponte en contacto con el equipo de SINIY. Canales directos con Gerencia, Creativos, Financiera y Atención al Cliente." />
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    /* --- HEREDANDO VARIABLES VISUALES DE SINIY --- */
+    :root {
+      --brand: #5e17eb;       
+      --brand-dark: #450eb5;  
+      --brand-light: #f0eaff; 
+      --accent: #00d2ff;      
+      --text-main: #1f2937;   
+      --text-light: #6b7280;  
+      --bg-body: #ffffff;     
+      --border: #e5e7eb;
+      --warning-bg: #fff4e5;
+      --warning-text: #b45309;
+    }
+
+    /* --- ESTILOS GENERALES Y FONDO --- */
+    body {
+      margin: 0; padding: 0;
+      background: var(--bg-body);
+      color: var(--text-main);
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
     
-    <style>
-        :root {
-            --brand: #5e17eb;       
-            --brand-dark: #450eb5;  
-            --brand-light: #f0eaff; 
-            --text-main: #1f2937;   
-            --text-light: #6b7280;  
-            --bg-body: #ffffff;     
-            --border: #e5e7eb;      
-            --whatsapp: #25d366;
-        }
+    .wrap { max-width: 1200px; margin: 0 auto; padding: 0 24px; position: relative; }
 
-        body {
-            margin: 0; padding: 0;
-            font-family: 'Inter', sans-serif;
-            background: var(--bg-body);
-            color: var(--text-main);
-            line-height: 1.6;
-        }
+    /* Fondo Aurora (Misma animación que Servicios) */
+    .background-glow {
+      position: fixed; top: 0; left: 0; width: 100%; height: 100vh; z-index: -1;
+      background: radial-gradient(circle at 20% 20%, rgba(94, 23, 235, 0.05), transparent 60%),
+                  radial-gradient(circle at 80% 80%, rgba(0, 210, 255, 0.05), transparent 40%);
+      animation: pulseGlow 10s infinite alternate;
+    }
+    @keyframes pulseGlow {
+      0% { transform: scale(1); opacity: 0.5; }
+      100% { transform: scale(1.1); opacity: 1; }
+    }
 
-        .wrap { max-width: 1150px; margin: 0 auto; padding: 0 24px; }
-        
-        /* Header Spacer */
-        .page-header {
-            padding: 80px 0 40px;
-            text-align: center;
-            background: linear-gradient(180deg, var(--brand-light) 0%, #ffffff 100%);
-        }
+    /* --- HERO DE CONTACTO --- */
+    .contact-hero {
+      text-align: center; padding: 100px 0 60px;
+    }
+    .contact-hero h1 {
+      font-size: 3.5rem; font-weight: 900; margin-bottom: 20px;
+      background: linear-gradient(to right, var(--brand), var(--accent));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .contact-hero p {
+      font-size: 1.2rem; max-width: 600px; margin: 0 auto; color: var(--text-light);
+    }
 
-        h1 { font-size: 3rem; font-weight: 800; margin-bottom: 10px; }
-        .subtitle { color: var(--text-light); font-size: 1.2rem; }
+    /* --- GRILLA DE DEPARTAMENTOS --- */
+    .departments-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 30px;
+      margin-bottom: 80px;
+    }
 
-        /* Grid Areas */
-        .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-            margin: 60px 0;
-        }
+    .dept-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 30px;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 10px 30px -10px rgba(0,0,0,0.05);
+    }
 
-        .contact-card {
-            border: 1px solid var(--border);
-            padding: 30px;
-            border-radius: 20px;
-            transition: all 0.3s ease;
-            display: flex;
-            flex-direction: column;
-        }
+    .dept-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px -12px rgba(94, 23, 235, 0.15);
+      border-color: var(--brand-light);
+    }
 
-        .contact-card:hover {
-            border-color: var(--brand);
-            box-shadow: 0 10px 30px rgba(94, 23, 235, 0.1);
-            transform: translateY(-5px);
-        }
+    .dept-icon { font-size: 3rem; margin-bottom: 20px; display: block; }
+    
+    .dept-card h3 {
+      font-size: 1.5rem; margin: 0 0 15px; color: var(--text-main); font-weight: 800;
+    }
+    
+    .dept-card p {
+      color: var(--text-light); line-height: 1.6; margin-bottom: 20px; font-size: 0.95rem;
+    }
 
-        .contact-card h3 {
-            margin: 0 0 15px;
-            color: var(--brand);
-            font-size: 1.4rem;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
+    .email-link {
+      display: inline-block;
+      padding: 10px 20px;
+      background: var(--brand-light);
+      color: var(--brand);
+      border-radius: 8px;
+      font-weight: 600;
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: 0.2s;
+    }
+    .email-link:hover { background: var(--brand); color: white; }
 
-        .contact-card p {
-            font-size: 0.95rem;
-            color: var(--text-light);
-            margin-bottom: 20px;
-            flex-grow: 1;
-        }
+    /* Estilos específicos para alertas y listas */
+    .alert-box {
+      background: var(--warning-bg);
+      border-left: 4px solid #f59e0b;
+      padding: 15px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+    }
+    .alert-box strong { color: var(--warning-text); display: block; margin-bottom: 5px; }
+    .alert-box span { color: #92400e; font-size: 0.9rem; }
 
-        .email-link {
-            font-weight: 600;
-            color: var(--text-main);
-            text-decoration: none;
-            word-break: break-all;
-        }
+    .detail-list {
+      list-style: none; padding: 0; margin-bottom: 20px;
+    }
+    .detail-list li {
+      font-size: 0.9rem; color: var(--text-light); margin-bottom: 8px;
+      padding-left: 20px; position: relative;
+    }
+    .detail-list li::before {
+      content: '•'; color: var(--brand); position: absolute; left: 0; font-weight: bold;
+    }
 
-        .email-link:hover { color: var(--brand); }
+    /* --- ZONA PQRS --- */
+    .pqrs-section {
+      background: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%);
+      border-radius: 24px;
+      padding: 60px 40px;
+      margin: 40px 0 100px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      align-items: center;
+      border: 1px solid var(--border);
+    }
+    
+    .pqrs-text h2 { font-size: 2rem; margin-bottom: 15px; }
+    .pqrs-text p { color: var(--text-light); margin-bottom: 25px; }
+    
+    .pqrs-form {
+      background: white; padding: 30px; border-radius: 16px;
+      box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05);
+    }
 
-        /* Map & PQRS Section */
-        .bottom-section {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            margin-bottom: 80px;
-        }
+    /* --- MAPA --- */
+    .map-container {
+      width: 100%;
+      height: 450px;
+      border-radius: 24px;
+      overflow: hidden;
+      margin-bottom: 50px;
+      box-shadow: 0 20px 40px -10px rgba(0,0,0,0.1);
+      filter: grayscale(20%); /* Estilo elegante desaturado */
+      transition: filter 0.3s;
+    }
+    .map-container:hover { filter: grayscale(0%); }
 
-        .map-container {
-            border-radius: 24px;
-            overflow: hidden;
-            border: 1px solid var(--border);
-            height: 450px;
-        }
+    /* --- BOTON WHATSAPP FLOTANTE --- */
+    .whatsapp-float {
+      position: fixed; bottom: 30px; right: 30px; z-index: 999;
+      transition: transform 0.3s ease;
+    }
+    .whatsapp-float:hover { transform: scale(1.1); }
+    .whatsapp-float img { width: 60px; height: 60px; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.2)); }
 
-        .pqrs-box {
-            background: #f9fafb;
-            padding: 40px;
-            border-radius: 24px;
-        }
-
-        .btn {
-            padding: 14px 28px; border-radius: 50px; font-weight: 600;
-            display: inline-flex; align-items: center; justify-content: center;
-            transition: all 0.3s ease; cursor: pointer; border: none; width: 100%;
-            text-decoration: none;
-        }
-        
-        .btn-primary { background: var(--brand); color: white; }
-        .btn-primary:hover { background: var(--brand-dark); }
-
-        /* Floating WhatsApp */
-        .whatsapp-float {
-            position: fixed; bottom: 30px; right: 30px; z-index: 999;
-            background: var(--whatsapp);
-            width: 60px; height: 60px;
-            border-radius: 50px;
-            display: flex; align-items: center; justify-content: center;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-            transition: transform 0.3s ease;
-        }
-        .whatsapp-float:hover { transform: scale(1.1); }
-        .whatsapp-float img { width: 35px; height: 35px; }
-
-        @media (max-width: 850px) {
-            .bottom-section { grid-template-columns: 1fr; }
-            h1 { font-size: 2.2rem; }
-        }
-    </style>
+    /* --- RESPONSIVE --- */
+    @media (max-width: 900px) {
+      .contact-hero h1 { font-size: 2.5rem; }
+      .pqrs-section { grid-template-columns: 1fr; padding: 40px 20px; }
+      .map-container { height: 350px; }
+    }
+  </style>
 </head>
 <body>
 
-    <siniy-header></siniy-header>
+  <div class="background-glow"></div>
 
-    <div class="page-header">
-        <div class="wrap">
-            <h1>Contacto Directo</h1>
-            <p class="subtitle">Estamos listos para llevar tu marca al siguiente nivel.</p>
+  <siniy-header></siniy-header>
+
+  <main class="wrap">
+    
+    <section class="contact-hero reveal">
+      <h1>Estamos aquí para ti</h1>
+      <p>Conecta directamente con el área que necesitas. Nuestro equipo está listo para atenderte.</p>
+    </section>
+
+    <section class="departments-grid reveal">
+      
+      <div class="dept-card">
+        <span class="dept-icon">💼</span>
+        <h3>Gerencia</h3>
+        <p>Atención directa con <strong>Jose David Alzate Ayala</strong> para convenios institucionales, negociaciones de alto nivel y dirección estratégica.</p>
+        <a href="mailto:gerente@siniy.pro" class="email-link">gerente@siniy.pro</a>
+      </div>
+
+      <div class="dept-card">
+        <span class="dept-icon">🤝</span>
+        <h3>Alianzas Comerciales</h3>
+        <p>Espacio dedicado para proveedores, colaboraciones entre agencias, medios de comunicación y expansión de red en el Eje Cafetero.</p>
+        <a href="mailto:alianzas@siniy.pro" class="email-link">alianzas@siniy.pro</a>
+      </div>
+
+      <div class="dept-card" style="border-color: var(--brand-light);">
+        <span class="dept-icon">🎨</span>
+        <h3>Diseño e Impresión</h3>
+        <p>Recepción de material gráfico para proyectos en curso.</p>
+        
+        <div class="alert-box">
+          <strong>⚠️ Importante</strong>
+          <span>Para asegurar la calidad, <b>NO enviar diseños adjuntos</b>. Por favor compartir únicamente links de Google Drive.</span>
         </div>
-    </div>
+        
+        <a href="mailto:creativos@siniy.pro" class="email-link">creativos@siniy.pro</a>
+      </div>
 
-    <main class="wrap">
-        <section class="contact-grid">
-            
-            <div class="contact-card">
-                <h3>💼 Gerencia</h3>
-                <p>Atención directa con <strong>Jose David Alzate Ayala</strong> para convenios institucionales, negociaciones de alto nivel y dirección estratégica de proyectos.</p>
-                <a href="mailto:gerente@siniy.pro" class="email-link">gerente@siniy.pro</a>
-            </div>
+      <div class="dept-card">
+        <span class="dept-icon">📊</span>
+        <h3>Financiera</h3>
+        <p>Gestión administrativa integral. Contáctanos para:</p>
+        <ul class="detail-list">
+          <li>Facturación electrónica válida (DIAN)</li>
+          <li>Copia de facturas y comprobantes</li>
+          <li>Certificados de paz y salvo</li>
+          <li>Estados de cuenta</li>
+        </ul>
+        <a href="mailto:financiera@siniy.pro" class="email-link">financiera@siniy.pro</a>
+      </div>
 
-            <div class="contact-card">
-                <h3>🤝 Alianzas Comerciales</h3>
-                <p>Espacio para proveedores, colaboraciones entre agencias, medios de comunicación y expansión de red de servicios en el Eje Cafetero.</p>
-                <a href="mailto:alianzas@siniy.pro" class="email-link">alianzas@siniy.pro</a>
-            </div>
+      <div class="dept-card">
+        <span class="dept-icon">✨</span>
+        <h3>Atención al Cliente</h3>
+        <p>Información general sobre nuestros servicios, seguimiento de pedidos en curso y asesoría inicial para nuevos clientes.</p>
+        <a href="mailto:hola@siniy.pro" class="email-link">hola@siniy.pro</a>
+      </div>
 
-            <div class="contact-card">
-                <h3>🎨 Diseño e Impresión</h3>
-                <p>Recepción de material gráfico. <strong>Importante:</strong> Para asegurar la calidad, no enviar diseños adjuntos; por favor compartir únicamente <strong>links de Google Drive</strong>.</p>
-                <a href="mailto:creativos@siniy.pro" class="email-link">creativos@siniy.pro</a>
-            </div>
+    </section>
 
-            <div class="contact-card">
-                <h3>📊 Financiera</h3>
-                <p>Gestión de facturación electrónica (DIAN), envío de comprobantes de pago, certificados de paz y salvo, y estados de cuenta.</p>
-                <a href="mailto:financiera@siniy.pro" class="email-link">financiera@siniy.pro</a>
-            </div>
+    <section class="reveal">
+      <h2 style="text-align: center; margin-bottom: 30px;">Nuestra Ubicación</h2>
+      <div class="map-container">
+        <iframe 
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63630.56943867623!2d-75.54928095130663!3d5.068692770514686!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e476ffa69792019%3A0xe543fa0226307186!2sManizales%2C%20Caldas!5e0!3m2!1ses!2sco!4v1709228394821!5m2!1ses!2sco" 
+          width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+    </section>
 
-            <div class="contact-card">
-                <h3>✨ Atención al Cliente</h3>
-                <p>Información general sobre nuestros servicios, seguimiento de pedidos en curso y asesoría inicial para nuevos clientes.</p>
-                <a href="mailto:hola@siniy.pro" class="email-link">hola@siniy.pro</a>
-            </div>
+    <section class="pqrs-section reveal">
+      <div class="pqrs-text">
+        <h2>Zona de PQRS</h2>
+        <p>En SINIY valoramos tu opinión. Si tienes Peticiones, Quejas, Reclamos o Sugerencias, estamos comprometidos a escucharte y mejorar.</p>
+        <p style="font-size: 0.95rem; color: var(--text-main);">
+          Toda solicitud será atendida y respondida directamente por nuestro equipo de calidad.
+        </p>
+      </div>
+      <div class="pqrs-form">
+        <h3 style="margin-top:0; color: var(--brand);">Radicar Solicitud</h3>
+        <form action="https://formsubmit.co/hola@siniy.pro" method="POST">
+           <input type="hidden" name="_next" value="https://siniy.pro/gracias">
+          <input type="hidden" name="_subject" value="Nueva PQRS Radicada - SINIY">
 
-        </section>
+          <input type="text" name="nombre" placeholder="Nombre completo" required style="width:100%; padding:12px; margin-bottom:10px; border:1px solid var(--border); border-radius:8px;">
+          <input type="email" name="email" placeholder="Correo electrónico" required style="width:100%; padding:12px; margin-bottom:10px; border:1px solid var(--border); border-radius:8px;">
+          
+          <select name="tipo" style="width:100%; padding:12px; margin-bottom:10px; border:1px solid var(--border); border-radius:8px; background:white;">
+            <option value="Peticion">Petición</option>
+            <option value="Queja">Queja</option>
+            <option value="Reclamo">Reclamo</option>
+            <option value="Sugerencia">Sugerencia</option>
+          </select>
 
-        <div class="bottom-section">
-            <div class="map-container">
-                <iframe 
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3977.56772719572!2d-75.51738!3d5.067!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNcKwMDQnMDEuMiJOIDc1wrAzMScwMi42Ilc!5e0!3m2!1ses!2sco!4v1700000000000" 
-                    width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy">
-                </iframe>
-            </div>
+          <textarea name="mensaje" rows="4" placeholder="Describe tu caso..." required style="width:100%; padding:12px; margin-bottom:15px; border:1px solid var(--border); border-radius:8px; font-family:inherit;"></textarea>
 
-            <div class="pqrs-box">
-                <h2 style="margin-top:0;">Zona de PQRS</h2>
-                <p>En SINIY valoramos tu opinión. Si deseas radicar una Petición, Queja, Reclamo o Sugerencia, por favor diligencia el formulario técnico o envía un correo detallado.</p>
-                
-                <form action="https://formsubmit.co/hola@siniy.pro" method="POST">
-                    <input type="hidden" name="_subject" value="Nuevo PQRS - SINIY">
-                    <label style="display:block; margin-bottom:5px; font-weight:600;">Tipo de solicitud</label>
-                    <select name="tipo_pqrs" style="width:100%; padding:12px; border-radius:10px; border:1px solid var(--border); margin-bottom:15px; font-family:inherit;">
-                        <option value="Peticion">Petición</option>
-                        <option value="Queja">Queja</option>
-                        <option value="Reclamo">Reclamo</option>
-                        <option value="Sugerencia">Sugerencia</option>
-                    </select>
+          <button type="submit" class="btn btn-primary" style="width:100%; border:none; cursor:pointer;">Enviar PQRS</button>
+        </form>
+      </div>
+    </section>
 
-                    <input type="text" name="name" placeholder="Nombre completo" required style="width:100%; padding:12px; border-radius:10px; border:1px solid var(--border); margin-bottom:15px;">
-                    
-                    <textarea name="message" rows="4" placeholder="Describe los hechos..." required style="width:100%; padding:12px; border-radius:10px; border:1px solid var(--border); margin-bottom:15px; font-family:inherit;"></textarea>
-                    
-                    <button type="submit" class="btn btn-primary">Radicar PQRS</button>
-                </form>
-            </div>
-        </div>
-    </main>
+  </main>
 
-    <siniy-footer></siniy-footer>
+  <siniy-footer></siniy-footer>
 
-    <a href="https://wa.me/573237028814?text=Hola%20SINIY,%20necesito%20información." class="whatsapp-float" target="_blank">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp SINIY">
-    </a>
+  <a href="https://wa.me/573237028814" class="whatsapp-float" target="_blank">
+    <img src="whatsappboton.png" alt="WhatsApp SINIY" />
+  </a>
 
-    <script src="components.js"></script>
+  <script src="components.js"></script>
+  <script>
+    // Animación de aparición al hacer scroll (Scroll Reveal)
+    const observerOptions = { threshold: 0.1 };
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.reveal').forEach(el => {
+      observer.observe(el);
+    });
+  </script>
+
 </body>
 </html>
