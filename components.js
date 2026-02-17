@@ -103,7 +103,7 @@ class SiniyFooter extends HTMLElement {
                     
                     
 
-                    <img src="https://epayco.com/wp-content/uploads/2023/01/epayco_pago_seguro_gray.png" alt="Pagos con ePayco" style="width: 100%; max-width: 260px;">
+                    <img src="epayco-pasarela.png" alt="Pagos con ePayco" style="width: 100%; max-width: 260px;">
                 </div>
 
             </div>
