@@ -93,7 +93,7 @@ class SiniyFooter extends HTMLElement {
                     <ul class="footer-links">
                     <li><a href="https://siniy.pro/tratamiento-datos">Tratamiento de Datos</a></li>
                     <li><a href="https://siniy.pro/politicas-generales">Políticas Generales</a></li>
-                    <li><a href="#contacto" onclick="openModal()">Contacto</a></li>
+                    <li><a href="https://siniy.pro/contacto">Contacto</a></li>
                     </ul>
                 </div>
 
