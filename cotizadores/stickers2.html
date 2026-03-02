@@ -245,9 +245,6 @@
     <label for="envio">Costo de envío ($):</label>
     <input type="number" id="envio" value="0" oninput="renderStickers()">
 
-    <label for="ganancia">% de ganancia sobre material:</label>
-    <input type="number" id="ganancia" value="0" oninput="renderStickers()">
-
     <div id="precio-final"></div>
   </div>
 
@@ -326,8 +323,8 @@
         workspace.appendChild(planchaContainer);
       }
 
-      const costoMaterial = totalAreaUtilizada * 30000;
-      const costoStickers = totalAreaStickers * 30000;
+      const costoMaterial = totalAreaUtilizada * 65000;
+      const costoStickers = totalAreaStickers * 65000;
       const utilidad = (costoMaterial * ganancia) / 100;
       const totalFinal = costoMaterial + diseno + envio + utilidad;
 
@@ -339,15 +336,5 @@
     window.onload = renderStickers;
   </script>
 
-  <script>
-    function verificarClave() {
-      const inputClave = document.getElementById("clave").value;
-      if (inputClave === "1379") {
-        document.getElementById("access-modal").style.display = "none";
-      } else {
-        alert("Clave incorrecta");
-      }
-    }
-  </script>
 </body>
 </html>
