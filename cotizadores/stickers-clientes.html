@@ -190,33 +190,48 @@
       const cantidad = parseInt(document.getElementById("cantidad").value);
       const metro = document.getElementById("metro");
       const info = document.getElementById("info");
-
+    
       metro.innerHTML = "";
-
+    
       if (ancho <= 0 || alto <= 0) return;
-
+    
       const porFila = Math.floor(100 / ancho);
       const porColumna = Math.floor(100 / alto);
       const totalPorMetro = porFila * porColumna;
-
-      metro.style.gridTemplateColumns = `repeat(${porFila}, 1fr)`;
-      metro.style.gridTemplateRows = `repeat(${porColumna}, 1fr)`;
-
-      for (let i = 0; i < totalPorMetro; i++) {
+    
+      // 🔥 LIMITADOR VISUAL (optimización)
+      const LIMITE_VISUAL = 400;
+    
+      const escala = Math.sqrt(LIMITE_VISUAL / totalPorMetro);
+      const columnasVisual = totalPorMetro > LIMITE_VISUAL
+        ? Math.floor(porFila * escala)
+        : porFila;
+    
+      const filasVisual = totalPorMetro > LIMITE_VISUAL
+        ? Math.floor(porColumna * escala)
+        : porColumna;
+    
+      metro.style.gridTemplateColumns = `repeat(${columnasVisual}, 1fr)`;
+      metro.style.gridTemplateRows = `repeat(${filasVisual}, 1fr)`;
+    
+      const totalVisual = columnasVisual * filasVisual;
+    
+      for (let i = 0; i < totalVisual; i++) {
         const div = document.createElement("div");
         div.className = "sticker";
         metro.appendChild(div);
       }
-
+    
       const areaStickerM2 = (ancho * alto) / 10000;
       const areaTotal = areaStickerM2 * cantidad;
-      const total = areaTotal * PRECIO_M2;
-
+      const total = areaTotal * 65000;
+    
       document.getElementById("total").innerText =
         "$" + total.toLocaleString("es-CO");
-
-      info.innerText = `En 1 m² caben aproximadamente ${totalPorMetro} stickers de ${ancho}x${alto} cm`;
-
+    
+      info.innerText =
+        `En 1 m² caben aproximadamente ${totalPorMetro} stickers de ${ancho}x${alto} cm`;
+    
       actualizarWhatsapp(ancho, alto, cantidad);
     }
 
