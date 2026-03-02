@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Calculadora de Stickers | SINIY</title>
 
-  <script src="components.js"></script>
+  <script src="components.js" defer></script>
 
   <style>
     :root {
@@ -27,12 +27,12 @@
       margin-top: 2rem;
     }
 
-    /* Banner Publicidad */
+    /* Banner */
     .banner-publicidad {
-      width: 100%;
-      max-width: 1100px;
+      width: 95%;
+      max-width: 1200px;
       height: 120px;
-      margin: 20px auto;
+      margin: 25px auto;
       background: linear-gradient(135deg, #5e17eb, #7c3aed);
       border-radius: 12px;
       display: flex;
@@ -41,14 +41,13 @@
       color: white;
       font-weight: bold;
       font-size: 1.2rem;
-      letter-spacing: 1px;
     }
 
     .controls {
       display: flex;
-      flex-wrap: wrap;
       justify-content: center;
-      gap: 1.5rem;
+      gap: 2rem;
+      flex-wrap: wrap;
       margin: 2rem 1rem;
     }
 
@@ -68,6 +67,35 @@
       text-align: center;
     }
 
+    /* Simulador */
+    .simulador-container {
+      display: flex;
+      justify-content: center;
+      margin-top: 2rem;
+    }
+
+    .metro {
+      width: 90vw;
+      max-width: 500px;
+      aspect-ratio: 1/1;
+      background: white;
+      border: 3px solid var(--principal);
+      display: grid;
+      gap: 2px;
+      padding: 4px;
+    }
+
+    .sticker {
+      background: var(--principal);
+      border-radius: 3px;
+    }
+
+    .info {
+      text-align: center;
+      margin-top: 1rem;
+      font-weight: bold;
+    }
+
     .resultado {
       text-align: center;
       background: white;
@@ -85,14 +113,14 @@
       margin-top: 1rem;
     }
 
-    /* Botón WhatsApp flotante */
+    /* WhatsApp */
     .whatsapp-float {
       position: fixed;
       bottom: 20px;
       right: 20px;
       background: #25D366;
       color: white;
-      font-size: 24px;
+      font-size: 26px;
       width: 60px;
       height: 60px;
       border-radius: 50%;
@@ -108,13 +136,6 @@
       transform: scale(1.1);
     }
 
-    @media (max-width: 600px) {
-      .banner-publicidad {
-        height: 90px;
-        font-size: 1rem;
-      }
-    }
-
   </style>
 </head>
 
@@ -126,7 +147,7 @@
     ESPACIO PUBLICITARIO DISPONIBLE
   </div>
 
-  <h1>Calcula el Precio de tus Stickers</h1>
+  <h1>Calcula tus Stickers por Metro Cuadrado</h1>
 
   <div class="controls">
     <div>
@@ -145,12 +166,17 @@
     </div>
   </div>
 
+  <div class="simulador-container">
+    <div class="metro" id="metro"></div>
+  </div>
+
+  <div class="info" id="info"></div>
+
   <div class="resultado">
     <div>Precio total estimado:</div>
     <div class="precio" id="total">$0</div>
   </div>
 
-  <!-- Botón flotante WhatsApp -->
   <a id="btnWhatsapp" class="whatsapp-float" target="_blank">💬</a>
 
   <siniy-footer></siniy-footer>
@@ -162,8 +188,25 @@
       const ancho = parseFloat(document.getElementById("ancho").value);
       const alto = parseFloat(document.getElementById("alto").value);
       const cantidad = parseInt(document.getElementById("cantidad").value);
+      const metro = document.getElementById("metro");
+      const info = document.getElementById("info");
 
-      if (ancho <= 0 || alto <= 0 || cantidad <= 0) return;
+      metro.innerHTML = "";
+
+      if (ancho <= 0 || alto <= 0) return;
+
+      const porFila = Math.floor(100 / ancho);
+      const porColumna = Math.floor(100 / alto);
+      const totalPorMetro = porFila * porColumna;
+
+      metro.style.gridTemplateColumns = `repeat(${porFila}, 1fr)`;
+      metro.style.gridTemplateRows = `repeat(${porColumna}, 1fr)`;
+
+      for (let i = 0; i < totalPorMetro; i++) {
+        const div = document.createElement("div");
+        div.className = "sticker";
+        metro.appendChild(div);
+      }
 
       const areaStickerM2 = (ancho * alto) / 10000;
       const areaTotal = areaStickerM2 * cantidad;
@@ -171,33 +214,20 @@
 
       document.getElementById("total").innerText =
         "$" + total.toLocaleString("es-CO");
+
+      info.innerText = `En 1 m² caben aproximadamente ${totalPorMetro} stickers de ${ancho}x${alto} cm`;
+
+      actualizarWhatsapp(ancho, alto, cantidad);
     }
 
-    function actualizarWhatsapp() {
-      const ancho = document.getElementById("ancho").value;
-      const alto = document.getElementById("alto").value;
-      const cantidad = document.getElementById("cantidad").value;
+    function actualizarWhatsapp(ancho, alto, cantidad) {
       const total = document.getElementById("total").innerText;
-
       const mensaje = `Hola SINIY 👋 quiero cotizar stickers de ${ancho}cm x ${alto}cm en cantidad de ${cantidad}. Total estimado: ${total}`;
       const url = `https://wa.me/573237028814?text=${encodeURIComponent(mensaje)}`;
-
       document.getElementById("btnWhatsapp").href = url;
     }
 
-    function init() {
-      calcular();
-      actualizarWhatsapp();
-    }
-
-    document.querySelectorAll("input").forEach(input => {
-      input.addEventListener("input", () => {
-        calcular();
-        actualizarWhatsapp();
-      });
-    });
-
-    window.onload = init;
+    window.onload = calcular;
   </script>
 
 </body>
