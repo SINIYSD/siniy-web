@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SALAZ PRODUCCIONES CORMASTER S.A.S.</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   
   <style>
     /* --- RESET & BASICS --- */
@@ -20,7 +21,7 @@
     a { text-decoration: none; }
     ul { list-style: none; }
 
-    /* --- COLORES INSTITUCIONALES --- */
+    /* --- COLORES INSTITUCIONALES (Del Cliente) --- */
     :root {
       --azul-oscuro: #0a1128;
       --morado-oscuro: #2d1445; 
@@ -32,8 +33,6 @@
     /* --- HEADER --- */
     header {
       background: linear-gradient(90deg, var(--azul-oscuro), var(--morado-oscuro));
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
       padding: 10px 30px;
       display: flex;
       justify-content: space-between;
@@ -59,9 +58,7 @@
       text-transform: uppercase;
       transition: color 0.3s ease;
     }
-    nav a:hover { 
-      color: #d1b3ff; 
-    }
+    nav a:hover { color: #d1b3ff; }
 
     .menu-toggle {
       display: none;
@@ -72,64 +69,104 @@
       cursor: pointer;
     }
 
-    /* --- HERO SECTION --- */
+    /* --- HERO SECTION (Diseño Limpio Referencia) --- */
     .hero {
-      /* AQUÍ ESTÁ EL CAMBIO: Reduje los valores de 0.85 a 0.4 para que la imagen se vea bien */
-      background: linear-gradient(to bottom, rgba(45, 20, 69, 0.4), rgba(10, 17, 40, 0.6)), url('recursossp/20.jpg');
-      background-size: cover;
-      background-position: center;
-      background-attachment: fixed;
+      background-color: var(--blanco);
       min-height: 85vh;
       display: flex;
-      flex-direction: column;
-      justify-content: center;
+      justify-content: space-between;
       align-items: center;
-      text-align: center;
-      padding: 20px;
-      position: relative;
-      color: var(--blanco);
+      padding: 40px 8%;
+      gap: 50px;
     }
 
-    .hero h1 {
-      font-size: 3.2rem;
-      margin-bottom: 10px;
+    .hero-text {
+      flex: 1;
+      text-align: left;
+    }
+
+    .hero-text h1 {
+      font-size: 3.5rem;
+      margin-bottom: 15px;
       text-transform: uppercase;
       font-weight: 900;
-      line-height: 1.2;
-      text-shadow: 0px 4px 15px rgba(0,0,0,0.8);
+      line-height: 1.1;
+      color: var(--azul-oscuro);
     }
 
-    .hero p {
-      font-size: 1.3rem;
-      max-width: 800px;
+    /* Resalte con el color corporativo del cliente */
+    .hero-text h1 .highlight {
+      color: var(--morado-oscuro);
+    }
+
+    .hero-text p {
+      font-size: 1.2rem;
+      max-width: 600px;
       margin-bottom: 40px;
       font-weight: 400;
-      color: #f0f0f0;
-      text-shadow: 0px 2px 8px rgba(0,0,0,0.8);
+      color: var(--gris-texto);
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
     }
 
     .btn-cta {
-      background: linear-gradient(45deg, var(--azul-oscuro), var(--morado-oscuro));
+      background: var(--morado-oscuro);
       color: var(--blanco);
-      padding: 15px 40px;
+      padding: 15px 35px;
       border-radius: 50px;
       font-weight: 700;
-      font-size: 1.1rem;
+      font-size: 1rem;
       text-transform: uppercase;
       transition: all 0.3s ease;
-      box-shadow: 0 8px 20px rgba(10, 17, 40, 0.4);
-      border: 2px solid rgba(255,255,255,0.1);
+      box-shadow: 0 8px 20px rgba(45, 20, 69, 0.3);
+      border: 2px solid var(--morado-oscuro);
       cursor: pointer;
       display: inline-block;
     }
     .btn-cta:hover { 
       transform: translateY(-3px); 
-      box-shadow: 0 12px 25px rgba(45, 20, 69, 0.6); 
-      border-color: rgba(255,255,255,0.4);
+      box-shadow: 0 12px 25px rgba(45, 20, 69, 0.5); 
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--morado-oscuro);
+      padding: 15px 35px;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 1rem;
+      text-transform: uppercase;
+      transition: all 0.3s ease;
+      border: 2px solid var(--morado-oscuro);
+      cursor: pointer;
+      display: inline-block;
+    }
+    .btn-outline:hover {
+      background: var(--morado-oscuro);
+      color: var(--blanco);
+    }
+
+    .hero-img {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+    }
+
+    .hero-img img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 20px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+      object-fit: cover;
     }
 
     /* --- SECCIONES GENERALES --- */
     .section { padding: 80px 20px; text-align: center; }
+    .section:nth-child(even) { background-color: var(--crema); }
     .section-header { margin-bottom: 50px; }
     .section h2 {
       font-size: 2.5rem;
@@ -168,8 +205,6 @@
       border-radius: 15px;
       text-align: center;
       transition: all 0.3s ease;
-      position: relative;
-      overflow: hidden;
       box-shadow: 0 10px 30px rgba(0,0,0,0.05);
       border-top: 4px solid var(--azul-oscuro);
     }
@@ -180,35 +215,19 @@
     }
 
     .icon-serv { 
-      font-size: 45px; 
-      display: inline-block; 
+      font-size: 40px; 
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
       margin-bottom: 20px; 
       color: var(--morado-oscuro);
       background: rgba(45, 20, 69, 0.05);
       width: 80px;
       height: 80px;
-      line-height: 80px;
       border-radius: 50%;
     }
     .card h3 { margin-bottom: 15px; color: var(--azul-oscuro); font-size: 1.3rem; font-weight: 700; text-transform: uppercase;}
     .card p { color: var(--gris-texto); font-size: 0.95rem; line-height: 1.6; }
-
-    /* --- BANNER CENTRAL SINIY --- */
-    .banner-siniy-container {
-      padding: 40px 20px;
-      text-align: center;
-      background: rgba(10, 17, 40, 0.03); 
-    }
-    .banner-siniy {
-      max-width: 900px;
-      width: 100%;
-      border-radius: 15px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-      transition: transform 0.3s ease;
-    }
-    .banner-siniy:hover {
-      transform: scale(1.02);
-    }
 
     /* --- CATALOGO DE EVENTOS --- */
     .catalogo-grid {
@@ -224,6 +243,7 @@
       box-shadow: 0 5px 15px rgba(0,0,0,0.1);
       position: relative;
       background: var(--blanco);
+      aspect-ratio: 1 / 1;
     }
     .catalogo-item img {
       width: 100%;
@@ -301,7 +321,79 @@
       filter: brightness(0) invert(1); 
     }
 
+    /* --- MODAL BANNER SINIY --- */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(10, 17, 40, 0.8);
+      backdrop-filter: blur(5px);
+      display: none; /* Oculto por defecto */
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+    .modal-overlay.show {
+      display: flex;
+      opacity: 1;
+    }
+    .modal-content {
+      position: relative;
+      max-width: 90%;
+      width: 600px;
+      transform: translateY(-50px);
+      transition: transform 0.4s ease;
+    }
+    .modal-overlay.show .modal-content {
+      transform: translateY(0);
+    }
+    .modal-content img {
+      width: 100%;
+      border-radius: 20px;
+      display: block;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+    }
+    .close-modal {
+      position: absolute;
+      top: -15px;
+      right: -15px;
+      background: var(--blanco);
+      color: var(--azul-oscuro);
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.2rem;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      z-index: 10;
+      transition: background 0.3s, color 0.3s;
+    }
+    .close-modal:hover {
+      background: var(--morado-oscuro);
+      color: var(--blanco);
+    }
+
     /* --- RESPONSIVE --- */
+    @media (max-width: 992px) {
+      .hero {
+        flex-direction: column;
+        text-align: center;
+        padding: 40px 20px;
+      }
+      .hero-text { text-align: center; }
+      .hero-text p { margin: 0 auto 30px auto; }
+      .hero-buttons { justify-content: center; }
+      .hero-text h1 { font-size: 2.8rem; }
+    }
+
     @media (max-width: 768px) {
       .menu-toggle { display: block; }
       nav ul {
@@ -313,7 +405,7 @@
       }
       nav ul.active { display: flex; }
       nav a { padding: 15px; display: block; }
-      .hero h1 { font-size: 2.2rem; }
+      .hero-text h1 { font-size: 2.2rem; }
       .section { padding: 60px 15px; }
       .section h2 { font-size: 2rem; }
       .contacto-area { padding-bottom: 80px; }
@@ -338,9 +430,17 @@
   </header>
 
   <section id="inicio" class="hero">
-    <h1>SALAZ PRODUCCIONES<br>CORMASTER S.A.S.</h1>
-    <p>Sonido Profesional • Producciones • Luces • Fiestas • Grupos Musicales • Carpas y Tarimas</p>
-    <a href="https://wa.me/573143132569?text=Hola,%20deseo%20cotizar%20un%20evento" class="btn-cta" target="_blank">Cotizar Evento</a>
+    <div class="hero-text">
+      <h1>SALAZ PRODUCCIONES <br><span class="highlight">CORMASTER S.A.S.</span></h1>
+      <p>Sonido Profesional • Producciones • Luces • Fiestas • Grupos Musicales • Carpas y Tarimas. Soluciones sofisticadas para que tu evento destaque.</p>
+      <div class="hero-buttons">
+        <a href="https://wa.me/573143132569?text=Hola,%20deseo%20cotizar%20un%20evento" class="btn-cta" target="_blank">Solicitar Cotización</a>
+        <a href="#catalogo" class="btn-outline">Ver Portafolio</a>
+      </div>
+    </div>
+    <div class="hero-img">
+      <img src="recursossp/20.jpg" alt="Montaje Salaz Producciones">
+    </div>
   </section>
 
   <section id="servicios" class="section">
@@ -351,47 +451,41 @@
     
     <div class="servicios-grid">
       <div class="card">
-        <span class="icon-serv">🔊</span>
+        <i class="fa-solid fa-volume-high icon-serv"></i>
         <h3>Sonido Profesional</h3>
         <p>Equipos de alta fidelidad y potencia para conciertos, eventos corporativos y fiestas privadas.</p>
       </div>
 
       <div class="card">
-        <span class="icon-serv">💡</span>
+        <i class="fa-solid fa-lightbulb icon-serv"></i>
         <h3>Luces y Producción</h3>
         <p>Iluminación inteligente, efectos visuales y montaje técnico completo para un alto impacto visual.</p>
       </div>
 
       <div class="card">
-        <span class="icon-serv">🎸</span>
+        <i class="fa-solid fa-guitar icon-serv"></i>
         <h3>Grupos Musicales</h3>
         <p>Los mejores artistas en vivo: Bachata, Bolero, Tropical, Salsa, Vallenato, Balada y Rock Español.</p>
       </div>
 
       <div class="card">
-        <span class="icon-serv">🎪</span>
+        <i class="fa-solid fa-campground icon-serv"></i>
         <h3>Carpas y Tarimas</h3>
         <p>Estructuras seguras y modulares adaptables a cualquier espacio y capacidad de asistentes.</p>
       </div>
 
       <div class="card">
-        <span class="icon-serv">🎉</span>
+        <i class="fa-solid fa-champagne-glasses icon-serv"></i>
         <h3>Fiestas y MiniTK</h3>
         <p>Ambientación, DJs profesionales y el mejor repertorio para prender la rumba en tu celebración.</p>
       </div>
       
       <div class="card">
-        <span class="icon-serv">📅</span>
+        <i class="fa-solid fa-calendar-check icon-serv"></i>
         <h3>Organización de Eventos</h3>
         <p>Gestión integral para que disfrutes tu evento sin preocupaciones. Nosotros nos encargamos de todo.</p>
       </div>
     </div>
-  </section>
-
-  <section class="banner-siniy-container">
-    <a href="https://siniy.pro" target="_blank">
-      <img class="banner-siniy" src="recursossiniy/banner-tarjeta.jpg" alt="Tarjetas Digitales para Emprendedores - SINIY">
-    </a>
   </section>
 
   <section id="catalogo" class="section">
@@ -438,7 +532,17 @@
     <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
   </a>
 
+  <div id="modalSiniy" class="modal-overlay">
+    <div class="modal-content">
+      <span class="close-modal" id="closeModal">&times;</span>
+      <a href="https://siniy.pro" target="_blank">
+        <img src="recursossiniy/banner-tarjeta.jpg" alt="Tarjetas Digitales para Emprendedores - SINIY">
+      </a>
+    </div>
+  </div>
+
   <script>
+    // Script Menú Móvil
     const menuToggle = document.querySelector('.menu-toggle');
     const navMenu = document.querySelector('.nav-menu');
     const navLinks = document.querySelectorAll('.nav-menu a');
@@ -450,6 +554,31 @@
     navLinks.forEach(link => {
       link.addEventListener('click', () => {
         navMenu.classList.remove('active');
+      });
+    });
+
+    // Script Modal SINIY
+    document.addEventListener("DOMContentLoaded", function() {
+      const modal = document.getElementById('modalSiniy');
+      const closeBtn = document.getElementById('closeModal');
+
+      // Muestra el modal después de 1.5 segundos de cargar la página
+      setTimeout(() => {
+        modal.classList.add('show');
+      }, 1500);
+
+      // Cierra el modal al hacer clic en la X
+      closeBtn.addEventListener('click', () => {
+        modal.classList.remove('show');
+        setTimeout(() => modal.style.display = 'none', 400); // Espera la animación
+      });
+
+      // Cierra el modal al hacer clic fuera de la imagen
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+          modal.classList.remove('show');
+          setTimeout(() => modal.style.display = 'none', 400);
+        }
       });
     });
   </script>
