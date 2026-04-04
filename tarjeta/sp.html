@@ -23,15 +23,15 @@
     /* --- COLORES INSTITUCIONALES --- */
     :root {
       --azul-oscuro: #0a1128;
-      --morado-oscuro: #2d1445; /* Un morado oscuro más elegante para fondos claros */
+      --morado-oscuro: #2d1445; 
       --blanco: #ffffff;
       --crema: #FBFBF9;
       --gris-texto: #555555;
     }
 
-    /* --- HEADER (CLARO Y LIMPIO) --- */
+    /* --- HEADER (AZUL MORADO OSCURO) --- */
     header {
-      background: rgba(251, 251, 249, 0.95);
+      background: linear-gradient(90deg, var(--azul-oscuro), var(--morado-oscuro));
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
       padding: 10px 30px;
@@ -41,33 +41,33 @@
       position: sticky;
       top: 0;
       z-index: 1000;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     }
 
     /* Ajuste para el logo SVG */
     .logo img {
-      height: 60px; /* Ajusta este valor si el logo se ve muy grande o pequeño */
+      height: 60px; 
       width: auto;
       display: block;
     }
 
-    /* --- MENU DE NAVEGACION --- */
+    /* --- MENU DE NAVEGACION (TEXTO BLANCO) --- */
     nav ul { display: flex; gap: 25px; }
     nav a {
-      color: var(--azul-oscuro);
+      color: var(--blanco);
       font-weight: 700;
       font-size: 0.9rem;
       text-transform: uppercase;
       transition: color 0.3s ease;
     }
     nav a:hover { 
-      color: var(--morado-oscuro); 
+      color: #d1b3ff; /* Un lila claro para el hover */
     }
 
     .menu-toggle {
       display: none;
       font-size: 2rem;
-      color: var(--azul-oscuro);
+      color: var(--blanco);
       background: none;
       border: none;
       cursor: pointer;
@@ -75,8 +75,8 @@
 
     /* --- HERO SECTION --- */
     .hero {
-      /* Mantenemos el fondo del hero oscuro para que contraste espectacular con el resto de la página clara */
-      background: linear-gradient(to bottom, rgba(10, 17, 40, 0.8), rgba(45, 20, 69, 0.85)), url('recursossp/fondo-hero.jpg');
+      /* La imagen 'hero-principal.jpg' ahora es el fondo, con un desvanecido morado oscuro */
+      background: linear-gradient(to bottom, rgba(45, 20, 69, 0.75), rgba(10, 17, 40, 0.85)), url('recursossp/hero-principal.jpg');
       background-size: cover;
       background-position: center;
       background-attachment: fixed;
@@ -91,30 +91,22 @@
       color: var(--blanco);
     }
 
-    .hero-image-front {
-      width: 100%;
-      max-width: 450px;
-      border-radius: 15px;
-      box-shadow: 0 15px 35px rgba(0,0,0,0.4);
-      margin-bottom: 30px;
-      border: 3px solid rgba(255, 255, 255, 0.2);
-    }
-
     .hero h1 {
-      font-size: 2.8rem;
+      font-size: 3.2rem;
       margin-bottom: 10px;
       text-transform: uppercase;
       font-weight: 900;
       line-height: 1.2;
-      text-shadow: 0px 4px 10px rgba(0,0,0,0.6);
+      text-shadow: 0px 4px 15px rgba(0,0,0,0.8);
     }
 
     .hero p {
-      font-size: 1.2rem;
+      font-size: 1.3rem;
       max-width: 800px;
       margin-bottom: 40px;
-      font-weight: 300;
-      color: #e0e0e0;
+      font-weight: 400;
+      color: #f0f0f0;
+      text-shadow: 0px 2px 8px rgba(0,0,0,0.6);
     }
 
     .btn-cta {
@@ -126,14 +118,15 @@
       font-size: 1.1rem;
       text-transform: uppercase;
       transition: all 0.3s ease;
-      box-shadow: 0 8px 20px rgba(10, 17, 40, 0.3);
-      border: none;
+      box-shadow: 0 8px 20px rgba(10, 17, 40, 0.4);
+      border: 2px solid rgba(255,255,255,0.1);
       cursor: pointer;
       display: inline-block;
     }
     .btn-cta:hover { 
       transform: translateY(-3px); 
-      box-shadow: 0 12px 25px rgba(45, 20, 69, 0.4); 
+      box-shadow: 0 12px 25px rgba(45, 20, 69, 0.6); 
+      border-color: rgba(255,255,255,0.4);
     }
 
     /* --- SECCIONES GENERALES --- */
@@ -148,7 +141,6 @@
       position: relative;
       display: inline-block;
     }
-    /* Línea decorativa debajo de los títulos */
     .section h2::after {
       content: '';
       position: absolute;
@@ -162,7 +154,7 @@
     }
     .section-desc { color: var(--gris-texto); max-width: 600px; margin: 20px auto 0; font-size: 1.1rem; }
 
-    /* --- GRID DE SERVICIOS (TARJETAS CLARAS) --- */
+    /* --- GRID DE SERVICIOS --- */
     .servicios-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -206,7 +198,7 @@
     .banner-siniy-container {
       padding: 40px 20px;
       text-align: center;
-      background: rgba(10, 17, 40, 0.03); /* Un fondo apenas perceptible para separar secciones */
+      background: rgba(10, 17, 40, 0.03); 
     }
     .banner-siniy {
       max-width: 900px;
@@ -245,10 +237,10 @@
       transform: scale(1.08);
     }
 
-    /* --- CONTACTO AREA --- */
+    /* --- CONTACTO AREA (AHORA SIN FONDO OSCURO Y MÁS ESPACIO) --- */
     .contacto-area {
-      background: var(--azul-oscuro); /* El área de contacto oscura le da peso visual al final */
-      padding: 60px 20px;
+      background: transparent; /* Quitamos el fondo oscuro */
+      padding: 60px 20px 100px 20px; /* Aumenté de 60px a 100px el padding de abajo para darle más aire */
       text-align: center;
     }
     .contacto-card {
@@ -257,7 +249,8 @@
       margin: 0 auto;
       padding: 40px 30px;
       border-radius: 15px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      border: 1px solid rgba(0,0,0,0.05);
     }
     .contacto-card h3 {
       font-size: 1.8rem;
@@ -270,12 +263,12 @@
       margin-bottom: 25px;
     }
 
-    /* --- FOOTER (SOLO SINIY) --- */
+    /* --- FOOTER --- */
     footer { 
       text-align: center; 
       padding: 30px 20px; 
-      background-color: var(--crema);
-      border-top: 1px solid #eaeaea;
+      background-color: #f1f1f1; /* Un tono sutil para separar el final */
+      border-top: 1px solid #e0e0e0;
     }
     .siniy-logo { 
       width: 140px; 
@@ -315,16 +308,16 @@
       nav ul {
         display: none; flex-direction: column;
         width: 100%; position: absolute; top: 100%; left: 0;
-        background-color: var(--blanco);
+        background: linear-gradient(to bottom, var(--azul-oscuro), var(--morado-oscuro)); /* Menú móvil oscuro */
         text-align: center; padding: 20px 0;
-        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.2);
       }
       nav ul.active { display: flex; }
       nav a { padding: 15px; display: block; }
       .hero h1 { font-size: 2.2rem; }
-      .hero-image-front { max-width: 90%; }
       .section { padding: 60px 15px; }
       .section h2 { font-size: 2rem; }
+      .contacto-area { padding-bottom: 80px; }
     }
   </style>
 </head>
@@ -346,7 +339,6 @@
   </header>
 
   <section id="inicio" class="hero">
-    <img src="recursossp/19.jpg" alt="Evento Salaz Producciones" class="hero-image-front">
     <h1>SALAZ PRODUCCIONES<br>CORMASTER S.A.S.</h1>
     <p>Sonido Profesional • Producciones • Luces • Fiestas • Grupos Musicales • Carpas y Tarimas</p>
     <a href="https://wa.me/573143132569?text=Hola,%20deseo%20cotizar%20un%20evento" class="btn-cta" target="_blank">Cotizar Evento</a>
@@ -438,7 +430,7 @@
 
   <footer>
     <a href="https://siniy.pro" target="_blank">
-      <img class="siniy-logo" src="logoazulsiniy.png" alt="SINIY Soluciones Digitales">
+      <img class="siniy-logo" src="recursossiniy/logo-siniy.png" alt="SINIY Soluciones Digitales">
     </a>
     <div class="creditos">Diseñado por <a href="https://siniy.pro" target="_blank">SINIY Soluciones Digitales</a></div>
   </footer>
