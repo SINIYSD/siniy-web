@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SALAZ PRODUCCIONES CORMASTER S.A.S.</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700;900&display=swap" rel="stylesheet">
+  
+  <style>
+    /* --- RESET & BASICS --- */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { 
+      font-family: 'Montserrat', sans-serif; 
+      background: linear-gradient(135deg, #060a1f 0%, #150524 100%); /* Azul oscuro a Morado oscuro */
+      color: #f0f2f5; 
+      line-height: 1.6; 
+      min-height: 100vh;
+    }
+    a { text-decoration: none; }
+    ul { list-style: none; }
+
+    /* --- COLORES INSTITUCIONALES --- */
+    :root {
+      --azul-oscuro: #0a1128;
+      --morado-oscuro: #1a0b2e;
+      --acento-azul: #00d4ff;
+      --acento-morado: #9d4edd;
+      --blanco: #ffffff;
+      --glass-bg: rgba(255, 255, 255, 0.05);
+      --glass-border: rgba(255, 255, 255, 0.1);
+    }
+
+    /* --- HEADER (GLASSMORPHISM) --- */
+    header {
+      background: rgba(10, 17, 40, 0.7);
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 1px solid var(--glass-border);
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    .logo {
+      font-weight: 900;
+      font-size: 1.5rem;
+      color: var(--blanco);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      text-shadow: 0 0 10px var(--acento-azul);
+    }
+
+    /* --- MENU DE NAVEGACION --- */
+    nav ul { display: flex; gap: 25px; }
+    nav a {
+      color: var(--blanco);
+      font-weight: 700;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      transition: all 0.3s ease;
+    }
+    nav a:hover { 
+      color: var(--acento-azul); 
+      text-shadow: 0 0 8px var(--acento-azul);
+    }
+
+    .menu-toggle {
+      display: none;
+      font-size: 2rem;
+      color: var(--blanco);
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    /* --- HERO SECTION --- */
+    .hero {
+      /* Imagen de fondo con capa de transparencia oscura */
+      background: linear-gradient(to bottom, rgba(10, 17, 40, 0.85), rgba(26, 11, 46, 0.95)), url('recursossp/fondo-hero.jpg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      min-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
+      position: relative;
+    }
+
+    /* Imagen central sobre la transparencia */
+    .hero-image-front {
+      width: 100%;
+      max-width: 450px;
+      border-radius: 20px;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.5), 0 0 20px rgba(157, 78, 221, 0.4);
+      margin-bottom: 30px;
+      border: 2px solid var(--glass-border);
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      font-weight: 900;
+      line-height: 1.2;
+      background: linear-gradient(90deg, var(--acento-azul), var(--acento-morado));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0px 5px 15px rgba(0,0,0,0.5);
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      max-width: 800px;
+      margin-bottom: 40px;
+      font-weight: 300;
+      color: #ccc;
+      letter-spacing: 1px;
+    }
+
+    .btn-cta {
+      background: linear-gradient(45deg, var(--acento-azul), var(--acento-morado));
+      color: var(--blanco);
+      padding: 15px 40px;
+      border-radius: 50px;
+      font-weight: 900;
+      font-size: 1.1rem;
+      text-transform: uppercase;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 20px rgba(157, 78, 221, 0.5);
+      border: none;
+      cursor: pointer;
+    }
+    .btn-cta:hover { 
+      transform: translateY(-3px) scale(1.05); 
+      box-shadow: 0 0 30px rgba(0, 212, 255, 0.7); 
+    }
+
+    /* --- SECCIONES GENERALES --- */
+    .section { padding: 80px 20px; text-align: center; }
+    .section-header { margin-bottom: 60px; }
+    .section h2 {
+      font-size: 2.5rem;
+      text-transform: uppercase;
+      margin-bottom: 15px;
+      font-weight: 900;
+      display: inline-block;
+      color: var(--blanco);
+    }
+    .section-desc { color: #aaa; max-width: 600px; margin: 0 auto; font-size: 1.1rem; }
+
+    /* --- GRID DE SERVICIOS (GLASSMORPHISM) --- */
+    .servicios-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .card {
+      background: var(--glass-bg);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid var(--glass-border);
+      padding: 40px 25px;
+      border-radius: 20px;
+      text-align: center;
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .card:hover { 
+      transform: translateY(-10px); 
+      background: rgba(255, 255, 255, 0.08);
+      border-color: var(--acento-morado);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.5), 0 0 20px rgba(157, 78, 221, 0.2);
+    }
+
+    .icon-serv { font-size: 45px; display: block; margin-bottom: 20px; text-shadow: 0 0 15px var(--acento-azul); }
+    .card h3 { margin-bottom: 15px; color: var(--blanco); font-size: 1.3rem; font-weight: 700; text-transform: uppercase;}
+    .card p { color: #bbb; font-size: 0.95rem; line-height: 1.6; }
+
+    /* --- BANNER CENTRAL SINIY --- */
+    .banner-siniy-container {
+      padding: 40px 20px;
+      text-align: center;
+      background: rgba(0,0,0,0.3);
+    }
+    .banner-siniy {
+      max-width: 900px;
+      width: 100%;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+      transition: transform 0.3s ease;
+    }
+    .banner-siniy:hover {
+      transform: scale(1.02);
+    }
+
+    /* --- CATALOGO DE EVENTOS --- */
+    .catalogo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 15px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .catalogo-item {
+      overflow: hidden;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+      position: relative;
+      border: 1px solid var(--glass-border);
+    }
+    .catalogo-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+    .catalogo-item:hover img {
+      transform: scale(1.1);
+    }
+
+    /* --- CONTACTO AREA --- */
+    .contacto-area {
+      background: var(--azul-oscuro);
+      padding: 60px 20px;
+      text-align: center;
+      border-top: 1px solid var(--glass-border);
+    }
+    .contacto-card {
+      background: var(--glass-bg);
+      border: 1px solid var(--acento-azul);
+      max-width: 500px;
+      margin: 0 auto;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 0 20px rgba(0, 212, 255, 0.2);
+    }
+    .contacto-card h3 {
+      font-size: 1.8rem;
+      color: var(--blanco);
+      margin-bottom: 10px;
+    }
+    .contacto-card p {
+      font-size: 1.2rem;
+      color: #aaa;
+      margin-bottom: 20px;
+    }
+
+    /* --- FOOTER (SOLO SINIY) --- */
+    footer { 
+      text-align: center; 
+      padding: 30px 20px; 
+      background-color: #030510;
+    }
+    .siniy-logo { 
+      width: 150px; 
+      display: block; 
+      margin: 0 auto 15px auto; 
+      opacity: 0.9;
+      transition: opacity 0.3s;
+    }
+    .siniy-logo:hover { opacity: 1; }
+    .creditos { font-size: 13px; color: #666; }
+    .creditos a { color: var(--acento-morado); font-weight: bold; }
+
+    /* --- BOTON WHATSAPP --- */
+    .whatsapp-btn {
+      position: fixed; 
+      bottom: 25px; 
+      right: 25px;
+      background-color: #25d366;
+      border-radius: 50%; 
+      padding: 15px;
+      box-shadow: 0 4px 20px rgba(37, 211, 102, 0.5);
+      z-index: 1000;
+      display: flex; 
+      justify-content: center; 
+      align-items: center;
+      transition: transform 0.3s;
+    }
+    .whatsapp-btn:hover { transform: scale(1.1); }
+    .whatsapp-btn img { 
+      width: 40px; 
+      height: 40px; 
+      filter: brightness(0) invert(1); 
+    }
+
+    /* --- RESPONSIVE --- */
+    @media (max-width: 768px) {
+      .menu-toggle { display: block; }
+      nav ul {
+        display: none; flex-direction: column;
+        width: 100%; position: absolute; top: 100%; left: 0;
+        background-color: rgba(10, 17, 40, 0.95);
+        backdrop-filter: blur(10px);
+        text-align: center; padding: 20px 0;
+        border-top: 1px solid var(--glass-border);
+      }
+      nav ul.active { display: flex; }
+      nav a { padding: 15px; display: block; }
+      .hero h1 { font-size: 2.2rem; }
+      .hero-image-front { max-width: 90%; }
+      .section { padding: 50px 15px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">CORMASTER</div>
+    <button class="menu-toggle" aria-label="Abrir menú">☰</button>
+    <nav>
+      <ul class="nav-menu">
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#servicios">Servicios</a></li>
+        <li><a href="#catalogo">Catálogo</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section id="inicio" class="hero">
+    <img src="recursossp/hero-principal.jpg" alt="Evento Salaz Producciones" class="hero-image-front">
+    
+    <h1>SALAZ PRODUCCIONES<br>CORMASTER S.A.S.</h1>
+    <p>Sonido Profesional • Producciones • Luces • Fiestas • Grupos Musicales • Carpas y Tarimas</p>
+    <a href="https://wa.me/573143132569?text=Hola,%20deseo%20cotizar%20un%20evento" class="btn-cta" target="_blank">Cotizar Evento</a>
+  </section>
+
+  <section id="servicios" class="section">
+    <div class="section-header">
+        <h2>Nuestros Servicios</h2>
+        <p class="section-desc">Producción técnica y logística del más alto nivel para que tu evento sea inolvidable.</p>
+    </div>
+    
+    <div class="servicios-grid">
+      <div class="card">
+        <span class="icon-serv">🔊</span>
+        <h3>Sonido Profesional</h3>
+        <p>Equipos de alta fidelidad y potencia para conciertos, eventos corporativos y fiestas privadas.</p>
+      </div>
+
+      <div class="card">
+        <span class="icon-serv">💡</span>
+        <h3>Luces y Producción</h3>
+        <p>Iluminación inteligente, efectos visuales y montaje técnico completo para un alto impacto visual.</p>
+      </div>
+
+      <div class="card">
+        <span class="icon-serv">🎸</span>
+        <h3>Grupos Musicales</h3>
+        <p>Los mejores artistas en vivo: Bachata, Bolero, Tropical, Salsa, Vallenato, Balada y Rock Español.</p>
+      </div>
+
+      <div class="card">
+        <span class="icon-serv">🎪</span>
+        <h3>Carpas y Tarimas</h3>
+        <p>Estructuras seguras y modulares adaptables a cualquier espacio y capacidad de asistentes.</p>
+      </div>
+
+      <div class="card">
+        <span class="icon-serv">🎉</span>
+        <h3>Fiestas y MiniTK</h3>
+        <p>Ambientación, DJs profesionales y el mejor repertorio para prender la rumba en tu celebración.</p>
+      </div>
+      
+      <div class="card">
+        <span class="icon-serv">📅</span>
+        <h3>Organización de Eventos</h3>
+        <p>Gestión integral para que disfrutes tu evento sin preocupaciones. Nosotros nos encargamos de todo.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="banner-siniy-container">
+    <a href="https://siniy.pro" target="_blank">
+      <img class="banner-siniy" src="recursossiniy/banner.jpg" alt="Tarjetas Digitales para Emprendedores - SINIY">
+    </a>
+  </section>
+
+  <section id="catalogo" class="section">
+    <div class="section-header">
+        <h2>Catálogo de Eventos</h2>
+        <p class="section-desc">Un vistazo a nuestros mejores montajes y producciones.</p>
+    </div>
+    <div class="catalogo-grid">
+      <div class="catalogo-item"><img src="recursossp/evento1.jpg" alt="Montaje de evento 1"></div>
+      <div class="catalogo-item"><img src="recursossp/evento2.jpg" alt="Montaje de evento 2"></div>
+      <div class="catalogo-item"><img src="recursossp/evento3.jpg" alt="Montaje de evento 3"></div>
+      <div class="catalogo-item"><img src="recursossp/evento4.jpg" alt="Montaje de evento 4"></div>
+      <div class="catalogo-item"><img src="recursossp/evento5.jpg" alt="Montaje de evento 5"></div>
+      <div class="catalogo-item"><img src="recursossp/evento6.jpg" alt="Montaje de evento 6"></div>
+      <div class="catalogo-item"><img src="recursossp/evento7.jpg" alt="Montaje de evento 7"></div>
+      <div class="catalogo-item"><img src="recursossp/evento8.jpg" alt="Montaje de evento 8"></div>
+    </div>
+  </section>
+
+  <section id="contacto" class="contacto-area">
+    <div class="contacto-card">
+      <h3>Cristian Salazar</h3>
+      <p>Propietario & Productor General</p>
+      <a href="https://wa.me/573143132569?text=Hola%20Cristian,%20necesito%20informaci%C3%B3n" class="btn-cta" target="_blank">Escribir a WhatsApp</a>
+    </div>
+  </section>
+
+  <footer>
+    <a href="https://siniy.pro" target="_blank">
+      <img class="siniy-logo" src="recursossiniy/logo-siniy.png" alt="SINIY Soluciones Digitales">
+    </a>
+    <div class="creditos">Diseñado por <a href="https://siniy.pro" target="_blank">SINIY Soluciones Digitales</a></div>
+  </footer>
+
+  <a class="whatsapp-btn" href="https://wa.me/573143132569?text=Hola,%20quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20los%20eventos" target="_blank" title="Contactar por WhatsApp">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+  </a>
+
+  <script>
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navMenu = document.querySelector('.nav-menu');
+    const navLinks = document.querySelectorAll('.nav-menu a');
+
+    // Menú hamburguesa
+    menuToggle.addEventListener('click', () => {
+      navMenu.classList.toggle('active');
+    });
+
+    // Cerrar menú al dar clic en móvil
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        navMenu.classList.remove('active');
+      });
+    });
+  </script>
+
+</body>
+</html>
