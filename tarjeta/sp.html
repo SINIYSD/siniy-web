@@ -12,7 +12,7 @@
     html { scroll-behavior: smooth; }
     body { 
       font-family: 'Montserrat', sans-serif; 
-      background-color: #FBFBF9; /* Blanco crema claro y elegante */
+      background-color: #FBFBF9;
       color: #333333; 
       line-height: 1.6; 
       min-height: 100vh;
@@ -29,7 +29,7 @@
       --gris-texto: #555555;
     }
 
-    /* --- HEADER (AZUL MORADO OSCURO) --- */
+    /* --- HEADER --- */
     header {
       background: linear-gradient(90deg, var(--azul-oscuro), var(--morado-oscuro));
       backdrop-filter: blur(10px);
@@ -44,14 +44,13 @@
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     }
 
-    /* Ajuste para el logo SVG */
     .logo img {
       height: 60px; 
       width: auto;
       display: block;
     }
 
-    /* --- MENU DE NAVEGACION (TEXTO BLANCO) --- */
+    /* --- MENU DE NAVEGACION --- */
     nav ul { display: flex; gap: 25px; }
     nav a {
       color: var(--blanco);
@@ -61,7 +60,7 @@
       transition: color 0.3s ease;
     }
     nav a:hover { 
-      color: #d1b3ff; /* Un lila claro para el hover */
+      color: #d1b3ff; 
     }
 
     .menu-toggle {
@@ -75,8 +74,8 @@
 
     /* --- HERO SECTION --- */
     .hero {
-      /* La imagen 'hero-principal.jpg' ahora es el fondo, con un desvanecido morado oscuro */
-      background: linear-gradient(to bottom, rgba(45, 20, 69, 0.75), rgba(10, 17, 40, 0.85)), url('recursossp/hero-principal.jpg');
+      /* AQUÍ ESTÁ EL CAMBIO: Reduje los valores de 0.85 a 0.4 para que la imagen se vea bien */
+      background: linear-gradient(to bottom, rgba(45, 20, 69, 0.4), rgba(10, 17, 40, 0.6)), url('recursossp/hero-principal.jpg');
       background-size: cover;
       background-position: center;
       background-attachment: fixed;
@@ -106,7 +105,7 @@
       margin-bottom: 40px;
       font-weight: 400;
       color: #f0f0f0;
-      text-shadow: 0px 2px 8px rgba(0,0,0,0.6);
+      text-shadow: 0px 2px 8px rgba(0,0,0,0.8);
     }
 
     .btn-cta {
@@ -237,10 +236,10 @@
       transform: scale(1.08);
     }
 
-    /* --- CONTACTO AREA (AHORA SIN FONDO OSCURO Y MÁS ESPACIO) --- */
+    /* --- CONTACTO AREA --- */
     .contacto-area {
-      background: transparent; /* Quitamos el fondo oscuro */
-      padding: 60px 20px 100px 20px; /* Aumenté de 60px a 100px el padding de abajo para darle más aire */
+      background: transparent;
+      padding: 60px 20px 100px 20px;
       text-align: center;
     }
     .contacto-card {
@@ -267,7 +266,7 @@
     footer { 
       text-align: center; 
       padding: 30px 20px; 
-      background-color: #f1f1f1; /* Un tono sutil para separar el final */
+      background-color: #f1f1f1;
       border-top: 1px solid #e0e0e0;
     }
     .siniy-logo { 
@@ -308,7 +307,7 @@
       nav ul {
         display: none; flex-direction: column;
         width: 100%; position: absolute; top: 100%; left: 0;
-        background: linear-gradient(to bottom, var(--azul-oscuro), var(--morado-oscuro)); /* Menú móvil oscuro */
+        background: linear-gradient(to bottom, var(--azul-oscuro), var(--morado-oscuro));
         text-align: center; padding: 20px 0;
         box-shadow: 0 10px 20px rgba(0,0,0,0.2);
       }
