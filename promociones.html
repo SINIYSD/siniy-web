@@ -81,58 +81,6 @@
       box-shadow: 0 15px 40px rgba(94, 23, 235, 0.2);
     }
 
-    /* --- Temporizador Global --- */
-    .global-timer-section {
-      text-align: center;
-      margin: 0 auto 60px;
-      max-width: 750px;
-      background: white;
-      padding: 30px;
-      border-radius: 24px;
-      border: 2px solid var(--border);
-      box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-    }
-    .global-timer-section h2 {
-      font-weight: 900;
-      font-size: 1.8rem;
-      color: var(--brand);
-      margin: 0 0 20px;
-      text-transform: uppercase;
-    }
-    .timer {
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-    }
-
-    /* --- Casillas del reloj: AHORA EN VIOLETA --- */
-    .timer-box {
-      background: var(--brand); /* Violeta corporativo de fondo */
-      border: 2px solid var(--brand-dark);
-      padding: 15px 20px;
-      border-radius: 16px;
-      min-width: 80px;
-      box-shadow: inset 0 4px 10px rgba(0,0,0,0.2);
-    }
-
-    /* --- Números y Texto: AHORA EN VERDE NEÓN --- */
-    .timer-box .num { 
-      display: block; 
-      font-size: 2.5rem; 
-      font-weight: 900; 
-      color: var(--neon-green); /* Verde neón vibrante */
-      line-height: 1;
-      text-shadow: 0 2px 4px rgba(0,0,0,0.3);
-    }
-    .timer-box span { 
-      display: block; 
-      font-size: 0.85rem; 
-      font-weight: 700; 
-      color: var(--neon-green); /* Texto verde neón también */
-      text-transform: uppercase; 
-      margin-top: 8px;
-    }
-
     /* --- Contenedor Principal de Combos --- */
     .combo-grid {
       display: grid;
@@ -260,18 +208,6 @@
       <p style="font-size: 0.9rem; margin-top: 15px; color: var(--brand); font-weight: bold;">👆 Clic en la imagen para ver muestra</p>
     </div>
   </section>
-
-  <main class="wrap">
-
-    <section class="global-timer-section">
-      <h2>⏳ ¡Ofertas Especiales por Tiempo Limitado! ⏳</h2>
-      <div class="timer" id="countdown">
-        <div class="timer-box"><span class="num" id="days">00</span><span>Días</span></div>
-        <div class="timer-box"><span class="num" id="hours">00</span><span>Horas</span></div>
-        <div class="timer-box"><span class="num" id="minutes">00</span><span>Min</span></div>
-        <div class="timer-box"><span class="num" id="seconds">00</span><span>Seg</span></div>
-      </div>
-    </section>
 
     <div class="combo-principal-wrap">
       <div class="combo-card destacado-principal">
