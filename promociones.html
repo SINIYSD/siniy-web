@@ -75,9 +75,12 @@
       box-shadow: 0 10px 30px rgba(0,0,0,0.15);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       border: 4px solid var(--brand); /* Borde violeta en vez de neón */
+      display: block;
+      margin: 0 auto;
     }
-    .top-promo-image a:hover .digital-card-preview {
-      transform: translateY(-10px) scale(1.02);
+    /* Hover ajustado directamente al video */
+    .digital-card-preview:hover {
+      transform: translateY(-5px) scale(1.02);
       box-shadow: 0 15px 40px rgba(94, 23, 235, 0.2);
     }
 
@@ -202,10 +205,16 @@
     </div>
     
     <div class="top-promo-image">
-      <a href="https://siniy.pro/portafolio" target="_blank" title="Clic para ver muestra">
-        <img src="tarjeta-digital-muestra.png" alt="Muestra de Tarjeta Digital SINIY" class="digital-card-preview" onerror="this.src='https://via.placeholder.com/300x500/5e17eb/ccff00?text=Clic+para+ver+Muestra'">
-      </a>
-      <p style="font-size: 0.9rem; margin-top: 15px; color: var(--brand); font-weight: bold;">👆 Clic en la imagen para ver muestra</p>
+      <video 
+        src="recursos/video-tarjeta.MP4" 
+        class="digital-card-preview" 
+        autoplay 
+        muted 
+        loop 
+        controls>
+        Tu navegador no soporta el formato de video.
+      </video>
+      <p style="font-size: 0.9rem; margin-top: 15px; color: var(--brand); font-weight: bold;">▶️ Mira el video de muestra</p>
     </div>
   </section>
 
